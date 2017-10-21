@@ -10,7 +10,7 @@ public class Aluno extends Pessoa {
 	private String nomeMae;
 	private List<Integer> turmas = new ArrayList<Integer>();
 	
-
+//testeLorena
 	public Aluno() {
 		this(0, "Não informado", "Não informado", "Não informado", "000.000.000-00", "(00)0000-0000", "00/00/0000", 0, "Não informado", ESexo.MASCULINO);
 	}

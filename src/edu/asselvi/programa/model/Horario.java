@@ -1,4 +1,4 @@
-package edu.asselvi.programa.Model;
+package edu.asselvi.programa.model;
 
 public class Horario {
 	private int horarioId;

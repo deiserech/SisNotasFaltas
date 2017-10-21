@@ -1,9 +1,9 @@
-package edu.asselvi.programa.Model;
+package edu.asselvi.programa.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.asselvi.programa.Enumerador.ESexo;
+import edu.asselvi.programa.enumerador.ESexo;
 
 public class Aluno extends Pessoa {
 	private int alunoId;

@@ -1,4 +1,4 @@
-package edu.asselvi.programa.Model;
+package edu.asselvi.programa.model;
 
 public class Nota {
 	private int nrNota;

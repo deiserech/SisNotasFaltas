@@ -1,4 +1,4 @@
-package edu.asselvi.programa.Model;
+package edu.asselvi.programa.model;
 
 public class AlunoTurma {
 	private int alunoId; //FK - codigo do aluno

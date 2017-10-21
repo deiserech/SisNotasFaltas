@@ -1,4 +1,4 @@
-package edu.asselvi.programa.Model;
+package edu.asselvi.programa.model;
 
 import java.io.BufferedReader;
 import java.io.IOException;

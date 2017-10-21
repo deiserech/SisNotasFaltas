@@ -1,10 +1,10 @@
-package edu.asselvi.programa.Model;
+package edu.asselvi.programa.model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import edu.asselvi.programa.View.Cadastros;
+import edu.asselvi.programa.view.Cadastros;
 
 public class Sistema {
 	// =======================================================================================================

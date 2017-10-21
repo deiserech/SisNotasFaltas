@@ -1,6 +1,6 @@
-package edu.asselvi.programa.Model;
+package edu.asselvi.programa.model;
 
-import edu.asselvi.programa.Enumerador.ESexo;
+import edu.asselvi.programa.enumerador.ESexo;
 
 public abstract class Pessoa {
 	private String nome;

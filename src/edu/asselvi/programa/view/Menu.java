@@ -1,15 +1,14 @@
-package edu.asselvi.programa.model;
+package edu.asselvi.programa.view;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import edu.asselvi.programa.view.Cadastros;
-
-public class Sistema {
-	// =======================================================================================================
+public class Menu {
 	// Menus
-	private static void menuPrincipal() {
+	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+
+	public static int menuPrincipal() {
 
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -22,9 +21,15 @@ public class Sistema {
 		System.out.println("\t4 - Relatórios............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
+		try {
+			return Integer.parseInt(teclado.readLine());
+		}catch(NumberFormatException | IOException e){
+			return 0;
+		}
+		
 	}
 
-	private static void menuCadastros() {
+	public static int menuCadastros() {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»         Cadastros          ««|");
@@ -39,9 +44,15 @@ public class Sistema {
 		System.out.println("\t8 - Bimestres.............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................: ");
+
+		try {
+			return Integer.parseInt(teclado.readLine());
+		}catch(NumberFormatException | IOException e){
+			return 0;
+		}
 	}
 
-	private static void menuLancamentos() {
+	public static int menuLancamentos() {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»         Lançamentos        ««|");
@@ -50,9 +61,15 @@ public class Sistema {
 		System.out.println("\t2 - Frequência............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
+
+		try {
+			return Integer.parseInt(teclado.readLine());
+		}catch(NumberFormatException | IOException e){
+			return 0;
+		}
 	}
 
-	private static void menuConsultas() {
+	public static int menuConsultas() {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»          Consultas         ««|");
@@ -62,9 +79,15 @@ public class Sistema {
 		System.out.println("\t3 - Situação do Aluno.....");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
+
+		try {
+			return Integer.parseInt(teclado.readLine());
+		}catch(NumberFormatException | IOException e){
+			return 0;
+		}
 	}
 
-	private static void menuRelatorios() {
+	public static int menuRelatorios() {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»          Relatórios        ««|");
@@ -74,116 +97,13 @@ public class Sistema {
 		System.out.println("\t3 - Situação da Turma.....");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
-	}
-
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-
-		menuPrincipal();
-
-		int opcao = Integer.parseInt(teclado.readLine());
-
-		while (opcao != 0) {
-			switch (opcao) {
-			case 1:
-				menuCadastros();
-				int opcaoCad = Integer.parseInt(teclado.readLine());
-				while (opcaoCad != 0) {
-					switch (opcaoCad) {
-					case 1:
-						Cadastros.cadastraCurso();
-						break;
-					case 2:
-						Cadastros.cadastraDisciplina();
-						break;
-					case 3:
-						Cadastros.cadastraSerie();
-						break;
-					case 4:
-						Cadastros.cadastraTurma();
-						break;
-					case 5:
-						Cadastros.cadastraProfessor();
-						break;
-					case 6:
-						Cadastros.cadastraHorario();
-						break;
-					case 7:
-						Cadastros.cadastraAluno();
-						break;
-					case 8:
-						Cadastros.cadastraBimestre();
-						break;
-					}
-					menuCadastros();
-					opcaoCad = Integer.parseInt(teclado.readLine());
-				}
-
-				break;
-			case 2:
-				menuLancamentos();
-				int opcaoLan = Integer.parseInt(teclado.readLine());
-				while (opcaoLan != 0) {
-					switch (opcaoLan) {
-					case 1:
-						Lancamentos.lancamentoNotas();
-						break;
-					case 2:
-
-						break;
-					}
-					menuLancamentos();
-					opcaoLan = Integer.parseInt(teclado.readLine());
-				}
-
-				break;
-			case 3:
-				menuConsultas();
-				int opcaoCon = Integer.parseInt(teclado.readLine());
-				while (opcaoCon != 0) {
-					switch (opcaoCon) {
-					case 1:
-
-						break;
-					case 2:
-
-						break;
-					case 3:
-
-						break;
-					}
-					menuConsultas();
-					opcaoCon = Integer.parseInt(teclado.readLine());
-				}
-
-				break;
-			case 4:
-				menuRelatorios();
-				int opcaoRel = Integer.parseInt(teclado.readLine());
-				while (opcaoRel != 0) {
-					switch (opcaoRel) {
-					case 1:
-
-						break;
-					case 2:
-
-						break;
-					case 3:
-
-						break;
-					}
-					menuRelatorios();
-					opcaoRel = Integer.parseInt(teclado.readLine());
-				}
-
-				break;
-			default:
-				System.out.println("Opção Inválida!");
-				break;
-			}
-			menuPrincipal();
-			opcao = Integer.parseInt(teclado.readLine());
-
+		
+		try {
+			return Integer.parseInt(teclado.readLine());
+		}catch(NumberFormatException | IOException e){
+			return 0;
 		}
 	}
+
+
 }

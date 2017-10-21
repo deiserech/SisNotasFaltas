@@ -1,4 +1,4 @@
-package edu.asselvi.programa;
+package edu.asselvi.programa.Model;
 
 import java.util.ArrayList;
 import java.util.List;

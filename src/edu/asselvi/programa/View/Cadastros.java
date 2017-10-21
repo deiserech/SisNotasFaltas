@@ -1,8 +1,20 @@
-package edu.asselvi.programa;
+package edu.asselvi.programa.View;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import edu.asselvi.programa.Enumerador.ESexo;
+import edu.asselvi.programa.Model.Aluno;
+import edu.asselvi.programa.Model.AlunoTurma;
+import edu.asselvi.programa.Model.Bimestre;
+import edu.asselvi.programa.Model.Curso;
+import edu.asselvi.programa.Model.DisciplinaProfessor;
+import edu.asselvi.programa.Model.DisciplinaSerie;
+import edu.asselvi.programa.Model.Horario;
+import edu.asselvi.programa.Model.Professor;
+import edu.asselvi.programa.Model.Serie;
+import edu.asselvi.programa.Model.Turma;
 
 public class Cadastros {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));

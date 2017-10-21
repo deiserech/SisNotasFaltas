@@ -1,4 +1,4 @@
-package edu.asselvi.programa;
+package edu.asselvi.programa.Model;
 
 public class DisciplinaSerie {
 	private int disciplinaId;// FK - código da disciplina

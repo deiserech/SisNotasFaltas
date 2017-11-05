@@ -1,4 +1,4 @@
-package edu.asselvi.programa.enumerador;
+package edu.asselvi.enumerador;
 
 import javax.swing.ImageIcon;
 

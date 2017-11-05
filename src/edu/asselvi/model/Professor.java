@@ -1,9 +1,9 @@
-package edu.asselvi.programa.model;
+package edu.asselvi.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.asselvi.programa.enumerador.ESexo;
+import edu.asselvi.enumerador.ESexo;
 
 public class Professor extends Pessoa {
 	private int nrCartTrabalho;

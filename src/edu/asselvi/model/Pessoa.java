@@ -1,30 +1,41 @@
-package edu.asselvi.programa.model;
+package edu.asselvi.model;
 
-import edu.asselvi.programa.enumerador.ESexo;
+import java.util.Date;
 
-public abstract class Pessoa {
+import edu.asselvi.bancodados.BDException;
+import edu.asselvi.dao.IEntidadeBase;
+import edu.asselvi.enumerador.ESexo;
+
+public class Pessoa implements IEntidadeBase{
+	private int id;
 	private String nome;
-	private String endereço;
+	private String endereco;
 	private String cpf;
 	private String telefone;
-	private String dataNascimento;
-	private int idade;
+	private Date dataNascimento;
 	private String email;
 	private ESexo sexo;
 	
 	public Pessoa() {
-		this("Não informado", "Não Informado", "000-000-000-00", "(00)000-000000", "00/00/0000", 0, "Não Informado", ESexo.MASCULINO );
+		this(0,"Não informado", "Não Informado", "000-000-000-00", "(00)000-000000", new Date(), "Não Informado", ESexo.MASCULINO );
 	}
-	public Pessoa(String nome, String endereco, String cpf, String telefone, String dataNasc, int idade, String email, ESexo sexo) {
+	public Pessoa(int id,String nome, String endereco, String cpf, String telefone, Date dataNasc, String email, ESexo sexo) {
+		setId(id);
 		setNome(nome);
-		setEndereço(endereco);
+		setEndereco(endereco);
 		setCpf(cpf);
 		setTelefone(telefone);
 		setDataNascimento(dataNasc);
-		setIdade(idade);
 		setEmail(email);
 		setSexo(sexo);
 	}	
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;
@@ -32,11 +43,11 @@ public abstract class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 	public String getCpf() {
 		return cpf;
@@ -50,10 +61,10 @@ public abstract class Pessoa {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public String getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	public String getEmail() {
@@ -68,18 +79,13 @@ public abstract class Pessoa {
 	public void setSexo(ESexo sexo) {
 		this.sexo = sexo;
 	}
-	public int getIdade() {
-		return idade;
-	}
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
 	
 	@Override
 	public String toString() {
 		return getClass().getSimpleName()
+				+ "\n\tCódigo................: " + getId()
 				+ "\n\tNome..................: " + getNome()
-				+ "\n\tEndereço..............: " + getEndereço()
+				+ "\n\tEndereço..............: " + getEndereco()
 				+ "\n\tTelefone..............: " + getTelefone()
 				+ "\n\tNascimento............: " + getDataNascimento()
 				+ "\n\tEmail.................: " + getEmail()

@@ -1,4 +1,4 @@
-package edu.asselvi.programa.model;
+package edu.asselvi.model;
 
 import java.util.Map;
 

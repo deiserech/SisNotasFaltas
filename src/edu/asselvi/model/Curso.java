@@ -1,6 +1,9 @@
-package edu.asselvi.programa.model;
+package edu.asselvi.model;
 
-public class Curso {
+import edu.asselvi.bancodados.BDException;
+import edu.asselvi.dao.IEntidadeBase;
+
+public class Curso implements IEntidadeBase {
 	private int cursoId;
 	private int escolaId; //FK - código da escola
 	private String descricao;
@@ -39,5 +42,9 @@ public class Curso {
 				+ "\n\tCód. Escola.............: " + getEscolaId()
 				+ "\n\tDescriçao...............: " + getDescricao();
 	}
-	
+
+	@Override
+	public int getId() {
+		return cursoId;
+	}	
 }

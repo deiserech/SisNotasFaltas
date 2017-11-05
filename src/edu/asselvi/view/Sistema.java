@@ -1,15 +1,10 @@
-package edu.asselvi.programa.view;
+package edu.asselvi.view;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import edu.asselvi.programa.model.Lancamentos;
+import edu.asselvi.model.Lancamentos;
 
 public class Sistema {
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-		int opcao = Menu.menuPrincipal();
+	public static void main(String[] args) {
+/*		int opcao = Menu.menuPrincipal();
 		while (opcao != 0) {
 			switch (opcao) {
 			case 1:
@@ -103,6 +98,6 @@ public class Sistema {
 			}
 			opcao = Menu.menuPrincipal();
 
-		}
+		}*/
 	}
 }

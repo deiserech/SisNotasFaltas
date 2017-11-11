@@ -25,12 +25,11 @@ public class Cadastros2 {
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
 			// criar auto-incremento do código de curso //debug
-			int cursoId = 0;
 			System.out.println("Informe a descrição do curso.....: ");
 			String descricao = (teclado.readLine());
 			System.out.println("Informe o código da escola.......: ");
 			int escolaId = (Integer.parseInt(teclado.readLine()));
-			Curso curso = new Curso(cursoId, escolaId, descricao);
+			Curso curso = new Curso(0, escolaId, descricao);
 
 			System.out.println("Deseja cadastrar novo curso?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));

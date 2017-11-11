@@ -1,10 +1,12 @@
 package edu.asselvi.view;
 
+import java.io.IOException;
+
 import edu.asselvi.model.Lancamentos;
 
 public class Sistema {
-	public static void main(String[] args) {
-/*		int opcao = Menu.menuPrincipal();
+	public static void main(String[] args) throws IOException {
+		int opcao = Menu.menuPrincipal();
 		while (opcao != 0) {
 			switch (opcao) {
 			case 1:
@@ -12,28 +14,28 @@ public class Sistema {
 				while (opcaoCad != 0) {
 					switch (opcaoCad) {
 					case 1:
-						Cadastros.cadastraCurso();
+						Cadastros2.cadastraCurso();
 						break;
 					case 2:
-						Cadastros.cadastraDisciplina();
+						Cadastros2.cadastraDisciplina();
 						break;
 					case 3:
-						Cadastros.cadastraSerie();
+						Cadastros2.cadastraSerie();
 						break;
 					case 4:
-						Cadastros.cadastraTurma();
+						Cadastros2.cadastraTurma();
 						break;
 					case 5:
-						Cadastros.cadastraProfessor();
+						Cadastros2.cadastraProfessor();
 						break;
 					case 6:
-						Cadastros.cadastraHorario();
+						Cadastros2.cadastraHorario();
 						break;
 					case 7:
-						Cadastros.cadastraAluno();
+						Cadastros2.cadastraAluno();
 						break;
 					case 8:
-						Cadastros.cadastraBimestre();
+						Cadastros2.cadastraBimestre();
 						break;
 					}
 					opcaoCad = Menu.menuCadastros();
@@ -98,6 +100,6 @@ public class Sistema {
 			}
 			opcao = Menu.menuPrincipal();
 
-		}*/
+		}
 	}
 }

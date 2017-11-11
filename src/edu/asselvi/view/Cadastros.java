@@ -3,6 +3,7 @@ package edu.asselvi.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Aluno;
@@ -123,16 +124,12 @@ public class Cadastros {
 			// auto incremento do cód de professor // debug
 			System.out.println("Informe o nome...................: ");
 			professor.setNome(teclado.readLine());
-			System.out.println("Informe o endereço...............: ");
-			professor.setEndereço(teclado.readLine());
 			System.out.println("Informe o cpf....................: ");
 			professor.setCpf(teclado.readLine());
 			System.out.println("Informe o telefone...............: ");
 			professor.setTelefone(teclado.readLine());
 			System.out.println("Informe a data de nascimento.....: ");
-			professor.setDataNascimento(teclado.readLine());
-			System.out.println("Informe a idade..................: ");
-			professor.setIdade(Integer.parseInt(teclado.readLine()));
+			professor.setDataNascimento(new Date(teclado.readLine()));
 			System.out.println("Informe o email..................: ");
 			professor.setEmail(teclado.readLine());
 			System.out.println("Informe o sexo...................: ");
@@ -185,16 +182,12 @@ public class Cadastros {
 			// auto incremento do cód de aluno // debug
 			System.out.println("Informe o nome...................: ");
 			aluno.setNome(teclado.readLine());
-			System.out.println("Informe o endereço...............: ");
-			aluno.setEndereço(teclado.readLine());
 			System.out.println("Informe o cpf....................: ");
 			aluno.setCpf(teclado.readLine());
 			System.out.println("Informe o telefone...............: ");
 			aluno.setTelefone(teclado.readLine());
 			System.out.println("Informe a data de nascimento.....: ");
-			aluno.setDataNascimento(teclado.readLine());
-			System.out.println("Informe a idade..................: ");
-			aluno.setIdade(Integer.parseInt(teclado.readLine()));
+			aluno.setDataNascimento(new Date(teclado.readLine()));
 			System.out.println("Informe o email..................: ");
 			aluno.setEmail(teclado.readLine());
 			System.out.println("Informe o sexo...................: ");

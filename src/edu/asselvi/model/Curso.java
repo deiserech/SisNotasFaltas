@@ -1,18 +1,15 @@
 package edu.asselvi.model;
 
-import edu.asselvi.bancodados.BDException;
-import edu.asselvi.dao.IEntidadeBase;
-
-public class Curso implements IEntidadeBase {
+public class Curso {
 	private int cursoId;
 	private int escolaId; //FK - código da escola
 	private String descricao;
 	
 	public Curso() {
-		this(0, 0, "Não Informado");
+		this( 0, 0, "Não Informado");
 	}
 	
-	public Curso(int cursoId, int escolaId, String descricao) {
+	public Curso(int CURSOId, int escolaId, String descricao) {
 		setCursoId(cursoId);
 		setEscolaId(escolaId);
 		setDescricao(descricao);
@@ -38,13 +35,10 @@ public class Curso implements IEntidadeBase {
 	}
 
 	public String toString() {
-		return    "\n\tCód. Curso..............: " + getCursoId()
+		return   "\n\tCód. Curso..............: " + getCursoId()
 				+ "\n\tCód. Escola.............: " + getEscolaId()
 				+ "\n\tDescriçao...............: " + getDescricao();
 	}
 
-	@Override
-	public int getId() {
-		return cursoId;
-	}	
+	
 }

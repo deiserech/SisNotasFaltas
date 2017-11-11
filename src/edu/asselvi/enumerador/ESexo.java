@@ -9,7 +9,6 @@ public enum ESexo {
 	private final String descricao;
 	private final String abreviatura;
 	private final char sigla;
-	private final ImageIcon icone;
 	
 	public String getDescricao() {
 		return descricao;
@@ -23,14 +22,10 @@ public enum ESexo {
 		return sigla;
 	}
 
-	public ImageIcon getIcone() {
-		return icone;
-	}
 	
 	private ESexo(String descricao, String abreviatura, char sigla) {
 		this.descricao = descricao;
 		this.abreviatura = abreviatura;
 		this.sigla = sigla;
-		this.icone = new ImageIcon(System.getProperty("user.dir") + "/imagem/" + getSigla() + ".jpg");
 	}
 }

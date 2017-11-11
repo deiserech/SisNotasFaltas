@@ -8,7 +8,7 @@ public class Menu {
 	// Menus
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 
-	public static int menuPrincipal() {
+	public static int menuCoordenador() {
 
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -16,6 +16,27 @@ public class Menu {
 		System.out.println("|»»    Frequência de Alunos    ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Cadastros.............");
+		System.out.println("\t2 - Matrículas............");
+		System.out.println("\t3 - Lançamentos...........");
+		System.out.println("\t4 - Consultas.............");
+		System.out.println("\t5 - Relatórios............");
+		System.out.println("\t0 - Sair..................");
+		System.out.print("Escolha..........................:");
+		try {
+			return Integer.parseInt(teclado.readLine());
+		}catch(NumberFormatException | IOException e){
+			return 0;
+		}		
+	}
+
+	public static int menuSecretaria() {
+
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»    Controle de Notas e     ««|");
+		System.out.println("|»»    Frequência de Alunos    ««|");
+		System.out.println("----------------------------------");
+		System.out.println("\t1 - Matrículas............");
 		System.out.println("\t2 - Lançamentos...........");
 		System.out.println("\t3 - Consultas.............");
 		System.out.println("\t4 - Relatórios............");
@@ -26,9 +47,44 @@ public class Menu {
 		}catch(NumberFormatException | IOException e){
 			return 0;
 		}
-		
+	}
+	
+	public static int menuProfessor() {
+
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»    Controle de Notas e     ««|");
+		System.out.println("|»»    Frequência de Alunos    ««|");
+		System.out.println("----------------------------------");
+		System.out.println("\t1 - Lançamentos...........");
+		System.out.println("\t2 - Relatórios............");
+		System.out.println("\t0 - Sair..................");
+		System.out.print("Escolha..........................:");
+		try {
+			return Integer.parseInt(teclado.readLine());
+		}catch(NumberFormatException | IOException e){
+			return 0;
+		}
 	}
 
+	public static int menuAluno() {
+
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»    Controle de Notas e     ««|");
+		System.out.println("|»»    Frequência de Alunos    ««|");
+		System.out.println("----------------------------------");
+		System.out.println("\t1 - Consultas.............");
+		System.out.println("\t0 - Sair..................");
+		System.out.print("Escolha..........................:");
+		try {
+			return Integer.parseInt(teclado.readLine());
+		}catch(NumberFormatException | IOException e){
+			return 0;
+		}
+	}
+
+	
 	public static int menuCadastros() {
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -52,6 +108,22 @@ public class Menu {
 		}
 	}
 
+	public static int menuMatriculas() {
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»         Matrículas          ««|");
+		System.out.println("----------------------------------");
+		System.out.println("\t1 - Matricular Aluno......");
+		System.out.println("\t0 - Sair..................");
+		System.out.print("Escolha..........................: ");
+
+		try {
+			return Integer.parseInt(teclado.readLine());
+		}catch(NumberFormatException | IOException e){
+			return 0;
+		}
+	}	
+	
 	public static int menuLancamentos() {
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -74,9 +146,9 @@ public class Menu {
 		System.out.println("----------------------------------");
 		System.out.println("|»»          Consultas         ««|");
 		System.out.println("----------------------------------");
-		System.out.println("\t1 - Notas do Aluno........");
-		System.out.println("\t2 - Frequência do Aluno...");
-		System.out.println("\t3 - Situação do Aluno.....");
+		System.out.println("\t1 - Notas.................");
+		System.out.println("\t2 - Frequência............");
+		System.out.println("\t3 - Situação..............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
 

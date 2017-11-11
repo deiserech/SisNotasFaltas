@@ -9,21 +9,20 @@ public class Serie {
 	private String descricao;
 	private int idadeMinima;
 	private int duracao; // meses
-//	private Map<Integer, Disciplina> disciplinas;
-//	private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 	private List<Integer> disciplinas = new ArrayList<Integer>();
 
 	
 	public Serie() {
-		this(0, 0, "Não Informado", 0, 0);
+		this(0, 0, "Não Informado", 0, 0, null);
 	}
 	
-	public Serie(int serieId, int cursoId, String descricao, int idadeMinima, int duracao) {
+	public Serie(int serieId, int cursoId, String descricao, int idadeMinima, int duracao,List<Integer> disciplinas) {
 		setSerieId(serieId);
 		setDescricao(descricao);
 		setCursoId(cursoId);
 		setIdadeMinima(idadeMinima);
 		setDuracao(duracao);
+		this.disciplinas = new ArrayList<Integer>();
 	}	
 	
 	public int getSerieId() {
@@ -67,7 +66,7 @@ public class Serie {
 
 	public String toString() {
 		return super.toString()
-				+ "\n\tCód. Sérei..............: " + getSerieId()
+				+ "\n\tCód. Série..............: " + getSerieId()
 				+ "\n\tDescrição...............: " + getDescricao()
 				+ "\n\tCód. Curso..............: " + getCursoId()
 				+ "\n\tIdade Mínima............: " + getIdadeMinima()

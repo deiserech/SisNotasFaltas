@@ -2,11 +2,42 @@ package edu.asselvi.view;
 
 import java.io.IOException;
 
+import edu.asselvi.bancodados.BDException;
+import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.model.Lancamentos;
+import edu.asselvi.model.Usuario;
 
 public class Sistema {
-	public static void main(String[] args) throws IOException {
-		int opcao = Menu.menuPrincipal();
+	
+	private static int login() throws BDException, IOException {
+		UsuarioDAO usuario = new UsuarioDAO();
+		int perfil = 0;
+		while(perfil == 0) {
+			perfil = usuario.verificaLogin(Login.telaLogin()); 
+		}
+		return perfil; 
+	}
+	
+	public static void main(String[] args) throws IOException, BDException {
+		int opcao = 0;
+		int perfil = login();
+		switch (perfil) {
+		case 1:
+			Menu.menuCoordenador();
+			break;
+		case 2:
+			Menu.menuSecretaria();
+			break;
+		case 3:
+			Menu.menuProfessor();
+			break;
+		case 4:
+			Menu.menuAluno();
+			break;
+		default: 
+			
+			break;
+		}
 		while (opcao != 0) {
 			switch (opcao) {
 			case 1:
@@ -14,28 +45,28 @@ public class Sistema {
 				while (opcaoCad != 0) {
 					switch (opcaoCad) {
 					case 1:
-						Cadastros2.cadastraCurso();
+						Cadastros.cadastraCurso();
 						break;
 					case 2:
-						Cadastros2.cadastraDisciplina();
+						Cadastros.cadastraDisciplina();
 						break;
 					case 3:
-						Cadastros2.cadastraSerie();
+						Cadastros.cadastraSerie();
 						break;
 					case 4:
-						Cadastros2.cadastraTurma();
+						Cadastros.cadastraTurma();
 						break;
 					case 5:
-						Cadastros2.cadastraProfessor();
+						Cadastros.cadastraProfessor();
 						break;
 					case 6:
-						Cadastros2.cadastraHorario();
+						Cadastros.cadastraHorario();
 						break;
 					case 7:
-						Cadastros2.cadastraAluno();
+						Cadastros.cadastraAluno();
 						break;
 					case 8:
-						Cadastros2.cadastraBimestre();
+						Cadastros.cadastraBimestre();
 						break;
 					}
 					opcaoCad = Menu.menuCadastros();
@@ -98,7 +129,7 @@ public class Sistema {
 //				System.out.println("Opção Inválida!");
 //				break;
 			}
-			opcao = Menu.menuPrincipal();
+	//		opcao = Menu.menuPrincipal();
 
 		}
 	}

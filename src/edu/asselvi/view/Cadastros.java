@@ -3,15 +3,15 @@ package edu.asselvi.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Aluno;
-import edu.asselvi.model.AlunoTurma;
 import edu.asselvi.model.Bimestre;
 import edu.asselvi.model.Curso;
-import edu.asselvi.model.DisciplinaProfessor;
-import edu.asselvi.model.DisciplinaSerie;
+import edu.asselvi.model.Disciplina;
 import edu.asselvi.model.Horario;
 import edu.asselvi.model.Professor;
 import edu.asselvi.model.Serie;
@@ -20,129 +20,142 @@ import edu.asselvi.model.Turma;
 public class Cadastros {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 
-	public static void cadastraCurso() throws IOException {
+	public static List<Curso> cadastraCurso() throws IOException {
 		char novo = 'S';
+		List<Curso> cursos = new ArrayList<Curso>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Cursos      ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
-			Curso curso = new Curso();
-			// criar auto-incremento do código de curso //debug
 			System.out.println("Informe a descrição do curso.....: ");
-			curso.setDescricao(teclado.readLine());
+			String descricao = (teclado.readLine());
 			System.out.println("Informe o código da escola.......: ");
-			curso.setEscolaId(Integer.parseInt(teclado.readLine()));
+			int escolaId = (Integer.parseInt(teclado.readLine()));
+			cursos.add(new Curso(0, escolaId, descricao));
+
 			System.out.println("Deseja cadastrar novo curso?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
 		}
+		return cursos;
 	}
 
-	public static void cadastraSerie() throws IOException {
+	public static List<Serie> cadastraSerie() throws IOException {
 		char novo = 'S';
+		List<Serie> series = new ArrayList<Serie>();
+		List<Integer> disciplinas = new ArrayList<Integer>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Séries      ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
-			Serie serie = new Serie();
 			// verificar duplicidade // debug
+			Serie serie = new Serie();
 			System.out.println("Informe o número da série........: ");
-			serie.setSerieId(Integer.parseInt(teclado.readLine()));
+			int serieId = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe a descrição da série.....: ");
-			serie.setDescricao(teclado.readLine());
+			String descricao = (teclado.readLine());
 			System.out.println("Informe a idade mínima...........: ");
-			serie.setIdadeMinima(Integer.parseInt(teclado.readLine()));
+			int idadeMinima = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe a duração(meses).........: ");
-			serie.setDuracao((Integer.parseInt(teclado.readLine())));
+			int duracao = ((Integer.parseInt(teclado.readLine())));
 			System.out.println("Informe o código do curso........: ");
-			serie.setCursoId(Integer.parseInt(teclado.readLine()));
+			int cursoId = (Integer.parseInt(teclado.readLine()));
 
-			DisciplinaSerie discSerie = new DisciplinaSerie();
 			System.out.println("Informe o código das disciplinas.: ");
 			System.out.println("Digite '0' para SAIR.............: ");
 			int disciplina = Integer.parseInt(teclado.readLine());
 			while (disciplina != 0) {
-				discSerie.setDisciplinaId(disciplina);
 				disciplina = Integer.parseInt(teclado.readLine());
+				disciplinas.add(disciplina);
 			}
+			series.add(new Serie(serieId, cursoId, descricao, idadeMinima, duracao, disciplinas));
 
 			System.out.println("Deseja cadastrar nova série?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
+
 		}
-		;
+		return series;
 	};
 
-	public static void cadastraTurma() throws IOException {
+	public static List<Turma> cadastraTurma() throws IOException {
 		char novo = 'S';
+		List<Turma> turmas = new ArrayList<Turma>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Turmas      ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
-			Turma turma = new Turma();
-			// auto incremento do cód de turma // debug
+			int turmaId = 0;
 			System.out.println("Informe a descrição da turma.....: ");
-			turma.setDescricao(teclado.readLine());
+			String descricao = (teclado.readLine());
 			System.out.println("Informe o número de vagas........: ");
-			turma.setVagas(Integer.parseInt(teclado.readLine()));
+			int vagas = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o ano correspondente.....: ");
-			turma.setAno((Integer.parseInt(teclado.readLine())));
+			int ano = ((Integer.parseInt(teclado.readLine())));
 			System.out.println("Informe o código da série........: ");
-			turma.setSerieId(Integer.parseInt(teclado.readLine()));
+			int serieId = (Integer.parseInt(teclado.readLine()));
+			turmas.add(new Turma(turmaId, descricao, vagas, ano, serieId));
+
 			System.out.println("Deseja cadastrar nova turma?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
 		}
-		;
+		return turmas;
 	};
 
-	public static void cadastraDisciplina() throws IOException {
+	public static List<Disciplina> cadastraDisciplina() throws IOException {
 		char novo = 'S';
+		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»  Cadastro de Disciplinas   ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
-			Turma turma = new Turma();
-			// auto incremento do cód de turma // debug
+			int disciplinaId = 0;
 			System.out.println("Informe a descrição da disciplina: ");
-			turma.setDescricao(teclado.readLine());
+			String descricao = (teclado.readLine());
+			disciplinas.add(new Disciplina(disciplinaId, descricao));
+
 			System.out.println("Deseja cadastrar nova disciplina?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
 		}
-		;
+		return disciplinas;
 	};
 
 	public static void cadastraProfessor() throws IOException {
 		char novo = 'S';
+		List<Professor> professores = new ArrayList<Professor>();
+		List<Integer> disciplinas = new ArrayList<Integer>();
+
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»   Cadastro de Professores  ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
-			Professor professor = new Professor();
-			// auto incremento do cód de professor // debug
+			int professorId = 0;
 			System.out.println("Informe o nome...................: ");
-			professor.setNome(teclado.readLine());
+			String nome = (teclado.readLine());
 			System.out.println("Informe o cpf....................: ");
-			professor.setCpf(teclado.readLine());
+			String cpf = (teclado.readLine());
 			System.out.println("Informe o telefone...............: ");
-			professor.setTelefone(teclado.readLine());
+			String telefone = (teclado.readLine());
 			System.out.println("Informe a data de nascimento.....: ");
-			professor.setDataNascimento(new Date(teclado.readLine()));
+			Date dataNascimento = new Date((teclado.readLine()));
+			System.out.println("Informe o número da CTPS.........: ");
+			int nrCartTrabalho = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o email..................: ");
-			professor.setEmail(teclado.readLine());
+			String email = (teclado.readLine());
 			System.out.println("Informe o sexo...................: ");
-			professor.setSexo(ESexo.valueOf(teclado.readLine()));
+			ESexo sexo = (ESexo.valueOf(teclado.readLine()));
 
-			DisciplinaProfessor discProfessor = new DisciplinaProfessor();
 			System.out.println("Informe o código das disciplinas.: ");
 			System.out.println("Digite '0' para SAIR.............: ");
 			int disciplina = Integer.parseInt(teclado.readLine());
 			while (disciplina != 0) {
-				discProfessor.setDisciplinaId(disciplina);
 				disciplina = Integer.parseInt(teclado.readLine());
+				disciplinas.add(disciplina);
 			}
+			professores.add(new Professor(professorId, nrCartTrabalho, nome, cpf, telefone, dataNascimento, email, sexo, disciplinas));
 
 			System.out.println("Deseja cadastrar novo professor?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
@@ -151,21 +164,23 @@ public class Cadastros {
 
 	public static void cadastraHorario() throws IOException {
 		char novo = 'S';
+		List<Horario> horarios = new ArrayList<Horario>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Horários    ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
-			Horario horario = new Horario();
-			// criar auto-incremento do código de curso //debug
+			int horarioId = 0;
 			System.out.println("Informe o dia da semana(1-2-3-4-5): ");
-			horario.setDiaSemana(Integer.parseInt(teclado.readLine()));
+			int diaSemana = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o código da disciplina...: ");
-			horario.setDisciplinaId(Integer.parseInt(teclado.readLine()));
+			int disciplinaId = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o código da turma........: ");
-			horario.setTurmaId(Integer.parseInt(teclado.readLine()));
+			int turmaId = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe a hora de início.........: ");
-			horario.setHoraInicio(Integer.parseInt(teclado.readLine()));
+			int horaInicio = (Integer.parseInt(teclado.readLine()));
+			horarios.add(new Horario(horarioId, diaSemana, disciplinaId, turmaId, horaInicio));
+
 			System.out.println("Deseja cadastrar novo horário?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
 		}
@@ -173,36 +188,39 @@ public class Cadastros {
 
 	public static void cadastraAluno() throws IOException {
 		char novo = 'S';
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		List<Integer> turmas = new ArrayList<Integer>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Alunos      ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
-			Aluno aluno = new Aluno();
-			// auto incremento do cód de aluno // debug
+			int alunoId = 0;
 			System.out.println("Informe o nome...................: ");
-			aluno.setNome(teclado.readLine());
+			String nome = (teclado.readLine());
 			System.out.println("Informe o cpf....................: ");
-			aluno.setCpf(teclado.readLine());
+			String cpf = (teclado.readLine());
 			System.out.println("Informe o telefone...............: ");
-			aluno.setTelefone(teclado.readLine());
+			String telefone = (teclado.readLine());
 			System.out.println("Informe a data de nascimento.....: ");
-			aluno.setDataNascimento(new Date(teclado.readLine()));
+			Date dataNascimento = new Date((teclado.readLine()));
+			System.out.println("Informe a idade..................: ");
+			int idade = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o email..................: ");
-			aluno.setEmail(teclado.readLine());
+			String email = (teclado.readLine());
 			System.out.println("Informe o sexo...................: ");
-			aluno.setSexo(ESexo.valueOf(teclado.readLine()));
+			ESexo sexo = (ESexo.valueOf(teclado.readLine()));
 			System.out.println("Informe o nome da mãe............: ");
-			aluno.setNomeMae(teclado.readLine());
+			String nomeMae = (teclado.readLine());
 
-			AlunoTurma alunoTurma = new AlunoTurma();
 			System.out.println("Informe o código da turma........: ");
 			System.out.println("Digite '0' para SAIR.............: ");
 			int turma = Integer.parseInt(teclado.readLine());
 			while (turma != 0) {
-				alunoTurma.setTurmaId(turma);
 				turma = Integer.parseInt(teclado.readLine());
+				turmas.add(turma);
 			}
+			alunos.add(new Aluno(alunoId, nomeMae, nome, cpf, telefone, dataNascimento, email, sexo, turmas));
 
 			System.out.println("Deseja cadastrar novo aluno?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
@@ -211,13 +229,13 @@ public class Cadastros {
 
 	public static void cadastraBimestre() throws IOException {
 		char novo = 'S';
+		List<Bimestre> bimestres = new ArrayList<Bimestre>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Bimestre    ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
-			// auto incremento do cód de bimestre // debug
-			// limitar a quatro bimestres
+			// limitar a quatro bimestres - debug
 			int bimestreId = 0;
 			System.out.println("Informe a data de início.........: ");
 			String dataInicio = (teclado.readLine());
@@ -225,10 +243,12 @@ public class Cadastros {
 			String dataFim = (teclado.readLine());
 			System.out.println("Informe o número de dias letivos.: ");
 			int diasLetivos = (Integer.parseInt(teclado.readLine()));
-			Bimestre bimestre = new Bimestre(bimestreId, dataInicio, dataFim, diasLetivos);
-
+			bimestres.add(new Bimestre(bimestreId, dataInicio, dataFim, diasLetivos));
+			
 			System.out.println("Deseja cadastrar novo bimestre?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
 		}
-	}
+		;
+	};
+
 }

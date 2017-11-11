@@ -1,6 +1,7 @@
 package edu.asselvi.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import edu.asselvi.enumerador.ESexo;
@@ -12,12 +13,13 @@ public class Aluno extends Pessoa {
 	
 //testeLorena
 	public Aluno() {
-		this(0, "Não informado", "Não informado", "Não informado", "000.000.000-00", "(00)0000-0000", "00/00/0000", 0, "Não informado", ESexo.MASCULINO);
+		this(0, "Não informado", "Não informado", "000.000.000-00", "(00)0000-0000", new Date(), "Não informado", ESexo.MASCULINO, null);
 	}
-	public Aluno(int alunoId, String nomeMae, String nome, String endereco, String cpf, String telefone, String dataNasc, int idade, String email, ESexo sexo) {
-		super(nome, endereco, cpf, telefone, dataNasc, idade, email, sexo);
+	public Aluno(int alunoId, String nomeMae, String nome, String cpf, String telefone, Date dataNascimento, String email, ESexo sexo, List<Integer> turmas) {
+		super(alunoId, nome, cpf, telefone, dataNascimento, email, sexo);
 		setAlunoId(alunoId);
 		setNomeMae(nomeMae);
+		this.turmas = new ArrayList<Integer>();
 	}	
 
 	public int getAlunoId() {

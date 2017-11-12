@@ -7,19 +7,21 @@ import edu.asselvi.enumerador.ESexo;
 public class Pessoa {
 	private int id;
 	private int cdUsuario;
+	private int perfil;
 	private String nome;
 	private String cpf;
 	private Date dataNascimento;
 	private ESexo sexo;
 
 	public Pessoa() {
-		this(0,0, "Não informado", "000-000-000-00", new Date(), ESexo.MASCULINO);
+		this(0,0,0, "Não informado", "000-000-000-00", new Date(), ESexo.MASCULINO);
 
 	}
 
-	public Pessoa(int id, int cdUsuario, String nome, String cpf, Date dataNasc, ESexo sexo) {
+	public Pessoa(int id, int cdUsuario, int perfil, String nome, String cpf, Date dataNasc, ESexo sexo) {
 		setId(id);
 		setCdUsuario(cdUsuario);
+		setPerfil(perfil);
 		setNome(nome);
 		setCpf(cpf);
 		setDataNascimento(dataNasc);
@@ -73,16 +75,23 @@ public class Pessoa {
 	public void setSexo(ESexo sexo) {
 		this.sexo = sexo;
 	}
+	public int getPerfil() {
+		return perfil;
+	}
+	
+	public void setPerfil(int perfil) {
+		this.perfil = perfil;
+	}
 
 	@Override
 	public String toString() {
 		return getClass().getSimpleName()
 				+ "\n\tCódigo................: " + getId()
+				+ "\n\tPerfil................: " + getId()
 				+ "\n\tCódigo Usuário........: " + getCdUsuario()
 				+ "\n\tCPF...................: " + getCpf()
 				+ "\n\tNome..................: " + getNome() 
 				+ "\n\tNascimento............: " + getDataNascimento() 
 				+ "\n\tSexo..................: " + getSexo().getDescricao();
 	}
-
 }

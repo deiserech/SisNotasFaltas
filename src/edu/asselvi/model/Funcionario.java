@@ -7,7 +7,6 @@ import java.util.List;
 import edu.asselvi.enumerador.ESexo;
 
 public class Funcionario extends Pessoa {
-	private int tipoFuncionario;
 	private List<Integer> disciplinas = new ArrayList<Integer>();
 
 	public Funcionario() {
@@ -15,25 +14,12 @@ public class Funcionario extends Pessoa {
 	}
 
 	public Funcionario(int funcionarioId, int cdUsuario, int tipoFuncionario, String nome, String cpf, Date dataNascimento, ESexo sexo, List<Integer> disciplinas) {
-		super(funcionarioId, cdUsuario, nome, cpf, dataNascimento, sexo);
-		setTipoFuncionario(tipoFuncionario);
+		super(funcionarioId, tipoFuncionario,cdUsuario, nome, cpf, dataNascimento, sexo);
 		this.disciplinas = new ArrayList<Integer>();
 	}
 
-	public int getTipoFuncionario() {
-		return tipoFuncionario;
-	}
-	
-	public void setTipoFuncionario(int tipoFuncionario) {
-		this.tipoFuncionario = tipoFuncionario;
-	}
-	public void adicionaDisciplina(int disciplina) {
-		this.disciplinas.add(new Integer(disciplina));
-	}
-	
 	public String toString() {
-		return super.toString() 
-				+ "\n\tTipo Funcionário.......: " + getTipoFuncionario() ;
+		return super.toString(); 
 	}
 
 

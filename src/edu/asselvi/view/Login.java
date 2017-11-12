@@ -9,18 +9,23 @@ import edu.asselvi.model.Usuario;
 public class Login {
 
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-	
-	public static Usuario telaLogin() throws IOException {
-		System.out.println("");
-		System.out.println("----------------------------------");
-		System.out.println("|»»            Login           ««|");
-		System.out.println("----------------------------------");
+
+	public static Usuario telaLogin(boolean erro) throws IOException {
+		if (erro) {
+			System.out.println();
+			System.out.println("----Login ou senha incorretos----");
+			System.out.println();
+		} else {
+			System.out.println("----------------------------------");
+			System.out.println("|»»            Login           ««|");
+			System.out.println("----------------------------------");
+		}
 		System.out.println("Informe o login..................: ");
 		String login = (teclado.readLine());
 		System.out.println("Informe a senha..................: ");
 		String senha = (teclado.readLine());
-		return new Usuario(0, login, senha,0);
-		
+		return new Usuario(0, login, senha, 0);
+
 	}
 
 }

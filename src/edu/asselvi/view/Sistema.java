@@ -1,27 +1,28 @@
 package edu.asselvi.view;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.UsuarioDAO;
-import edu.asselvi.model.Usuario;
 
 public class Sistema {
 	
 	private static int login() throws BDException, IOException {
 		UsuarioDAO usuario = new UsuarioDAO();
-		int perfil = 0;
+		int perfil = usuario.verificaLogin(Login.telaLogin(false)); 
 		while(perfil == 0) {
-			perfil = usuario.verificaLogin(Login.telaLogin()); 
+			perfil = usuario.verificaLogin(Login.telaLogin(true)); 
 		}
 		return perfil; 
 	}
 	
-	public static void main(String[] args) throws IOException, BDException {
+	public static void main(String[] args) throws IOException, BDException, ParseException {
 		int opcao = 0;
 		int perfil = login();
 		switch (perfil) {
 		case 1:
+			
 			Menu.menuCoordenador();
 			break;
 		case 2:
@@ -32,9 +33,6 @@ public class Sistema {
 			break;
 		case 4:
 			Menu.menuAluno();
-			break;
-		default: 
-			
 			break;
 		}
 		while (opcao != 0) {
@@ -56,7 +54,7 @@ public class Sistema {
 						Cadastros.cadastraTurma();
 						break;
 					case 5:
-						Cadastros.cadastraProfessor();
+						Cadastros.cadastraFuncionario();
 						break;
 					case 6:
 						Cadastros.cadastraHorario();

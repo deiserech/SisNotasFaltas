@@ -11,10 +11,10 @@ public class Aluno extends Pessoa {
 	
 //testeLorena
 	public Aluno() {
-		this(0, 0, "Não informado", "000.000.000-00", new Date(), ESexo.MASCULINO, null);
+		this(0, 0, 0, "Não informado", "000.000.000-00", new Date(), ESexo.MASCULINO, null);
 	}
-	public Aluno(int alunoId, int cdUsuario,  String nome, String cpf, Date dataNascimento,ESexo sexo, List<Integer> turmas) {
-		super(alunoId, cdUsuario, nome, cpf, dataNascimento, sexo);
+	public Aluno(int alunoId, int cdUsuario, int perfil,  String nome, String cpf, Date dataNascimento,ESexo sexo, List<Integer> turmas) {
+		super(alunoId, cdUsuario, perfil, nome, cpf, dataNascimento, sexo);
 		this.turmas = new ArrayList<Integer>();
 	}	
 

@@ -23,6 +23,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			st.execute("CREATE TABLE pessoa (" + "	"
 					+ " id		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
 					+ " cdUsuario		INTEGER NOT NULL ," //adicionar foreing key
+					+ " perfil 		    INTEGER NOT NULL ," 
 					+ "	nome			VARCHAR(50)  NOT NULL,"  
 					+ "	cpf	     		VARCHAR(14)  NOT NULL," 
 					+ "	dataNascimento	DATE         NOT NULL," 
@@ -56,13 +57,14 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 
 			conexao.setAutoCommit(false);
 				PreparedStatement pst = conexao.prepareStatement(
-						"INSERT INTO pessoa ( cdUsuario, nome, cpf, dataNascimento, sexo) VALUES ( ?, ?, ?, ?, ?);");
+						"INSERT INTO pessoa ( cdUsuario, perfil, nome, cpf, dataNascimento, sexo) VALUES (?, ?, ?, ?, ?, ?);");
 				for (Pessoa pessoa : pessoas) {
 					pst.setInt(1, pessoa.getCdUsuario());
-					pst.setString(2, pessoa.getNome());
-					pst.setString(3, pessoa.getCpf());
-					pst.setDate(4, new java.sql.Date(pessoa.getDataNascimento().getTime()));
-					pst.setString(5, String.valueOf(pessoa.getSexo().getSigla()));
+					pst.setInt(2, pessoa.getPerfil());
+					pst.setString(3, pessoa.getNome());
+					pst.setString(4, pessoa.getCpf());
+					pst.setDate(5, new java.sql.Date(pessoa.getDataNascimento().getTime()));
+					pst.setString(6, String.valueOf(pessoa.getSexo().getSigla()));
 					pst.executeUpdate();
 				}
 			conexao.commit();
@@ -89,6 +91,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			return rs.first() ?
 								new Pessoa(rs.getInt("id"),
 										   rs.getInt("cdUsuario"),
+										   rs.getInt("perfil"),
 										   rs.getString("nome"),
 										   rs.getString("cpf"),
 										   rs.getDate("dataNascimento"),
@@ -111,6 +114,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			while(rs.next()) {
 				pessoas.add(new Pessoa(rs.getInt("id"),
 						   rs.getInt("cdUsuario"),
+						   rs.getInt("perfil"),
 						   rs.getString("nome"),
 						   rs.getString("cpf"),
 						   rs.getDate("dataNascimento"),
@@ -128,13 +132,14 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	public boolean altera(Pessoa pessoa) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("UPDATE pessoa SET cdUsuario = ?, nome = ?, cpf = ?, dataNascimento = ?, sexo = ? WHERE id = ?;");
+			PreparedStatement pst = conexao.prepareStatement("UPDATE pessoa SET cdUsuario = ?, perfil, nome = ?, cpf = ?, dataNascimento = ?, sexo = ? WHERE id = ?;");
 			pst.setInt(1, pessoa.getCdUsuario());
-			pst.setString(2, pessoa.getNome());
-			pst.setString(3, pessoa.getCpf());
-			pst.setDate(4, new java.sql.Date(pessoa.getDataNascimento().getTime()));
-			pst.setString(5, String.valueOf(pessoa.getSexo().getSigla()));
-			pst.setInt(6, pessoa.getId());
+			pst.setInt(2, pessoa.getPerfil());
+			pst.setString(3, pessoa.getNome());
+			pst.setString(4, pessoa.getCpf());
+			pst.setDate(5, new java.sql.Date(pessoa.getDataNascimento().getTime()));
+			pst.setString(6, String.valueOf(pessoa.getSexo().getSigla()));
+			pst.setInt(7, pessoa.getId());
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage());

@@ -63,9 +63,5 @@ public class Nota {
 				+ 	"\n\tCód. Disciplina.........: " + getDisciplinaId()
 				+ 	"\n\tNum. Bimestre...........: " + getNrBimestre()
 				+ 	"\n\tNota..,,,,,.............: " + getNota();
-	}
-
-
-
-	
+	}	
 }

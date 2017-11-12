@@ -5,7 +5,7 @@ public class Turma {
 	private String descricao;
 	private int vagas;
 	private int ano;
-	private int serieId; //FK - código da série
+	private int serieId; 
 
 	public Turma() {
 		this(0, "Não informado", 0, 0, 0);

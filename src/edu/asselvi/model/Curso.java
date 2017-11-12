@@ -2,7 +2,8 @@ package edu.asselvi.model;
 
 public class Curso {
 	private int cursoId;
-	private int escolaId; //FK - código da escola
+	private int escolaId; 
+	private int numSeries; 
 	private String descricao;
 	
 	public Curso() {
@@ -27,6 +28,13 @@ public class Curso {
 	public void setEscolaId(int escolaId) {
 		this.escolaId = escolaId;
 	}
+	public int getNumSeries() {
+		return numSeries;
+	}
+	
+	public void setNumSeries(int numSeries) {
+		this.numSeries = numSeries;
+	}
 	public String getDescricao() {
 		return descricao;
 	}
@@ -37,8 +45,8 @@ public class Curso {
 	public String toString() {
 		return   "\n\tCód. Curso..............: " + getCursoId()
 				+ "\n\tCód. Escola.............: " + getEscolaId()
+				+ "\n\tNúmero Séries...........: " + getNumSeries()
 				+ "\n\tDescriçao...............: " + getDescricao();
 	}
-
 	
 }

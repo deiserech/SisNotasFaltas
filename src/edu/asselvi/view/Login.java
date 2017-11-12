@@ -13,7 +13,7 @@ public class Login {
 	public static Usuario telaLogin() throws IOException {
 		System.out.println("");
 		System.out.println("----------------------------------");
-		System.out.println("|»»            Login            ««|");
+		System.out.println("|»»            Login           ««|");
 		System.out.println("----------------------------------");
 		System.out.println("Informe o login..................: ");
 		String login = (teclado.readLine());

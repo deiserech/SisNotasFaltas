@@ -1,8 +1,10 @@
-package edu.asselvi.model;
+package edu.asselvi.view;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import edu.asselvi.model.Nota;
 
 public class Lancamentos {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));

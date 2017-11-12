@@ -13,7 +13,7 @@ import edu.asselvi.model.Bimestre;
 import edu.asselvi.model.Curso;
 import edu.asselvi.model.Disciplina;
 import edu.asselvi.model.Horario;
-import edu.asselvi.model.Professor;
+import edu.asselvi.model.Funcionario;
 import edu.asselvi.model.Serie;
 import edu.asselvi.model.Turma;
 
@@ -124,7 +124,7 @@ public class Cadastros {
 
 	public static void cadastraProfessor() throws IOException {
 		char novo = 'S';
-		List<Professor> professores = new ArrayList<Professor>();
+		List<Funcionario> professores = new ArrayList<Funcionario>();
 		List<Integer> disciplinas = new ArrayList<Integer>();
 
 		System.out.println("");
@@ -155,7 +155,7 @@ public class Cadastros {
 				disciplina = Integer.parseInt(teclado.readLine());
 				disciplinas.add(disciplina);
 			}
-			professores.add(new Professor(professorId, nrCartTrabalho, nome, cpf, telefone, dataNascimento, email, sexo, disciplinas));
+			professores.add(new Funcionario(professorId, nrCartTrabalho, nome, cpf, telefone, dataNascimento, email, sexo, disciplinas));
 
 			System.out.println("Deseja cadastrar novo professor?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));

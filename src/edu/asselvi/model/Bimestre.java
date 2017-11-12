@@ -1,19 +1,21 @@
 package edu.asselvi.model;
 
-import java.util.Map;
+import java.util.Date;
 
 public class Bimestre {
 	private int bimestreId;
-	private String dataInicio;
-	private String dataFim;
+	private String descricao;
+	private Date dataInicio;
+	private Date dataFim;
 	private int diasLetivos;
 
 	public Bimestre() {
-		this(0, "00/00/0000", "00/00/0000", 0);
+		this(0,"Não informado", new Date(), new Date(), 0);
 	}
 
-	public Bimestre(int bimestreId, String dataInicio, String dataFim, int diasLetivos) { 
+	public Bimestre(int bimestreId, String descricao, Date dataInicio, Date dataFim, int diasLetivos) { 
 		setBimestreId(bimestreId);
+		setDescricao(descricao);
 		setDataInicio(dataInicio);
 		setDataFim(dataFim);
 		setDiasLetivos(diasLetivos);
@@ -28,19 +30,27 @@ public class Bimestre {
 		this.bimestreId = bimestreId;
 	}
 
-	public String getDataInicio() {
+	public String getDescricao() {
+		return descricao;
+	}
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Date getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(String dataInicio) {
+	public void setDataInicio(Date dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public String getDataFim() {
+	public Date getDataFim() {
 		return dataFim;
 	}
 
-	public void setDataFim(String dataFim) {
+	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
 	}
 
@@ -59,6 +69,4 @@ public class Bimestre {
 					+ "\n\tData Fim................: " + getDataFim()
 					+ "\n\tDias Letivos............: " + getDiasLetivos();
 	}
-
-	
 }

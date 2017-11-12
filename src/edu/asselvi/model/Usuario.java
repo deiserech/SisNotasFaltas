@@ -4,7 +4,7 @@ public class Usuario {
 	private int usuarioId;
 	private String login;
 	private String senha;
-	private int tipoUsuario;
+	private int tipoUsuario; 
 	
 	public Usuario() {
 		this(0,"admin", "989796", 1);

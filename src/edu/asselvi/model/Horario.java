@@ -2,9 +2,10 @@ package edu.asselvi.model;
 
 public class Horario {
 	private int horarioId;
+	private int turmaId;
+	private int disciplinaId;
+	private int serieId;
 	private int diaSemana;
-	private int disciplinaId;//FK - codigo da Disciplina
-	private int turmaId;//FK - codigo da turma
 	private int horaInicio;
 	
 	public Horario() {
@@ -51,17 +52,20 @@ public class Horario {
 	public void setDiaSemana(int diaSemana) {
 		this.diaSemana = diaSemana;
 	}
+	public int getSerieId() {
+		return serieId;
+	}
+	
+	public void setSerieId(int serieId) {
+		this.serieId = serieId;
+	}
 		
 	public String toString() {
 		return    "\n\tCód. Horário............: " + getHorarioId()
 		        + "\n\tCód. Turma..............: " + getTurmaId()
+		        + "\n\tCód. Série..............: " + getSerieId()
 				+ "\n\tCód. Discilina..........: " + getDisciplinaId()
 				+ "\n\tDia da Semana...........: " + getDiaSemana()
 				+ "\n\tHorário Início..........: " + getHoraInicio();
 	}
-
-
-	
-	
-
 }

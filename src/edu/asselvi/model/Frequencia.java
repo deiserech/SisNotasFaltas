@@ -1,24 +1,24 @@
 package edu.asselvi.model;
 
+import java.util.Date;
+
 public class Frequencia {
+	private  int horarioId;
 	private  int alunoId;
-	private  int disciplinaId;
-	private  int turmaId;
-	private  int diaSemana;
-	private  int dataAula;
+	private  int bimestreId;
+	private  Date dataAula;
 	private  boolean presente;
 
 	public Frequencia() {
-		this(0,0,0,0,0,false);
+		this(0,0,0,new Date(),false);
 	}
 	
-	public Frequencia(int alunoId, int disciplinaId, int turmaId, int diaSemana, int dataAula, boolean presente) {
+	public Frequencia(int horaroiId, int alunoId, int bimestreId, Date dataAula, boolean presente) {
+		setHorarioId(horarioId);
 		setAlunoId(alunoId);
-		setPresente(presente);
-		setDisciplinaId(disciplinaId);
-		setDiaSemana(diaSemana);
+		setBimestreId(bimestreId);
 		setDataAula(dataAula);
-		setTurmaId(turmaId);
+		setPresente(presente);
 	}
 	
 	public int getAlunoId() {
@@ -28,36 +28,11 @@ public class Frequencia {
 	public void setAlunoId(int alunoId) {
 		this.alunoId = alunoId;
 	}
-
-	public int getDisciplinaId() {
-		return disciplinaId;
-	}
-
-	public void setDisciplinaId(int disciplinaId) {
-		this.disciplinaId = disciplinaId;
-	}
-
-	public int getTurmaId() {
-		return turmaId;
-	}
-
-	public void setTurmaId(int turmaId) {
-		this.turmaId = turmaId;
-	}
-
-	public int getDiaSemana() {
-		return diaSemana;
-	}
-
-	public void setDiaSemana(int diaSemana) {
-		this.diaSemana = diaSemana;
-	}
-
-	public int getDataAula() {
+	public Date getDataAula() {
 		return dataAula;
 	}
 
-	public void setDataAula(int dataAula) {
+	public void setDataAula(Date dataAula) {
 		this.dataAula = dataAula;
 	}
 
@@ -68,15 +43,28 @@ public class Frequencia {
 	public void setPresente(boolean presente) {
 		this.presente = presente;
 	}
+	
+	public int getBimestreId() {
+		return bimestreId;
+	}
+	
+	public void setBimestreId(int bimestreId) {
+		this.bimestreId = bimestreId;
+	}
+	
+	public int getHorarioId() {
+		return horarioId;
+	}
+	
+	public void setHorarioId(int horarioId) {
+		this.horarioId = horarioId;
+	}
 
 	public String toString() {
 		return    "\n\tCód Aluno...............: " + getAlunoId()
-				+ "\n\tCód. Turma..............: " + getTurmaId()
-				+ "\n\tCód. Discilina..........: " + getDisciplinaId()
-				+ "\n\tDia da Semana...........: " + getDiaSemana()
+				+ "\n\tCód. Horário............: " + getHorarioId()
+				+ "\n\tCód. Bimestre...........: " + getBimestreId()
 				+ "\n\tData da Aula............: " + getDataAula()
 				+ "\n\tId Presença.............: " + isPresente();
 	}
-
-
 }

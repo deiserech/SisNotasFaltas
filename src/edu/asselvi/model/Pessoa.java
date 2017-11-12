@@ -6,26 +6,23 @@ import edu.asselvi.enumerador.ESexo;
 
 public class Pessoa {
 	private int id;
+	private int cdUsuario;
 	private String nome;
 	private String cpf;
-	private String telefone;
 	private Date dataNascimento;
-	private String email;
 	private ESexo sexo;
 
 	public Pessoa() {
-		this(0, "Não informado", "000-000-000-00", "(00)000-000000", new Date(), "Não Informado", ESexo.MASCULINO);
+		this(0,0, "Não informado", "000-000-000-00", new Date(), ESexo.MASCULINO);
 
 	}
 
-	public Pessoa(int id, String nome, String cpf, String telefone, Date dataNasc, String email, ESexo sexo) {
-
+	public Pessoa(int id, int cdUsuario, String nome, String cpf, Date dataNasc, ESexo sexo) {
 		setId(id);
+		setCdUsuario(cdUsuario);
 		setNome(nome);
 		setCpf(cpf);
-		setTelefone(telefone);
 		setDataNascimento(dataNasc);
-		setEmail(email);
 		setSexo(sexo);
 	}
 
@@ -35,6 +32,14 @@ public class Pessoa {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getCdUsuario() {
+		return cdUsuario;
+	}
+	
+	public void setCdUsuario(int cdUsuario) {
+		this.cdUsuario = cdUsuario;
 	}
 
 	public String getNome() {
@@ -53,28 +58,12 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public ESexo getSexo() {
@@ -89,8 +78,11 @@ public class Pessoa {
 	public String toString() {
 		return getClass().getSimpleName()
 				+ "\n\tCódigo................: " + getId()
-				+ "\n\tNome..................: " + getNome() + "\n\tTelefone..............: " + getTelefone()
-				+ "\n\tNascimento............: " + getDataNascimento() + "\n\tEmail.................: " + getEmail()
+				+ "\n\tCódigo Usuário........: " + getCdUsuario()
+				+ "\n\tCPF...................: " + getCpf()
+				+ "\n\tNome..................: " + getNome() 
+				+ "\n\tNascimento............: " + getDataNascimento() 
 				+ "\n\tSexo..................: " + getSexo().getDescricao();
 	}
+
 }

@@ -2,7 +2,7 @@ package edu.asselvi.model;
 
 public class Disciplina {
 	private int disciplinaId;
-	private String descricao;
+	private String descricao; 
 	
 	public Disciplina() {
 		this(0, "Não Informado");

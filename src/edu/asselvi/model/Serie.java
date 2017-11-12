@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Serie {
 	private int serieId;
-	private int cursoId; //FK - código do curso
+	private int cursoId;
 	private String descricao;
 	private int idadeMinima;
 	private int duracao; // meses
@@ -55,11 +55,6 @@ public class Serie {
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
-	
-//	public void adicionaDisciplina(Disciplina disciplina) {
-//		this.disciplinas.add(new Integer(disciplina.getDisciplinaId()), disciplina);
-//	}
-	
 	public void adicionaDisciplina(int disciplina) {
 		this.disciplinas.add(new Integer(disciplina));
 	}

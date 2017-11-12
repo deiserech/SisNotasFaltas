@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.UsuarioDAO;
-import edu.asselvi.model.Lancamentos;
 import edu.asselvi.model.Usuario;
 
 public class Sistema {

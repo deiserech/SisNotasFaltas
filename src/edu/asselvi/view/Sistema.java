@@ -18,21 +18,29 @@ public class Sistema {
 	}
 	
 	public static void main(String[] args) throws IOException, BDException, ParseException {
+//		PessoaDAO pessoa = new PessoaDAO();
+//		CursoDAO curso = new CursoDAO();
+//		DisciplinaDAO disciplina = new DisciplinaDAO();
+//		SerieDAO disciplina = new SerieDAO();
+//		TurmaDAO turma = new TurmaDAO();
+//		FuncionarioDAO funcionario = new FuncionarioDAO();
+//		HorarioDAO Horario = new HorarioDAO();
+//		BimestreDAO bimestre = new BimestreDAO();
+//		AlunoDAO aluno = new AlunoDAO();
 		int opcao = 0;
 		int perfil = login();
 		switch (perfil) {
 		case 1:
-			
-			Menu.menuCoordenador();
+			opcao = Menu.menuCoordenador();
 			break;
 		case 2:
-			Menu.menuSecretaria();
+			opcao = Menu.menuSecretaria();
 			break;
 		case 3:
-			Menu.menuProfessor();
+			opcao = Menu.menuProfessor();
 			break;
 		case 4:
-			Menu.menuAluno();
+			opcao = Menu.menuAluno();
 			break;
 		}
 		while (opcao != 0) {
@@ -54,6 +62,7 @@ public class Sistema {
 						Cadastros.cadastraTurma();
 						break;
 					case 5:
+//						pessoa.insereTrn(Cadastros.cadastraFuncionario());
 						Cadastros.cadastraFuncionario();
 						break;
 					case 6:

@@ -8,8 +8,6 @@ import java.util.List;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
-import edu.asselvi.enumerador.ESexo;
-import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Usuario;
 
 public class UsuarioDAO implements GenericDAO<Usuario>{

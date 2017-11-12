@@ -24,9 +24,9 @@ public class Menu {
 		System.out.print("Escolha..........................:");
 		try {
 			return Integer.parseInt(teclado.readLine());
-		}catch(NumberFormatException | IOException e){
+		} catch (NumberFormatException | IOException e) {
 			return 0;
-		}		
+		}
 	}
 
 	public static int menuSecretaria() {
@@ -44,11 +44,11 @@ public class Menu {
 		System.out.print("Escolha..........................:");
 		try {
 			return Integer.parseInt(teclado.readLine());
-		}catch(NumberFormatException | IOException e){
+		} catch (NumberFormatException | IOException e) {
 			return 0;
 		}
 	}
-	
+
 	public static int menuProfessor() {
 
 		System.out.println("");
@@ -62,7 +62,7 @@ public class Menu {
 		System.out.print("Escolha..........................:");
 		try {
 			return Integer.parseInt(teclado.readLine());
-		}catch(NumberFormatException | IOException e){
+		} catch (NumberFormatException | IOException e) {
 			return 0;
 		}
 	}
@@ -79,31 +79,31 @@ public class Menu {
 		System.out.print("Escolha..........................:");
 		try {
 			return Integer.parseInt(teclado.readLine());
-		}catch(NumberFormatException | IOException e){
+		} catch (NumberFormatException | IOException e) {
 			return 0;
 		}
 	}
 
-	
 	public static int menuCadastros() {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»         Cadastros          ««|");
 		System.out.println("----------------------------------");
-		System.out.println("\t1 - Cursos................");
-		System.out.println("\t2 - Disciplinas...........");
-		System.out.println("\t3 - Séries................");
-		System.out.println("\t4 - Turmas................");
-		System.out.println("\t5 - Professores...........");
-		System.out.println("\t6 - Horários..............");
-		System.out.println("\t7 - Alunos................");
-		System.out.println("\t8 - Bimestres.............");
+		System.out.println("\t1 - Escola................");
+		System.out.println("\t2 - Cursos................");
+		System.out.println("\t3 - Disciplinas...........");
+		System.out.println("\t4 - Séries................");
+		System.out.println("\t5 - Turmas................");
+		System.out.println("\t6 - Bimestres.............");
+		System.out.println("\t7 - Horários..............");
+		System.out.println("\t8 - Funcionários..........");
+		System.out.println("\t9 - Usuários..............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................: ");
 
 		try {
 			return Integer.parseInt(teclado.readLine());
-		}catch(NumberFormatException | IOException e){
+		} catch (NumberFormatException | IOException e) {
 			return 0;
 		}
 	}
@@ -114,16 +114,17 @@ public class Menu {
 		System.out.println("|»»         Matrículas          ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Matricular Aluno......");
+		System.out.println("\t2 - Cadastrar Usuário.....");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................: ");
 
 		try {
 			return Integer.parseInt(teclado.readLine());
-		}catch(NumberFormatException | IOException e){
+		} catch (NumberFormatException | IOException e) {
 			return 0;
 		}
-	}	
-	
+	}
+
 	public static int menuLancamentos() {
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -136,7 +137,7 @@ public class Menu {
 
 		try {
 			return Integer.parseInt(teclado.readLine());
-		}catch(NumberFormatException | IOException e){
+		} catch (NumberFormatException | IOException e) {
 			return 0;
 		}
 	}
@@ -154,7 +155,7 @@ public class Menu {
 
 		try {
 			return Integer.parseInt(teclado.readLine());
-		}catch(NumberFormatException | IOException e){
+		} catch (NumberFormatException | IOException e) {
 			return 0;
 		}
 	}
@@ -169,13 +170,12 @@ public class Menu {
 		System.out.println("\t3 - Situação da Turma.....");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
-		
+
 		try {
 			return Integer.parseInt(teclado.readLine());
-		}catch(NumberFormatException | IOException e){
+		} catch (NumberFormatException | IOException e) {
 			return 0;
 		}
 	}
-
 
 }

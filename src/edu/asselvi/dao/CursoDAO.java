@@ -8,7 +8,6 @@ import edu.asselvi.bancodados.BDException;
 import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.model.Curso;
-import edu.asselvi.model.Pessoa;
 
 public class CursoDAO implements GenericDAO<Curso>{
 
@@ -42,6 +41,36 @@ public class CursoDAO implements GenericDAO<Curso>{
 		} finally {
 			Conexao.closeConexao();
 		}
+	}
+
+	@Override
+	public boolean destroiTabela() throws BDException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Curso consulta(int id) throws BDException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Curso> consulta() throws BDException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean altera(Curso t) throws BDException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean exclui(int id) throws BDException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

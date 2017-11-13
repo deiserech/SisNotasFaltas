@@ -8,7 +8,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.AlunoDAO;
 import edu.asselvi.model.Aluno;
@@ -17,8 +16,9 @@ import edu.asselvi.model.Nota;
 
 public class Lancamentos {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+	static Calendar calendar = new GregorianCalendar();
 
-	public static List<Nota> lancamentoNotas() throws IOException {
+	public static List<Nota> lancaNotasAluno() throws IOException {
 		List<Nota> notas = new ArrayList<Nota>();
 		char novo = 'S';
 		int nrNota = 1;
@@ -27,12 +27,13 @@ public class Lancamentos {
 		System.out.println("|»»    Lançamento de Notas     ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
+			int nrBimestre = 0; // pegar da data
 			System.out.println("Informe o código do aluno........:");
 			int alunoId = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o código da disciplina...:");
 			int disciplinaId = (Integer.parseInt(teclado.readLine()));
-			System.out.println("Informe o número do bimestre.....:");
-			int nrBimestre = (Integer.parseInt(teclado.readLine()));
+			// System.out.println("Informe o número do bimestre.....:"); // pegar do sistema
+			// int nrBimestre = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe a nota " + nrNota + ".................: ");
 			float nota = (Integer.parseInt(teclado.readLine()));
 			notas.add(new Nota(nrNota, alunoId, disciplinaId, nrBimestre, nota));
@@ -44,10 +45,44 @@ public class Lancamentos {
 				nota = Float.parseFloat(teclado.readLine());
 				notas.add(new Nota(nrNota, alunoId, disciplinaId, nrBimestre, nota));
 			}
-			System.out.println("Lançamento de notas para este aluno/disciplina/bimestre foi realizado com sucesso!");
+			System.out.println("Lançamento de notas foi realizado com sucesso!");
 			System.out.println();
 			System.out.println("Deseja inserir novas notas?(S/N) ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
+		}
+		return notas;
+	}
+
+	public static List<Nota> lancaNotasTurma() throws IOException, BDException {
+		List<Nota> notas = new ArrayList<Nota>();
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		AlunoDAO aluno = new AlunoDAO();
+
+		char novo = 'S';
+		int nrNota = 1;
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»    Lançamento de Notas     ««|");
+		System.out.println("----------------------------------");
+		while (novo == 'S') {
+			Date dataAula = calendar.getTime();
+			int nrBimestre = 0; // pegar do sistema
+			int diaSemana = calendar.get(Calendar.DAY_OF_WEEK);
+			System.out.println("Informe o código da turma........:");
+			int turmaId = (Integer.parseInt(teclado.readLine()));
+			System.out.println("Informe o código da disciplina...:");
+			int disciplinaId = (Integer.parseInt(teclado.readLine()));
+			alunos = aluno.consulta();
+
+			for (Aluno al : alunos) {
+				System.out.println("Informe a nota do aluno.........:");
+				float nota = Float.parseFloat(teclado.readLine());
+				int alunoId = 0; // pegar da lista
+				int horarioId = 0; // juntar campos
+				int bimestreId = 0; // pegar do sistema
+				notas.add(new Nota(nrNota, alunoId, disciplinaId, nrBimestre, nota));
+			}
+			System.out.println("Lançamento de notas para este aluno foi realizado com sucesso!");
 		}
 		return notas;
 	}
@@ -64,13 +99,13 @@ public class Lancamentos {
 		System.out.println("|»»  Lançamento de Frequências  ««|");
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
+			Date dataAula = calendar.getTime();
+			int diaSemana = calendar.get(Calendar.DAY_OF_WEEK);
 			System.out.println("Informe o código da turma........:");
 			int turmaId = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o código da disciplina...:");
 			int disciplinaId = (Integer.parseInt(teclado.readLine()));
-			Date dataAula = calendar.getTime();
-			int diaSemana = calendar.get(Calendar.DAY_OF_WEEK) ;
-			
+
 			alunos = aluno.consulta();
 
 			for (Aluno al : alunos) {

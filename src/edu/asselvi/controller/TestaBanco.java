@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.dao.IEntidadeBase;
 import edu.asselvi.dao.PessoaDAO;
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Pessoa;
@@ -47,18 +46,18 @@ public class TestaBanco {
 //			System.out.println(e.getMessage());
 //		}
 //		
-		System.out.println("Inicio...");
-		List<Pessoa> pessoas = new ArrayList<Pessoa>();
-		for(int i = 1; i <= 00; i++) {
-			pessoas.add(new Pessoa("Deise Rech", "Oswaldo Simon,228","063-730-909-06", "(47)999114492","07/12/1988", "deiserech@outlook.com", ESexo.FEMININO ));
-//			pessoas.add(new Pessoa());
-		}
-		PessoaDAO pessoaDAO = new PessoaDAO();
-		try {
-			pessoaDAO.insereTrn(pessoas, "Pessoa");
-		} catch (BDException e) {
-			System.out.println(e.getMessage());
-		}
+//		System.out.println("Inicio...");
+//		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+//		for(int i = 1; i <= 00; i++) {
+//			pessoas.add(new Pessoa("Deise Rech", "Oswaldo Simon,228","063-730-909-06", "(47)999114492","07/12/1988", "deiserech@outlook.com", ESexo.FEMININO ));
+////			pessoas.add(new Pessoa());
+//		}
+//		PessoaDAO pessoaDAO = new PessoaDAO();
+//		try {
+//			pessoaDAO.insereTrn(pessoas, "Pessoa");
+//		} catch (BDException e) {
+//			System.out.println(e.getMessage());
+//		}
 //		try {
 //			for (Pessoa pessoa : pessoas) {
 //				pessoaDAO.insere(pessoa);

@@ -5,6 +5,8 @@ import java.text.ParseException;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.UsuarioDAO;
+import edu.asselvi.model.Frequencia;
+import edu.asselvi.model.Nota;
 
 public class Sistema {
 	
@@ -50,15 +52,19 @@ public class Sistema {
 				while (opcaoCad != 0) {
 					switch (opcaoCad) {
 					case 1:
+//						curso.insereTrn(Cadastros.cadastraCurso());
 						Cadastros.cadastraCurso();
 						break;
 					case 2:
+//						disciplina.insereTrn(Cadastros.cadastraDisciplina());
 						Cadastros.cadastraDisciplina();
 						break;
 					case 3:
+//						serie.insereTrn(Cadastros.cadastraSerie());
 						Cadastros.cadastraSerie();
 						break;
 					case 4:
+//						turma.insereTrn(Cadastros.cadastraTurma());
 						Cadastros.cadastraTurma();
 						break;
 					case 5:
@@ -66,34 +72,36 @@ public class Sistema {
 						Cadastros.cadastraFuncionario();
 						break;
 					case 6:
+//						horario.insereTrn(Cadastros.cadastraHorario());
 						Cadastros.cadastraHorario();
 						break;
 					case 7:
+//						Aluno.insereTrn(Cadastros.cadastraAluno());
 						Cadastros.cadastraAluno();
 						break;
 					case 8:
+//						Aluno.insereTrn(Cadastros.cadastraAluno());
 						Cadastros.cadastraBimestre();
 						break;
 					}
 					opcaoCad = Menu.menuCadastros();
 				}
-
 				break;
-			case 2:
-				
+			case 2:				
+				Nota nota = new Nota(); 
+				Frequencia frequencia = new Frequencia(); 
 				int opcaoLan = Menu.menuLancamentos();
 				while (opcaoLan != 0) {
 					switch (opcaoLan) {
 					case 1:
-						Lancamentos.lancamentoNotas();
+		//				nota = Lancamentos.lancamentoNotas();
 						break;
 					case 2:
-
+			//			frequencia = Lancamentos.lancamentoFrequencia();
 						break;
 					}
 					opcaoLan = Menu.menuLancamentos();
 				}
-
 				break;
 			case 3:
 				int opcaoCon = Menu.menuConsultas();
@@ -111,7 +119,6 @@ public class Sistema {
 					}
 					opcaoCon = Menu.menuConsultas();
 				}
-
 				break;
 			case 4:
 				int opcaoRel = Menu.menuRelatorios();
@@ -131,9 +138,6 @@ public class Sistema {
 				}
 
 				break;
-//			default: colocar na view
-//				System.out.println("Opção Inválida!");
-//				break;
 			}
 	//		opcao = Menu.menuPrincipal();
 

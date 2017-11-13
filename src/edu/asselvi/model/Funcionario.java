@@ -18,6 +18,10 @@ public class Funcionario extends Pessoa {
 		this.disciplinas = new ArrayList<Integer>();
 	}
 
+	public void adicionaDisciplina(int disciplina) {
+		this.disciplinas.add(new Integer(disciplina));
+	}
+
 	public String toString() {
 		return super.toString(); 
 	}

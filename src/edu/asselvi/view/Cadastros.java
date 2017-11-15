@@ -7,7 +7,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Aluno;
@@ -60,7 +62,7 @@ public class Cadastros {
 		return cursos;
 	}
 
-	public static List<Object> cadastraSerie(List<Integer> seriesCad) throws IOException {
+	public static List<Object> cadastraSerie(Map<Integer, Integer> seriesCad) throws IOException {
 		List<Object> retorno = new ArrayList<Object>();
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -69,19 +71,15 @@ public class Cadastros {
 
 		System.out.println("Informe o número da série........: ");
 		int serieId = (Integer.parseInt(teclado.readLine()));
-
+		boolean serieOk = false;
 		do {
-			for (Integer serieCad : seriesCad) {
-				if (serieCad == serieId) {
-					serieId = 0;
-					break;
-				}
-			}
-			if (serieId == 0) {
-				System.out.println("Série já cadstrada. Informe nova Série:");
+			if (serieId == seriesCad.get(serieId)) {
+				System.out.println("Série já cadastrada. Informe nova Série:");
 				serieId = (Integer.parseInt(teclado.readLine()));
+			} else {
+				serieOk = true;
 			}
-		} while (serieId != 0);
+		} while (!serieOk);
 
 		System.out.println("Informe a descrição da série.....: ");
 		String descricao = (teclado.readLine());
@@ -208,7 +206,7 @@ public class Cadastros {
 		return usuarios;
 	};
 
-	public static List<Horario> cadastraHorario() throws IOException {
+	public static List<Horario> cadastraHorario(Map<Integer, Integer> serieTurma) throws IOException {
 		char novo = 'S';
 		List<Horario> horarios = new ArrayList<Horario>();
 		System.out.println("");
@@ -225,7 +223,9 @@ public class Cadastros {
 			int turmaId = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe a hora de início.........: ");
 			int horaInicio = (Integer.parseInt(teclado.readLine()));
-			horarios.add(new Horario(horarioId, diaSemana, disciplinaId, turmaId, horaInicio));
+			int serieId = serieTurma.get(turmaId);
+			int disciplinaSerieId = Integer.parseInt(disciplinaId + "" + serieId);
+			horarios.add(new Horario(horarioId, diaSemana, disciplinaSerieId, turmaId, horaInicio));
 
 			System.out.println("Deseja cadastrar novo horário?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
@@ -283,7 +283,7 @@ public class Cadastros {
 			System.out.println("Informe o número de dias letivos.: ");
 			int diasLetivos = (Integer.parseInt(teclado.readLine()));
 			bimestres.add(new Bimestre(bimestreId, descricao, dataInicio, dataFim, diasLetivos));
-			if (cont < 2) { // 2 bimestres
+			if (cont < 4) { // 4 bimestres
 				System.out.println("Deseja cadastrar novo bimestre?(S/N).: ");
 				novo = Character.toUpperCase((teclado.readLine().charAt(0)));
 			}

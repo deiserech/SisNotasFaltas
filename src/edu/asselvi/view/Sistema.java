@@ -6,9 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
+import edu.asselvi.dao.AlunoDAO;
 import edu.asselvi.dao.AlunoTurmaDAO;
+import edu.asselvi.dao.BimestreDAO;
+import edu.asselvi.dao.CursoDAO;
+import edu.asselvi.dao.DisciplinaDAO;
 import edu.asselvi.dao.DisciplinaProfessorDAO;
 import edu.asselvi.dao.DisciplinaSerieDAO;
+import edu.asselvi.dao.FuncionarioDAO;
+import edu.asselvi.dao.HorarioDAO;
 import edu.asselvi.dao.PessoaDAO;
 import edu.asselvi.dao.SerieDAO;
 import edu.asselvi.dao.TurmaDAO;
@@ -74,7 +80,7 @@ public class Sistema {
 				continue;
 			}
 		}
-		
+
 		if (pessoas != null) {
 			pessDao.insereTrn(pessoas);
 		}
@@ -97,15 +103,12 @@ public class Sistema {
 
 	public static void main(String[] args) throws IOException, BDException, ParseException {
 		PessoaDAO pessoa = new PessoaDAO();
-		// CursoDAO curso = new CursoDAO();
-		 SerieDAO serie = new SerieDAO();
-		// DisciplinaDAO disciplina = new DisciplinaDAO();
-		// SerieDAO disciplina = new SerieDAO();
-		// TurmaDAO turma = new TurmaDAO();
-		// FuncionarioDAO funcionario = new FuncionarioDAO();
-		// HorarioDAO Horario = new HorarioDAO();
-		// BimestreDAO bimestre = new BimestreDAO();
-		// AlunoDAO aluno = new AlunoDAO();
+		CursoDAO curso = new CursoDAO();
+		SerieDAO serie = new SerieDAO();
+		DisciplinaDAO disciplina = new DisciplinaDAO();
+		TurmaDAO turma = new TurmaDAO();
+		HorarioDAO horario = new HorarioDAO();
+		BimestreDAO bimestre = new BimestreDAO();
 		int opcao = 0;
 		int perfil = login();
 		switch (perfil) {
@@ -129,36 +132,28 @@ public class Sistema {
 				while (opcaoCad != 0) {
 					switch (opcaoCad) {
 					case 1:
-						// curso.insereTrn(Cadastros.cadastraCurso());
-						Cadastros.cadastraCurso();
+						curso.insereTrn(Cadastros.cadastraCurso());
 						break;
 					case 2:
-						// disciplina.insereTrn(Cadastros.cadastraDisciplina());
-						Cadastros.cadastraDisciplina();
+						 disciplina.insereTrn(Cadastros.cadastraDisciplina());
 						break;
 					case 3:
-						// serie.insereTrn(Cadastros.cadastraSerie());
 						insereBanco(Cadastros.cadastraSerie(serie.consultaIds()));
 						break;
 					case 4:
-						// turma.insereTrn(Cadastros.cadastraTurma());
-						Cadastros.cadastraTurma();
+						 turma.insereTrn(Cadastros.cadastraTurma());
 						break;
 					case 5:
-						// pessoa.insereTrn(Cadastros.cadastraFuncionario(funcionarioId));
 						insereBanco(Cadastros.cadastraFuncionario(pessoa.retornaProximoId()));
 						break;
 					case 6:
-						// horario.insereTrn(Cadastros.cadastraHorario());
-						Cadastros.cadastraHorario();
+						 horario.insereTrn(Cadastros.cadastraHorario(turma.consultaSerieTurma()));
 						break;
 					case 7:
-						// Aluno.insereTrn(Cadastros.cadastraAluno());
 						insereBanco(Cadastros.cadastraAluno(pessoa.retornaProximoId()));
 						break;
 					case 8:
-						// Aluno.insereTrn(Cadastros.cadastraAluno());
-						Cadastros.cadastraBimestre();
+						bimestre.insereTrn(Cadastros.cadastraBimestre());
 						break;
 					}
 					opcaoCad = Menu.menuCadastros();

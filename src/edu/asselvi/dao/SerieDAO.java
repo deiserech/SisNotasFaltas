@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.bancodados.EErrosBD;
@@ -61,14 +63,14 @@ public class SerieDAO implements GenericDAO<Serie>{
 		return 0;
 	}
 	
-	public List<Integer> consultaIds() throws BDException {
+	public Map<Integer, Integer> consultaIds() throws BDException {
 		Connection conexao = Conexao.getConexao();
-		List<Integer> series = new ArrayList<Integer>();
+		Map<Integer, Integer> series = new HashMap<Integer, Integer>();
 		try {
 			Statement st = conexao.createStatement();
 			ResultSet rs = st.executeQuery("SELECT id FROM serie;");
 			while(rs.next()) {
-				series.add(rs.getInt("id"));
+				series.put(rs.getInt("id"), rs.getInt("id"));
 			}
 			return series;
 		} catch (Exception e) {

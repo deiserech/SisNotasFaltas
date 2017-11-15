@@ -5,7 +5,7 @@ import java.util.List;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.model.Funcionario;
 
-public class FucionarioDAO implements GenericDAO<Funcionario>{
+public class FuncionarioDAO implements GenericDAO<Funcionario>{
 
 	@Override
 	public boolean criaTabela() throws BDException {

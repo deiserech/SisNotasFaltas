@@ -1,36 +1,36 @@
 package edu.asselvi.model;
 
 public class Serie {
-	private int serieId;
-	private int cursoId;
+	private int SerieId;
+	private int CursoId;
 	private String descricao;
 	private int idadeMinima;
-	private int duracao; 
+	private int duracao; // meses
 
 	
 	public Serie() {
-		this(0, 0, "Não Informado", 0, 0);
+		this(0, 0, "NÃ£o Informado", 0, 0);
 	}
 	
-		public Serie(int serieId, int cursoId, String descricao, int idadeMinima, int duracao) {
-		setSerieId(serieId);
+	public Serie(int SerieId, int CursoId, String descricao, int idadeMinima, int duracao) {
+		setSerieId(SerieId);
 		setDescricao(descricao);
-		setCursoId(cursoId);
+		setCursoId(CursoId);
 		setIdadeMinima(idadeMinima);
 		setDuracao(duracao);
 	}	
 	
 	public int getSerieId() {
-		return serieId;
+		return SerieId;
 	}
-	public void setSerieId(int serieId) {
-		this.serieId = serieId;
+	public void setSerieId(int SerieId) {
+		this.SerieId = SerieId;
 	}
 	public int getCursoId() {
-		return cursoId;
+		return CursoId;
 	}
-	public void setCursoId(int cursoId) {
-		this.cursoId = cursoId;
+	public void setCursoId(int CursoId) {
+		this.CursoId = CursoId;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -53,11 +53,11 @@ public class Serie {
 
 	public String toString() {
 		return super.toString()
-				+ "\n\tCód. Série..............: " + getSerieId()
-				+ "\n\tDescrição...............: " + getDescricao()
-				+ "\n\tCód. Curso..............: " + getCursoId()
-				+ "\n\tIdade Mínima............: " + getIdadeMinima()
-				+ "\n\tDuração.................: " + getDuracao();
+				+ "\n\tCÃ³d. SÃ©rie..............: " + getSerieId()
+				+ "\n\tCÃ³d. Curso..............: " + getCursoId()
+				+ "\n\tDescriÃ§Ã£o...............: " + getDescricao()
+				+ "\n\tIdade MÃ­nima............: " + getIdadeMinima()
+				+ "\n\tDuraÃ§Ã£o.................: " + getDuracao();
 	}
 
 }

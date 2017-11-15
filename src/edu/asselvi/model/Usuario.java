@@ -44,7 +44,7 @@ public class Usuario {
 	
     @Override
     public String toString() {
-		return "\n\tCÛd Usu·rio.............: " + getTipoUsuario()
+		return "\n\tC√≥d Usu√°rio.............: " + getUsuarioId()
 		+ "\n\tLogin...................: " + getLogin()
 		+ "\n\tSenha...................: " + getSenha()
 		+ "\n\tTipo Usuario............: " + getTipoUsuario();

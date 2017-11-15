@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -118,7 +117,7 @@ public class Cadastros {
 			int ano = ((Integer.parseInt(teclado.readLine())));
 			System.out.println("Informe o código da série........: ");
 			int serieId = (Integer.parseInt(teclado.readLine()));
-			turmas.add(new Turma(turmaId, descricao, vagas, ano, serieId));
+			turmas.add(new Turma(turmaId, serieId, descricao, vagas, ano));
 
 			System.out.println("Deseja cadastrar nova turma?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));

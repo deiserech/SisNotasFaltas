@@ -147,7 +147,7 @@ public class Sistema {
 						insereBanco(Cadastros.cadastraFuncionario(pessoa.retornaProximoId()));
 						break;
 					case 6:
-						 horario.insereTrn(Cadastros.cadastraHorario(turma.consultaSerieTurma()));
+						 horario.insereTrn(Cadastros.cadastraHorario(turma.consultaSerieTurmas()));
 						break;
 					case 7:
 						insereBanco(Cadastros.cadastraAluno(pessoa.retornaProximoId()));

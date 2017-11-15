@@ -1,38 +1,38 @@
 package edu.asselvi.model;
 
 public class Nota {
-	private int nrNota;
-	private int alunoId;
-	private int disciplinaId;
-	private int nrBimestre;
+	private int NotaId;
+	private int AlunoId;
+	private int DisciplinaId;
+	private int BimestreId;
 	private float nota;
 
 	public Nota() {
 		this(0,0,0,0,0);
 	}
 
-	public Nota(int nrNota, int alunoId,int disciplinaId, int nrBimestre, float nota) {
-		setNrNota(nrNota);
-		setAlunoId(alunoId);
-		setDisciplinaId(disciplinaId);
-		setNrBimestre(nrBimestre);
+	public Nota(int NotaId, int AlunoId,int DisciplinaId, int BimestreId, float nota) {
+		setNotaId(NotaId);
+		setAlunoId(AlunoId);
+		setDisciplinaId(DisciplinaId);
+		setBimestreId(BimestreId);
 		setNota(nota);
 	}
 	
 	public  int getDisciplinaId() {
-		return disciplinaId;
+		return DisciplinaId;
 	}
 	
-	public  void setDisciplinaId(int disciplinaId) {
-		this.disciplinaId = disciplinaId;
+	public  void setDisciplinaId(int DisciplinaId) {
+		this.DisciplinaId = DisciplinaId;
 	}
 
 	public  int getAlunoId() {
-		return alunoId;
+		return AlunoId;
 	}
 
-	public void setAlunoId(int alunoId) {
-		this.alunoId = alunoId;
+	public void setAlunoId(int AlunoId) {
+		this.AlunoId = AlunoId;
 	}
 	public float getNota() {
 		return nota;
@@ -41,27 +41,27 @@ public class Nota {
 	public void setNota(float nota) {
 		this.nota = nota;
 	}
-	public int getNrBimestre() {
-		return nrBimestre;
+	public int getBimestreId() {
+		return BimestreId;
 	}
 	
-	public void setNrBimestre(int nrBimestre) {
-		this.nrBimestre = nrBimestre;
+	public void setBimestreId(int BimestreId) {
+		this.BimestreId = BimestreId;
 	}
 
-	public int getNrNota() {
-		return nrNota;
+	public int getNotaId() {
+		return NotaId;
 	}
 	
-	public void setNrNota(int nrNota) {
-		this.nrNota = nrNota;
+	public void setNotaId(int NotaId) {
+		this.NotaId = NotaId;
 	}
 	
 	public String toString() {
-		return  	"\n\tNúmero da nota..........: " + getNrNota()
-		        + 	"\n\tCód. Aluno..............: " + getAlunoId()
-				+ 	"\n\tCód. Disciplina.........: " + getDisciplinaId()
-				+ 	"\n\tNum. Bimestre...........: " + getNrBimestre()
+		return  	"\n\tNÃºmero da nota..........: " + getNotaId()
+		        + 	"\n\tCÃ³d. Aluno..............: " + getAlunoId()
+				+ 	"\n\tCÃ³d. Disciplina.........: " + getDisciplinaId()
+				+ 	"\n\tNum. Bimestre...........: " + getBimestreId()
 				+ 	"\n\tNota..,,,,,.............: " + getNota();
 	}	
 }

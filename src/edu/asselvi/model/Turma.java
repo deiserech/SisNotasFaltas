@@ -1,31 +1,39 @@
 package edu.asselvi.model;
 
 public class Turma {
-	private int turmaId;
+	private int TurmaId;
+	private int SerieId;
 	private String descricao;
 	private int vagas;
 	private int ano;
-	private int serieId; 
+ 
 
 	public Turma() {
-		this(0, "Não informado", 0, 0, 0);
+		this(0, 0,"NÃ£o informado", 0, 0);
 	}
 	
-	public Turma(int turmaId, String descricao, int vagas, int ano, int serieId) {
-		setTurmaId(turmaId);
+	public Turma(int TurmaId, int SerieId, String descricao, int vagas, int ano) {
+		setTurmaId(TurmaId);
+		setSerieId(SerieId);
 		setDescricao(descricao);
 		setVagas(vagas);
 		setAno(ano);
-		setSerieId(serieId);
 	}	
 
 	public int getTurmaId() {
-		return turmaId;
+		return TurmaId;
 	}
-	public void setTurmaId(int turmaId) {
-		this.turmaId = turmaId;
+	public void setTurmaId(int TurmaId) {
+		this.TurmaId = TurmaId;
 	}
 	
+	public int getSerieId() {
+		return SerieId;
+	}
+	public void setSerieId(int SerieId) {
+		this.SerieId = SerieId;
+	}
+		
 	public String getDescricao() {
 		return descricao;
 	}
@@ -44,20 +52,14 @@ public class Turma {
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
-	public int getSerieId() {
-		return serieId;
-	}
-	public void setSerieId(int serieId) {
-		this.serieId = serieId;
-	}
 	
 	public String toString() {
 		return super.toString()
-				+ "\n\tCód. Turma..............: " + getTurmaId()
-				+ "\n\tDescrição...............: " + getDescricao()
+				+ "\n\tCÃ³d. Turma..............: " + getTurmaId()
+				+ "\n\tCÃ³d SÃ©rie...............: " + getSerieId()
+				+ "\n\tDescriÃ§Ã£o...............: " + getDescricao()
 				+ "\n\tVagas...................: " + getVagas()
-				+ "\n\tAno.....................: " + getAno()
-				+ "\n\tCód Série...............: " + getSerieId();
+				+ "\n\tAno.....................: " + getAno();
 	}
 
 }

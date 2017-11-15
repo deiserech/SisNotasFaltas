@@ -1,33 +1,33 @@
 package edu.asselvi.model;
 
 public class AlunoTurma {
-	private int alunoId; 
-	private int turmaId; 
+	private int AlunoId; 
+	private int TurmaId; 
 	
 	public AlunoTurma() {
 		this(0,0);
 	}
-	public AlunoTurma(int alunoId, int turmaId) {
-		setAlunoId(alunoId);
-		setTurmaId(turmaId);
+	public AlunoTurma(int AlunoId, int TurmaId) {
+		setAlunoId(AlunoId);
+		setTurmaId(TurmaId);
 	}
 	
 	public int getAlunoId() {
-		return alunoId;
+		return AlunoId;
 	}
-	public void setAlunoId(int alunoId) {
-		this.alunoId = alunoId;
+	public void setAlunoId(int AlunoId) {
+		this.AlunoId = AlunoId;
 	}
 	public int getTurmaId() {
-		return turmaId;
+		return TurmaId;
 	}
-	public void setTurmaId(int turmaId) {
-		this.turmaId = turmaId;
+	public void setTurmaId(int TurmaId) {
+		this.TurmaId = TurmaId;
 	}
 	
 	public String toString() {
-		return    "\n\tCód. Turma..............: " + getTurmaId()
-				+ "\n\tCód. Aluno..............: " + getAlunoId();
+		return    "\n\tCod. Turma..............: " + getTurmaId()
+				+ "\n\tCod. Aluno..............: " + getAlunoId();
 	}
 
 }

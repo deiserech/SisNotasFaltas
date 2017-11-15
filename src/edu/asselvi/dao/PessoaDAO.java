@@ -21,7 +21,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE pessoa (" + "	"
-					+ " id		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
+					+ " pessoaId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
 					+ " cdUsuario		INTEGER NOT NULL ," //adicionar foreing key
 					+ " perfil 		    INTEGER NOT NULL ," 
 					+ "	nome			VARCHAR(50)  NOT NULL,"  
@@ -85,7 +85,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	public Pessoa consulta(int id) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa WHERE id = ?;");
+			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa WHERE pessoaId = ?;");
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			return rs.first() ?
@@ -132,7 +132,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	public boolean altera(Pessoa pessoa) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("UPDATE pessoa SET cdUsuario = ?, perfil, nome = ?, cpf = ?, dataNascimento = ?, sexo = ? WHERE id = ?;");
+			PreparedStatement pst = conexao.prepareStatement("UPDATE pessoa SET cdUsuario = ?, perfil, nome = ?, cpf = ?, dataNascimento = ?, sexo = ? WHERE pessoaId = ?;");
 			pst.setInt(1, pessoa.getCdUsuario());
 			pst.setInt(2, pessoa.getPerfil());
 			pst.setString(3, pessoa.getNome());
@@ -152,7 +152,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	public boolean exclui(int id) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("DELETE FROM pessoa WHERE ID = ?;");
+			PreparedStatement pst = conexao.prepareStatement("DELETE FROM pessoa WHERE pessoaId = ?;");
 			pst.setInt(1, id);
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
@@ -168,7 +168,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT MAX(ID) FROM pessoa;");
+			ResultSet rs = st.executeQuery("SELECT MAX(pessoaId) FROM pessoa;");
 			while(rs.next()) {
 				proximoId = rs.getInt("id") + 1;
 			}

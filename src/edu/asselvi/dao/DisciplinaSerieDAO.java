@@ -19,8 +19,11 @@ public class DisciplinaSerieDAO implements GenericDAO<DisciplinaSerie> {
 		Connection conexao = Conexao.getConexao();
 		try {
 			Statement st = conexao.createStatement();
-			st.execute("CREATE TABLE disciplinaSerie (" + "	" + " DisciplinaId		INTEGER NOT NULL PRIMARY KEY,"
-					+ " SerieId				INTEGER NOT NULL PRIMARY KEY" + ");");
+			st.execute("CREATE TABLE disciplinaSerie (" + "	" 
+					+ " DisciplinaId		INTEGER NOT NULL,"
+					+ " SerieId				INTEGER NOT NULL,"
+					+ " PRIMARY KEY 		(DisciplinaId, SerieId)"
+					+ " );");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

@@ -5,7 +5,17 @@ import java.util.Date;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
+import edu.asselvi.dao.AlunoTurmaDAO;
+import edu.asselvi.dao.BimestreDAO;
+import edu.asselvi.dao.CursoDAO;
+import edu.asselvi.dao.DisciplinaDAO;
+import edu.asselvi.dao.DisciplinaProfessorDAO;
+import edu.asselvi.dao.DisciplinaSerieDAO;
+import edu.asselvi.dao.NotaDAO;
 import edu.asselvi.dao.PessoaDAO;
+import edu.asselvi.dao.SerieDAO;
+import edu.asselvi.dao.TurmaDAO;
+import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Pessoa;
 
@@ -65,13 +75,34 @@ public class TestaBanco {
 //		} catch (BDException e) {
 //			System.out.println(e.getMessage());
 //		}
+		System.out.println("Início...");
+		CursoDAO cursoDAO = new CursoDAO();
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+		DisciplinaSerieDAO disciplinaSerieDAO = new DisciplinaSerieDAO();
+		DisciplinaProfessorDAO disciplinaProfessorDAO = new DisciplinaProfessorDAO();
+		AlunoTurmaDAO alunoTurmaDAO = new AlunoTurmaDAO();
+		NotaDAO notaDAO = new NotaDAO();
+		SerieDAO serieDAO = new SerieDAO();
+		TurmaDAO turmaDAO = new TurmaDAO();
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		BimestreDAO bimestreDAO = new BimestreDAO();
+		try {
+			cursoDAO.criaTabela();
+			bimestreDAO.criaTabela();
+			pessoaDAO.criaTabela();
+			disciplinaDAO.criaTabela();
+			disciplinaSerieDAO.criaTabela();
+			disciplinaProfessorDAO.criaTabela();
+			alunoTurmaDAO.criaTabela();			
+			notaDAO.criaTabela();
+			serieDAO.criaTabela();
+			turmaDAO.criaTabela();
+			usuarioDAO.criaTabela();
+		} catch (BDException e) {
+			System.out.println(e.getMessage());
+		}
 		System.out.println("Fim...");
-//		PessoaDAO pessoaDAO = new PessoaDAO();
-//		try {
-//			pessoaDAO.criaTabela();
-//		} catch (BDException e) {
-//			System.out.println(e.getMessage());
-//		}
 
 //		try {
 //			pessoaDAO.destroiTabela();

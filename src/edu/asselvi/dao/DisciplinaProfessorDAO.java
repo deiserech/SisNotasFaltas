@@ -5,14 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.model.DisciplinaProfessor;
 
-
-public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
+public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 
 	@Override
 	public boolean criaTabela() throws BDException {
@@ -20,9 +22,10 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE disciplinaProfessor (" + "	"
-					+ " DisciplinaId	INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " ProfessorId		INTEGER NOT NULL" //adicionar foreing key
-					+ ");");
+					+ " DisciplinaId	INTEGER NOT NULL,"
+					+ " ProfessorId		INTEGER NOT NULL," 
+					+ " PRIMARY KEY 	(DisciplinaId, ProfessorId)"
+					+ " );");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
@@ -30,8 +33,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 			Conexao.closeConexao();
 		}
 	}
-	
-	
+
 	@Override
 	public boolean destroiTabela() throws BDException {
 		Connection conexao = Conexao.getConexao();
@@ -45,7 +47,6 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 			Conexao.closeConexao();
 		}
 	}
-	
 
 	@Override
 	public boolean insereTrn(List<DisciplinaProfessor> disciplinaProfessores) throws BDException {
@@ -53,12 +54,13 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 		try {
 
 			conexao.setAutoCommit(false);
-				PreparedStatement pst = conexao.prepareStatement(
-						"INSERT INTO disciplinaProfessor (ProfessorId ) VALUES (?);");
-				for (DisciplinaProfessor disciplinaProfessor : disciplinaProfessores) {
-					pst.setInt(1, disciplinaProfessor.getProfessorId());
-					pst.executeUpdate();
-				}
+			PreparedStatement pst = conexao
+					.prepareStatement("INSERT INTO disciplinaProfessor (ProfessorId, DisciplinaId ) VALUES (?,?);");
+			for (DisciplinaProfessor disciplinaProfessor : disciplinaProfessores) {
+				pst.setInt(1, disciplinaProfessor.getDisciplinaId());
+				pst.setInt(2, disciplinaProfessor.getProfessorId());
+				pst.executeUpdate();
+			}
 			conexao.commit();
 			return true;
 		} catch (Exception e) {
@@ -73,18 +75,20 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 		}
 	}
 
-
 	@Override
 	public DisciplinaProfessor consulta(int id) throws BDException {
+		return null;
+	}
+
+	public DisciplinaProfessor consulta(int disciplinaId, int professorId) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM disciplinaProfessor WHERE DisciplinaId = ?;");
-			pst.setInt(1, id);
+			PreparedStatement pst = conexao
+					.prepareStatement("SELECT * FROM disciplinaProfessor WHERE DisciplinaId = ? AND ProfessorId = ?;");
+			pst.setInt(1, disciplinaId);
+			pst.setInt(1, professorId);
 			ResultSet rs = pst.executeQuery();
-			return rs.first() ?
-								new DisciplinaProfessor(rs.getInt("DisciplinaId"),
-										   				rs.getInt("ProfessorId"))
-							  : null;
+			return rs.first() ? new DisciplinaProfessor(rs.getInt("DisciplinaId"), rs.getInt("ProfessorId")) : null;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
 		} finally {
@@ -99,9 +103,8 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 		try {
 			Statement st = conexao.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM disciplinaProfessor;");
-			while(rs.next()) {
-				disciplinaProfessores.add(new DisciplinaProfessor(rs.getInt("DisciplinaId"),
-																  rs.getInt("ProfessorId")));
+			while (rs.next()) {
+				disciplinaProfessores.add(new DisciplinaProfessor(rs.getInt("DisciplinaId"), rs.getInt("ProfessorId")));
 			}
 			return disciplinaProfessores;
 		} catch (Exception e) {
@@ -115,8 +118,10 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 	public boolean altera(DisciplinaProfessor disciplinaProfessor) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("UPDATE disciplinaProfessor SET ProfessorId = ? WHERE DisciplinaId = ?;");
+			PreparedStatement pst = conexao
+					.prepareStatement("UPDATE disciplinaProfessor SET ProfessorId = ? WHERE DisciplinaId = ?;");
 			pst.setInt(1, disciplinaProfessor.getProfessorId());
+			pst.setInt(2, disciplinaProfessor.getDisciplinaId());
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage());
@@ -127,10 +132,16 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 
 	@Override
 	public boolean exclui(int id) throws BDException {
+		return false;
+	}
+
+	public boolean exclui(int disciplinaId, int professorId) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("DELETE FROM disciplinaProfessor WHERE DisciplinaId = ?;");
-			pst.setInt(1, id);
+			PreparedStatement pst = conexao
+					.prepareStatement("DELETE FROM disciplinaProfessor WHERE DisciplinaId = ? and ProfessorId = ? ;");
+			pst.setInt(1, disciplinaId);
+			pst.setInt(1, professorId);
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage());
@@ -141,20 +152,14 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
-		int proximoId = 0;
-		try {
-			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT MAX(ID) FROM disciplinaProfessor;");
-			while(rs.next()) {
-				proximoId = rs.getInt("id") + 1;
-			}
-			return proximoId;
-		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
-		} finally {
-			Conexao.closeConexao();
-		}
+		return 0;
+	}
+
+	public Map<Integer, Integer> disciplinasProfessorTurmaId() throws BDException {
+		Map<Integer, Integer> dsciplinas = new HashMap<Integer, Integer>();
+		//Implementar
+		
+		return dsciplinas;
 	}
 
 }

@@ -3,18 +3,18 @@ package edu.asselvi.model;
 import java.util.Date;
 
 public class Bimestre {
-	private int bimestreId;
+	private int BimestreId;
 	private String descricao;
 	private Date dataInicio;
 	private Date dataFim;
 	private int diasLetivos;
 
 	public Bimestre() {
-		this(0,"Não informado", new Date(), new Date(), 0);
+		this(0,"NÃ£o informado", new Date(), new Date(), 0);
 	}
 
-	public Bimestre(int bimestreId, String descricao, Date dataInicio, Date dataFim, int diasLetivos) { 
-		setBimestreId(bimestreId);
+	public Bimestre(int BimestreId, String descricao, Date dataInicio, Date dataFim, int diasLetivos) { 
+		setBimestreId(BimestreId);
 		setDescricao(descricao);
 		setDataInicio(dataInicio);
 		setDataFim(dataFim);
@@ -23,11 +23,11 @@ public class Bimestre {
 	
 	
 	public int getBimestreId() {
-		return bimestreId;
+		return BimestreId;
 	}
 
-	public void setBimestreId(int bimestreId) {
-		this.bimestreId = bimestreId;
+	public void setBimestreId(int BimestreId) {
+		this.BimestreId = BimestreId;
 	}
 
 	public String getDescricao() {
@@ -64,8 +64,8 @@ public class Bimestre {
 
 	@Override
 	public String toString() {
-		return        "\n\tCód Bimestre............: " + getBimestreId()
-					+ "\n\tData Início.............: " + getDataInicio()
+		return        "\n\tCod Bimestre............: " + getBimestreId()
+					+ "\n\tData Inicio.............: " + getDataInicio()
 					+ "\n\tData Fim................: " + getDataFim()
 					+ "\n\tDias Letivos............: " + getDiasLetivos();
 	}

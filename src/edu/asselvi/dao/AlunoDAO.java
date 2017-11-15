@@ -3,8 +3,6 @@ package edu.asselvi.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +11,6 @@ import edu.asselvi.bancodados.BDException;
 import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.model.Aluno;
-import edu.asselvi.model.Turma;
 
 public class AlunoDAO implements GenericDAO<Aluno>{
 
@@ -83,6 +80,4 @@ public class AlunoDAO implements GenericDAO<Aluno>{
 			Conexao.closeConexao();
 		}
 	}
-
-
 }

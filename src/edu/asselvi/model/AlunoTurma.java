@@ -1,8 +1,8 @@
 package edu.asselvi.model;
 
 public class AlunoTurma {
-	private int alunoId; //FK - codigo do aluno
-	private int turmaId; //FK - código da turma
+	private int alunoId; 
+	private int turmaId; 
 	
 	public AlunoTurma() {
 		this(0,0);

@@ -98,6 +98,7 @@ public class Sistema {
 	public static void main(String[] args) throws IOException, BDException, ParseException {
 		PessoaDAO pessoa = new PessoaDAO();
 		// CursoDAO curso = new CursoDAO();
+		 SerieDAO serie = new SerieDAO();
 		// DisciplinaDAO disciplina = new DisciplinaDAO();
 		// SerieDAO disciplina = new SerieDAO();
 		// TurmaDAO turma = new TurmaDAO();
@@ -137,16 +138,15 @@ public class Sistema {
 						break;
 					case 3:
 						// serie.insereTrn(Cadastros.cadastraSerie());
-						Cadastros.cadastraSerie();
+						insereBanco(Cadastros.cadastraSerie(serie.consultaIds()));
 						break;
 					case 4:
 						// turma.insereTrn(Cadastros.cadastraTurma());
 						Cadastros.cadastraTurma();
 						break;
 					case 5:
-						int funcionarioId = pessoa.retornaProximoId();
 						// pessoa.insereTrn(Cadastros.cadastraFuncionario(funcionarioId));
-						insereBanco(Cadastros.cadastraFuncionario(funcionarioId));
+						insereBanco(Cadastros.cadastraFuncionario(pessoa.retornaProximoId()));
 						break;
 					case 6:
 						// horario.insereTrn(Cadastros.cadastraHorario());
@@ -154,7 +154,7 @@ public class Sistema {
 						break;
 					case 7:
 						// Aluno.insereTrn(Cadastros.cadastraAluno());
-						Cadastros.cadastraAluno();
+						insereBanco(Cadastros.cadastraAluno(pessoa.retornaProximoId()));
 						break;
 					case 8:
 						// Aluno.insereTrn(Cadastros.cadastraAluno());
@@ -163,7 +163,6 @@ public class Sistema {
 					}
 					opcaoCad = Menu.menuCadastros();
 				}
-				break;
 			case 2:
 				Nota nota = new Nota();
 				Frequencia frequencia = new Frequencia();

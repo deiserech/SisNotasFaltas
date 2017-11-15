@@ -1,8 +1,8 @@
 package edu.asselvi.model;
 
 public class DisciplinaSerie {
-	private int disciplinaId;// FK - código da disciplina
-	private int serieId;// FK - código da série
+	private int disciplinaId;
+	private int serieId;
 
 	public DisciplinaSerie() {
 		this(0, 0);

@@ -1,28 +1,23 @@
 package edu.asselvi.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Serie {
 	private int serieId;
 	private int cursoId;
 	private String descricao;
 	private int idadeMinima;
-	private int duracao; // meses
-	private List<Integer> disciplinas = new ArrayList<Integer>();
+	private int duracao; 
 
 	
 	public Serie() {
-		this(0, 0, "Não Informado", 0, 0, null);
+		this(0, 0, "Não Informado", 0, 0);
 	}
 	
-	public Serie(int serieId, int cursoId, String descricao, int idadeMinima, int duracao,List<Integer> disciplinas) {
+		public Serie(int serieId, int cursoId, String descricao, int idadeMinima, int duracao) {
 		setSerieId(serieId);
 		setDescricao(descricao);
 		setCursoId(cursoId);
 		setIdadeMinima(idadeMinima);
 		setDuracao(duracao);
-		this.disciplinas = new ArrayList<Integer>();
 	}	
 	
 	public int getSerieId() {
@@ -54,9 +49,6 @@ public class Serie {
 	}
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
-	}
-	public void adicionaDisciplina(int disciplina) {
-		this.disciplinas.add(new Integer(disciplina));
 	}
 
 	public String toString() {

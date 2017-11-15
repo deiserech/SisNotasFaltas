@@ -1,8 +1,14 @@
 package edu.asselvi.dao;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
+import edu.asselvi.bancodados.EErrosBD;
+import edu.asselvi.conexao.Conexao;
 import edu.asselvi.model.Serie;
 
 public class SerieDAO implements GenericDAO<Serie>{
@@ -54,5 +60,23 @@ public class SerieDAO implements GenericDAO<Serie>{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public List<Integer> consultaIds() throws BDException {
+		Connection conexao = Conexao.getConexao();
+		List<Integer> series = new ArrayList<Integer>();
+		try {
+			Statement st = conexao.createStatement();
+			ResultSet rs = st.executeQuery("SELECT id FROM serie;");
+			while(rs.next()) {
+				series.add(rs.getInt("id"));
+			}
+			return series;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+
 
 }

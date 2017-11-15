@@ -1,9 +1,17 @@
 package edu.asselvi.dao;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
+import edu.asselvi.bancodados.EErrosBD;
+import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Horario;
+import edu.asselvi.model.Pessoa;
 
 public class HorarioDAO implements GenericDAO<Horario>{
 
@@ -55,4 +63,6 @@ public class HorarioDAO implements GenericDAO<Horario>{
 		return 0;
 	}
 
+
+	
 }

@@ -1,10 +1,10 @@
 package edu.asselvi.model;
 
 public class Horario {
-	private int horarioId;
-	private int turmaId;
-	private int disciplinaId;
-	private int serieId;
+	private int HorarioId;
+	private int TurmaId;
+	private int DisciplinaId;
+	private int SerieId;
 	private int diaSemana;
 	private int horaInicio;
 	
@@ -12,33 +12,33 @@ public class Horario {
 		this(0,0,0,0,0);
 	}
 		
-	public Horario(int horarioId, int diaSemana, int disciplinaId, int turmaId, int horaInicio) {
-		setHorarioId(horarioId);
+	public Horario(int HorarioId, int diaSemana, int DisciplinaId, int TurmaId, int horaInicio) {
+		setHorarioId(HorarioId);
 		setDiaSemana(diaSemana);
-		setDisciplinaId(disciplinaId);
-		setTurmaId(turmaId);
+		setDisciplinaId(DisciplinaId);
+		setTurmaId(TurmaId);
 		setHoraInicio(horaInicio);
 	}
 
 	public int getHorarioId() {
-		return horarioId;
+		return HorarioId;
 	}
 	
-	public void setHorarioId(int horarioId) {
-		this.horarioId = horarioId;
+	public void setHorarioId(int HorarioId) {
+		this.HorarioId = HorarioId;
 	}
 	
 	public int getDisciplinaId() {
-		return disciplinaId;
+		return DisciplinaId;
 	}
-	public void setDisciplinaId(int disciplinaId) {
-		this.disciplinaId = disciplinaId;
+	public void setDisciplinaId(int DisciplinaId) {
+		this.DisciplinaId = DisciplinaId;
 	}
 	public int getTurmaId() {
-		return turmaId;
+		return TurmaId;
 	}
-	public void setTurmaId(int turmaId) {
-		this.turmaId = turmaId;
+	public void setTurmaId(int TurmaId) {
+		this.TurmaId = TurmaId;
 	}
 	public int getHoraInicio() {
 		return horaInicio;
@@ -53,19 +53,29 @@ public class Horario {
 		this.diaSemana = diaSemana;
 	}
 	public int getSerieId() {
-		return serieId;
+		return SerieId;
 	}
 	
-	public void setSerieId(int serieId) {
-		this.serieId = serieId;
+	public void setSerieId(int SerieId) {
+		this.SerieId = SerieId;
 	}
 		
+	public Horario(int horarioId, int turmaId, int disciplinaId, int serieId, int diaSemana, int horaInicio) {
+		super();
+		HorarioId = horarioId;
+		TurmaId = turmaId;
+		DisciplinaId = disciplinaId;
+		SerieId = serieId;
+		this.diaSemana = diaSemana;
+		this.horaInicio = horaInicio;
+	}
+
 	public String toString() {
-		return    "\n\tC骴. Hor醨io............: " + getHorarioId()
-		        + "\n\tC骴. Turma..............: " + getTurmaId()
-		        + "\n\tC骴. S閞ie..............: " + getSerieId()
-				+ "\n\tC骴. Discilina..........: " + getDisciplinaId()
+		return    "\n\tC贸d. Hor谩rio............: " + getHorarioId()
+		        + "\n\tC贸d. Turma..............: " + getTurmaId()
+		        + "\n\tC贸d. S茅rie..............: " + getSerieId()
+				+ "\n\tC贸d. Discilina..........: " + getDisciplinaId()
 				+ "\n\tDia da Semana...........: " + getDiaSemana()
-				+ "\n\tHor醨io In韈io..........: " + getHoraInicio();
+				+ "\n\tHor谩rio In铆cio..........: " + getHoraInicio();
 	}
 }

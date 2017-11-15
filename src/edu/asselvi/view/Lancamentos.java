@@ -3,6 +3,7 @@ package edu.asselvi.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,11 +15,14 @@ import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.AlunoDAO;
 import edu.asselvi.model.Aluno;
 import edu.asselvi.model.Frequencia;
+import edu.asselvi.model.Horario;
 import edu.asselvi.model.Nota;
+import edu.asselvi.model.Turma;
 
 public class Lancamentos {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 	static Calendar calendar = new GregorianCalendar();
+	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	public static List<Nota> lancaNotasAluno() throws IOException {
 		List<Nota> notas = new ArrayList<Nota>();
@@ -58,83 +62,81 @@ public class Lancamentos {
 	public static int BuscaTurma() throws IOException, BDException {
 		System.out.println("");
 		System.out.println("----------------------------------");
-		System.out.println("|»»    Lançamento de Notas     ««|");
+		System.out.println("|»»          Lançamentos       ««|");
 		System.out.println("----------------------------------");
-		
+
 		System.out.println("Informe o código da turma........:");
-		int turmaId = (Integer.parseInt(teclado.readLine()));
-		return turmaId; 
+		int idTurma = (Integer.parseInt(teclado.readLine()));
+		return idTurma;
 	}
 
-	
-	public static List<Nota> lancaNotasTurma(Map<Integer, Integer> alunosTurma, Map<Integer, Integer> disciTurmaProfessor, int bimestre) throws IOException, BDException {
-		List<Nota> notas = new ArrayList<Nota>();
-		List<Aluno> alunos = new ArrayList<Aluno>();
-		AlunoDAO aluno = new AlunoDAO();
+	public static int BuscaDisciplina(Map<Integer, Integer> discTurmaProfessor) throws IOException, BDException {
+		boolean disciplinaOk = false;
+		System.out.println("Informe o código da disciplina...:");
+		int disciplinaId = (Integer.parseInt(teclado.readLine()));
+		do {
+			if (disciplinaId == discTurmaProfessor.get(disciplinaId)) {
+				disciplinaOk = true;
+			} else {
+				System.out.println("Disciplina não corresponde...:");
+				System.out.println("Informe outra disciplina.....:");
+				disciplinaId = (Integer.parseInt(teclado.readLine()));
+			}
+		} while (!disciplinaOk);
+		return disciplinaId;
+	}
 
-		char novo = 'S';
-		int nrNota = 1;
+	public static List<Nota> lancaNotasTurma(int turmaId, Map<Integer, Aluno> alunosTurma,
+			Map<Integer, Integer> discTurmaProfessor, int bimestreId) throws IOException, BDException {
+		List<Nota> notas = new ArrayList<Nota>();
+
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Lançamento de Notas     ««|");
 		System.out.println("----------------------------------");
-		while (novo == 'S') {
-			Date dataAula = calendar.getTime();
-			int nrBimestre = 0; // pegar do sistema
-			int diaSemana = calendar.get(Calendar.DAY_OF_WEEK);
-			System.out.println("Informe o código da turma........:");
-			int turmaId = (Integer.parseInt(teclado.readLine()));
-			System.out.println("Informe o código da disciplina...:");
-			int disciplinaId = (Integer.parseInt(teclado.readLine()));
-			alunos = aluno.consulta();
-
-			for (Aluno al : alunos) {
-				System.out.println("Informe a nota do aluno.........:");
-				float nota = Float.parseFloat(teclado.readLine());
-				int alunoId = 0; // pegar da lista
-				int horrsrsrarioId = 0; // juntar campos
-				int bimestreId = 0; // pegar do sistema
-				notas.add(new Nota(nrNota, alunoId, disciplinaId, nrBimestre, nota));
+		boolean disciplinaOk = false;
+		System.out.println("Informe o código da disciplina...:");
+		int disciplinaId = (Integer.parseInt(teclado.readLine()));
+		do {
+			if (disciplinaId == discTurmaProfessor.get(disciplinaId)) {
+				disciplinaOk = true;
+			} else {
+				System.out.println("Disciplina não corresponde...:");
+				System.out.println("Informe outra disciplina.....:");
+				disciplinaId = (Integer.parseInt(teclado.readLine()));
 			}
-			System.out.println("Lançamento de notas para este aluno foi realizado com sucesso!");
+		} while (!disciplinaOk);
+
+		int nrNota = 0;
+		while (nrNota < 2) {
+			nrNota++;
+			for (Aluno al : alunosTurma.values()) {
+				System.out.println("Aluno " + al.getNome() + ":");
+				System.out.println("Informe a nota " + nrNota + " ..............:");
+				float nota = Float.parseFloat(teclado.readLine());
+				notas.add(new Nota(nrNota, al.getId(), disciplinaId, bimestreId, nota));
+			}
 		}
+
+		System.out.println("Lançamento de notas para este aluno foi realizado com sucesso!");
 		return notas;
 	}
 
-	public static List<Frequencia> lancamentoFrequencia() throws IOException, BDException {
+	public static List<Frequencia> lancaFrequenciaTurma(Horario horario, Map<Integer, Aluno> alunosTurma, int bimestreId) throws IOException, BDException {
 		List<Frequencia> frequencias = new ArrayList<Frequencia>();
-		List<Aluno> alunos = new ArrayList<Aluno>();
-		Calendar calendar = new GregorianCalendar();
-		AlunoDAO aluno = new AlunoDAO();
-		char novo = 'S';
-		int nrNota = 1;
+
 		System.out.println("");
 		System.out.println("----------------------------------");
-		System.out.println("|»»  Lançamento de Frequências  ««|");
+		System.out.println("|»»  Lançamento de Frequência   ««|");
 		System.out.println("----------------------------------");
-		while (novo == 'S') {
-			Date dataAula = calendar.getTime();
-			int diaSemana = calendar.get(Calendar.DAY_OF_WEEK);
-			System.out.println("Informe o código da turma........:");
-			int turmaId = (Integer.parseInt(teclado.readLine()));
-			System.out.println("Informe o código da disciplina...:");
-			int disciplinaId = (Integer.parseInt(teclado.readLine()));
-
-			alunos = aluno.consulta();
-
-			for (Aluno al : alunos) {
-				System.out.println("Informe a frequência(S/N).......:");
-				boolean presente = Character.toUpperCase((teclado.readLine().charAt(0))) == 'S';
-				int alunoId = 0;
-				int horarioId = 0;
-				int bimestreId = 0;
-				frequencias.add(new Frequencia(horarioId, alunoId, bimestreId, dataAula, presente));
-			}
-			System.out.println("Lançamento de frequencias para esta turma foi realizada com sucesso!");
-			System.out.println();
-			System.out.println("Deseja inserir novas frequências?(S/N) ");
-			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
+		for (Aluno al : alunosTurma.values()) {
+			System.out.println("Aluno " + al.getNome() + ":");
+			System.out.println("Informe a frequência(S/N).......:");
+			boolean presente = Character.toUpperCase(teclado.readLine().charAt(0)) == 'S';
+			frequencias.add(new Frequencia(horario.getHorarioId(), al.getId(), bimestreId, new Date(), presente));
 		}
+
+		System.out.println("Lançamento de frequencias para esta turma foi realizada com sucesso!");
 		return frequencias;
 	}
 

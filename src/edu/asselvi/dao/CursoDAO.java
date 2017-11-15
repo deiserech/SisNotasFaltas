@@ -23,7 +23,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 					+ " CursoId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
 					+ " EscolaId			INTEGER NOT NULL ," //adicionar foreing key
 					+ " numSeries 		    INTEGER NOT NULL ," 
-					+ "	descricao			VARCHAR(50)  NOT NULL,"  
+					+ "	descricao			VARCHAR(50)  NOT NULL"  
 					+ ");");
 			return true;
 		} catch (Exception e) {

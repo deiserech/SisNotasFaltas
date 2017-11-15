@@ -3,6 +3,8 @@ package edu.asselvi.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
@@ -14,8 +16,10 @@ import edu.asselvi.dao.DisciplinaDAO;
 import edu.asselvi.dao.DisciplinaProfessorDAO;
 import edu.asselvi.dao.DisciplinaSerieDAO;
 import edu.asselvi.dao.EscolaDAO;
+import edu.asselvi.dao.FrequenciaDAO;
 import edu.asselvi.dao.FuncionarioDAO;
 import edu.asselvi.dao.HorarioDAO;
+import edu.asselvi.dao.NotaDAO;
 import edu.asselvi.dao.PessoaDAO;
 import edu.asselvi.dao.SerieDAO;
 import edu.asselvi.dao.TurmaDAO;
@@ -35,14 +39,17 @@ import edu.asselvi.view.Login;
 import edu.asselvi.view.Menu;
 
 public class Sistema {
+	static Calendar calendar = new GregorianCalendar();
 
-	private static int login() throws BDException, IOException {
+	private static Pessoa login() throws BDException, IOException {
 		UsuarioDAO usuario = new UsuarioDAO();
-		int perfil = usuario.verificaLogin(Login.telaLogin(false));
-		while (perfil == 0) {
-			perfil = usuario.verificaLogin(Login.telaLogin(true));
+		PessoaDAO pessoaDao = new PessoaDAO();
+		int user = usuario.verificaLogin(Login.telaLogin(false));
+		while (user == 0) {
+			user = usuario.verificaLogin(Login.telaLogin(true));
 		}
-		return perfil;
+		
+		return pessoaDao.consultaUsuario(user);
 	}
 
 	private static void insereBanco(List<Object> lista) throws BDException {
@@ -124,9 +131,13 @@ public class Sistema {
 		TurmaDAO turma = new TurmaDAO();
 		HorarioDAO horario = new HorarioDAO();
 		BimestreDAO bimestre = new BimestreDAO();
+		NotaDAO nota = new NotaDAO();
+		FrequenciaDAO frequencia = new FrequenciaDAO();
+		DisciplinaProfessorDAO discProf = new DisciplinaProfessorDAO();
+		Pessoa pessoaLogada = new Pessoa();
 		int opcao = 0;
-		int perfil = login();
-		switch (perfil) {
+		pessoaLogada = login();
+		switch (pessoaLogada.getPerfil()) {
 		case 1:
 			opcao = Menu.menuCoordenador();
 			break;
@@ -184,16 +195,31 @@ public class Sistema {
 				}
 				break;
 			case 3:
-				Nota nota = new Nota();
-				Frequencia frequencia = new Frequencia();
 				int opcaoLan = Menu.menuLancamentos();
+				int idTurma = 0;
+				int idDisciplina = 0;
 				while (opcaoLan != 0) {
 					switch (opcaoLan) {
 					case 1:
-				//		Lancamentos.lancaNotasTurma(aluno.consultaAlunosTurma(Lancamentos.BuscaTurma()));
+						idTurma = Lancamentos.BuscaTurma();
+						nota.insereTrn(
+								Lancamentos.lancaNotasTurma(idTurma,
+										aluno.consultaAlunosTurma(idTurma),
+										discProf.disciplinasProfessorTurma(idTurma, pessoaLogada.getId()),
+										FuncoesGenericas.buscaBimestre())
+								);
 						break;
 					case 2:
-						// frequencia = Lancamentos.lancamentoFrequencia();
+						idTurma = Lancamentos.BuscaTurma();
+						idDisciplina = Lancamentos.BuscaDisciplina(discProf.disciplinasProfessorTurma(idTurma, pessoaLogada.getId()));
+					//	int idSerie = turma.consulta(idTurma).getSerieId();
+						frequencia.insereTrn( 
+								Lancamentos.lancaFrequenciaTurma(
+										horario.consulta(idTurma,idDisciplina,turma.consulta(idTurma).getSerieId(), calendar.get(Calendar.DAY_OF_WEEK)), 
+										aluno.consultaAlunosTurma(idTurma),
+										FuncoesGenericas.buscaBimestre()
+								));
+
 						break;
 					}
 					opcaoLan = Menu.menuLancamentos();

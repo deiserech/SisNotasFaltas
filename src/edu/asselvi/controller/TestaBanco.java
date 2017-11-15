@@ -88,10 +88,10 @@ public class TestaBanco {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		BimestreDAO bimestreDAO = new BimestreDAO();
 		try {
+			disciplinaDAO.criaTabela();
 			cursoDAO.criaTabela();
 			bimestreDAO.criaTabela();
 			pessoaDAO.criaTabela();
-			disciplinaDAO.criaTabela();
 			disciplinaSerieDAO.criaTabela();
 			disciplinaProfessorDAO.criaTabela();
 			alunoTurmaDAO.criaTabela();			

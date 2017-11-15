@@ -3,9 +3,9 @@ package edu.asselvi.model;
 import java.util.Date;
 
 public class Frequencia {
-	private  int horarioId;
-	private  int alunoId;
-	private  int bimestreId;
+	private  int HorarioId;
+	private  int AlunoId;
+	private  int BimestreId;
 	private  Date dataAula;
 	private  boolean presente;
 
@@ -13,20 +13,20 @@ public class Frequencia {
 		this(0,0,0,new Date(),false);
 	}
 	
-	public Frequencia(int horaroiId, int alunoId, int bimestreId, Date dataAula, boolean presente) {
-		setHorarioId(horarioId);
-		setAlunoId(alunoId);
-		setBimestreId(bimestreId);
+	public Frequencia(int horaroiId, int AlunoId, int BimestreId, Date dataAula, boolean presente) {
+		setHorarioId(HorarioId);
+		setAlunoId(AlunoId);
+		setBimestreId(BimestreId);
 		setDataAula(dataAula);
 		setPresente(presente);
 	}
 	
 	public int getAlunoId() {
-		return alunoId;
+		return AlunoId;
 	}
 
-	public void setAlunoId(int alunoId) {
-		this.alunoId = alunoId;
+	public void setAlunoId(int AlunoId) {
+		this.AlunoId = AlunoId;
 	}
 	public Date getDataAula() {
 		return dataAula;
@@ -45,26 +45,26 @@ public class Frequencia {
 	}
 	
 	public int getBimestreId() {
-		return bimestreId;
+		return BimestreId;
 	}
 	
-	public void setBimestreId(int bimestreId) {
-		this.bimestreId = bimestreId;
+	public void setBimestreId(int BimestreId) {
+		this.BimestreId = BimestreId;
 	}
 	
 	public int getHorarioId() {
-		return horarioId;
+		return HorarioId;
 	}
 	
-	public void setHorarioId(int horarioId) {
-		this.horarioId = horarioId;
+	public void setHorarioId(int HorarioId) {
+		this.HorarioId = HorarioId;
 	}
 
 	public String toString() {
-		return    "\n\tCód Aluno...............: " + getAlunoId()
-				+ "\n\tCód. Horário............: " + getHorarioId()
-				+ "\n\tCód. Bimestre...........: " + getBimestreId()
+		return    "\n\tCÃ³d Aluno...............: " + getAlunoId()
+				+ "\n\tCÃ³d. HorÃ¡rio............: " + getHorarioId()
+				+ "\n\tCÃ³d. Bimestre...........: " + getBimestreId()
 				+ "\n\tData da Aula............: " + getDataAula()
-				+ "\n\tId Presença.............: " + isPresente();
+				+ "\n\tId PresenÃ§a.............: " + isPresente();
 	}
 }

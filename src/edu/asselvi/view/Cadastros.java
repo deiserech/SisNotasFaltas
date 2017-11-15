@@ -53,7 +53,9 @@ public class Cadastros {
 			String descricao = (teclado.readLine());
 			System.out.println("Informe o código da escola.......: ");
 			int escolaId = (Integer.parseInt(teclado.readLine()));
-			cursos.add(new Curso(0, escolaId, descricao));
+			System.out.println("Informe o código da escola.......: ");
+			int numSeries = (Integer.parseInt(teclado.readLine()));
+			cursos.add(new Curso(0, escolaId,numSeries, descricao));
 //ver campo numero_series do /MER
 			
 			System.out.println("Deseja cadastrar novo curso?(S/N).: ");
@@ -195,7 +197,7 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
 			int horarioId = 0;
-			System.out.println("Informe o dia da semana(1-2-3-4-5): ");
+			System.out.println("Informe o dia da semana(2-3-4-5-6): ");
 			int diaSemana = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o código da disciplina...: ");
 			int disciplinaId = (Integer.parseInt(teclado.readLine()));

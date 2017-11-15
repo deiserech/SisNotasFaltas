@@ -10,6 +10,7 @@ import java.util.Map;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Aluno;
 
 public class AlunoDAO implements GenericDAO<Aluno>{
@@ -62,17 +63,24 @@ public class AlunoDAO implements GenericDAO<Aluno>{
 		return 0;
 	}
 	
-	public Map<Integer, Integer> consultaAlunosTurma(int idTurma) throws BDException {
+	public Map<Integer, Aluno> consultaAlunosTurma(int idTurma) throws BDException {
 		Connection conexao = Conexao.getConexao();
-		Map<Integer, Integer> alunos = new HashMap<Integer, Integer>();
+		Map<Integer, Aluno> alunos = new HashMap<Integer, Aluno>();
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM aluno where IdTurma = ?;");
 			pst.setInt(1, idTurma);
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
-				alunos.put(rs.getInt("IdTurma"),
-						   rs.getInt("IdAluno"));
+				alunos.put(rs.getInt("id"),
+						new Aluno(rs.getInt("pessoaId"),
+								   rs.getInt("cdUsuario"),
+								   rs.getInt("perfil"),
+								   rs.getString("nome"),
+								   rs.getString("cpf"),
+								   rs.getDate("dataNascimento"),
+								   ESexo.valueOf(rs.getString("sexo").equals("F") ? "FEMININO":"MASCULINO")));
 			}
+			
 			return alunos;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());

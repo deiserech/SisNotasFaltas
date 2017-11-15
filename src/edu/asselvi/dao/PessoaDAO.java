@@ -21,7 +21,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE pessoa (" + "	"
-					+ " pessoaId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
+					+ " pessoaId		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
 					+ " cdUsuario		INTEGER NOT NULL ," //adicionar foreing key
 					+ " perfil 		    INTEGER NOT NULL ," 
 					+ "	nome			VARCHAR(50)  NOT NULL,"  
@@ -89,7 +89,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			return rs.first() ?
-								new Pessoa(rs.getInt("id"),
+								new Pessoa(rs.getInt("pessoaId"),
 										   rs.getInt("cdUsuario"),
 										   rs.getInt("perfil"),
 										   rs.getString("nome"),
@@ -104,6 +104,29 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 		}
 	}
 
+	public Pessoa consultaUsuario(int usuarioId) throws BDException {
+		Connection conexao = Conexao.getConexao();
+		try {
+			PreparedStatement pst = conexao.prepareStatement("SEECT * FROM pessoa WHERE usuarioId = ?;");
+			pst.setInt(1, usuarioId);
+			ResultSet rs = pst.executeQuery();
+			return rs.first() ?
+								new Pessoa(rs.getInt("pessoaId"),
+										   rs.getInt("cdUsuario"),
+										   rs.getInt("perfil"),
+										   rs.getString("nome"),
+										   rs.getString("cpf"),
+										   rs.getDate("dataNascimento"),
+										   ESexo.valueOf(rs.getString("sexo").equals("F") ? "FEMININO":"MASCULINO"))
+							  : null;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+
+	
 	@Override
 	public List<Pessoa> consulta() throws BDException {
 		Connection conexao = Conexao.getConexao();
@@ -112,7 +135,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			Statement st = conexao.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM pessoa;");
 			while(rs.next()) {
-				pessoas.add(new Pessoa(rs.getInt("id"),
+				pessoas.add(new Pessoa(rs.getInt("pessoaId"),
 						   rs.getInt("cdUsuario"),
 						   rs.getInt("perfil"),
 						   rs.getString("nome"),

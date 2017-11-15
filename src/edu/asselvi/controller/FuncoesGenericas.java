@@ -28,4 +28,8 @@ public class FuncoesGenericas {
 		}
 		return 0;
 	}
+	
+	public static int buscaDiaSemana() {
+		 return calendar.get(Calendar.DAY_OF_WEEK);		
+	}
 }

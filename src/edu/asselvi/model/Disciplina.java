@@ -1,22 +1,22 @@
 package edu.asselvi.model;
 
 public class Disciplina {
-	private int disciplinaId;
+	private int DisciplinaId;
 	private String descricao; 
 	
 	public Disciplina() {
-		this(0, "Não Informado");
+		this(0, "NÃ£o Informado");
 	};
-	public Disciplina(int disciplinaId, String descricao) {
-		setDisciplinaId(disciplinaId);
+	public Disciplina(int DisciplinaId, String descricao) {
+		setDisciplinaId(DisciplinaId);
 		setDescricao(descricao);
 	};
 	
 	public int getDisciplinaId() {
-		return disciplinaId;
+		return DisciplinaId;
 	}
-	public void setDisciplinaId(int disciplinaId) {
-		this.disciplinaId = disciplinaId;
+	public void setDisciplinaId(int DisciplinaId) {
+		this.DisciplinaId = DisciplinaId;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -27,8 +27,8 @@ public class Disciplina {
 	
 	public String toString() {
 		return super.toString()
-				+ "\n\tCód Disciplina..........: " + getDisciplinaId()
-				+ "\n\tDescrição...............: " + getDescricao();
+				+ "\n\tCÃ³d Disciplina..........: " + getDisciplinaId()
+				+ "\n\tDescriÃ§Ã£o...............: " + getDescricao();
 	}
 
 }

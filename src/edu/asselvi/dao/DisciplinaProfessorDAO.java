@@ -155,7 +155,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 		return 0;
 	}
 
-	public Map<Integer, Integer> disciplinasProfessorTurmaId() throws BDException {
+	public Map<Integer, Integer> disciplinasProfessorTurma(int turma, int professor) throws BDException {
 		Map<Integer, Integer> dsciplinas = new HashMap<Integer, Integer>();
 		//Implementar
 		

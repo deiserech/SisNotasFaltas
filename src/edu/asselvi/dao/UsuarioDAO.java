@@ -188,7 +188,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 		Usuario usuarioBanco =  consultaLogin(usuario.getLogin());
 		if(usuarioBanco instanceof Usuario) {
 			if(usuarioBanco.getSenha().equals(usuario.getSenha())) {
-				return usuarioBanco.getTipoUsuario();
+				return usuarioBanco.getUsuarioId();
 			}		
 		}		
 		return 0;

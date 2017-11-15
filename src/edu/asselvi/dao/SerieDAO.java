@@ -26,7 +26,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 					+ " CursoId				INTEGER NOT NULL ," //adicionar foreing key
 					+ " descricao 		    VARCHAR(50) NOT NULL ," 
 					+ "	idadeMinima			INTEGER  NOT NULL,"  
-					+ "	duracao	     		INTEGER  NOT NULL," + ");"); //o que faz com a lista de disciplinas?
+					+ "	duracao	     		INTEGER  NOT NULL" + ");"); //o que faz com a lista de disciplinas?
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

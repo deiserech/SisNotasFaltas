@@ -24,7 +24,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 					+ " usuarioId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
 					+ " login    		VARCHAR(10) NOT NULL ," 
 					+ " senha 		    VARCHAR(14) NOT NULL ," 
-					+ "	tipoUsuario		INTEGER NOT NULL," + ");");
+					+ "	tipoUsuario		INTEGER NOT NULL" + ");");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
@@ -106,7 +106,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 					new Usuario(rs.getInt("usuarioId"),
 							   rs.getString("login"),
 							   rs.getString("senha"),
-							   rs.getInt("perfil"))
+							   rs.getInt("tipoUsuario"))
 				  : null;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
@@ -193,5 +193,4 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 		}		
 		return 0;
 	}
-	
 }

@@ -8,6 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
+
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.AlunoDAO;
 import edu.asselvi.model.Aluno;
@@ -53,7 +55,19 @@ public class Lancamentos {
 		return notas;
 	}
 
-	public static List<Nota> lancaNotasTurma() throws IOException, BDException {
+	public static int BuscaTurma() throws IOException, BDException {
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»    Lançamento de Notas     ««|");
+		System.out.println("----------------------------------");
+		
+		System.out.println("Informe o código da turma........:");
+		int turmaId = (Integer.parseInt(teclado.readLine()));
+		return turmaId; 
+	}
+
+	
+	public static List<Nota> lancaNotasTurma(Map<Integer, Integer> alunosTurma, Map<Integer, Integer> disciTurmaProfessor, int bimestre) throws IOException, BDException {
 		List<Nota> notas = new ArrayList<Nota>();
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		AlunoDAO aluno = new AlunoDAO();
@@ -78,7 +92,7 @@ public class Lancamentos {
 				System.out.println("Informe a nota do aluno.........:");
 				float nota = Float.parseFloat(teclado.readLine());
 				int alunoId = 0; // pegar da lista
-				int horarioId = 0; // juntar campos
+				int horrsrsrarioId = 0; // juntar campos
 				int bimestreId = 0; // pegar do sistema
 				notas.add(new Nota(nrNota, alunoId, disciplinaId, nrBimestre, nota));
 			}

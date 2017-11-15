@@ -26,7 +26,7 @@ public class NotaDAO implements GenericDAO<Nota>{
 					+ " AlunoId				INTEGER NOT NULL ," //adicionar foreing key
 					+ " DisciplinaId 		INTEGER NOT NULL ," //adicionar foreing key
 					+ "	BimestreId			INTEGER NOT NULL,"  //adicionar foreing key
-					+ "	nota	     		FLOAT  NOT NULL," + ");");
+					+ "	nota	     		FLOAT  NOT NULL" + ");");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

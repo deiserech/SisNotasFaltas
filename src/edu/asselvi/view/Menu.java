@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Menu {
-	// Menus
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 
 	public static int menuCoordenador() {
@@ -97,7 +96,6 @@ public class Menu {
 		System.out.println("\t6 - Bimestres.............");
 		System.out.println("\t7 - Horários..............");
 		System.out.println("\t8 - Funcionários..........");
-		System.out.println("\t9 - Usuários..............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................: ");
 
@@ -114,7 +112,6 @@ public class Menu {
 		System.out.println("|»»         Matrículas          ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Matricular Aluno......");
-		System.out.println("\t2 - Cadastrar Usuário.....");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................: ");
 

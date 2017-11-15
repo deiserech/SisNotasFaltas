@@ -1,37 +1,37 @@
 package edu.asselvi.model;
 
 public class DisciplinaSerie {
-	private int disciplinaId;
-	private int serieId;
+	private int DisciplinaId;
+	private int SerieId;
 
 	public DisciplinaSerie() {
 		this(0, 0);
 	}
 
-	public DisciplinaSerie(int disciplinaId, int serieId) {
-		setDisciplinaId(disciplinaId);
-		setSerieId(serieId);
+	public DisciplinaSerie(int DisciplinaId, int SerieId) {
+		setDisciplinaId(DisciplinaId);
+		setSerieId(SerieId);
 	}
 
 	public int getDisciplinaId() {
-		return disciplinaId;
+		return DisciplinaId;
 	}
 
-	public void setDisciplinaId(int disciplinaId) {
-		this.disciplinaId = disciplinaId;
+	public void setDisciplinaId(int DisciplinaId) {
+		this.DisciplinaId = DisciplinaId;
 	}
 
 	public int getSerieId() {
-		return serieId;
+		return SerieId;
 	}
 
-	public void setSerieId(int serieId) {
-		this.serieId = serieId;
+	public void setSerieId(int SerieId) {
+		this.SerieId = SerieId;
 	}
 
 	@Override
 	public String toString() {
-		return  	"\n\tCód. Série..............: " + getSerieId()
-				+ 	"\n\tCód. Disciplina.........: " + getDisciplinaId();
+		return  	"\n\tCÃ³d. SÃ©rie..............: " + getSerieId()
+				+ 	"\n\tCÃ³d. Disciplina.........: " + getDisciplinaId();
 	}
 }

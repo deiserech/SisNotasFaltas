@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Aluno;
 import edu.asselvi.model.AlunoTurma;
@@ -29,7 +28,8 @@ public class Cadastros {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-	public static Escola cadastraEscola() throws IOException {
+	public static List<Escola> cadastraEscola() throws IOException {
+		List<Escola> escolas = new ArrayList<Escola>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro da Escola      ««|");
@@ -37,8 +37,8 @@ public class Cadastros {
 		int escolaId = 0;
 		System.out.println("Informe o nome da escola.........: ");
 		String descricao = (teclado.readLine());
-		Escola escola = new Escola(escolaId, descricao);
-		return escola;
+		escolas.add(new Escola(escolaId, descricao));
+		return escolas;
 	}
 
 	public static List<Curso> cadastraCurso() throws IOException {
@@ -54,7 +54,8 @@ public class Cadastros {
 			System.out.println("Informe o código da escola.......: ");
 			int escolaId = (Integer.parseInt(teclado.readLine()));
 			cursos.add(new Curso(0, escolaId, descricao));
-
+//ver campo numero_series do /MER
+			
 			System.out.println("Deseja cadastrar novo curso?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
 		}
@@ -82,12 +83,12 @@ public class Cadastros {
 
 		System.out.println("Informe a descrição da série.....: ");
 		String descricao = (teclado.readLine());
+		System.out.println("Informe o código do curso........: ");
+		int cursoId = (Integer.parseInt(teclado.readLine()));
 		System.out.println("Informe a idade mínima...........: ");
 		int idadeMinima = (Integer.parseInt(teclado.readLine()));
 		System.out.println("Informe a duração(meses).........: ");
 		int duracao = ((Integer.parseInt(teclado.readLine())));
-		System.out.println("Informe o código do curso........: ");
-		int cursoId = (Integer.parseInt(teclado.readLine()));
 		retorno.add(new Serie(serieId, cursoId, descricao, idadeMinima, duracao));
 
 		System.out.println("Informe o código das disciplinas.: ");
@@ -111,12 +112,12 @@ public class Cadastros {
 			int turmaId = 0;
 			System.out.println("Informe a descrição da turma.....: ");
 			String descricao = (teclado.readLine());
+			System.out.println("Informe o código da série........: ");
+			int serieId = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o número de vagas........: ");
 			int vagas = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe o ano correspondente.....: ");
 			int ano = ((Integer.parseInt(teclado.readLine())));
-			System.out.println("Informe o código da série........: ");
-			int serieId = (Integer.parseInt(teclado.readLine()));
 			turmas.add(new Turma(turmaId, serieId, descricao, vagas, ano));
 
 			System.out.println("Deseja cadastrar nova turma?(S/N).: ");
@@ -144,14 +145,14 @@ public class Cadastros {
 		return disciplinas;
 	};
 
-	public static List<Object> cadastraFuncionario(int proximoId) throws IOException, ParseException {
+	public static List<Object> cadastraFuncionario(int funcionarioId, int usuarioId) throws IOException, ParseException {
 		List<Object> retorno = new ArrayList<Object>();
 
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»  Cadastro de Funcionários  ««|");
 		System.out.println("----------------------------------");
-		int funcionarioId = 0;
+
 		System.out.println("Informe o nome...................: ");
 		String nome = (teclado.readLine());
 		System.out.println("Informe o cpf....................: ");
@@ -161,11 +162,19 @@ public class Cadastros {
 		Date dataNascimento = sdf.parse(data);
 		System.out.println("Informe o sexo...................: ");
 		ESexo sexo = (ESexo.valueOf(teclado.readLine()));
-		System.out.println("Informe o perfil do funcionário..: ");
+		
+		System.out.println("Informe o perfil do usuário......: ");
 		System.out.println("(1-Coordenador/2-Secretária/3-Professor)");
-		int tipoFuncionario = Integer.parseInt(teclado.readLine());
+		int tipoUsuario = Integer.parseInt(teclado.readLine());
+		System.out.println("Informe o login..................: ");
+		String login = teclado.readLine();
+		System.out.println("Informe a senha..................: ");
+		String senha = teclado.readLine();
 
-		if (tipoFuncionario == 3) {
+		retorno.add(new Usuario(usuarioId, login, senha, tipoUsuario));
+		retorno.add(new Funcionario(funcionarioId, usuarioId, tipoUsuario, nome, cpf, dataNascimento, sexo));
+
+		if (tipoUsuario == 3) {
 			System.out.println("Informe o código das disciplinas.: ");
 			System.out.println("Digite '0' para SAIR.............: ");
 			int disciplina = Integer.parseInt(teclado.readLine());
@@ -174,35 +183,7 @@ public class Cadastros {
 				retorno.add(new DisciplinaProfessor(disciplina, funcionarioId));
 			}
 		}
-		retorno.add(new Funcionario(funcionarioId, funcionarioId, tipoFuncionario, nome, cpf, dataNascimento, sexo));
 		return retorno;
-	};
-
-	public static List<Usuario> cadastraUsuario() throws IOException {
-		char novo = 'S';
-		List<Usuario> usuarios = new ArrayList<Usuario>();
-
-		System.out.println("");
-		System.out.println("----------------------------------");
-		System.out.println("|»»    Cadastro de Usuários    ««|");
-		System.out.println("----------------------------------");
-		while (novo == 'S') {
-			System.out.println("Informe o perfil do usuário......: ");
-			System.out.println("(1-Coordenador/2-Secretária/3-Professor/4-Aluno)");
-			int perfil = Integer.parseInt(teclado.readLine());
-			System.out.println("Informe o código " + (perfil == 4 ? "do aluno........:" : "do funcionário..:"));
-			int cdUsuario = Integer.parseInt(teclado.readLine());
-			System.out.println("Informe o login..................: ");
-			String login = teclado.readLine();
-			System.out.println("Informe a senha..................: ");
-			String senha = teclado.readLine();
-
-			usuarios.add(new Usuario(cdUsuario, login, senha, perfil));
-
-			System.out.println("Deseja cadastrar novo usuário?(S/N).: ");
-			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
-		}
-		return usuarios;
 	};
 
 	public static List<Horario> cadastraHorario(Map<Integer, Integer> serieTurma) throws IOException {
@@ -232,13 +213,13 @@ public class Cadastros {
 		return horarios;
 	};
 
-	public static List<Object> cadastraAluno(int proximoId) throws IOException, ParseException {
+	public static List<Object> cadastraAluno(int alunoId, int usuarioId) throws IOException, ParseException {
 		List<Object> retorno = new ArrayList<Object>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Alunos      ««|");
 		System.out.println("----------------------------------");
-		int perfil = 4;
+		int tipoUsuario = 4;
 		System.out.println("Informe o nome...................: ");
 		String nome = (teclado.readLine());
 		System.out.println("Informe o cpf....................: ");
@@ -248,14 +229,20 @@ public class Cadastros {
 		Date dataNascimento = sdf.parse(data);
 		System.out.println("Informe o sexo...................: ");
 		ESexo sexo = (ESexo.valueOf(teclado.readLine()));
-		retorno.add(new Aluno(proximoId, proximoId, perfil, nome, cpf, dataNascimento, sexo));
+		retorno.add(new Aluno(alunoId, usuarioId, tipoUsuario, nome, cpf, dataNascimento, sexo));
 
+		System.out.println("Informe o login..................: ");
+		String login = teclado.readLine();
+		System.out.println("Informe a senha..................: ");
+		String senha = teclado.readLine();
+		retorno.add(new Usuario(usuarioId, login, senha, tipoUsuario));
+		
 		System.out.println("Informe o código da turma........: ");
 		System.out.println("Digite '0' para SAIR.............: ");
 		int turma = Integer.parseInt(teclado.readLine());
 		while (turma != 0) {
 			turma = Integer.parseInt(teclado.readLine());
-			retorno.add(new AlunoTurma(proximoId, turma));
+			retorno.add(new AlunoTurma(alunoId, turma));
 		}
 		return retorno;
 	};

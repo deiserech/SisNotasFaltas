@@ -4,12 +4,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import edu.asselvi.dao.BimestreDAO;
+import edu.asselvi.dao.CursoDAO;
+import edu.asselvi.dao.DisciplinaDAO;
+import edu.asselvi.dao.DisciplinaProfessorDAO;
+import edu.asselvi.dao.HorarioDAO;
+import edu.asselvi.dao.NotaDAO;
 import edu.asselvi.dao.PessoaDAO;
+import edu.asselvi.dao.SerieDAO;
+import edu.asselvi.dao.TurmaDAO;
+import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Pessoa;
 
 public class TestaBanco {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws BDException {
 		System.out.println("Início..");
 		// BaseDAO baseDAO = new BaseDAO();
 		// try {
@@ -17,12 +26,25 @@ public class TestaBanco {
 		// } catch (BDException e) {
 		// System.out.println(e.getMessage());
 		// }
-		PessoaDAO pessoaDAO = new PessoaDAO();
-		try {
-			System.out.println(pessoaDAO.exclui(8) ? "Sucesso" : "Não existe");
-		} catch (BDException e) {
-			System.out.println(e.getMessage());
-		}
+		PessoaDAO pessoa = new PessoaDAO();
+		DisciplinaProfessorDAO disciplinaProfessor = new DisciplinaProfessorDAO();
+		NotaDAO nota = new NotaDAO();
+		SerieDAO serie = new SerieDAO();
+		TurmaDAO turma = new TurmaDAO();
+		UsuarioDAO usuario = new UsuarioDAO();
+		
+	//	pessoa.criaTabela();
+//		disciplinaProfessor.criaTabela();
+//		nota.criaTabela();
+//		serie.criaTabela();
+//		turma.criaTabela();
+		usuario.criaTabela();
+
+//		try {
+//			System.out.println(pessoaDAO.exclui(8) ? "Sucesso" : "Não existe");
+//		} catch (BDException e) {
+//			System.out.println(e.getMessage());
+//		}
 		
 		
 		

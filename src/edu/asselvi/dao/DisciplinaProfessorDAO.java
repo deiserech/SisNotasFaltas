@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
@@ -22,7 +21,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE disciplinaProfessor (" + "	"
 					+ " DisciplinaId	INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " ProfessorId		INTEGER NOT NULL ," //adicionar foreing key
+					+ " ProfessorId		INTEGER NOT NULL" //adicionar foreing key
 					+ ");");
 			return true;
 		} catch (Exception e) {

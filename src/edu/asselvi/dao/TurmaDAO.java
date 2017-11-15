@@ -26,7 +26,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 					+ " SerieId 		INTEGER NOT NULL ," //adicionar foreing key
 					+ "	descricao		VARCHAR(15)  NOT NULL," 
 					+ "	vagas	    	INTEGER(3)  NOT NULL,"
-					+ "	ano	     		INTEGER(4)  NOT NULL," + ");");
+					+ "	ano	     		INTEGER(4)  NOT NULL" + ");");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

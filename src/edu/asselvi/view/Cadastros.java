@@ -14,6 +14,7 @@ import edu.asselvi.model.Aluno;
 import edu.asselvi.model.Bimestre;
 import edu.asselvi.model.Curso;
 import edu.asselvi.model.Disciplina;
+import edu.asselvi.model.DisciplinaProfessor;
 import edu.asselvi.model.Escola;
 import edu.asselvi.model.Horario;
 import edu.asselvi.model.Funcionario;
@@ -138,16 +139,16 @@ public class Cadastros {
 		return disciplinas;
 	};
 
-	public static List<Funcionario> cadastraFuncionario() throws IOException, ParseException {
-		char novo = 'S';
+	public static List<Object> cadastraFuncionario( int proximoId) throws IOException, ParseException {
+//		char novo = 'S';
+		List<Object> retorno = new ArrayList<Object>();
 		List<Funcionario> funcionarios = new ArrayList<Funcionario>();
-		List<Integer> disciplinas = new ArrayList<Integer>();
 
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»  Cadastro de Funcionários  ««|");
 		System.out.println("----------------------------------");
-		while (novo == 'S') {
+//		while (novo == 'S') {
 			int funcionarioId = 0;
 			System.out.println("Informe o nome...................: ");
 			String nome = (teclado.readLine());
@@ -161,21 +162,26 @@ public class Cadastros {
 			System.out.println("Informe o perfil do funcionário..: ");
 			System.out.println("(1-Coordenador/2-Secretária/3-Professor)");
 			int tipoFuncionario = Integer.parseInt(teclado.readLine());
-
-			System.out.println("Informe o código das disciplinas.: ");
-			System.out.println("Digite '0' para SAIR.............: ");
-			int disciplina = Integer.parseInt(teclado.readLine());
-			while (disciplina != 0) {
-				disciplina = Integer.parseInt(teclado.readLine());
-				disciplinas.add(disciplina);
+			
+			if (tipoFuncionario == 3) {
+				List<DisciplinaProfessor> disciplinas = new ArrayList<DisciplinaProfessor>();
+				System.out.println("Informe o código das disciplinas.: ");
+				System.out.println("Digite '0' para SAIR.............: ");
+				int disciplina = Integer.parseInt(teclado.readLine());
+				while (disciplina != 0) {
+					disciplina = Integer.parseInt(teclado.readLine());
+					disciplinas.add(new DisciplinaProfessor(disciplina, funcionarioId));
+				}
+				retorno.add(disciplinas);
 			}
 			funcionarios.add(new Funcionario(funcionarioId, funcionarioId, tipoFuncionario, nome, cpf, dataNascimento,
-					sexo, disciplinas));
+					sexo, null));
+			retorno.add(funcionarios);
 
-			System.out.println("Deseja cadastrar novo funcionário?(S/N).: ");
-			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
-		}
-		return funcionarios;
+//			System.out.println("Deseja cadastrar novo funcionário?(S/N).: ");
+//			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
+//		}
+		return retorno;
 	};
 
 	public static List<Usuario> cadastraUsuario() throws IOException {

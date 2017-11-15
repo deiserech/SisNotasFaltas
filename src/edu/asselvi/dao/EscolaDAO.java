@@ -49,4 +49,10 @@ public class EscolaDAO implements GenericDAO<Escola>{
 		return false;
 	}
 
+	@Override
+	public int retornaProximoId() throws BDException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

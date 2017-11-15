@@ -49,4 +49,10 @@ public class SerieDAO implements GenericDAO<Serie>{
 		return false;
 	}
 
+	@Override
+	public int retornaProximoId() throws BDException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -162,4 +162,22 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 		}
 	}
 
+	@Override
+	public int retornaProximoId() throws BDException {
+		Connection conexao = Conexao.getConexao();
+		int proximoId = 0;
+		try {
+			Statement st = conexao.createStatement();
+			ResultSet rs = st.executeQuery("SELECT MAX(ID) FROM pessoa;");
+			while(rs.next()) {
+				proximoId = rs.getInt("id") + 1;
+			}
+			return proximoId;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+
 }

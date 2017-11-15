@@ -82,5 +82,11 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 		}		
 		return 0;
 	}
+
+	@Override
+	public int retornaProximoId() throws BDException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

@@ -49,4 +49,10 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 		return false;
 	}
 
+	@Override
+	public int retornaProximoId() throws BDException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

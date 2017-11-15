@@ -49,4 +49,10 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 		return false;
 	}
 
+	@Override
+	public int retornaProximoId() throws BDException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

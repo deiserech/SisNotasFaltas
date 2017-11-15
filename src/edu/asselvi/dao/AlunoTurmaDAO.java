@@ -49,4 +49,10 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 		return false;
 	}
 
+	@Override
+	public int retornaProximoId() throws BDException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

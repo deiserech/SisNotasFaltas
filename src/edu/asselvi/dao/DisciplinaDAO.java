@@ -49,4 +49,10 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 		return false;
 	}
 
+	@Override
+	public int retornaProximoId() throws BDException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

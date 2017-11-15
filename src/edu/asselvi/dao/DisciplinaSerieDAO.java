@@ -3,9 +3,9 @@ package edu.asselvi.dao;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.model.Disciplina;
+import edu.asselvi.model.DisciplinaSerie;
 
-public class DisciplinaSerieDAO implements GenericDAO<Disciplina>{
+public class DisciplinaSerieDAO implements GenericDAO<DisciplinaSerie>{
 
 	@Override
 	public boolean criaTabela() throws BDException {
@@ -20,25 +20,25 @@ public class DisciplinaSerieDAO implements GenericDAO<Disciplina>{
 	}
 
 	@Override
-	public boolean insereTrn(List<Disciplina> t) throws BDException {
+	public boolean insereTrn(List<DisciplinaSerie> t) throws BDException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Disciplina consulta(int id) throws BDException {
+	public DisciplinaSerie consulta(int id) throws BDException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Disciplina> consulta() throws BDException {
+	public List<DisciplinaSerie> consulta() throws BDException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean altera(Disciplina t) throws BDException {
+	public boolean altera(DisciplinaSerie t) throws BDException {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -47,6 +47,12 @@ public class DisciplinaSerieDAO implements GenericDAO<Disciplina>{
 	public boolean exclui(int id) throws BDException {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public int retornaProximoId() throws BDException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

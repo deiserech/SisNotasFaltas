@@ -73,4 +73,10 @@ public class CursoDAO implements GenericDAO<Curso>{
 		return false;
 	}
 
+	@Override
+	public int retornaProximoId() throws BDException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

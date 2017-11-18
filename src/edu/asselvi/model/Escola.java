@@ -1,28 +1,32 @@
 package edu.asselvi.model;
 
 public class Escola {
-	private int cdEscola;
-	private String nmEscola;
+	private int escolaId;
+	private String descricao;
 	
 	public Escola() {
 		this(0, "Não Informado");
 	}
 	public Escola(int cdEscola, String nmEscola) {
-		setCdEscola(cdEscola);
-		setNmEscola(nmEscola);
+		setEscolaId(cdEscola);
+		setDescricao(nmEscola);
+	}
+	public int getEscolaId() {
+		return escolaId;
+	}
+	public void setEscolaId(int escolaId) {
+		this.escolaId = escolaId;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
-	public int getCdEscola() {
-		return cdEscola;
-	}
-	public void setCdEscola(int cdEscola) {
-		this.cdEscola = cdEscola;
-	}
-	public String getNmEscola() {
-		return nmEscola;
-	}
-	public void setNmEscola(String nmEscola) {
-		this.nmEscola = nmEscola;
+	public String toString() {
+		return    "\n\tCód Escola..............: " + getEscolaId()
+				+ "\n\tDescrição................: " + getDescricao();
 	}
 	
 	

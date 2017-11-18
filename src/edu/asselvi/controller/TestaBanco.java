@@ -12,6 +12,8 @@ import edu.asselvi.dao.DisciplinaDAO;
 import edu.asselvi.dao.DisciplinaProfessorDAO;
 import edu.asselvi.dao.DisciplinaSerieDAO;
 import edu.asselvi.dao.EscolaDAO;
+import edu.asselvi.dao.FrequenciaDAO;
+import edu.asselvi.dao.HorarioDAO;
 import edu.asselvi.dao.NotaDAO;
 import edu.asselvi.dao.PessoaDAO;
 import edu.asselvi.dao.SerieDAO;
@@ -77,31 +79,33 @@ public class TestaBanco {
 //			System.out.println(e.getMessage());
 //		}
 		System.out.println("Início...");
-		PessoaDAO pessoaDAO = new PessoaDAO();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		EscolaDAO escolaDAO = new EscolaDAO();
 		CursoDAO cursoDAO = new CursoDAO();
+		SerieDAO serieDAO = new SerieDAO();
 		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
 		DisciplinaSerieDAO disciplinaSerieDAO = new DisciplinaSerieDAO();
 		DisciplinaProfessorDAO disciplinaProfessorDAO = new DisciplinaProfessorDAO();
+		TurmaDAO turmaDAO = new TurmaDAO();
+		HorarioDAO horarioDAO = new HorarioDAO();
+		BimestreDAO bimestreDAO = new BimestreDAO();
 		AlunoTurmaDAO alunoTurmaDAO = new AlunoTurmaDAO();
 		NotaDAO notaDAO = new NotaDAO();
-		SerieDAO serieDAO = new SerieDAO();
-		TurmaDAO turmaDAO = new TurmaDAO();
-		BimestreDAO bimestreDAO = new BimestreDAO();
-		EscolaDAO escolaDAO = new EscolaDAO();
+		FrequenciaDAO frequenciaDAO = new FrequenciaDAO();
 		try {
-			pessoaDAO.criaTabela();
-			escolaDAO.criaTabela();
-			usuarioDAO.criaTabela();
-			disciplinaDAO.criaTabela();
-			cursoDAO.criaTabela();
-			bimestreDAO.criaTabela();
-			disciplinaSerieDAO.criaTabela();
-			disciplinaProfessorDAO.criaTabela();
-			alunoTurmaDAO.criaTabela();			
+//			usuarioDAO.criaTabela();
+//			pessoaDAO.criaTabela();
+//			escolaDAO.criaTabela();
+//			disciplinaDAO.criaTabela();
+//			cursoDAO.criaTabela();
+//			bimestreDAO.criaTabela();
+//			disciplinaSerieDAO.criaTabela();
+//			disciplinaProfessorDAO.criaTabela();
+//			alunoTurmaDAO.criaTabela();			
 			notaDAO.criaTabela();
-			serieDAO.criaTabela();
-			turmaDAO.criaTabela();
+//			serieDAO.criaTabela();
+//			turmaDAO.criaTabela();
 		} catch (BDException e) {
 			System.out.println(e.getMessage());
 		}

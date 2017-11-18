@@ -27,10 +27,11 @@ public class NotaDAO implements GenericDAO<Nota>{
 					+ " DisciplinaId 		INTEGER NOT NULL ," 
 					+ "	BimestreId			INTEGER NOT NULL,"  
 					+ "	nota	     		FLOAT  NOT NULL," 
-					+ "CONSTRAINT `FK__aluno` FOREIGN KEY (`alunoId`) REFERENCES `aluno` (`alunoId`)"
-					+ "CONSTRAINT `FK__disciplina` FOREIGN KEY (`disciplinaId`) REFERENCES `disciplina` (`disciplinaId`)"
-					+ "CONSTRAINT `FK__bimestre` FOREIGN KEY (`bimestreId`) REFERENCES `bimestre` (`bimestreId`)"
-					+ ");");
+					+ "CONSTRAINT `FK_nota_bimestre` FOREIGN KEY (`BimestreId`) REFERENCES `bimestre` (`BimestreId`),"
+					+ "CONSTRAINT `FK_nota_disciplina` FOREIGN KEY (`DisciplinaId`) REFERENCES `disciplina` (`DisciplinaId`),"
+					+ "CONSTRAINT `FK_nota_pessoa` FOREIGN KEY (`AlunoId`) REFERENCES `pessoa` (`pessoaId`)"
+					+ ");"
+					);
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

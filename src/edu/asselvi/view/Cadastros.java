@@ -206,8 +206,7 @@ public class Cadastros {
 			System.out.println("Informe o código da turma........: ");
 			int turmaId = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe a hora de início.........: ");
-			String hrInicio = teclado.readLine();
-			Date horaInicio = hf.parse(hrInicio);
+			String horaInicio = teclado.readLine();
 			int serieId = serieTurma.get(turmaId);
 			int disciplinaSerieId = Integer.parseInt(disciplinaId + "" + serieId);
 			horarios.add(new Horario(horarioId, diaSemana, disciplinaSerieId, turmaId, horaInicio));

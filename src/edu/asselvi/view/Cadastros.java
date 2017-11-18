@@ -3,6 +3,7 @@ package edu.asselvi.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ import edu.asselvi.model.Usuario;
 public class Cadastros {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	static DateFormat hf = new SimpleDateFormat("hh:mm:ss");
 
 	public static List<Escola> cadastraEscola() throws IOException {
 		List<Escola> escolas = new ArrayList<Escola>();
@@ -53,11 +55,10 @@ public class Cadastros {
 			String descricao = (teclado.readLine());
 			System.out.println("Informe o código da escola.......: ");
 			int escolaId = (Integer.parseInt(teclado.readLine()));
-			System.out.println("Informe o código da escola.......: ");
+			System.out.println("Informe o número de séries.......: ");
 			int numSeries = (Integer.parseInt(teclado.readLine()));
-			cursos.add(new Curso(0, escolaId,numSeries, descricao));
-//ver campo numero_series do /MER
-			
+			cursos.add(new Curso(0, escolaId, numSeries, descricao));
+
 			System.out.println("Deseja cadastrar novo curso?(S/N).: ");
 			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
 		}
@@ -75,7 +76,7 @@ public class Cadastros {
 		int serieId = (Integer.parseInt(teclado.readLine()));
 		boolean serieOk = false;
 		do {
-			if (serieId == seriesCad.get(serieId)) {
+			if (seriesCad.values().contains(serieId)) {
 				System.out.println("Série já cadastrada. Informe nova Série:");
 				serieId = (Integer.parseInt(teclado.readLine()));
 			} else {
@@ -97,8 +98,8 @@ public class Cadastros {
 		System.out.println("Digite '0' para SAIR.............: ");
 		int disciplina = Integer.parseInt(teclado.readLine());
 		while (disciplina != 0) {
-			disciplina = Integer.parseInt(teclado.readLine());
 			retorno.add(new DisciplinaSerie(disciplina, serieId));
+			disciplina = Integer.parseInt(teclado.readLine());
 		}
 		return retorno;
 	};
@@ -147,7 +148,8 @@ public class Cadastros {
 		return disciplinas;
 	};
 
-	public static List<Object> cadastraFuncionario(int funcionarioId, int usuarioId) throws IOException, ParseException {
+	public static List<Object> cadastraFuncionario(int funcionarioId, int usuarioId)
+			throws IOException, ParseException {
 		List<Object> retorno = new ArrayList<Object>();
 
 		System.out.println("");
@@ -164,7 +166,7 @@ public class Cadastros {
 		Date dataNascimento = sdf.parse(data);
 		System.out.println("Informe o sexo...................: ");
 		ESexo sexo = (ESexo.valueOf(teclado.readLine()));
-		
+
 		System.out.println("Informe o perfil do usuário......: ");
 		System.out.println("(1-Coordenador/2-Secretária/3-Professor)");
 		int tipoUsuario = Integer.parseInt(teclado.readLine());
@@ -188,7 +190,7 @@ public class Cadastros {
 		return retorno;
 	};
 
-	public static List<Horario> cadastraHorario(Map<Integer, Integer> serieTurma) throws IOException {
+	public static List<Horario> cadastraHorario(Map<Integer, Integer> serieTurma) throws IOException, ParseException {
 		char novo = 'S';
 		List<Horario> horarios = new ArrayList<Horario>();
 		System.out.println("");
@@ -204,7 +206,8 @@ public class Cadastros {
 			System.out.println("Informe o código da turma........: ");
 			int turmaId = (Integer.parseInt(teclado.readLine()));
 			System.out.println("Informe a hora de início.........: ");
-			int horaInicio = (Integer.parseInt(teclado.readLine()));
+			String hrInicio = teclado.readLine();
+			Date horaInicio = hf.parse(hrInicio);
 			int serieId = serieTurma.get(turmaId);
 			int disciplinaSerieId = Integer.parseInt(disciplinaId + "" + serieId);
 			horarios.add(new Horario(horarioId, diaSemana, disciplinaSerieId, turmaId, horaInicio));
@@ -238,7 +241,7 @@ public class Cadastros {
 		System.out.println("Informe a senha..................: ");
 		String senha = teclado.readLine();
 		retorno.add(new Usuario(usuarioId, login, senha, tipoUsuario));
-		
+
 		System.out.println("Informe o código da turma........: ");
 		System.out.println("Digite '0' para SAIR.............: ");
 		int turma = Integer.parseInt(teclado.readLine());

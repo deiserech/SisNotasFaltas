@@ -1,18 +1,19 @@
 package edu.asselvi.model;
 
+import java.util.Date;
+
 public class Horario {
 	private int HorarioId;
 	private int TurmaId;
 	private int DisciplinaId;
-	private int SerieId;
 	private int diaSemana;
-	private int horaInicio;
+	private String horaInicio;
 	
 	public Horario() {
-		this(0,0,0,0,0);
+		this(0,0,0,0,"");
 	}
 		
-	public Horario(int HorarioId, int diaSemana, int DisciplinaId, int TurmaId, int horaInicio) {
+	public Horario(int HorarioId, int diaSemana, int DisciplinaId, int TurmaId, String horaInicio) {
 		setHorarioId(HorarioId);
 		setDiaSemana(diaSemana);
 		setDisciplinaId(DisciplinaId);
@@ -40,10 +41,10 @@ public class Horario {
 	public void setTurmaId(int TurmaId) {
 		this.TurmaId = TurmaId;
 	}
-	public int getHoraInicio() {
+	public String getHoraInicio() {
 		return horaInicio;
 	}
-	public void setHoraInicio(int horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 	public int getDiaSemana() {
@@ -52,28 +53,10 @@ public class Horario {
 	public void setDiaSemana(int diaSemana) {
 		this.diaSemana = diaSemana;
 	}
-	public int getSerieId() {
-		return SerieId;
-	}
-	
-	public void setSerieId(int SerieId) {
-		this.SerieId = SerieId;
-	}
 		
-	public Horario(int horarioId, int turmaId, int disciplinaId, int serieId, int diaSemana, int horaInicio) {
-		super();
-		HorarioId = horarioId;
-		TurmaId = turmaId;
-		DisciplinaId = disciplinaId;
-		SerieId = serieId;
-		this.diaSemana = diaSemana;
-		this.horaInicio = horaInicio;
-	}
-
 	public String toString() {
 		return    "\n\tCód. Horário............: " + getHorarioId()
 		        + "\n\tCód. Turma..............: " + getTurmaId()
-		        + "\n\tCód. Série..............: " + getSerieId()
 				+ "\n\tCód. Discilina..........: " + getDisciplinaId()
 				+ "\n\tDia da Semana...........: " + getDiaSemana()
 				+ "\n\tHorário Início..........: " + getHoraInicio();

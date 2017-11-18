@@ -22,12 +22,15 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE pessoa (" + "	"
 					+ " pessoaId		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " cdUsuario		INTEGER NOT NULL ," //adicionar foreing key
+					+ " usuarioId		INTEGER NOT NULL ,"
 					+ " perfil 		    INTEGER NOT NULL ," 
 					+ "	nome			VARCHAR(50)  NOT NULL,"  
 					+ "	cpf	     		VARCHAR(14)  NOT NULL," 
 					+ "	dataNascimento	DATE         NOT NULL," 
-					+ "	sexo			CHAR(1) NOT  NULL" + ");");
+					+ "	sexo			CHAR(1) NOT  NULL," 
+					+ "CONSTRAINT `FK__usuario` FOREIGN KEY (`usuarioId`) REFERENCES `usuario` (`usuarioId`)"
+					+");");
+			criaAdmin();
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
@@ -36,6 +39,12 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 		}
 	}
 
+	public void criaAdmin() throws BDException {
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		pessoas.add(new Pessoa(0,1,1,"Administrador","999-999-999-99",new java.util.Date(),ESexo.MASCULINO));		
+		insereTrn(pessoas);
+	}
+	
 	@Override
 	public boolean destroiTabela() throws BDException {
 		Connection conexao = Conexao.getConexao();
@@ -57,7 +66,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 
 			conexao.setAutoCommit(false);
 				PreparedStatement pst = conexao.prepareStatement(
-						"INSERT INTO pessoa ( cdUsuario, perfil, nome, cpf, dataNascimento, sexo) VALUES (?, ?, ?, ?, ?, ?);");
+						"INSERT INTO pessoa ( usuarioId, perfil, nome, cpf, dataNascimento, sexo) VALUES (?, ?, ?, ?, ?, ?);");
 				for (Pessoa pessoa : pessoas) {
 					pst.setInt(1, pessoa.getCdUsuario());
 					pst.setInt(2, pessoa.getPerfil());
@@ -90,7 +99,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			ResultSet rs = pst.executeQuery();
 			return rs.first() ?
 								new Pessoa(rs.getInt("pessoaId"),
-										   rs.getInt("cdUsuario"),
+										   rs.getInt("usuarioId"),
 										   rs.getInt("perfil"),
 										   rs.getString("nome"),
 										   rs.getString("cpf"),
@@ -107,12 +116,12 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	public Pessoa consultaUsuario(int usuarioId) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("SEECT * FROM pessoa WHERE usuarioId = ?;");
+			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa WHERE usuarioId = ?;");
 			pst.setInt(1, usuarioId);
 			ResultSet rs = pst.executeQuery();
 			return rs.first() ?
 								new Pessoa(rs.getInt("pessoaId"),
-										   rs.getInt("cdUsuario"),
+										   rs.getInt("usuarioId"),
 										   rs.getInt("perfil"),
 										   rs.getString("nome"),
 										   rs.getString("cpf"),
@@ -136,7 +145,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			ResultSet rs = st.executeQuery("SELECT * FROM pessoa;");
 			while(rs.next()) {
 				pessoas.add(new Pessoa(rs.getInt("pessoaId"),
-						   rs.getInt("cdUsuario"),
+						   rs.getInt("usuarioId"),
 						   rs.getInt("perfil"),
 						   rs.getString("nome"),
 						   rs.getString("cpf"),
@@ -155,7 +164,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	public boolean altera(Pessoa pessoa) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("UPDATE pessoa SET cdUsuario = ?, perfil, nome = ?, cpf = ?, dataNascimento = ?, sexo = ? WHERE pessoaId = ?;");
+			PreparedStatement pst = conexao.prepareStatement("UPDATE pessoa SET usuarioId = ?, perfil, nome = ?, cpf = ?, dataNascimento = ?, sexo = ? WHERE pessoaId = ?;");
 			pst.setInt(1, pessoa.getCdUsuario());
 			pst.setInt(2, pessoa.getPerfil());
 			pst.setString(3, pessoa.getNome());

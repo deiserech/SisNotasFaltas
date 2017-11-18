@@ -10,6 +10,8 @@ import java.util.List;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.ESexo;
+import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Usuario;
 
 public class UsuarioDAO implements GenericDAO<Usuario>{
@@ -25,12 +27,19 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 					+ " login    		VARCHAR(10) NOT NULL ," 
 					+ " senha 		    VARCHAR(14) NOT NULL ," 
 					+ "	tipoUsuario		INTEGER NOT NULL" + ");");
+			criaAdmin();
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
 		} finally {
 			Conexao.closeConexao();
 		}
+	}
+
+	public void criaAdmin() throws BDException {
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		usuarios.add(new Usuario(1,"admin","admin",1));		
+		insereTrn(usuarios);
 	}
 
 	@Override

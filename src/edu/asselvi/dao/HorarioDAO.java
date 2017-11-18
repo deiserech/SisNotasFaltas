@@ -24,7 +24,6 @@ public class HorarioDAO implements GenericDAO<Horario>{
 					+ " HorarioId		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
 					+ " TurmaId			INTEGER NOT NULL ," //adicionar foreing key
 					+ " DisciplinaId 	INTEGER NOT NULL ," //adicionar foreing key
-					+ "	SerieId			INTEGER  NOT NULL,"  //adicionar foreing key
 					+ "	diaSemana	    INTEGER NOT NULL," 
 					+ "	horaInicio		INTEGER NOT NULL"  + ");");
 			return true;
@@ -57,13 +56,12 @@ public class HorarioDAO implements GenericDAO<Horario>{
 
 			conexao.setAutoCommit(false);
 				PreparedStatement pst = conexao.prepareStatement(
-						"INSERT INTO horario ( TurmaId, DisciplinaId, SerieId, diaSemana, horaInicio) VALUES (?, ?, ?, ?, ?);");
+						"INSERT INTO horario ( TurmaId, DisciplinaId, diaSemana, horaInicio) VALUES (?, ?, ?, ?, ?);");
 				for (Horario horario : horarios) {
 					pst.setInt(1, horario.getTurmaId());
 					pst.setInt(2, horario.getDisciplinaId());
-					pst.setInt(3, horario.getSerieId());
 					pst.setInt(4, horario.getDiaSemana());
-					pst.setInt(5, horario.getHoraInicio());
+					pst.setString(5, horario.getHoraInicio());
 					pst.executeUpdate();
 				}
 			conexao.commit();
@@ -89,11 +87,10 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			ResultSet rs = pst.executeQuery();
 			return rs.first() ?
 								new Horario(rs.getInt("HorarioId"),
+										rs.getInt("diaSemana"),
+										rs.getInt("DisciplinaId"),
 										   rs.getInt("TurmaId"),
-										   rs.getInt("DisciplinaId"),
-										   rs.getInt("SerieId"),
-										   rs.getInt("diaSemana"),
-										   rs.getInt("horaInicio"))
+										   rs.getString("horaInicio"))
 							  : null;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
@@ -113,9 +110,8 @@ public class HorarioDAO implements GenericDAO<Horario>{
 				horarios.add(new Horario(rs.getInt("HorarioId"),
 						   rs.getInt("TurmaId"),
 						   rs.getInt("DisciplinaId"),
-						   rs.getInt("SerieId"),
 						   rs.getInt("diaSemana"),
-						   rs.getInt("horaInicio")));
+						   rs.getString("horaInicio")));
 			}
 			return horarios;
 		} catch (Exception e) {
@@ -138,11 +134,10 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			
 			while(rs.next()) {
 				horario =  new Horario(rs.getInt("HorarioId"),
-						   rs.getInt("TurmaId"),
-						   rs.getInt("DisciplinaId"),
-						   rs.getInt("SerieId"),
-						   rs.getInt("diaSemana"),
-						   rs.getInt("horaInicio"));
+							rs.getInt("diaSemana"),
+							rs.getInt("DisciplinaId"),
+							rs.getInt("TurmaId"),
+							rs.getString("horaInicio"));
 			}
 			return horario; 
 		} catch (Exception e) {
@@ -160,9 +155,8 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			PreparedStatement pst = conexao.prepareStatement("UPDATE horario SET TurmaId = ?, DisciplinaId = ?, SerieId = ?, diaSemana = ?, horaInicio = ? WHERE HorarioId = ?;");
 			pst.setInt(1, horario.getTurmaId());
 			pst.setInt(2, horario.getDisciplinaId());
-			pst.setInt(3, horario.getSerieId());
 			pst.setInt(4, horario.getDiaSemana());
-			pst.setInt(5, horario.getHoraInicio());
+			pst.setString(5, horario.getHoraInicio());
 			
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {

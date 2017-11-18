@@ -22,7 +22,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE serie (" + "	"
-					+ " SerieId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
+					+ " SerieId		 		INTEGER NOT NULL PRIMARY KEY,"
 					+ " CursoId				INTEGER NOT NULL ," //adicionar foreing key
 					+ " descricao 		    VARCHAR(50) NOT NULL ," 
 					+ "	idadeMinima			INTEGER  NOT NULL,"  
@@ -56,12 +56,13 @@ public class SerieDAO implements GenericDAO<Serie>{
 
 			conexao.setAutoCommit(false);
 				PreparedStatement pst = conexao.prepareStatement(
-						"INSERT INTO serie ( CursoId, descricao, idadeMinima, duracao) VALUES (?, ?, ?, ?);");
+						"INSERT INTO serie ( SerieId, CursoId, descricao, idadeMinima, duracao) VALUES (?, ?, ?, ?,?);");
 				for (Serie serie : series) {
-					pst.setInt(1, serie.getCursoId());
-					pst.setString(2, serie.getDescricao());
-					pst.setInt(3, serie.getIdadeMinima());
-					pst.setInt(4, serie.getDuracao());
+					pst.setInt(1, serie.getSerieId());
+					pst.setInt(2, serie.getCursoId());
+					pst.setString(3, serie.getDescricao());
+					pst.setInt(4, serie.getIdadeMinima());
+					pst.setInt(5, serie.getDuracao());
 					pst.executeUpdate();
 				}
 			conexao.commit();
@@ -125,11 +126,12 @@ public class SerieDAO implements GenericDAO<Serie>{
 	public boolean altera(Serie serie) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("UPDATE serie SET CursoId = ?, descricao = ?, idadeMinima = ?, duracao = ? WHERE SerieId = ?;");
-			pst.setInt(1, serie.getCursoId());
-			pst.setString(2, serie.getDescricao());
-			pst.setInt(3, serie.getIdadeMinima());
-			pst.setInt(4, serie.getDuracao());
+			PreparedStatement pst = conexao.prepareStatement("UPDATE serie SET SerieId = ?, CursoId = ?, descricao = ?, idadeMinima = ?, duracao = ? WHERE SerieId = ?;");
+			pst.setInt(1, serie.getSerieId());
+			pst.setInt(2, serie.getCursoId());
+			pst.setString(3, serie.getDescricao());
+			pst.setInt(4, serie.getIdadeMinima());
+			pst.setInt(5, serie.getDuracao());
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage());
@@ -160,7 +162,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 			Statement st = conexao.createStatement();
 			ResultSet rs = st.executeQuery("SELECT MAX(ID) FROM serie;");
 			while(rs.next()) {
-				proximoId = rs.getInt("id") + 1;
+				proximoId = rs.getInt("serieId") + 1;
 			}
 			return proximoId;
 		} catch (Exception e) {
@@ -176,9 +178,9 @@ public class SerieDAO implements GenericDAO<Serie>{
 		Map<Integer, Integer> series = new HashMap<Integer, Integer>();
 		try {
 			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT id FROM serie;");
+			ResultSet rs = st.executeQuery("SELECT serieId FROM serie;");
 			while(rs.next()) {
-				series.put(rs.getInt("id"), rs.getInt("id"));
+				series.put(rs.getInt("serieId"), rs.getInt("serieId"));
 			}
 			return series;
 		} catch (Exception e) {

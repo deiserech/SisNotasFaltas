@@ -175,7 +175,7 @@ public class Cadastros {
 		System.out.println("Informe a senha..................: ");
 		String senha = teclado.readLine();
 
-		retorno.add(new Usuario(usuarioId, login, senha, tipoUsuario));
+		retorno.add(new Usuario(usuarioId, login, senha);
 		retorno.add(new Funcionario(funcionarioId, usuarioId, tipoUsuario, nome, cpf, dataNascimento, sexo));
 
 		if (tipoUsuario == 3) {
@@ -239,7 +239,7 @@ public class Cadastros {
 		String login = teclado.readLine();
 		System.out.println("Informe a senha..................: ");
 		String senha = teclado.readLine();
-		retorno.add(new Usuario(usuarioId, login, senha, tipoUsuario));
+		retorno.add(new Usuario(usuarioId, login, senha);
 
 		System.out.println("Informe o código da turma........: ");
 		System.out.println("Digite '0' para SAIR.............: ");

@@ -21,9 +21,10 @@ public class CursoDAO implements GenericDAO<Curso>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE curso (" + "	"
 					+ " CursoId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " EscolaId			INTEGER NOT NULL ," //adicionar foreing key
+					+ " EscolaId			INTEGER NOT NULL ," 
 					+ " numSeries 		    INTEGER NOT NULL ," 
-					+ "	descricao			VARCHAR(50)  NOT NULL"  
+					+ "	descricao			VARCHAR(50)  NOT NULL,"
+					+ "CONSTRAINT `FK__escolaId` FOREIGN KEY (`escolaId`) REFERENCES `escola` (`escolaId`)"
 					+ ");");
 			return true;
 		} catch (Exception e) {

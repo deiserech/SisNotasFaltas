@@ -23,10 +23,12 @@ public class SerieDAO implements GenericDAO<Serie>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE serie (" + "	"
 					+ " SerieId		 		INTEGER NOT NULL PRIMARY KEY,"
-					+ " CursoId				INTEGER NOT NULL ," //adicionar foreing key
+					+ " CursoId				INTEGER NOT NULL ,"
 					+ " descricao 		    VARCHAR(50) NOT NULL ," 
 					+ "	idadeMinima			INTEGER  NOT NULL,"  
-					+ "	duracao	     		INTEGER  NOT NULL" + ");"); //o que faz com a lista de disciplinas?
+					+ "	duracao	     		INTEGER  NOT NULL," 
+					+ "CONSTRAINT `FK__curso` FOREIGN KEY (`cursoId`) REFERENCES `curso` (`cursoId`)"
+					+ ");"); 
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

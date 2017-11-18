@@ -22,7 +22,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE disciplina (" + "	"
 					+ " DisciplinaId	INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " descricao		VARCHAR(50) NOT NULL " //adicionar foreing key
+					+ " descricao		VARCHAR(50) NOT NULL "
 					+ ");");
 			return true;
 		} catch (Exception e) {

@@ -25,7 +25,10 @@ public class HorarioDAO implements GenericDAO<Horario>{
 					+ " TurmaId			INTEGER NOT NULL ," //adicionar foreing key
 					+ " DisciplinaId 	INTEGER NOT NULL ," //adicionar foreing key
 					+ "	diaSemana	    INTEGER NOT NULL," 
-					+ "	horaInicio		INTEGER NOT NULL"  + ");");
+					+ "	horaInicio		INTEGER NOT NULL,"  
+					+ "CONSTRAINT `FK__turma` FOREIGN KEY (`turmaId`) REFERENCES `turma` (`turmaId`)"
+					+ "CONSTRAINT `FK__disciplina` FOREIGN KEY (`disciplinaId`) REFERENCES `disciplina` (`disciplinaId`)"
+					+ ");");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

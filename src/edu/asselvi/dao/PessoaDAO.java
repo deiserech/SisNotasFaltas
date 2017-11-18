@@ -22,12 +22,14 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE pessoa (" + "	"
 					+ " pessoaId		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " cdUsuario		INTEGER NOT NULL ," //adicionar foreing key
+					+ " cdUsuario		INTEGER NOT NULL ,"
 					+ " perfil 		    INTEGER NOT NULL ," 
 					+ "	nome			VARCHAR(50)  NOT NULL,"  
 					+ "	cpf	     		VARCHAR(14)  NOT NULL," 
 					+ "	dataNascimento	DATE         NOT NULL," 
-					+ "	sexo			CHAR(1) NOT  NULL" + ");");
+					+ "	sexo			CHAR(1) NOT  NULL," 
+					+ "CONSTRAINT `FK__usuario` FOREIGN KEY (`cdUsuario`) REFERENCES `usuario` (`usuarioId`)"
+					+");");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

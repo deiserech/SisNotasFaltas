@@ -22,11 +22,15 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE horario (" + "	"
 					+ " HorarioId		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " TurmaId			INTEGER NOT NULL ," //adicionar foreing key
-					+ " DisciplinaId 	INTEGER NOT NULL ," //adicionar foreing key
-					+ "	SerieId			INTEGER  NOT NULL,"  //adicionar foreing key
+					+ " TurmaId			INTEGER NOT NULL ," 
+					+ " DisciplinaId 	INTEGER NOT NULL ," 
+					+ "	SerieId			INTEGER  NOT NULL,"  
 					+ "	diaSemana	    INTEGER NOT NULL," 
-					+ "	horaInicio		INTEGER NOT NULL"  + ");");
+					+ "	horaInicio		INTEGER NOT NULL,"  
+					+ "CONSTRAINT `FK__turma` FOREIGN KEY (`turmaId`) REFERENCES `turma` (`turmaId`)"
+					+ "CONSTRAINT `FK__disciplina` FOREIGN KEY (`disciplinaId`) REFERENCES `disciplina` (`disciplinaId`)"
+					+ "CONSTRAINT `FK__serie` FOREIGN KEY (`serieId`) REFERENCES `serie` (`serieId`)"
+					+ ");");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

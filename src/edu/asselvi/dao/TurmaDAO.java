@@ -23,10 +23,12 @@ public class TurmaDAO implements GenericDAO<Turma>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE turma (" + "	"
 					+ " TurmaId	 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " SerieId 		INTEGER NOT NULL ," //adicionar foreing key
+					+ " SerieId 		INTEGER NOT NULL ," 
 					+ "	descricao		VARCHAR(15)  NOT NULL," 
 					+ "	vagas	    	INTEGER(3)  NOT NULL,"
-					+ "	ano	     		INTEGER(4)  NOT NULL" + ");");
+					+ "	ano	     		INTEGER(4)  NOT NULL," 
+					+ "CONSTRAINT `FK__serie` FOREIGN KEY (`serieId`) REFERENCES `serie` (`serieId`)"
+					+ ");");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

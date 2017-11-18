@@ -23,10 +23,14 @@ public class NotaDAO implements GenericDAO<Nota>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE nota (" + "	"
 					+ " NotaId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " AlunoId				INTEGER NOT NULL ," //adicionar foreing key
-					+ " DisciplinaId 		INTEGER NOT NULL ," //adicionar foreing key
-					+ "	BimestreId			INTEGER NOT NULL,"  //adicionar foreing key
-					+ "	nota	     		FLOAT  NOT NULL" + ");");
+					+ " AlunoId				INTEGER NOT NULL ," 
+					+ " DisciplinaId 		INTEGER NOT NULL ," 
+					+ "	BimestreId			INTEGER NOT NULL,"  
+					+ "	nota	     		FLOAT  NOT NULL," 
+					+ "CONSTRAINT `FK__aluno` FOREIGN KEY (`alunoId`) REFERENCES `aluno` (`alunoId`)"
+					+ "CONSTRAINT `FK__disciplina` FOREIGN KEY (`disciplinaId`) REFERENCES `disciplina` (`disciplinaId`)"
+					+ "CONSTRAINT `FK__bimestre` FOREIGN KEY (`bimestreId`) REFERENCES `bimestre` (`bimestreId`)"
+					+ ");");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());

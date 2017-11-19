@@ -24,7 +24,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 					+ " HorarioId		 	INTEGER NOT NULL ,"
 					+ " AlunoId				INTEGER NOT NULL ," 
 					+ " BimestreId 		    INTEGER NOT NULL ," 
-					+ "PRIMARY KEY (HorarioId, AlunoId,BimestreId),"
+					+ "PRIMARY KEY (HorarioId, AlunoId,BimestreId)"
 					+ "	dataAula			DATE  NOT NULL,"  
 					+ "	presente	     	VARCHAR(01)  NOT NULL" 
 					+ ");");
@@ -84,7 +84,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 	public Frequencia consulta(int id) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM frequencia WHERE HorarioId = ? AND AlunoId  = ? AND BimestreId = ?");
+			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM frequencia WHERE HorarioId = ?");
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			return rs.first() ?
@@ -166,6 +166,28 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 				proximoId = rs.getInt("id") + 1;
 			}
 			return proximoId;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+
+	public List<Frequencia> consultaFreqAluno(int alunoId) throws BDException {
+		Connection conexao = Conexao.getConexao();
+		List<Frequencia> frequencias = new ArrayList<Frequencia>();
+		try {
+			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM frequencia WHERE AlunoId = ? order by BimestreId, DataAula ");
+			pst.setInt(1, alunoId);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				frequencias.add(new Frequencia(rs.getInt("HorarioId"),
+						   rs.getInt("AlunoId"),
+						   rs.getInt("BimestreId"),
+						   rs.getDate("dataAula"),
+						   rs.getBoolean("presente")));
+			}
+			return frequencias;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {

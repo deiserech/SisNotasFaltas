@@ -104,13 +104,13 @@ public class NotaDAO implements GenericDAO<Nota>{
 		}
 	}
 
-	@Override
-	public List<Nota> consulta() throws BDException {
+	public List<Nota> consultaNotasAluno(int alunoId) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		List<Nota> notas = new ArrayList<Nota>();
 		try {
-			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM pessoa;");
+			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM nota WHERE AlunoId = ? order by BimestreId, DisciplinaId ;");
+			pst.setInt(1, alunoId);
+			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
 				notas.add(new Nota(rs.getInt("NotaId"),
 						   rs.getInt("AlunoId"),
@@ -176,4 +176,26 @@ public class NotaDAO implements GenericDAO<Nota>{
 		}
 	}
 
+	public List<Nota> consulta() throws BDException {
+		Connection conexao = Conexao.getConexao();
+		List<Nota> notas = new ArrayList<Nota>();
+		try {
+			Statement st = conexao.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM pessoa;");
+			while(rs.next()) {
+				notas.add(new Nota(rs.getInt("NotaId"),
+						   rs.getInt("AlunoId"),
+						   rs.getInt("DisciplinaId"),
+						   rs.getInt("BimestreId"),
+						   rs.getFloat("nota")));
+			}
+			return notas;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+	
+	
 }

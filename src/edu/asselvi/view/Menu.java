@@ -33,9 +33,6 @@ public class Menu {
 		System.out.println("|»»    Frequência de Alunos    ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Matrículas............");
-		System.out.println("\t2 - Lançamentos...........");
-		System.out.println("\t3 - Consultas.............");
-		System.out.println("\t4 - Relatórios............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
 		return FuncoesGenericas.lerCampoInt();

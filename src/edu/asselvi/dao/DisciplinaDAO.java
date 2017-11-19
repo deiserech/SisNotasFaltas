@@ -159,33 +159,19 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 		}
 	}
 	
-	public Map<Integer, Integer> consultaIds() throws BDException {
+
+	public Map<Integer, Disciplina> consultaIds() throws BDException {
 		Connection conexao = Conexao.getConexao();
-		Map<Integer, Integer> series = new HashMap<Integer, Integer>();
-		try {
-			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT disciplinaId FROM disciplina;");
-			while(rs.next()) {
-				series.put(rs.getInt("disciplinaId"), rs.getInt("disciplinaId"));
-			}
-			return series;
-		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
-		} finally {
-			Conexao.closeConexao();
-		}
-	}
-	
-	public Map<Integer, String> consultaDescricao() throws BDException {
-		Connection conexao = Conexao.getConexao();
-		Map<Integer, String> series = new HashMap<Integer, String>();
+		Map<Integer, Disciplina> disciplinas = new HashMap<Integer, Disciplina>();
 		try {
 			Statement st = conexao.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM disciplina;");
 			while(rs.next()) {
-				series.put(rs.getInt("disciplinaId"), rs.getString("descricao"));
+				disciplinas.put(rs.getInt("disciplinaId"),
+						new Disciplina(rs.getInt("disciplinaId"),
+										rs.getString("descricao")));
 			}
-			return series;
+			return disciplinas;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {

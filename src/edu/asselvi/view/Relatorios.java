@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
+import edu.asselvi.model.Disciplina;
 import edu.asselvi.model.Frequencia;
 import edu.asselvi.model.Nota;
 import edu.asselvi.model.Pessoa;
@@ -14,7 +15,7 @@ public class Relatorios {
 	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	static DecimalFormat df = new DecimalFormat("#0.00"); 
 
-	public static void relatorioNotas(Turma turma,Map<Integer, Pessoa> alunos, Map<Integer, String> disciplinas, List<Nota> notas ) {
+	public static void relatorioNotas(Turma turma,Map<Integer, Pessoa> alunos, Map<Integer, Disciplina> disciplinas, List<Nota> notas ) {
 
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -29,7 +30,7 @@ public class Relatorios {
 			for (Nota nota : notas) {
 				System.out.println("Bimestre: " + nota.getBimestreId()
 									+ "\tAluno: " + alunos.get(nota.getAlunoId()).getNome()
-									+"\t\tDisciplina: " + disciplinas.get(nota.getDisciplinaId())
+									+"\t\tDisciplina: " + disciplinas.get(nota.getDisciplinaId()).getDescricao()
 									+ "\tNota: " + (df.format(nota.getNota())));
 			}
 		} else {
@@ -38,10 +39,10 @@ public class Relatorios {
 
 	}
 
-	public static void relatorioFrequencia(Turma turma,Map<Integer, Pessoa> alunos, Map<Integer, String> disciplinas, List<Frequencia> frequencias ) {
+	public static void relatorioFrequencia(Turma turma,Map<Integer, Pessoa> alunos, Map<Integer, Disciplina> disciplinas, List<Frequencia> frequencias ) {
 		System.out.println("");
 		System.out.println("----------------------------------");
-		System.out.println("|»»    Relatório de Notas     ««|");
+		System.out.println("|»»  Relatório de Frequência   ««|");
 		System.out.println("----------------------------------");
 		System.out.println("");
 		

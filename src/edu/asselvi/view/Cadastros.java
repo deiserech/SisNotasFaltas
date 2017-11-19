@@ -1,7 +1,6 @@
 package edu.asselvi.view;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -45,7 +44,7 @@ public class Cadastros {
 		return escolas;
 	}
 
-	public static List<Curso> cadastraCurso(Map<Integer, Integer> escolas) {
+	public static List<Curso> cadastraCurso(Map<Integer, Escola> escolas) {
 		char novo = 'S';
 		List<Curso> cursos = new ArrayList<Curso>();
 		System.out.println("");
@@ -64,9 +63,12 @@ public class Cadastros {
 			int numSeries = 0;
 			do {
 				System.out.println("Informe o código da escola.......: ");
+				for(Escola esc : escolas.values()) {
+					System.out.println(esc.getEscolaId() + " - " + esc.getDescricao());
+				}
 				escolaId = FuncoesGenericas.lerCampoInt();
 				if (escolaId != 0) {
-					if (!escolas.values().contains(escolaId)) {
+					if (!(escolas.get(escolaId) instanceof Escola)) {
 						System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 						escolaId = 0;
 					}
@@ -86,8 +88,8 @@ public class Cadastros {
 		return cursos;
 	}
 
-	public static List<Object> cadastraSerie(Map<Integer, Integer> seriesCad, Map<Integer, Integer> cursosCad,
-			Map<Integer, Integer> discCad) {
+	public static List<Object> cadastraSerie(Map<Integer, Serie> seriesCad, Map<Integer, Curso> cursosCad,
+			Map<Integer, Disciplina> discCad) {
 		List<Object> retorno = new ArrayList<Object>();
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -105,7 +107,7 @@ public class Cadastros {
 			System.out.println("Informe o número da série........: ");
 			serieId = FuncoesGenericas.lerCampoInt();
 			if (serieId > 0 && serieId < 10) {
-				if (seriesCad.values().contains(serieId)) {
+				if (seriesCad.get(serieId) instanceof Serie) {
 					System.out.println(EErrosIO.INSERE_EXISTENTE.getMensagem());
 					serieId = FuncoesGenericas.lerCampoInt();
 				} else {
@@ -122,9 +124,13 @@ public class Cadastros {
 		int cursoId = 0;
 		do {
 			System.out.println("Informe o código do curso........: ");
+			for(Curso cs : cursosCad.values()) {
+				System.out.println(cs.getCursoId() + " - " + cs.getDescricao());
+			}
+		
 			cursoId = FuncoesGenericas.lerCampoInt();
 			if (cursoId != 0) {
-				if (!cursosCad.values().contains(cursoId)) {
+				if (!(cursosCad.get(cursoId) instanceof Curso)) {
 					System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 					cursoId = 0;
 				}
@@ -138,12 +144,14 @@ public class Cadastros {
 		retorno.add(new Serie(serieId, cursoId, descricao, idadeMinima, duracao));
 
 		System.out.println("Informe o código das disciplinas.: ");
+		for(Disciplina dc : discCad.values()) {
+			System.out.println(dc.getDisciplinaId() + " - " + dc.getDescricao());
+		}
 		System.out.println("Digite '0' para SAIR.............: ");
 		int disciplina = FuncoesGenericas.lerCampoInt();
 		while (disciplina != 0) {
-			if (discCad.values().contains(disciplina)) {
+			if ((discCad.get(disciplina) instanceof Disciplina)) {
 				retorno.add(new DisciplinaSerie(disciplina, serieId));
-				discCad.put(disciplina, disciplina);
 			} else {
 				System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
 			}
@@ -154,7 +162,7 @@ public class Cadastros {
 		return retorno;
 	};
 
-	public static List<Turma> cadastraTurma(Map<Integer, Integer> seriesCad) {
+	public static List<Turma> cadastraTurma(Map<Integer, Serie> seriesCad) {
 		char novo = 'S';
 		List<Turma> turmas = new ArrayList<Turma>();
 		System.out.println("");
@@ -175,9 +183,12 @@ public class Cadastros {
 			int serieId = 0;
 			do {
 				System.out.println("Informe o código da série........: ");
+				for(Serie sr : seriesCad.values()) {
+					System.out.println(sr.getSerieId() + " - " + sr.getDescricao() );
+				}
 				serieId = FuncoesGenericas.lerCampoInt();
 				if (serieId != 0) {
-					if (!seriesCad.values().contains(serieId)) {
+					if (!(seriesCad.get(serieId) instanceof Serie)) {
 						System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 						serieId = 0;
 					}
@@ -217,7 +228,7 @@ public class Cadastros {
 		return disciplinas;
 	};
 
-	public static List<Object> cadastraFuncionario(int funcionarioId, int usuarioId, Map<Integer, Integer> discCad) {
+	public static List<Object> cadastraFuncionario(int funcionarioId, int usuarioId, Map<Integer, Disciplina> discCad) {
 		List<Object> retorno = new ArrayList<Object>();
 
 		System.out.println("");
@@ -266,12 +277,14 @@ public class Cadastros {
 
 		if (tipoUsuario == 3) {
 			System.out.println("Informe o código das disciplinas.: ");
+			for(Disciplina dc : discCad.values()) {
+				System.out.println(dc.getDisciplinaId() + " - " + dc.getDescricao());
+			}
 			System.out.println("Digite '0' para SAIR.............: ");
 			int disciplina = FuncoesGenericas.lerCampoInt();
 			while (disciplina != 0) {
-				if (discCad.values().contains(disciplina)) {
+				if ((discCad.get(disciplina) instanceof Disciplina)) {
 					retorno.add(new DisciplinaProfessor(disciplina, funcionarioId));
-					discCad.put(disciplina, disciplina);
 				} else {
 					System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
 				}
@@ -282,10 +295,9 @@ public class Cadastros {
 		return retorno;
 	};
 
-	public static List<Horario> cadastraHorario(Map<Integer, Integer> serieTurma, Map<Integer, Integer> discCad,
-			Map<Integer, Integer> turmaCad) {
+	public static List<Horario> cadastraHorario(Map<Integer, Integer> serieTurma, Map<Integer, Disciplina> discCad,
+			Map<Integer, Turma> turmaCad) {
 		char novo = 'S';
-		System.out.println(serieTurma.values().toString());
 		List<Horario> horarios = new ArrayList<Horario>();
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -311,9 +323,12 @@ public class Cadastros {
 			int disciplinaId = 0;
 			do {
 				System.out.println("Informe o código da disciplina...: ");
+				for(Disciplina dc : discCad.values()) {
+					System.out.println(dc.getDisciplinaId() + " - " + dc.getDescricao());
+				}
 				disciplinaId = FuncoesGenericas.lerCampoInt();
 				if (disciplinaId != 0) {
-					if (!discCad.values().contains(disciplinaId)) {
+					if (!(discCad.get(disciplinaId) instanceof Disciplina)) {
 						System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 						disciplinaId = 0;
 					}
@@ -323,9 +338,13 @@ public class Cadastros {
 			int turmaId = 0;
 			do {
 				System.out.println("Informe o código da turma........: ");
+				for(Turma tm : turmaCad.values()) {
+					System.out.println(tm.getTurmaId() + " - " + tm.getDescricao());
+				}
+				
 				turmaId = FuncoesGenericas.lerCampoInt();
 				if (turmaId != 0) {
-					if (!turmaCad.values().contains(turmaId)) {
+					if (!(turmaCad.get(turmaId) instanceof Turma)) {
 						System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 						turmaId = 0;
 					}
@@ -343,7 +362,7 @@ public class Cadastros {
 		return horarios;
 	};
 
-	public static List<Object> cadastraAluno(int alunoId, int usuarioId, Map<Integer, Integer> turmasCad) {
+	public static List<Object> cadastraAluno(int alunoId, int usuarioId, Map<Integer, Turma> turmasCad) {
 		List<Object> retorno = new ArrayList<Object>();
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -380,17 +399,16 @@ public class Cadastros {
 		String senha = FuncoesGenericas.lerCampoString();
 		retorno.add(new Usuario(usuarioId, login, senha));
 		System.out.println("Informe o código da turma........: ");
+		for(Turma tm : turmasCad.values()) {
+			System.out.println(tm.getTurmaId() + " - " + tm.getDescricao());
+		}
 		System.out.println("Digite '0' para SAIR.............: ");
 		List<Integer> turmas = new ArrayList<Integer>();
 		int turmaId = FuncoesGenericas.lerCampoInt();
 		while (turmaId != 0) {
-			if (turmasCad.values().contains(turmaId)) {
-				if(!turmas.contains(turmaId)) {
-					retorno.add(new AlunoTurma(alunoId, turmaId));
-					turmas.add(turmaId);
-				}else{
-					System.out.println(EErrosIO.INSERE_EXISTENTE.getMensagem());
-				}
+			if (turmasCad.get(turmaId) instanceof Turma)  {
+				retorno.add(new AlunoTurma(alunoId, turmaId));
+				turmas.add(turmaId);
 			} else {
 				System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
 			}

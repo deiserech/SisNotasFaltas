@@ -190,14 +190,19 @@ public class TurmaDAO implements GenericDAO<Turma>{
 		}
 	}
 	
-	public Map<Integer, Integer> consultaIds() throws BDException {
+	public Map<Integer, Turma> consultaIds() throws BDException {
 		Connection conexao = Conexao.getConexao();
-		Map<Integer, Integer> series = new HashMap<Integer, Integer>();
+		Map<Integer, Turma> series = new HashMap<Integer, Turma>();
 		try {
 			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT turmaId FROM turma;");
+			ResultSet rs = st.executeQuery("SELECT * FROM turma;");
 			while(rs.next()) {
-				series.put(rs.getInt("turmaId"), rs.getInt("turmaId"));
+				series.put(rs.getInt("turmaId"), 
+						new Turma(rs.getInt("turmaId"),
+								   rs.getInt("SerieId"),
+								   rs.getString("descricao"),
+								   rs.getInt("vagas"),
+								   rs.getInt("ano")));
 			}
 			return series;
 		} catch (Exception e) {

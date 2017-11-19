@@ -169,14 +169,18 @@ public class CursoDAO implements GenericDAO<Curso>{
 		}
 	}
 	
-	public Map<Integer, Integer> consultaIds() throws BDException {
+	public Map<Integer, Curso> consultaIds() throws BDException {
 		Connection conexao = Conexao.getConexao();
-		Map<Integer, Integer> series = new HashMap<Integer, Integer>();
+		Map<Integer, Curso> series = new HashMap<Integer, Curso>();
 		try {
 			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT cursoId FROM curso;");
+			ResultSet rs = st.executeQuery("SELECT * FROM curso;");
 			while(rs.next()) {
-				series.put(rs.getInt("cursoId"), rs.getInt("cursoId"));
+				series.put(rs.getInt("cursoId"), 
+						new Curso(rs.getInt("cursoId"),
+								   rs.getInt("EscolaId"),
+								   rs.getInt("numSeries"),
+								   rs.getString("descricao")));
 			}
 			return series;
 		} catch (Exception e) {

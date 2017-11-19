@@ -175,14 +175,19 @@ public class SerieDAO implements GenericDAO<Serie>{
 	}
 	
 	
-	public Map<Integer, Integer> consultaIds() throws BDException {
+	public Map<Integer, Serie> consultaIds() throws BDException {
 		Connection conexao = Conexao.getConexao();
-		Map<Integer, Integer> series = new HashMap<Integer, Integer>();
+		Map<Integer, Serie> series = new HashMap<Integer, Serie>();
 		try {
 			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT serieId FROM serie;");
+			ResultSet rs = st.executeQuery("SELECT * FROM serie;");
 			while(rs.next()) {
-				series.put(rs.getInt("serieId"), rs.getInt("serieId"));
+				series.put(rs.getInt("serieId"),
+						new Serie(rs.getInt("serieId"),
+								   rs.getInt("CursoId"),
+								   rs.getString("descricao"),
+								   rs.getInt("idadeMinima"),
+								   rs.getInt("duracao")));
 			}
 			return series;
 		} catch (Exception e) {

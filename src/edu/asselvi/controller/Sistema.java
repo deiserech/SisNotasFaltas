@@ -290,14 +290,14 @@ public class Sistema {
 					case 1:
 						Relatorios.relatorioNotas(turmaObj,
 									alunos,
-									disciplinasDao.consultaDescricao(),
+									disciplinasDao.consultaIds(),
 									nota.consultaNotasTurma(alunos)
 								);
 						break;
 					case 2:
 						Relatorios.relatorioFrequencia(turmaObj,
 								alunos,
-								disciplinasDao.consultaDescricao(),
+								disciplinasDao.consultaIds(),
 								frequencia.consultaFreqTurma(alunos)
 								);
 						break;
@@ -326,7 +326,7 @@ public class Sistema {
 					switch (opcaoCon) {
 					case 1:
 						Consulta.consultaNota(notaDao.consultaNotasAluno(idPessoaLogada),
-								disciplinaDao.consultaDescricao());
+								disciplinaDao.consultaIds());
 						break;
 					case 2:
 						Consulta.consultaFrequencia(frequenciaDao.consultaFreqAluno(idPessoaLogada));

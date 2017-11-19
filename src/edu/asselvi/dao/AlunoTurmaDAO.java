@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.model.AlunoTurma;
 
 
@@ -27,7 +27,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 					+ " );");
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -41,7 +41,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 			st.execute("DROP TABLE alunoTurma;");
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -66,9 +66,9 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 			try {
 				conexao.rollback();
 			} catch (Exception e2) {
-				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage());
+				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage(), this.getClass().getSimpleName());
 			}
-			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage());
+			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -89,7 +89,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 			ResultSet rs = pst.executeQuery();
 			return rs.first() ? new AlunoTurma(rs.getInt("AlunoId"), rs.getInt("TurmaId")) : null;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -107,7 +107,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 			}
 			return alunoTurmas;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -122,7 +122,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 			pst.setInt(2, alunoTurma.getTurmaId());
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -142,7 +142,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 			pst.setInt(2, TurmaId);
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage());
+			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}

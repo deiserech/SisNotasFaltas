@@ -1,9 +1,5 @@
 package edu.asselvi.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.AlunoTurmaDAO;
 import edu.asselvi.dao.BimestreDAO;
@@ -19,8 +15,6 @@ import edu.asselvi.dao.PessoaDAO;
 import edu.asselvi.dao.SerieDAO;
 import edu.asselvi.dao.TurmaDAO;
 import edu.asselvi.dao.UsuarioDAO;
-import edu.asselvi.enumerador.ESexo;
-import edu.asselvi.model.Pessoa;
 
 public class TestaBanco {
 	public static void main(String[] args) {
@@ -94,18 +88,19 @@ public class TestaBanco {
 		NotaDAO notaDAO = new NotaDAO();
 		FrequenciaDAO frequenciaDAO = new FrequenciaDAO();
 		try {
-//			usuarioDAO.criaTabela();
-//			pessoaDAO.criaTabela();
-//			escolaDAO.criaTabela();
-//			disciplinaDAO.criaTabela();
-//			cursoDAO.criaTabela();
-//			bimestreDAO.criaTabela();
-//			disciplinaSerieDAO.criaTabela();
-//			disciplinaProfessorDAO.criaTabela();
-//			alunoTurmaDAO.criaTabela();			
+			horarioDAO.criaTabela();
+			usuarioDAO.criaTabela();
+			pessoaDAO.criaTabela();
+			escolaDAO.criaTabela();
+			disciplinaDAO.criaTabela();
+			cursoDAO.criaTabela();
+			bimestreDAO.criaTabela();
+			disciplinaSerieDAO.criaTabela();
+			disciplinaProfessorDAO.criaTabela();
+			alunoTurmaDAO.criaTabela();			
 			notaDAO.criaTabela();
-//			serieDAO.criaTabela();
-//			turmaDAO.criaTabela();
+			serieDAO.criaTabela();
+			turmaDAO.criaTabela();
 		} catch (BDException e) {
 			System.out.println(e.getMessage());
 		}

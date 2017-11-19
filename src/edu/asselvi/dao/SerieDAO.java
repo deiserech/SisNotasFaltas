@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.model.Serie;
 
 public class SerieDAO implements GenericDAO<Serie>{
@@ -31,7 +31,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 					+ ");"); 
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -45,7 +45,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 			st.execute("DROP TABLE serie;");
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -73,9 +73,9 @@ public class SerieDAO implements GenericDAO<Serie>{
 			try {
 				conexao.rollback();
 			} catch (Exception e2) {
-				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage());
+				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage(), this.getClass().getSimpleName());
 			}
-			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage());
+			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -96,7 +96,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 										   rs.getInt("duracao"))
 							  : null;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -118,7 +118,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 			}
 			return series;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -136,7 +136,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 			pst.setInt(5, serie.getDuracao());
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -150,7 +150,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 			pst.setInt(1, id);
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage());
+			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -168,7 +168,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 			}
 			return proximoId;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -186,7 +186,7 @@ public class SerieDAO implements GenericDAO<Serie>{
 			}
 			return series;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}

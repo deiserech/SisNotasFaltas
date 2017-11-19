@@ -17,18 +17,17 @@ import edu.asselvi.dao.DisciplinaProfessorDAO;
 import edu.asselvi.dao.DisciplinaSerieDAO;
 import edu.asselvi.dao.EscolaDAO;
 import edu.asselvi.dao.FrequenciaDAO;
-import edu.asselvi.dao.FuncionarioDAO;
 import edu.asselvi.dao.HorarioDAO;
 import edu.asselvi.dao.NotaDAO;
 import edu.asselvi.dao.PessoaDAO;
 import edu.asselvi.dao.SerieDAO;
 import edu.asselvi.dao.TurmaDAO;
 import edu.asselvi.dao.UsuarioDAO;
+import edu.asselvi.model.Aluno;
 import edu.asselvi.model.AlunoTurma;
 import edu.asselvi.model.DisciplinaProfessor;
 import edu.asselvi.model.DisciplinaSerie;
-import edu.asselvi.model.Frequencia;
-import edu.asselvi.model.Nota;
+import edu.asselvi.model.Funcionario;
 import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Serie;
 import edu.asselvi.model.Turma;
@@ -53,7 +52,7 @@ public class Sistema {
 	}
 
 	private static void insereBanco(List<Object> lista) throws BDException {
-		PessoaDAO pessDao = new PessoaDAO();
+		PessoaDAO pessoaDao = new PessoaDAO();
 		UsuarioDAO usuarioDao = new UsuarioDAO();
 		SerieDAO serieDao = new SerieDAO();
 		TurmaDAO turmaDao = new TurmaDAO();
@@ -61,7 +60,8 @@ public class Sistema {
 		DisciplinaSerieDAO discSerieDao = new DisciplinaSerieDAO();
 		AlunoTurmaDAO AlunoturmaDao = new AlunoTurmaDAO();
 
-		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		List<Pessoa> alunos = new ArrayList<Pessoa>();
+		List<Pessoa> funcionarios = new ArrayList<Pessoa>();
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		List<Serie> series = new ArrayList<Serie>();
 		List<Turma> turmas = new ArrayList<Turma>();
@@ -70,8 +70,12 @@ public class Sistema {
 		List<AlunoTurma> alunosTurma = new ArrayList<AlunoTurma>();
 
 		for (Object obj : lista) {
-			if (obj instanceof Pessoa) {
-				pessoas.add((Pessoa) obj);
+			if (obj instanceof Aluno) {
+				alunos.add((Aluno) obj);
+				continue;
+			}
+			if (obj instanceof Funcionario) {
+				funcionarios.add((Funcionario) obj);
 				continue;
 			}
 			if (obj instanceof Serie) {
@@ -100,11 +104,17 @@ public class Sistema {
 			}
 		}
 
-		if (series != null) {
-			serieDao.insereTrn(series);
-		}
 		if (usuarios != null) {
 			usuarioDao.insereTrn(usuarios);
+		}
+		if (alunos != null) {
+			pessoaDao.insereTrn(alunos);
+		}
+		if (funcionarios != null) {
+			pessoaDao.insereTrn(funcionarios);
+		}
+		if (series != null) {
+			serieDao.insereTrn(series);
 		}
 		if (turmas != null) {
 			turmaDao.insereTrn(turmas);
@@ -120,7 +130,7 @@ public class Sistema {
 		}
 	}
 
-	public static void main(String[] args) throws IOException, BDException, ParseException {
+	public static void main(String[] args) throws IOException, BDException, ParseException, InputException {
 		EscolaDAO escola = new EscolaDAO();
 		PessoaDAO pessoa = new PessoaDAO();
 		AlunoDAO aluno = new AlunoDAO();
@@ -136,21 +146,22 @@ public class Sistema {
 		DisciplinaProfessorDAO discProf = new DisciplinaProfessorDAO();
 		Pessoa pessoaLogada = new Pessoa();
 		int opcao = 0;
-		pessoaLogada = login();
-		switch (pessoaLogada.getPerfil()) {
-		case 1:
-			opcao = Menu.menuCoordenador();
-			break;
-		case 2:
-			opcao = Menu.menuSecretaria();
-			break;
-		case 3:
-			opcao = Menu.menuProfessor();
-			break;
-		case 4:
-			opcao = Menu.menuAluno();
-			break;
-		}
+//		pessoaLogada = login();
+//		switch (pessoaLogada.getPerfil()) {
+//		case 1:
+//			opcao = Menu.menuCoordenador();
+//			break;
+//		case 2:
+//			opcao = Menu.menuSecretaria();
+//			break;
+//		case 3:
+//			opcao = Menu.menuProfessor();
+//			break;
+//		case 4:
+//			opcao = Menu.menuAluno();
+//			break;
+//		}
+		opcao = Menu.menuCoordenador();
 		while (opcao != 0) {
 			switch (opcao) {
 			case 1:
@@ -161,25 +172,25 @@ public class Sistema {
 						escola.insereTrn(Cadastros.cadastraEscola());
 						break;
 					case 2:
-						curso.insereTrn(Cadastros.cadastraCurso());
+						curso.insereTrn(Cadastros.cadastraCurso(escola.consultaIds()));
 						break;
 					case 3:
 						disciplina.insereTrn(Cadastros.cadastraDisciplina());
 						break;
 					case 4:
-						insereBanco(Cadastros.cadastraSerie(serie.consultaIds()));
+						insereBanco(Cadastros.cadastraSerie(serie.consultaIds(), curso.consultaIds(), disciplina.consultaIds()));
 						break;
 					case 5:
-						turma.insereTrn(Cadastros.cadastraTurma());
+						turma.insereTrn(Cadastros.cadastraTurma(serie.consultaIds()));
 						break;
 					case 6:
 						bimestre.insereTrn(Cadastros.cadastraBimestre());
 						break;
 					case 7:
-						horario.insereTrn(Cadastros.cadastraHorario(turma.consultaSerieTurmas()));
+						horario.insereTrn(Cadastros.cadastraHorario(turma.consultaSerieTurmas(), disciplina.consultaIds(), turma.consultaIds()));
 						break;
 					case 8:
-						insereBanco(Cadastros.cadastraFuncionario(pessoa.retornaProximoId(), usuario.retornaProximoId()));
+						insereBanco(Cadastros.cadastraFuncionario(pessoa.retornaProximoId(), usuario.retornaProximoId(), disciplina.consultaIds()));
 						break;
 					}
 					opcaoCad = Menu.menuCadastros();
@@ -189,7 +200,7 @@ public class Sistema {
 				while (opcaoMat != 0) {
 					switch (opcaoMat) {
 					case 1:
-						insereBanco(Cadastros.cadastraAluno(pessoa.retornaProximoId(), usuario.retornaProximoId()));
+						insereBanco(Cadastros.cadastraAluno(pessoa.retornaProximoId(), usuario.retornaProximoId(), turma.consultaIds()));
 						break;
 					}
 				}

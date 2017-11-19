@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Aluno;
 
@@ -83,7 +83,7 @@ public class AlunoDAO implements GenericDAO<Aluno>{
 			
 			return alunos;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName() );
 		} finally {
 			Conexao.closeConexao();
 		}

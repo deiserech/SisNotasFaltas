@@ -5,11 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.model.Disciplina;
 
 
@@ -26,7 +28,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 					+ ");");
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -40,7 +42,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 			st.execute("DROP TABLE disciplina;");
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -64,9 +66,9 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 			try {
 				conexao.rollback();
 			} catch (Exception e2) {
-				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage());
+				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage(), this.getClass().getSimpleName());
 			}
-			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage());
+			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -84,7 +86,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 										   rs.getString("descricao"))
 							  : null;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -104,7 +106,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 			}
 			return disciplinas;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -119,7 +121,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 			pst.setString(1, disciplina.getDescricao());
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -133,7 +135,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 			pst.setInt(1, id);
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage());
+			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -151,10 +153,28 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 			}
 			return proximoId;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
 	}
+	
+	public Map<Integer, Integer> consultaIds() throws BDException {
+		Connection conexao = Conexao.getConexao();
+		Map<Integer, Integer> series = new HashMap<Integer, Integer>();
+		try {
+			Statement st = conexao.createStatement();
+			ResultSet rs = st.executeQuery("SELECT disciplinaId FROM disciplina;");
+			while(rs.next()) {
+				series.put(rs.getInt("disciplinaId"), rs.getInt("disciplinaId"));
+			}
+			return series;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+
 
 }

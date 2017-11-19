@@ -4,12 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import edu.asselvi.controller.FuncoesGenericas;
+import edu.asselvi.enumerador.EErrosIO;
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Aluno;
 import edu.asselvi.model.AlunoTurma;
@@ -30,7 +32,7 @@ public class Cadastros {
 	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	static DateFormat hf = new SimpleDateFormat("hh:mm:ss");
 
-	public static List<Escola> cadastraEscola() throws IOException {
+	public static List<Escola> cadastraEscola() {
 		List<Escola> escolas = new ArrayList<Escola>();
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -38,12 +40,12 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		int escolaId = 0;
 		System.out.println("Informe o nome da escola.........: ");
-		String descricao = (teclado.readLine());
+		String descricao = FuncoesGenericas.lerCampoString();
 		escolas.add(new Escola(escolaId, descricao));
 		return escolas;
 	}
 
-	public static List<Curso> cadastraCurso() throws IOException {
+	public static List<Curso> cadastraCurso(Map<Integer, Integer> escolas) {
 		char novo = 'S';
 		List<Curso> cursos = new ArrayList<Curso>();
 		System.out.println("");
@@ -52,59 +54,95 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
 			System.out.println("Informe a descrição do curso.....: ");
-			String descricao = (teclado.readLine());
-			System.out.println("Informe o código da escola.......: ");
-			int escolaId = (Integer.parseInt(teclado.readLine()));
-			System.out.println("Informe o número de séries.......: ");
-			int numSeries = (Integer.parseInt(teclado.readLine()));
+			String descricao = FuncoesGenericas.lerCampoString();
+			int escolaId = 0;
+			int numSeries = 0;
+			do {
+				System.out.println("Informe o código da escola.......: ");
+				escolaId = FuncoesGenericas.lerCampoInt();
+				if (escolaId != 0) {
+					if (!escolas.values().contains(escolaId)) {
+						System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
+						escolaId = 0;
+					}
+				}
+			} while (escolaId == 0);
+			do {
+				System.out.println("Informe o número de séries.......: ");
+				numSeries = FuncoesGenericas.lerCampoInt();
+			} while (numSeries == 0);
 			cursos.add(new Curso(0, escolaId, numSeries, descricao));
 
 			System.out.println("Deseja cadastrar novo curso?(S/N).: ");
-			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
+			novo = Character.toUpperCase((FuncoesGenericas.lerCampoString().charAt(0)));
 		}
 		return cursos;
 	}
 
-	public static List<Object> cadastraSerie(Map<Integer, Integer> seriesCad) throws IOException {
+	public static List<Object> cadastraSerie(Map<Integer, Integer> seriesCad, Map<Integer, Integer> cursosCad,
+			Map<Integer, Integer> discCad) {
 		List<Object> retorno = new ArrayList<Object>();
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Séries      ««|");
 		System.out.println("----------------------------------");
 
-		System.out.println("Informe o número da série........: ");
-		int serieId = (Integer.parseInt(teclado.readLine()));
+		int serieId = 0;
 		boolean serieOk = false;
 		do {
-			if (seriesCad.values().contains(serieId)) {
-				System.out.println("Série já cadastrada. Informe nova Série:");
-				serieId = (Integer.parseInt(teclado.readLine()));
+			System.out.println("Informe o número da série........: ");
+			serieId = FuncoesGenericas.lerCampoInt();
+			if (serieId > 0 && serieId < 10) {
+				if (seriesCad.values().contains(serieId)) {
+					System.out.println(EErrosIO.INSERE_EXISTENTE.getMensagem());
+					serieId = FuncoesGenericas.lerCampoInt();
+				} else {
+					serieOk = true;
+				}
 			} else {
-				serieOk = true;
+				System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 			}
-		} while (!serieOk);
+		} while (!serieOk || serieId == 0);
 
-		System.out.println("Informe a descrição da série.....: ");
-		String descricao = (teclado.readLine());
-		System.out.println("Informe o código do curso........: ");
-		int cursoId = (Integer.parseInt(teclado.readLine()));
+		System.out.println("Informe a descrição..............: ");
+		String descricao = FuncoesGenericas.lerCampoString();
+
+		int cursoId = 0;
+		do {
+			System.out.println("Informe o código do curso........: ");
+			cursoId = FuncoesGenericas.lerCampoInt();
+			if (cursoId != 0) {
+				if (!cursosCad.values().contains(cursoId)) {
+					System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
+					cursoId = 0;
+				}
+			}
+		} while (cursoId == 0);
+
 		System.out.println("Informe a idade mínima...........: ");
-		int idadeMinima = (Integer.parseInt(teclado.readLine()));
+		int idadeMinima = FuncoesGenericas.lerCampoInt();
 		System.out.println("Informe a duração(meses).........: ");
-		int duracao = ((Integer.parseInt(teclado.readLine())));
+		int duracao = FuncoesGenericas.lerCampoInt();
 		retorno.add(new Serie(serieId, cursoId, descricao, idadeMinima, duracao));
 
 		System.out.println("Informe o código das disciplinas.: ");
 		System.out.println("Digite '0' para SAIR.............: ");
-		int disciplina = Integer.parseInt(teclado.readLine());
+		int disciplina = FuncoesGenericas.lerCampoInt();
 		while (disciplina != 0) {
-			retorno.add(new DisciplinaSerie(disciplina, serieId));
-			disciplina = Integer.parseInt(teclado.readLine());
+			if (discCad.values().contains(disciplina)) {
+				retorno.add(new DisciplinaSerie(disciplina, serieId));
+				discCad.put(disciplina, disciplina);
+			} else {
+				System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
+			}
+
+			System.out.println("Informe o código das disciplinas.: ");
+			disciplina = FuncoesGenericas.lerCampoInt();
 		}
 		return retorno;
 	};
 
-	public static List<Turma> cadastraTurma() throws IOException {
+	public static List<Turma> cadastraTurma(Map<Integer, Integer> seriesCad) {
 		char novo = 'S';
 		List<Turma> turmas = new ArrayList<Turma>();
 		System.out.println("");
@@ -114,17 +152,29 @@ public class Cadastros {
 		while (novo == 'S') {
 			int turmaId = 0;
 			System.out.println("Informe a descrição da turma.....: ");
-			String descricao = (teclado.readLine());
-			System.out.println("Informe o código da série........: ");
-			int serieId = (Integer.parseInt(teclado.readLine()));
+			String descricao = FuncoesGenericas.lerCampoString();
+
+			int serieId = 0;
+			do {
+				System.out.println("Informe o código da série........: ");
+				serieId = FuncoesGenericas.lerCampoInt();
+				if (serieId != 0) {
+					if (!seriesCad.values().contains(serieId)) {
+						System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
+						serieId = 0;
+					}
+				}
+			} while (serieId == 0);
+
 			System.out.println("Informe o número de vagas........: ");
-			int vagas = (Integer.parseInt(teclado.readLine()));
+			int vagas = FuncoesGenericas.lerCampoInt();
 			System.out.println("Informe o ano correspondente.....: ");
-			int ano = ((Integer.parseInt(teclado.readLine())));
+			int ano = FuncoesGenericas.lerCampoInt();
 			turmas.add(new Turma(turmaId, serieId, descricao, vagas, ano));
 
 			System.out.println("Deseja cadastrar nova turma?(S/N).: ");
-			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
+			novo = FuncoesGenericas.lerCampoChar();
+			;
 		}
 		return turmas;
 	};
@@ -143,13 +193,13 @@ public class Cadastros {
 			disciplinas.add(new Disciplina(disciplinaId, descricao));
 
 			System.out.println("Deseja cadastrar nova disciplina?(S/N).: ");
-			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
+			novo = FuncoesGenericas.lerCampoChar();
+			;
 		}
 		return disciplinas;
 	};
 
-	public static List<Object> cadastraFuncionario(int funcionarioId, int usuarioId)
-			throws IOException, ParseException {
+	public static List<Object> cadastraFuncionario(int funcionarioId, int usuarioId, Map<Integer, Integer> discCad) {
 		List<Object> retorno = new ArrayList<Object>();
 
 		System.out.println("");
@@ -158,22 +208,36 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 
 		System.out.println("Informe o nome...................: ");
-		String nome = (teclado.readLine());
+		String nome = FuncoesGenericas.lerCampoString();
 		System.out.println("Informe o cpf....................: ");
-		String cpf = (teclado.readLine());
-		System.out.println("Informe a data de nascimento.....: ");
-		String data = teclado.readLine();
-		Date dataNascimento = sdf.parse(data);
-		System.out.println("Informe o sexo...................: ");
-		ESexo sexo = (ESexo.valueOf(teclado.readLine()));
+		String cpf = FuncoesGenericas.lerCampoString();
 
-		System.out.println("Informe o perfil do usuário......: ");
-		System.out.println("(1-Coordenador/2-Secretária/3-Professor)");
-		int tipoUsuario = Integer.parseInt(teclado.readLine());
+		Date dataNascimento = null;
+		do {
+			System.out.println("Informe a data de nascimento.....: ");
+			dataNascimento = FuncoesGenericas.lerData();
+		} while (dataNascimento == null);
+
+		ESexo sexo = null;
+		do {
+			System.out.println("Informe o sexo(M/F)..............: ");
+			sexo = FuncoesGenericas.lerSexo();
+		} while (sexo == null);
+
+		int tipoUsuario = 0;
+		do {
+			System.out.println("Informe o perfil do usuário......: ");
+			System.out.println("(1-Coordenador/2-Secretária/3-Professor)");
+			tipoUsuario = FuncoesGenericas.lerCampoInt();
+			if(tipoUsuario > 3) {
+				System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
+			}
+		} while (tipoUsuario == 0);
+
 		System.out.println("Informe o login..................: ");
-		String login = teclado.readLine();
+		String login = FuncoesGenericas.lerCampoString();
 		System.out.println("Informe a senha..................: ");
-		String senha = teclado.readLine();
+		String senha = FuncoesGenericas.lerCampoString();
 
 		retorno.add(new Usuario(usuarioId, login, senha, tipoUsuario));
 		retorno.add(new Funcionario(funcionarioId, usuarioId, tipoUsuario, nome, cpf, dataNascimento, sexo));
@@ -181,17 +245,25 @@ public class Cadastros {
 		if (tipoUsuario == 3) {
 			System.out.println("Informe o código das disciplinas.: ");
 			System.out.println("Digite '0' para SAIR.............: ");
-			int disciplina = Integer.parseInt(teclado.readLine());
+			int disciplina = FuncoesGenericas.lerCampoInt();
 			while (disciplina != 0) {
-				disciplina = Integer.parseInt(teclado.readLine());
-				retorno.add(new DisciplinaProfessor(disciplina, funcionarioId));
+				if (discCad.values().contains(disciplina)) {
+					retorno.add(new DisciplinaProfessor(disciplina, funcionarioId));
+					discCad.put(disciplina, disciplina);
+				} else {
+					System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
+				}
+				System.out.println("Informe o código das disciplinas.: ");
+				disciplina = FuncoesGenericas.lerCampoInt();
 			}
 		}
 		return retorno;
 	};
 
-	public static List<Horario> cadastraHorario(Map<Integer, Integer> serieTurma) throws IOException, ParseException {
+	public static List<Horario> cadastraHorario(Map<Integer, Integer> serieTurma, Map<Integer, Integer> discCad,
+			Map<Integer, Integer> turmaCad) {
 		char novo = 'S';
+		System.out.println(serieTurma.values().toString());
 		List<Horario> horarios = new ArrayList<Horario>();
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -199,25 +271,51 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		while (novo == 'S') {
 			int horarioId = 0;
-			System.out.println("Informe o dia da semana(2-3-4-5-6): ");
-			int diaSemana = (Integer.parseInt(teclado.readLine()));
-			System.out.println("Informe o código da disciplina...: ");
-			int disciplinaId = (Integer.parseInt(teclado.readLine()));
-			System.out.println("Informe o código da turma........: ");
-			int turmaId = (Integer.parseInt(teclado.readLine()));
+			int diaSemana = 0;
+			do {
+				System.out.println("Informe o dia da semana(2-3-4-5-6): ");
+				diaSemana = FuncoesGenericas.lerCampoInt();
+				if(diaSemana < 2 || diaSemana > 6) {
+					System.out.println(EErrosIO.INSERE_NUMERO.getMensagem());
+				}
+			} while (diaSemana < 2 || diaSemana > 6);
+
+			int disciplinaId = 0;
+			do {
+				System.out.println("Informe o código da disciplina...: ");
+				disciplinaId = FuncoesGenericas.lerCampoInt();
+				if (disciplinaId != 0) {
+					if (!discCad.values().contains(disciplinaId)) {
+						System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
+						disciplinaId = 0;
+					}
+				}
+			} while (disciplinaId == 0);
+
+			int turmaId = 0;
+			do {
+				System.out.println("Informe o código da turma........: ");
+				turmaId = FuncoesGenericas.lerCampoInt();
+				if (turmaId != 0) {
+					if (!turmaCad.values().contains(turmaId)) {
+						System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
+						turmaId = 0;
+					}
+				}
+			} while (turmaId == 0);
+
 			System.out.println("Informe a hora de início.........: ");
-			String horaInicio = teclado.readLine();
-			int serieId = serieTurma.get(turmaId);
-			int disciplinaSerieId = Integer.parseInt(disciplinaId + "" + serieId);
-			horarios.add(new Horario(horarioId, diaSemana, disciplinaSerieId, turmaId, horaInicio));
+			String horaInicio = FuncoesGenericas.lerCampoString();
+			horarios.add(new Horario(horarioId, diaSemana, disciplinaId, turmaId, horaInicio));
 
 			System.out.println("Deseja cadastrar novo horário?(S/N).: ");
-			novo = Character.toUpperCase((teclado.readLine().charAt(0)));
+			novo = FuncoesGenericas.lerCampoChar();
+			;
 		}
 		return horarios;
 	};
 
-	public static List<Object> cadastraAluno(int alunoId, int usuarioId) throws IOException, ParseException {
+	public static List<Object> cadastraAluno(int alunoId, int usuarioId, Map<Integer, Integer> turmasCad) {
 		List<Object> retorno = new ArrayList<Object>();
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -225,33 +323,52 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		int tipoUsuario = 4;
 		System.out.println("Informe o nome...................: ");
-		String nome = (teclado.readLine());
+		String nome = FuncoesGenericas.lerCampoString();
 		System.out.println("Informe o cpf....................: ");
-		String cpf = (teclado.readLine());
-		System.out.println("Informe a data de nascimento.....: ");
-		String data = teclado.readLine();
-		Date dataNascimento = sdf.parse(data);
-		System.out.println("Informe o sexo...................: ");
-		ESexo sexo = (ESexo.valueOf(teclado.readLine()));
+		String cpf = FuncoesGenericas.lerCampoString();
+
+		Date dataNascimento = null;
+		do {
+			System.out.println("Informe a data de nascimento.....: ");
+			dataNascimento = FuncoesGenericas.lerData();
+		} while (dataNascimento == null);
+
+		ESexo sexo = null;
+		do {
+			System.out.println("Informe o sexo(M/F)..............: ");
+			sexo = FuncoesGenericas.lerSexo();
+		} while (sexo == null);
 		retorno.add(new Aluno(alunoId, usuarioId, tipoUsuario, nome, cpf, dataNascimento, sexo));
 
 		System.out.println("Informe o login..................: ");
-		String login = teclado.readLine();
+		String login = FuncoesGenericas.lerCampoString();
 		System.out.println("Informe a senha..................: ");
-		String senha = teclado.readLine();
+		String senha = FuncoesGenericas.lerCampoString();
 		retorno.add(new Usuario(usuarioId, login, senha, tipoUsuario));
 
 		System.out.println("Informe o código da turma........: ");
 		System.out.println("Digite '0' para SAIR.............: ");
-		int turma = Integer.parseInt(teclado.readLine());
-		while (turma != 0) {
-			turma = Integer.parseInt(teclado.readLine());
-			retorno.add(new AlunoTurma(alunoId, turma));
+		List<Integer> turmas = new ArrayList<Integer>();
+		int turmaId = FuncoesGenericas.lerCampoInt();
+		while (turmaId != 0) {
+			if (turmasCad.values().contains(turmaId)) {
+				if(!turmas.contains(turmaId)) {
+					retorno.add(new AlunoTurma(alunoId, turmaId));
+					turmas.add(turmaId);
+				}else{
+					System.out.println(EErrosIO.INSERE_EXISTENTE.getMensagem());
+				}
+			} else {
+				System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
+			}
+			System.out.println("Informe o código da turma........: ");
+			turmaId = FuncoesGenericas.lerCampoInt();
 		}
+
 		return retorno;
 	};
 
-	public static List<Bimestre> cadastraBimestre() throws IOException, ParseException {
+	public static List<Bimestre> cadastraBimestre() {
 		char novo = 'S';
 		int cont = 0;
 		List<Bimestre> bimestres = new ArrayList<Bimestre>();
@@ -263,19 +380,27 @@ public class Cadastros {
 			cont++;
 			int bimestreId = 0;
 			System.out.println("Informe a descição do bimestre...: ");
-			String descricao = teclado.readLine();
-			System.out.println("Informe a data de início.........: ");
-			String data = teclado.readLine();
-			Date dataInicio = sdf.parse(data);
-			System.out.println("Informe a data de término........: ");
-			data = teclado.readLine();
-			Date dataFim = sdf.parse(data);
+			String descricao = FuncoesGenericas.lerCampoString();
+
+			Date dataInicio = null;
+			do {
+				System.out.println("Informe a data de início.........: ");
+				dataInicio = FuncoesGenericas.lerData();
+			} while (dataInicio == null);
+
+			Date dataFim = null;
+			do {
+				System.out.println("Informe a data de fim............: ");
+				dataFim = FuncoesGenericas.lerData();
+			} while (dataFim == null);
+
 			System.out.println("Informe o número de dias letivos.: ");
-			int diasLetivos = (Integer.parseInt(teclado.readLine()));
+			int diasLetivos = FuncoesGenericas.lerCampoInt();
 			bimestres.add(new Bimestre(bimestreId, descricao, dataInicio, dataFim, diasLetivos));
 			if (cont < 4) { // 4 bimestres
 				System.out.println("Deseja cadastrar novo bimestre?(S/N).: ");
-				novo = Character.toUpperCase((teclado.readLine().charAt(0)));
+				novo = FuncoesGenericas.lerCampoChar();
+				;
 			}
 		}
 		return bimestres;

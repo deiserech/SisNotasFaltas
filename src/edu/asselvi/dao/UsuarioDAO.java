@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Usuario;
@@ -30,7 +30,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			criaAdmin();
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -50,7 +50,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			st.execute("DROP TABLE usuario;");
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -76,9 +76,9 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			try {
 				conexao.rollback();
 			} catch (Exception e2) {
-				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage());
+				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage(), this.getClass().getSimpleName());
 			}
-			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage());
+			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -98,7 +98,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 										   rs.getInt("tipoUsuario"))										   
 							  : null;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -118,7 +118,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 							   rs.getInt("tipoUsuario"))
 				  : null;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -139,7 +139,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			}
 			return usuarios;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -155,7 +155,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			pst.setInt(3, usuario.getTipoUsuario());
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -169,7 +169,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			pst.setInt(1, id);
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage());
+			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -181,13 +181,13 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT MAX(ID) FROM usuario;");
+			ResultSet rs = st.executeQuery("SELECT MAX(usuarioId) FROM usuario;");
 			while(rs.next()) {
-				proximoId = rs.getInt("id") + 1;
+				proximoId = rs.getInt("MAX(usuarioId)") + 1;
 			}
 			return proximoId;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}

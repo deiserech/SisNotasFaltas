@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.bancodados.EErrosBD;
+import edu.asselvi.enumerador.EErrosBD;
 
 public class Conexao {
 
@@ -16,7 +16,7 @@ public class Conexao {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/deise?useSSL=true", "root", "Deise123");
 			return conn;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.ABRE_CONEXAO, e.getMessage());
+			throw new BDException(EErrosBD.ABRE_CONEXAO, e.getMessage(), "Conexao");
 		}
 	}
 	
@@ -25,7 +25,7 @@ public class Conexao {
 			if (conn != null) conn.close();
 			conn = null;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.FECHA_CONEXAO, e.getMessage());
+			throw new BDException(EErrosBD.FECHA_CONEXAO, e.getMessage(), "Conexao");
 		}
 	}
 }

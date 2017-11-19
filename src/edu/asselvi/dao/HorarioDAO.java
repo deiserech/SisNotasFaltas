@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.model.Horario;
 
 public class HorarioDAO implements GenericDAO<Horario>{
@@ -22,16 +22,16 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE horario (" + "	"
 					+ " HorarioId		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " TurmaId			INTEGER NOT NULL ," //adicionar foreing key
-					+ " DisciplinaId 	INTEGER NOT NULL ," //adicionar foreing key
+					+ " TurmaId			INTEGER NOT NULL ," 
+					+ " DisciplinaId 	INTEGER NOT NULL ," 
 					+ "	diaSemana	    INTEGER NOT NULL," 
-					+ "	horaInicio		INTEGER NOT NULL,"  
-					+ "CONSTRAINT `FK__turma` FOREIGN KEY (`turmaId`) REFERENCES `turma` (`turmaId`)"
+					+ "	horaInicio		VARCHAR(50) NOT NULL,"  
+					+ "CONSTRAINT `FK__turma` FOREIGN KEY (`turmaId`) REFERENCES `turma` (`turmaId`),"
 					+ "CONSTRAINT `FK__disciplina` FOREIGN KEY (`disciplinaId`) REFERENCES `disciplina` (`disciplinaId`)"
 					+ ");");
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -45,7 +45,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			st.execute("DROP TABLE horario;");
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -59,12 +59,12 @@ public class HorarioDAO implements GenericDAO<Horario>{
 
 			conexao.setAutoCommit(false);
 				PreparedStatement pst = conexao.prepareStatement(
-						"INSERT INTO horario ( TurmaId, DisciplinaId, diaSemana, horaInicio) VALUES (?, ?, ?, ?, ?);");
+						"INSERT INTO horario ( TurmaId, DisciplinaId, diaSemana, horaInicio) VALUES (?, ?, ?, ?);");
 				for (Horario horario : horarios) {
 					pst.setInt(1, horario.getTurmaId());
 					pst.setInt(2, horario.getDisciplinaId());
-					pst.setInt(4, horario.getDiaSemana());
-					pst.setString(5, horario.getHoraInicio());
+					pst.setInt(3, horario.getDiaSemana());
+					pst.setString(4, horario.getHoraInicio());
 					pst.executeUpdate();
 				}
 			conexao.commit();
@@ -73,9 +73,9 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			try {
 				conexao.rollback();
 			} catch (Exception e2) {
-				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage());
+				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage(), this.getClass().getSimpleName());
 			}
-			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage());
+			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -92,11 +92,11 @@ public class HorarioDAO implements GenericDAO<Horario>{
 								new Horario(rs.getInt("HorarioId"),
 										rs.getInt("diaSemana"),
 										rs.getInt("DisciplinaId"),
-										   rs.getInt("TurmaId"),
-										   rs.getString("horaInicio"))
+										rs.getInt("TurmaId"),
+										rs.getString("horaInicio"))
 							  : null;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -118,7 +118,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			}
 			return horarios;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -144,7 +144,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			}
 			return horario; 
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -163,7 +163,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -177,7 +177,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			pst.setInt(1, id);
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage());
+			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -191,11 +191,11 @@ public class HorarioDAO implements GenericDAO<Horario>{
 			Statement st = conexao.createStatement();
 			ResultSet rs = st.executeQuery("SELECT MAX(HorarioId) FROM horario;");
 			while(rs.next()) {
-				proximoId = rs.getInt("id") + 1;
+				proximoId = rs.getInt("MAX(HorarioId)") + 1;
 			}
 			return proximoId;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}

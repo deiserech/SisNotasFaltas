@@ -1,4 +1,4 @@
-package edu.asselvi.bancodados;
+package edu.asselvi.enumerador;
 
 public enum EErrosBD {
 	ABRE_CONEXAO ("Erro ao abrir conexão com o Banco de Dados"),

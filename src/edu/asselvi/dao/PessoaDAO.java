@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.asselvi.bancodados.BDException;
-import edu.asselvi.bancodados.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Pessoa;
 
@@ -33,7 +33,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			criaAdmin();
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -41,7 +41,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 
 	public void criaAdmin() throws BDException {
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
-		pessoas.add(new Pessoa(0,1,1,"Administrador","999-999-999-99",new java.util.Date(),ESexo.MASCULINO));		
+		pessoas.add(new Pessoa(0,1,1,"Administrador","999-999-999-99",new java.util.Date(),ESexo.M));		
 		insereTrn(pessoas);
 	}
 	
@@ -53,7 +53,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			st.execute("DROP TABLE pessoa;");
 			return true;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage());
+			throw new BDException(EErrosBD.DESTROI_TABELA, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -82,9 +82,9 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			try {
 				conexao.rollback();
 			} catch (Exception e2) {
-				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage());
+				throw new BDException(EErrosBD.ROLLBACK, e2.getMessage(), this.getClass().getSimpleName());
 			}
-			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage());
+			throw new BDException(EErrosBD.INSERE_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -104,10 +104,10 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 										   rs.getString("nome"),
 										   rs.getString("cpf"),
 										   rs.getDate("dataNascimento"),
-										   ESexo.valueOf(rs.getString("sexo").equals("F") ? "FEMININO":"MASCULINO"))
+										   ESexo.valueOf(rs.getString("sexo").equals("F") ? "F":"M"))
 							  : null;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -126,10 +126,10 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 										   rs.getString("nome"),
 										   rs.getString("cpf"),
 										   rs.getDate("dataNascimento"),
-										   ESexo.valueOf(rs.getString("sexo").equals("F") ? "FEMININO":"MASCULINO"))
+										   ESexo.valueOf(rs.getString("sexo").equals("F") ? "F":"M"))
 							  : null;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -150,11 +150,11 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 						   rs.getString("nome"),
 						   rs.getString("cpf"),
 						   rs.getDate("dataNascimento"),
-						   ESexo.valueOf(rs.getString("sexo").equals("F") ? "FEMININO":"MASCULINO")));
+						   ESexo.valueOf(rs.getString("sexo").equals("F") ? "F":"M")));
 			}
 			return pessoas;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -174,7 +174,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			pst.setInt(7, pessoa.getId());
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -188,7 +188,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			pst.setInt(1, id);
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage());
+			throw new BDException(EErrosBD.EXCLUI_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}
@@ -202,11 +202,11 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			Statement st = conexao.createStatement();
 			ResultSet rs = st.executeQuery("SELECT MAX(pessoaId) FROM pessoa;");
 			while(rs.next()) {
-				proximoId = rs.getInt("id") + 1;
+				proximoId = rs.getInt("MAX(pessoaId)") + 1;
 			}
 			return proximoId;
 		} catch (Exception e) {
-			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage());
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
 			Conexao.closeConexao();
 		}

@@ -14,7 +14,7 @@ public class Pessoa {
 	private ESexo sexo;
 
 	public Pessoa() {
-		this(0,0,0, "Não informado", "000-000-000-00", new Date(), ESexo.MASCULINO);
+		this(0,0,0, "Não informado", "000-000-000-00", new Date(), ESexo.M);
 
 	}
 

@@ -11,34 +11,42 @@ import java.util.List;
 import java.util.Map;
 
 import edu.asselvi.controller.FuncoesGenericas;
+import edu.asselvi.model.Disciplina;
 import edu.asselvi.model.Frequencia;
 import edu.asselvi.model.Horario;
 import edu.asselvi.model.Nota;
 import edu.asselvi.model.Pessoa;
+import edu.asselvi.model.Turma;
 
 public class Lancamentos {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 	static Calendar calendar = new GregorianCalendar();
 	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-	public static int BuscaTurma() {
+	public static int BuscaTurma(Map<Integer, Turma> turmas) {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»          Lançamentos       ««|");
 		System.out.println("----------------------------------");
 
 		System.out.println("Informe o código da turma........:");
+		for(Turma tm : turmas.values()) {
+			System.out.println(tm.getTurmaId() + " - " + tm.getDescricao());
+		}
 		int idTurma = FuncoesGenericas.lerCampoInt();
 		return idTurma;
 	}
 
-	public static int BuscaDisciplina(List<Integer> disciplinas) {
+	public static int BuscaDisciplina(Map<Integer, Disciplina> disciplinas) {
 
 		boolean disciplinaOk = false;
 		System.out.println("Informe o código da disciplina...:");
+		for(Disciplina disc : disciplinas.values()) {
+			System.out.println(disc.getDisciplinaId() + " - " + disc.getDescricao());
+		}
 		int disciplinaId = FuncoesGenericas.lerCampoInt();
 		do {
-			if (disciplinas.contains(disciplinaId)) {
+			if (disciplinas.get(disciplinaId) instanceof Disciplina) {
 				disciplinaOk = true;
 			} else {
 				System.out.println("Disciplina não corresponde...:");

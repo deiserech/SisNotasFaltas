@@ -25,6 +25,7 @@ import edu.asselvi.dao.TurmaDAO;
 import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.model.Aluno;
 import edu.asselvi.model.AlunoTurma;
+import edu.asselvi.model.Disciplina;
 import edu.asselvi.model.DisciplinaProfessor;
 import edu.asselvi.model.DisciplinaSerie;
 import edu.asselvi.model.Funcionario;
@@ -200,6 +201,7 @@ public class Sistema {
 				break;
 			}
 		}
+		System.out.println("Sistema encerrado!");
 
 	};
 
@@ -226,6 +228,7 @@ public class Sistema {
 				break;
 			}
 		}
+		System.out.println("Sistema encerrado!");
 
 	};
 
@@ -239,7 +242,7 @@ public class Sistema {
 		DisciplinaProfessorDAO discProf = new DisciplinaProfessorDAO();
 		TurmaDAO turmaDao = new TurmaDAO();
 		DisciplinaSerieDAO discSerie = new DisciplinaSerieDAO();
-		DisciplinaDAO disciplinasDao = new DisciplinaDAO();
+		DisciplinaDAO disciplinaDao = new DisciplinaDAO();
 
 		int opcao = verificaMenu();
 
@@ -250,11 +253,12 @@ public class Sistema {
 				int idTurma = 0;
 				int idDisciplina = 0;
 				while (opcaoLan != 0) {
-					idTurma = Lancamentos.BuscaTurma();
+					idTurma = Lancamentos.BuscaTurma(turma.consultaIds());
 					Turma turmaObj = turmaDao.consulta(idTurma);
 					List<Integer> discProfessor = discProf.consultaDisciplinas(idPessoaLogada);
 					List<Integer> disciplinas = discSerie.consultaDisciProf(turmaObj.getSerieId(), discProfessor);
-					idDisciplina = Lancamentos.BuscaDisciplina(disciplinas);
+					Map<Integer, Disciplina> disciplinaObj = disciplinaDao.consultaDescricao(disciplinas);   
+					idDisciplina = Lancamentos.BuscaDisciplina(disciplinaObj);
 					List<Integer> alunos = alunoTurma.consultaAlunosTurma(idTurma);
 
 					switch (opcaoLan) {
@@ -281,7 +285,7 @@ public class Sistema {
 			case 2:
 				int opcaoRel = Menu.menuRelatorios();
 				while (opcaoRel != 0) {
-					idTurma = Lancamentos.BuscaTurma();
+					idTurma = Lancamentos.BuscaTurma(turma.consultaIds());
 					Turma turmaObj = turmaDao.consulta(idTurma);
 					List<Integer> alunosCod = alunoTurma.consultaAlunosTurma(idTurma);
 					Map<Integer, Pessoa> alunos = pessoa.consultaAlunosTurma(alunosCod);
@@ -290,14 +294,14 @@ public class Sistema {
 					case 1:
 						Relatorios.relatorioNotas(turmaObj,
 									alunos,
-									disciplinasDao.consultaIds(),
+									disciplinaDao.consultaIds(),
 									nota.consultaNotasTurma(alunos)
 								);
 						break;
 					case 2:
 						Relatorios.relatorioFrequencia(turmaObj,
 								alunos,
-								disciplinasDao.consultaIds(),
+								disciplinaDao.consultaIds(),
 								frequencia.consultaFreqTurma(alunos)
 								);
 						break;
@@ -308,6 +312,7 @@ public class Sistema {
 				break;
 			}
 		}
+		System.out.println("Sistema encerrado!");
 
 	};
 
@@ -338,6 +343,7 @@ public class Sistema {
 				break;
 			}
 		}
+		System.out.println("Sistema encerrado!");
 
 	};
 

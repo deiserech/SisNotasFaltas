@@ -60,9 +60,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 			conexao.setAutoCommit(false);
 				PreparedStatement pst = conexao.prepareStatement(
 						"INSERT INTO frequencia ( HorarioId, AlunoId, BimestreId, dataAula, presente) VALUES (?, ?, ?, ?, ?);");
-				System.out.println("TESTE");
 				for (Frequencia frequencia : frequencias) {
-					System.out.println(frequencia.toString()); 
 					Frequencia freqBanco = consulta(frequencia);
 					if(freqBanco == null) {
 						System.out.println("inclui"); 
@@ -73,8 +71,6 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 						pst.setString(5, frequencia.isPresente()? "S": "N");
 						pst.executeUpdate();
 					}else {
-						System.out.println("altera"); 
-						System.out.println("Fb " + freqBanco.toString());
 						altera(frequencia);
 					}
 				}

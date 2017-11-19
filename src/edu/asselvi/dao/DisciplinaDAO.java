@@ -178,5 +178,27 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 			Conexao.closeConexao();
 		}
 	}
+	
+	public Map<Integer, Disciplina> consultaDescricao(List<Integer> disc) throws BDException {
+		Map<Integer, Disciplina> disciplinas = new HashMap<Integer, Disciplina>();
+		Connection conexao = Conexao.getConexao();
+		try {
+			for(Integer dc : disc) {
+				PreparedStatement pst = conexao.prepareStatement("SELECT * FROM disciplina WHERE DisciplinaId = ?;");
+				pst.setInt(1, dc);
+				ResultSet rs = pst.executeQuery();
+				if(rs.first()) {
+								disciplinas.put(rs.getInt("DisciplinaId"),
+											new Disciplina(	rs.getInt("DisciplinaId"),
+															rs.getString("descricao")));
+				};
+			}
+			return disciplinas;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
 
 }

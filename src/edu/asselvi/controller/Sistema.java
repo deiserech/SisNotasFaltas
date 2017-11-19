@@ -146,22 +146,22 @@ public class Sistema {
 		DisciplinaProfessorDAO discProf = new DisciplinaProfessorDAO();
 		Pessoa pessoaLogada = new Pessoa();
 		int opcao = 0;
-//		pessoaLogada = login();
-//		switch (pessoaLogada.getPerfil()) {
-//		case 1:
-//			opcao = Menu.menuCoordenador();
-//			break;
-//		case 2:
-//			opcao = Menu.menuSecretaria();
-//			break;
-//		case 3:
-//			opcao = Menu.menuProfessor();
-//			break;
-//		case 4:
-//			opcao = Menu.menuAluno();
-//			break;
-//		}
-		opcao = Menu.menuCoordenador();
+		pessoaLogada = login();
+		switch (pessoaLogada.getPerfil()) {
+		case 1:
+			opcao = Menu.menuCoordenador();
+			break;
+		case 2:
+			opcao = Menu.menuSecretaria();
+			break;
+		case 3:
+			opcao = Menu.menuProfessor();
+			break;
+		case 4:
+			opcao = Menu.menuAluno();
+			break;
+		}
+		//opcao = Menu.menuCoordenador();
 		while (opcao != 0) {
 			switch (opcao) {
 			case 1:

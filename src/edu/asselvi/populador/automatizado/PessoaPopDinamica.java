@@ -94,20 +94,16 @@ public class PessoaPopDinamica {
 		String [] nomesFem = Arquivo.leArquivo(caminho + "/" + arqFem, true, "#").split("#");
 		String [] sobrenomes = Arquivo.leArquivo(caminho + "/" + arqSobrenome, true, "#").split("#");
 		String [] sobrenomes2 = Arquivo.leArquivo(caminho + "/" + arqSobrenome2, true, "#").split("#");
-		System.out.print("Informe código inicial.........: ");
-		int codIni = Integer.parseInt(teclado.readLine());
-		System.out.print("Informe código final...........: ");
-		int codFim = Integer.parseInt(teclado.readLine());
+		System.out.print("Informe quantas pessoas você quer adicionar.........: ");
+		int quantidade = Integer.parseInt(teclado.readLine());
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		List<Usuario> usuarios = new ArrayList<Usuario>();
-		for (int i = codIni; i < codFim; i++) {
+		for (int i = 1; i < quantidade; i++) {
 			Pessoa pessoa = new Pessoa();
-			pessoa.setId(i);
-			pessoa.setCdUsuario(i);
-			
 			Usuario usuario = new Usuario();
-			usuario.setUsuarioId(i);
-			usuario.setLogin("user" + i);
+
+			pessoa.setCdUsuario(i+1);
+			usuario.setLogin("user" + (i+1));
 			Random sorteioSenha = new Random();
 			int senhaAleatoria = sorteioSenha.nextInt(100000000-1000000) + 1000000;
 			String senha = senhaAleatoria + "";
@@ -145,8 +141,6 @@ public class PessoaPopDinamica {
 		}
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		try {
-	//		usuarioDAO.destroiTabela();
-			
 			usuarioDAO.criaTabela();
 		} catch (BDException e) {
 			System.out.println(e.getMessage());
@@ -159,8 +153,6 @@ public class PessoaPopDinamica {
 		
 		PessoaDAO pessoaDAO = new PessoaDAO();
 		try {
-	//		pessoaDAO.destroiTabela();
-			
 			pessoaDAO.criaTabela();
 		} catch (BDException e) {
 			System.out.println(e.getMessage());

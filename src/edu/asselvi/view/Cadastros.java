@@ -419,6 +419,64 @@ public class Cadastros {
 		return retorno;
 	};
 
+	public static List<Object> cadastraAluno2(int alunoId, int usuarioId, Map<Integer, Turma> turmasCad) {
+		List<Object> retorno = new ArrayList<Object>();
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»    Cadastro de Alunos      ««|");
+		System.out.println("----------------------------------");
+		
+		if(turmasCad.size() == 0) {
+			System.out.println("Realize o cadastro de turmas!");
+			return retorno;
+		}
+		
+		int tipoUsuario = 4;
+		System.out.println("Informe o nome...................: ");
+		String nome = FuncoesGenericas.lerCampoString();
+		System.out.println("Informe o cpf....................: ");
+		String cpf = FuncoesGenericas.lerCampoString();
+
+		Date dataNascimento = null;
+		do {
+			System.out.println("Informe a data de nascimento.....: ");
+			dataNascimento = FuncoesGenericas.lerData();
+		} while (dataNascimento == null);
+
+		ESexo sexo = null;
+		do {
+			System.out.println("Informe o sexo(M/F)..............: ");
+			sexo = FuncoesGenericas.lerSexo();
+		} while (sexo == null);
+		retorno.add(new Aluno(alunoId, usuarioId, tipoUsuario, nome, cpf, dataNascimento, sexo));
+
+		System.out.println("Informe o login..................: ");
+		String login = FuncoesGenericas.lerCampoString();
+		System.out.println("Informe a senha..................: ");
+		String senha = FuncoesGenericas.lerCampoString();
+		retorno.add(new Usuario(usuarioId, login, senha));
+		System.out.println("Informe o código da turma........: ");
+		for(Turma tm : turmasCad.values()) {
+			System.out.println(tm.getTurmaId() + " - " + tm.getDescricao());
+		}
+		System.out.println("Digite '0' para SAIR.............: ");
+		List<Integer> turmas = new ArrayList<Integer>();
+		int turmaId = FuncoesGenericas.lerCampoInt();
+		while (turmaId != 0) {
+			if (turmasCad.get(turmaId) instanceof Turma)  {
+				retorno.add(new AlunoTurma(alunoId, turmaId));
+				turmas.add(turmaId);
+			} else {
+				System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
+			}
+			System.out.println("Informe o código da turma........: ");
+			turmaId = FuncoesGenericas.lerCampoInt();
+		}
+
+		return retorno;
+	};
+
+	
 	public static List<Bimestre> cadastraBimestre() {
 		char novo = 'S';
 		int cont = 0;

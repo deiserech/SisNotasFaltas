@@ -347,7 +347,7 @@ public class Sistema {
 
 	};
 
-	public static void main(String[] args) throws IOException, BDException, ParseException, InputException {
+	public static void main(String[] args) throws IOException, BDException, ParseException {
 		Pessoa pessoaLogada = login(); // ver trows
 		idPessoaLogada = pessoaLogada.getId();
 		tpPessoaLogada = pessoaLogada.getPerfil();

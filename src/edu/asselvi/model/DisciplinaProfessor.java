@@ -30,4 +30,8 @@ public class DisciplinaProfessor {
 				+ "\n\tCód. Dsciplina..........: " + getDisciplinaId();
 	}
 	
+	 public String toStringBD(String separador) {
+	        return this.getProfessorId() + separador + getDisciplinaId();
+	    }
+	
 }

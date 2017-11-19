@@ -87,11 +87,15 @@ public class Pessoa {
 	public String toString() {
 		return getClass().getSimpleName()
 				+ "\n\tCódigo................: " + getId()
-				+ "\n\tPerfil................: " + getId()
+				+ "\n\tPerfil................: " + getPerfil()
 				+ "\n\tCódigo Usuário........: " + getCdUsuario()
 				+ "\n\tCPF...................: " + getCpf()
 				+ "\n\tNome..................: " + getNome() 
 				+ "\n\tNascimento............: " + getDataNascimento() 
 				+ "\n\tSexo..................: " + getSexo().getDescricao();
 	}
+	
+	 public String toStringBD(String separador) {
+	        return this.getId() + separador + getPerfil() + separador + getCdUsuario() + separador + getCpf() + separador + getNome() + separador + getDataNascimento() + separador + getSexo();
+	    }
 }

@@ -64,4 +64,8 @@ public class Nota {
 				+ 	"\n\tNum. Bimestre...........: " + getBimestreId()
 				+ 	"\n\tNota..,,,,,.............: " + getNota();
 	}	
+	
+	 public String toStringBD(String separador) {
+	        return this.getNotaId() + separador + getAlunoId() + separador + getDisciplinaId() + separador + getBimestreId() + separador + getNota();
+	    }
 }

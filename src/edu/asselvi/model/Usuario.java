@@ -40,5 +40,9 @@ public class Usuario {
 		+ "\n\tLogin...................: " + getLogin()
 		+ "\n\tSenha...................: " + getSenha();
     }
+    
+    public String toStringBD(String separador) {
+        return this.getUsuarioId() + separador + getLogin() + separador + getSenha();
+    }
 	
 }

@@ -61,5 +61,9 @@ public class Turma {
 				+ "\n\tVagas...................: " + getVagas()
 				+ "\n\tAno.....................: " + getAno();
 	}
+	
+	 public String toStringBD(String separador) {
+	        return this.getTurmaId() + separador + getSerieId() + separador + getDescricao() + separador + getVagas() + separador + getAno();
+	    }
 
 }

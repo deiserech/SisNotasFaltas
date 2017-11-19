@@ -67,4 +67,8 @@ public class Frequencia {
 				+ "\n\tData da Aula............: " + getDataAula()
 				+ "\n\tId Presença.............: " + isPresente();
 	}
+	
+	 public String toStringBD(String separador) {
+	        return this.getAlunoId() + separador + getHorarioId() + separador + getBimestreId() + separador + getDataAula() + separador + isPresente();
+	    }
 }

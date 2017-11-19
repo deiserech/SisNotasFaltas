@@ -21,9 +21,9 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE usuario (" + "	"
-					+ " usuarioId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " login    		VARCHAR(10) NOT NULL ," 
-					+ " senha 		    VARCHAR(14) NOT NULL " 
+					+ " usuarioId		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
+					+ " login    		VARCHAR(50) NOT NULL ," 
+					+ " senha 		    VARCHAR(50) NOT NULL " 
 					+ ");");
 			criaAdmin();
 			return true;

@@ -18,6 +18,7 @@ import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.PessoaDAO;
 import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.enumerador.ESexo;
+import edu.asselvi.model.Escola;
 import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Usuario;
 
@@ -29,16 +30,12 @@ public class PessoaPopDinamica {
     {
 		try {
 			String date="";
-	        int yearBegin=1970;
-	        int yearEnd=2000-yearBegin;
+	        int yearBegin=2000;
+	        int yearEnd=2017-yearBegin;
 
 	      date="" + (1 + (int)(Math.random() * 12) + "-" + (1 + (int)(Math.random() * 31) + "-" + (yearBegin + (int)(Math.random() * yearEnd))));		      
 	      SimpleDateFormat  formatter = new SimpleDateFormat("MM-dd-yyyy");
 		  Date date2 = formatter.parse(date);
-		  
-	      //java.util.Date dt = new java.util.Date();
-	      //java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-	      //String currentTime = sdf.format(date2);
 		  return date2;
 		 
 		} catch (ParseException e) {
@@ -51,16 +48,12 @@ public class PessoaPopDinamica {
     {
 		try {
 			String date="";
-	        int yearBegin=2000;
-	        int yearEnd=2017-yearBegin;
+	        int yearBegin=1970;
+	        int yearEnd=2000-yearBegin;
 
 	      date="" + (1 + (int)(Math.random() * 12) + "-" + (1 + (int)(Math.random() * 31) + "-" + (yearBegin + (int)(Math.random() * yearEnd))));		      
 	      SimpleDateFormat  formatter = new SimpleDateFormat("MM-dd-yyyy");
 		  Date date2 = formatter.parse(date);
-		  
-	      //java.util.Date dt = new java.util.Date();
-	      //java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-	      //String currentTime = sdf.format(date2);
 		  return date2;
 		 
 		} catch (ParseException e) {
@@ -99,6 +92,10 @@ public class PessoaPopDinamica {
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		for (int i = 1; i < quantidade; i++) {
+			Escola escola = new Escola();
+			
+			escola.setDescricao("Escola Asselvi");
+			
 			Pessoa pessoa = new Pessoa();
 			Usuario usuario = new Usuario();
 

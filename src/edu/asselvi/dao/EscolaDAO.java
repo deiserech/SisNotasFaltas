@@ -23,7 +23,7 @@ public class EscolaDAO implements GenericDAO<Escola>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE escola (" + "	"
 					+ " EscolaId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ "	descricao				VARCHAR(50)  NOT NULL"  
+					+ "	descricao				VARCHAR(100)  NOT NULL"  
 					+ ");");
 			return true;
 		} catch (Exception e) {

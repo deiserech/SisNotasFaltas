@@ -29,5 +29,7 @@ public class Escola {
 				+ "\n\tDescrição................: " + getDescricao();
 	}
 	
-	
+	  public String toStringBD(String separador) {
+	        return this.getEscolaId() + separador + getDescricao();
+	    }
 }

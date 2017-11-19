@@ -60,4 +60,8 @@ public class Serie {
 				+ "\n\tDuração.................: " + getDuracao();
 	}
 
+	
+	 public String toStringBD(String separador) {
+	        return this.getSerieId() + separador + getCursoId() + separador + getDescricao() + separador + getIdadeMinima() + separador + getDuracao();
+	    }
 }

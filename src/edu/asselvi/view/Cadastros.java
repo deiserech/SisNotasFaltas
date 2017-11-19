@@ -52,6 +52,11 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Cursos      ««|");
 		System.out.println("----------------------------------");
+		if(escolas.size() == 0) {
+			System.out.println("Realize o cadastro da escola!");
+			return cursos;
+		}
+		
 		while (novo == 'S') {
 			System.out.println("Informe a descrição do curso.....: ");
 			String descricao = FuncoesGenericas.lerCampoString();
@@ -65,6 +70,8 @@ public class Cadastros {
 						System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 						escolaId = 0;
 					}
+				}else {
+					System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 				}
 			} while (escolaId == 0);
 			do {
@@ -87,6 +94,11 @@ public class Cadastros {
 		System.out.println("|»»    Cadastro de Séries      ««|");
 		System.out.println("----------------------------------");
 
+		if(cursosCad.size() == 0 || discCad.size() == 0) {
+			System.out.println("Realize o cadastro de cursos e disciplinas!");
+			return retorno;
+		}
+		
 		int serieId = 0;
 		boolean serieOk = false;
 		do {
@@ -149,6 +161,12 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Turmas      ««|");
 		System.out.println("----------------------------------");
+		
+		if(seriesCad.size() == 0) {
+			System.out.println("Realize o cadastro de séries!");
+			return turmas;
+		}
+		
 		while (novo == 'S') {
 			int turmaId = 0;
 			System.out.println("Informe a descrição da turma.....: ");
@@ -179,7 +197,7 @@ public class Cadastros {
 		return turmas;
 	};
 
-	public static List<Disciplina> cadastraDisciplina() throws IOException {
+	public static List<Disciplina> cadastraDisciplina() {
 		char novo = 'S';
 		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 		System.out.println("");
@@ -189,7 +207,7 @@ public class Cadastros {
 		while (novo == 'S') {
 			int disciplinaId = 0;
 			System.out.println("Informe a descrição da disciplina: ");
-			String descricao = (teclado.readLine());
+			String descricao = FuncoesGenericas.lerCampoString();
 			disciplinas.add(new Disciplina(disciplinaId, descricao));
 
 			System.out.println("Deseja cadastrar nova disciplina?(S/N).: ");
@@ -206,7 +224,7 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		System.out.println("|»»  Cadastro de Funcionários  ««|");
 		System.out.println("----------------------------------");
-
+		
 		System.out.println("Informe o nome...................: ");
 		String nome = FuncoesGenericas.lerCampoString();
 		System.out.println("Informe o cpf....................: ");
@@ -230,6 +248,10 @@ public class Cadastros {
 			System.out.println("(1-Coordenador/2-Secretária/3-Professor)");
 			tipoUsuario = FuncoesGenericas.lerCampoInt();
 			if(tipoUsuario > 3) {
+				if(discCad.size() == 0) {
+					System.out.println("Realize o cadastro de disciplinas!");
+					return retorno;
+				}
 				System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 			}
 		} while (tipoUsuario == 0);
@@ -269,6 +291,12 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Horários    ««|");
 		System.out.println("----------------------------------");
+		
+		if(discCad.size() == 0 || turmaCad.size() == 0) {
+			System.out.println("Realize o cadastro de disciplinas e turmas!");
+			return horarios;
+		}
+		
 		while (novo == 'S') {
 			int horarioId = 0;
 			int diaSemana = 0;
@@ -321,6 +349,12 @@ public class Cadastros {
 		System.out.println("----------------------------------");
 		System.out.println("|»»    Cadastro de Alunos      ««|");
 		System.out.println("----------------------------------");
+		
+		if(turmasCad.size() == 0) {
+			System.out.println("Realize o cadastro de turmas!");
+			return retorno;
+		}
+		
 		int tipoUsuario = 4;
 		System.out.println("Informe o nome...................: ");
 		String nome = FuncoesGenericas.lerCampoString();

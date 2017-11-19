@@ -6,11 +6,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.model.Frequencia;
+import edu.asselvi.model.Pessoa;
 
 
 public class FrequenciaDAO implements GenericDAO<Frequencia>{
@@ -24,9 +26,9 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 					+ " HorarioId		 	INTEGER NOT NULL ,"
 					+ " AlunoId				INTEGER NOT NULL ," 
 					+ " BimestreId 		    INTEGER NOT NULL ," 
-					+ "PRIMARY KEY (HorarioId, AlunoId,BimestreId)"
 					+ "	dataAula			DATE  NOT NULL,"  
-					+ "	presente	     	VARCHAR(01)  NOT NULL" 
+					+ " PRIMARY KEY (HorarioId, AlunoId,BimestreId, dataAula),"
+					+ "	presente	     	CHAR(01)  NOT NULL" 
 					+ ");");
 			return true;
 		} catch (Exception e) {
@@ -58,13 +60,23 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 			conexao.setAutoCommit(false);
 				PreparedStatement pst = conexao.prepareStatement(
 						"INSERT INTO frequencia ( HorarioId, AlunoId, BimestreId, dataAula, presente) VALUES (?, ?, ?, ?, ?);");
+				System.out.println("TESTE");
 				for (Frequencia frequencia : frequencias) {
-					pst.setInt(1, frequencia.getHorarioId());
-					pst.setInt(2, frequencia.getAlunoId());
-					pst.setInt(3, frequencia.getBimestreId());
-					pst.setDate(4, new java.sql.Date(frequencia.getDataAula().getTime()));
-					pst.setBoolean(5, frequencia.isPresente());
-					pst.executeUpdate();
+					System.out.println(frequencia.toString()); 
+					Frequencia freqBanco = consulta(frequencia);
+					if(freqBanco == null) {
+						System.out.println("inclui"); 
+						pst.setInt(1, frequencia.getHorarioId());
+						pst.setInt(2, frequencia.getAlunoId());
+						pst.setInt(3, frequencia.getBimestreId());
+						pst.setDate(4, new java.sql.Date(frequencia.getDataAula().getTime()));
+						pst.setString(5, frequencia.isPresente()? "S": "N");
+						pst.executeUpdate();
+					}else {
+						System.out.println("altera"); 
+						System.out.println("Fb " + freqBanco.toString());
+						altera(frequencia);
+					}
 				}
 			conexao.commit();
 			return true;
@@ -92,7 +104,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 										   rs.getInt("AlunoId"),
 										   rs.getInt("BimestreId"),
 										   rs.getDate("dataAula"),
-										   rs.getBoolean("presente"))
+										   rs.getString("presente").charAt(0) == 'S')
 							  : null;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
@@ -113,7 +125,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 						   rs.getInt("AlunoId"),
 						   rs.getInt("BimestreId"),
 						   rs.getDate("dataAula"),
-						   rs.getBoolean("presente")));
+						   rs.getString("presente").charAt(0) == 'S'));
 			}
 			return frequencias;
 		} catch (Exception e) {
@@ -127,12 +139,12 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 	public boolean altera(Frequencia frequencia) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("UPDATE frequencia SET dataAula = ?, presente = ? WHERE HorarioId = ? AND AlunoId  = ? AND BimestreId = ?;");
-			pst.setInt(1, frequencia.getHorarioId());
-			pst.setInt(2, frequencia.getAlunoId());
-			pst.setInt(3, frequencia.getBimestreId());
-			pst.setDate(4, new java.sql.Date(frequencia.getDataAula().getTime()));
-			pst.setBoolean(5, frequencia.isPresente());
+			PreparedStatement pst = conexao.prepareStatement("UPDATE frequencia SET presente = ? WHERE HorarioId = ? AND AlunoId  = ? AND BimestreId = ? and dataAula = ?;");
+			pst.setString(1, frequencia.isPresente()? "S": "N");
+			pst.setInt(2, frequencia.getHorarioId());
+			pst.setInt(3, frequencia.getAlunoId());
+			pst.setInt(4, frequencia.getBimestreId());
+			pst.setDate(5, new java.sql.Date(frequencia.getDataAula().getTime()));
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage(), this.getClass().getSimpleName());
@@ -185,9 +197,56 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 						   rs.getInt("AlunoId"),
 						   rs.getInt("BimestreId"),
 						   rs.getDate("dataAula"),
-						   rs.getBoolean("presente")));
+						   rs.getString("presente").charAt(0) == 'S'));
 			}
 			return frequencias;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+
+	public List<Frequencia> consultaFreqTurma(Map<Integer, Pessoa> alunos) throws BDException {
+		Connection conexao = Conexao.getConexao();
+		List<Frequencia> frequencias = new ArrayList<Frequencia>();
+		try {
+			for(Pessoa aluno: alunos.values()) {
+				PreparedStatement pst = conexao.prepareStatement("SELECT * FROM frequencia WHERE AlunoId = ? ;");
+				pst.setInt(1, aluno.getId());
+				ResultSet rs = pst.executeQuery();
+				while(rs.next()) {
+					frequencias.add(new Frequencia(rs.getInt("HorarioId"),
+							   rs.getInt("AlunoId"),
+							   rs.getInt("BimestreId"),
+							   rs.getDate("dataAula"),
+							   rs.getString("presente").charAt(0) == 'S'));
+				}
+			}
+			return frequencias;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+
+	public Frequencia consulta(Frequencia frequencia) throws BDException {
+		Connection conexao = Conexao.getConexao();
+		try {
+			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM frequencia WHERE HorarioId = ? AND AlunoId = ? AND BimestreId = ? and dataAula = ?");
+			pst.setInt(1, frequencia.getHorarioId());
+			pst.setInt(2, frequencia.getAlunoId());
+			pst.setInt(3, frequencia.getBimestreId());
+			pst.setDate(4, new java.sql.Date(frequencia.getDataAula().getTime()));
+			ResultSet rs = pst.executeQuery();
+			return rs.first() ?
+								new Frequencia(rs.getInt("HorarioId"),
+										   rs.getInt("AlunoId"),
+										   rs.getInt("BimestreId"),
+										   rs.getDate("dataAula"),
+										   rs.getString("presente").charAt(0) == 'S')
+							  : null;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {

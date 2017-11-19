@@ -6,17 +6,19 @@ public class Nota {
 	private int DisciplinaId;
 	private int BimestreId;
 	private float nota;
+	private int nrNota;
 
 	public Nota() {
-		this(0,0,0,0,0);
+		this(0,0,0,0,0,0);
 	}
 
-	public Nota(int NotaId, int AlunoId,int DisciplinaId, int BimestreId, float nota) {
+	public Nota(int NotaId, int AlunoId,int DisciplinaId, int BimestreId, float nota, int nrNota) {
 		setNotaId(NotaId);
 		setAlunoId(AlunoId);
 		setDisciplinaId(DisciplinaId);
 		setBimestreId(BimestreId);
 		setNota(nota);
+		setNrNota(nrNota);
 	}
 	
 	public  int getDisciplinaId() {
@@ -57,11 +59,20 @@ public class Nota {
 		this.NotaId = NotaId;
 	}
 	
+	public int getNrNota() {
+		return nrNota;
+	}
+	
+	public void setNrNota(int nrNota) {
+		this.nrNota = nrNota;
+	}	
+	
 	public String toString() {
 		return  	"\n\tNúmero da nota..........: " + getNotaId()
 		        + 	"\n\tCód. Aluno..............: " + getAlunoId()
 				+ 	"\n\tCód. Disciplina.........: " + getDisciplinaId()
 				+ 	"\n\tNum. Bimestre...........: " + getBimestreId()
+				+ 	"\n\tNum nota,,,.............: " + getNota()
 				+ 	"\n\tNota..,,,,,.............: " + getNota();
-	}	
+	}
 }

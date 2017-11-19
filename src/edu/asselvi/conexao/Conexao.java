@@ -13,7 +13,8 @@ public class Conexao {
 	public static Connection getConexao() throws BDException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/deise?useSSL=true", "root", "Deise123");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/deise2?useSSL=true", "root", "Deise123");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/deise?useSSL=true", "root", "Deise123");
 //			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lorena?useSSL=true", "lorena", "lorena");
 			return conn;
 		} catch (Exception e) {

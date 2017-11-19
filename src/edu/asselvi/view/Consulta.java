@@ -45,8 +45,4 @@ public class Consulta {
 		
 	}
 
-	public static void consultaSituacao(int alunoId) {
-		
-	}
-	
 }

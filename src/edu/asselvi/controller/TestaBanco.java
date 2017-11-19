@@ -82,26 +82,26 @@ public class TestaBanco {
 		DisciplinaSerieDAO disciplinaSerieDAO = new DisciplinaSerieDAO();
 		DisciplinaProfessorDAO disciplinaProfessorDAO = new DisciplinaProfessorDAO();
 		TurmaDAO turmaDAO = new TurmaDAO();
-		HorarioDAO horarioDAO = new HorarioDAO();
 		BimestreDAO bimestreDAO = new BimestreDAO();
 		AlunoTurmaDAO alunoTurmaDAO = new AlunoTurmaDAO();
+		HorarioDAO horarioDAO = new HorarioDAO();
 		NotaDAO notaDAO = new NotaDAO();
 		FrequenciaDAO frequenciaDAO = new FrequenciaDAO();
 		try {
-			frequenciaDAO.criaTabela();
-			horarioDAO.criaTabela();
-			usuarioDAO.criaTabela();
-			pessoaDAO.criaTabela();
-			escolaDAO.criaTabela();
-			disciplinaDAO.criaTabela();
-			cursoDAO.criaTabela();
-			bimestreDAO.criaTabela();
-			disciplinaSerieDAO.criaTabela();
-			disciplinaProfessorDAO.criaTabela();
-			alunoTurmaDAO.criaTabela();			
+//			usuarioDAO.criaTabela();
+//			pessoaDAO.criaTabela();
+//			escolaDAO.criaTabela();
+//			disciplinaDAO.criaTabela();
+//			cursoDAO.criaTabela();
+//			bimestreDAO.criaTabela();
+//			disciplinaSerieDAO.criaTabela();
+//			disciplinaProfessorDAO.criaTabela();
+//			alunoTurmaDAO.criaTabela();			
 			notaDAO.criaTabela();
+			frequenciaDAO.criaTabela();
 			serieDAO.criaTabela();
 			turmaDAO.criaTabela();
+			horarioDAO.criaTabela();
 		} catch (BDException e) {
 			System.out.println(e.getMessage());
 		}

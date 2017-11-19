@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.AlunoTurmaDAO;
@@ -36,12 +37,13 @@ import edu.asselvi.view.Consulta;
 import edu.asselvi.view.Lancamentos;
 import edu.asselvi.view.Login;
 import edu.asselvi.view.Menu;
+import edu.asselvi.view.Relatorios;
 
 public class Sistema {
 	static Calendar calendar = new GregorianCalendar();
 	private static int idPessoaLogada = 0;
 	private static int tpPessoaLogada = 0;
-	
+
 	private static Pessoa login() throws BDException, IOException {
 		UsuarioDAO usuario = new UsuarioDAO();
 		PessoaDAO pessoaDao = new PessoaDAO();
@@ -145,22 +147,17 @@ public class Sistema {
 			AlunoturmaDao.insereTrn(alunosTurma);
 		}
 	}
-	
+
 	public static void acessoCoordenador() throws BDException, IOException, ParseException {
 		EscolaDAO escola = new EscolaDAO();
 		PessoaDAO pessoa = new PessoaDAO();
-		AlunoTurmaDAO alunoTurma = new AlunoTurmaDAO();
 		UsuarioDAO usuario = new UsuarioDAO();
 		CursoDAO curso = new CursoDAO();
 		SerieDAO serie = new SerieDAO();
 		DisciplinaDAO disciplina = new DisciplinaDAO();
 		HorarioDAO horario = new HorarioDAO();
 		BimestreDAO bimestre = new BimestreDAO();
-		NotaDAO nota = new NotaDAO();
-		FrequenciaDAO frequencia = new FrequenciaDAO();
-		DisciplinaProfessorDAO discProf = new DisciplinaProfessorDAO();
 		TurmaDAO turmaDao = new TurmaDAO();
-		DisciplinaSerieDAO discSerie = new DisciplinaSerieDAO();
 
 		int opcao = verificaMenu();
 		while (opcao != 0) {
@@ -201,103 +198,15 @@ public class Sistema {
 				}
 				opcao = verificaMenu();
 				break;
-			case 2:
-				int opcaoMat = Menu.menuMatriculas();
-				;
-				while (opcaoMat != 0) {
-					switch (opcaoMat) {
-					case 1:
-						insereBanco(Cadastros.cadastraAluno(pessoa.retornaProximoId(), usuario.retornaProximoId(),
-								turmaDao.consultaIds()));
-						break;
-					}
-				}
-				opcao = verificaMenu();
-				break;
-			case 3:
-				int opcaoLan = Menu.menuLancamentos();
-				int idTurma = 0;
-				int idDisciplina = 0;
-				while (opcaoLan != 0) {
-					idTurma = Lancamentos.BuscaTurma();
-					Turma turmaObj = turmaDao.consulta(idTurma);
-					List <Integer> discProfessor = discProf.consultaDisciplinas(idPessoaLogada);
-					List <Integer> disciplinas = discSerie.consultaDisciProf(turmaObj.getSerieId(), discProfessor );
-					idDisciplina = Lancamentos.BuscaDisciplina(disciplinas);						
-					List <Integer> alunos = alunoTurma.consultaAlunosTurma(idTurma);
-					
-					switch (opcaoLan) {
-					case 1:
-						nota.insereTrn(Lancamentos.lancaNotasTurma(idTurma,
-								FuncoesGenericas.buscaBimestre(),
-								idDisciplina,
-								pessoa.consultaAlunosTurma(alunos),
-								idDisciplina)
-								);
-						break;
-					case 2:
-						frequencia.insereTrn(Lancamentos.lancaFrequenciaTurma(
-								horario.consulta(idTurma, idDisciplina, turmaDao.consulta(idTurma).getSerieId(),
-								calendar.get(Calendar.DAY_OF_WEEK)),
-								pessoa.consultaAlunosTurma(alunos), 
-								FuncoesGenericas.buscaBimestre()));
-
-						break;
-					}
-					opcaoLan = Menu.menuLancamentos();
-				}
-				opcao = verificaMenu();
-				break;
-			case 4:
-				int opcaoCon = Menu.menuConsultas();
-				while (opcaoCon != 0) {
-					switch (opcaoCon) {
-					case 1:
-
-						break;
-					case 2:
-
-						break;
-					case 3:
-
-						break;
-					}
-					opcaoCon = Menu.menuConsultas();
-				}
-				opcao = verificaMenu();
-				break;
-			case 5:
-				int opcaoRel = Menu.menuRelatorios();
-				while (opcaoRel != 0) {
-					switch (opcaoRel) {
-					case 1:
-
-						break;
-					case 2:
-
-						break;
-					case 3:
-
-						break;
-					}
-					opcaoRel = Menu.menuRelatorios();
-				}
-				opcao = verificaMenu();
-				break;
 			}
 		}
-		
+
 	};
+
 	public static void acessoSecretaria() throws BDException, IOException, ParseException {
 		PessoaDAO pessoa = new PessoaDAO();
-		AlunoTurmaDAO alunoTurma = new AlunoTurmaDAO();
 		UsuarioDAO usuario = new UsuarioDAO();
-		HorarioDAO horario = new HorarioDAO();
-		NotaDAO nota = new NotaDAO();
-		FrequenciaDAO frequencia = new FrequenciaDAO();
-		DisciplinaProfessorDAO discProf = new DisciplinaProfessorDAO();
 		TurmaDAO turmaDao = new TurmaDAO();
-		DisciplinaSerieDAO discSerie = new DisciplinaSerieDAO();
 
 		int opcao = verificaMenu();
 		while (opcao != 0) {
@@ -317,8 +226,9 @@ public class Sistema {
 				break;
 			}
 		}
-		
+
 	};
+
 	public static void acessoProfessor() throws BDException, IOException, ParseException {
 		PessoaDAO pessoa = new PessoaDAO();
 		AlunoTurmaDAO alunoTurma = new AlunoTurmaDAO();
@@ -329,7 +239,8 @@ public class Sistema {
 		DisciplinaProfessorDAO discProf = new DisciplinaProfessorDAO();
 		TurmaDAO turmaDao = new TurmaDAO();
 		DisciplinaSerieDAO discSerie = new DisciplinaSerieDAO();
-		
+		DisciplinaDAO disciplinasDao = new DisciplinaDAO();
+
 		int opcao = verificaMenu();
 
 		while (opcao != 0) {
@@ -341,26 +252,25 @@ public class Sistema {
 				while (opcaoLan != 0) {
 					idTurma = Lancamentos.BuscaTurma();
 					Turma turmaObj = turmaDao.consulta(idTurma);
-					List <Integer> discProfessor = discProf.consultaDisciplinas(idPessoaLogada);
-					List <Integer> disciplinas = discSerie.consultaDisciProf(turmaObj.getSerieId(), discProfessor );
-					idDisciplina = Lancamentos.BuscaDisciplina(disciplinas);						
-					List <Integer> alunos = alunoTurma.consultaAlunosTurma(idTurma);
-					
+					List<Integer> discProfessor = discProf.consultaDisciplinas(idPessoaLogada);
+					List<Integer> disciplinas = discSerie.consultaDisciProf(turmaObj.getSerieId(), discProfessor);
+					idDisciplina = Lancamentos.BuscaDisciplina(disciplinas);
+					List<Integer> alunos = alunoTurma.consultaAlunosTurma(idTurma);
+
 					switch (opcaoLan) {
 					case 1:
-						nota.insereTrn(Lancamentos.lancaNotasTurma(idTurma,
-								FuncoesGenericas.buscaBimestre(),
+						nota.insereTrn(Lancamentos.lancaNotasTurma(idTurma, FuncoesGenericas.buscaBimestre(),
 								idDisciplina,
-								pessoa.consultaAlunosTurma(alunos),
-								idDisciplina)
-								);
+								pessoa.consultaAlunosTurma(alunos)
+								));
 						break;
 					case 2:
 						frequencia.insereTrn(Lancamentos.lancaFrequenciaTurma(
 								horario.consulta(idTurma, idDisciplina, turma.consulta(idTurma).getSerieId(),
 								calendar.get(Calendar.DAY_OF_WEEK)),
 								pessoa.consultaAlunosTurma(alunos), 
-								FuncoesGenericas.buscaBimestre()));
+								FuncoesGenericas.buscaBimestre()
+								));
 
 						break;
 					}
@@ -371,15 +281,25 @@ public class Sistema {
 			case 2:
 				int opcaoRel = Menu.menuRelatorios();
 				while (opcaoRel != 0) {
+					idTurma = Lancamentos.BuscaTurma();
+					Turma turmaObj = turmaDao.consulta(idTurma);
+					List<Integer> alunosCod = alunoTurma.consultaAlunosTurma(idTurma);
+					Map<Integer, Pessoa> alunos = pessoa.consultaAlunosTurma(alunosCod);
+					
 					switch (opcaoRel) {
 					case 1:
-
+						Relatorios.relatorioNotas(turmaObj,
+									alunos,
+									disciplinasDao.consultaDescricao(),
+									nota.consultaNotasTurma(alunos)
+								);
 						break;
 					case 2:
-
-						break;
-					case 3:
-
+						Relatorios.relatorioFrequencia(turmaObj,
+								alunos,
+								disciplinasDao.consultaDescricao(),
+								frequencia.consultaFreqTurma(alunos)
+								);
 						break;
 					}
 					opcaoRel = Menu.menuRelatorios();
@@ -388,9 +308,9 @@ public class Sistema {
 				break;
 			}
 		}
-		
-		
+
 	};
+
 	public static void acessoAluno() throws BDException, IOException {
 		NotaDAO notaDao = new NotaDAO();
 		FrequenciaDAO frequenciaDao = new FrequenciaDAO();
@@ -405,13 +325,11 @@ public class Sistema {
 				while (opcaoCon != 0) {
 					switch (opcaoCon) {
 					case 1:
-						Consulta.consultaNota(notaDao.consultaNotasAluno(idPessoaLogada), disciplinaDao.consultaDescricao());
+						Consulta.consultaNota(notaDao.consultaNotasAluno(idPessoaLogada),
+								disciplinaDao.consultaDescricao());
 						break;
 					case 2:
 						Consulta.consultaFrequencia(frequenciaDao.consultaFreqAluno(idPessoaLogada));
-						break;
-					case 3:
-
 						break;
 					}
 					opcaoCon = Menu.menuConsultas();
@@ -420,8 +338,7 @@ public class Sistema {
 				break;
 			}
 		}
-		
-		
+
 	};
 
 	public static void main(String[] args) throws IOException, BDException, ParseException, InputException {

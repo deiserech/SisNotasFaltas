@@ -155,11 +155,24 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 		return 0;
 	}
 
-	public Map<Integer, Integer> disciplinasProfessorTurma(int turma, int professor) throws BDException {
-		Map<Integer, Integer> dsciplinas = new HashMap<Integer, Integer>();
-		//Implementar
-		
-		return dsciplinas;
+	
+	public List<Integer> consultaDisciplinas(int professorId) throws BDException {
+		List<Integer> disciplinas = new ArrayList<Integer>();
+		Connection conexao = Conexao.getConexao();
+		try {
+			PreparedStatement pst = conexao
+					.prepareStatement("SELECT * FROM disciplinaProfessor WHERE ProfessorId = ?;");
+			pst.setInt(1, professorId);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				disciplinas.add(rs.getInt("DisciplinaId"));
+			}
+			return disciplinas;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
+		} finally {
+			Conexao.closeConexao();
+		}
 	}
 
 }

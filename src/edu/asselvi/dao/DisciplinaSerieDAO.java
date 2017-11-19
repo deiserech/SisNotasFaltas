@@ -152,6 +152,28 @@ public class DisciplinaSerieDAO implements GenericDAO<DisciplinaSerie> {
 	public int retornaProximoId() throws BDException {
 		return 0;
 	}
+	
+	public List<Integer> consultaDisciProf(int serieId, List<Integer> discProfessor) throws BDException {
+		List<Integer> disciplinas = new ArrayList<Integer>();
+		Connection conexao = Conexao.getConexao();
+		try {
+			PreparedStatement pst = conexao
+					.prepareStatement("SELECT * FROM disciplinaSerie WHERE serieId = ?;");
+			pst.setInt(1, serieId);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				if(discProfessor.contains(rs.getInt("DisciplinaId"))) {
+					disciplinas.add(rs.getInt("DisciplinaId"));
+				}
+			}
+			return disciplinas;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+	
 
 
 }

@@ -88,7 +88,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			return rs.first() ?
-								new Turma(rs.getInt("id"),
+								new Turma(rs.getInt("turmaId"),
 										   rs.getInt("SerieId"),
 										   rs.getString("descricao"),
 										   rs.getInt("vagas"),
@@ -109,7 +109,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 			Statement st = conexao.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM turma;");
 			while(rs.next()) {
-				turmas.add(new Turma(rs.getInt("id"),
+				turmas.add(new Turma(rs.getInt("turmaId"),
 						   rs.getInt("SerieId"),
 						   rs.getString("descricao"),
 						   rs.getInt("vagas"),
@@ -162,9 +162,9 @@ public class TurmaDAO implements GenericDAO<Turma>{
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT MAX(ID) FROM turma;");
+			ResultSet rs = st.executeQuery("SELECT TurmaId FROM turma;");
 			while(rs.next()) {
-				proximoId = rs.getInt("id") + 1;
+				proximoId = rs.getInt("TurmaId") + 1;
 			}
 			return proximoId;
 		} catch (Exception e) {

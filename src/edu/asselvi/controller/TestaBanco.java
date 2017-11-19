@@ -88,6 +88,7 @@ public class TestaBanco {
 		NotaDAO notaDAO = new NotaDAO();
 		FrequenciaDAO frequenciaDAO = new FrequenciaDAO();
 		try {
+			frequenciaDAO.criaTabela();
 			horarioDAO.criaTabela();
 			usuarioDAO.criaTabela();
 			pessoaDAO.criaTabela();
@@ -99,7 +100,6 @@ public class TestaBanco {
 			disciplinaProfessorDAO.criaTabela();
 			alunoTurmaDAO.criaTabela();			
 			notaDAO.criaTabela();
-			frequenciaDAO.criaTabela();
 			serieDAO.criaTabela();
 			turmaDAO.criaTabela();
 		} catch (BDException e) {

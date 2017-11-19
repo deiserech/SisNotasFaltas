@@ -24,9 +24,9 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 					+ " HorarioId		 	INTEGER NOT NULL ,"
 					+ " AlunoId				INTEGER NOT NULL ," 
 					+ " BimestreId 		    INTEGER NOT NULL ," 
-					+ "PRIMARY KEY (HorarioId, AlunoId,BimestreId)"
+					+ "PRIMARY KEY (HorarioId, AlunoId,BimestreId),"
 					+ "	dataAula			DATE  NOT NULL,"  
-					+ "	presente	     	BOOLEAN  NOT NULL" 
+					+ "	presente	     	VARCHAR(01)  NOT NULL" 
 					+ ");");
 			return true;
 		} catch (Exception e) {

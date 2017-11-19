@@ -124,15 +124,15 @@ public class HorarioDAO implements GenericDAO<Horario>{
 		}
 	}
 
-	public Horario consulta(int idTurma, int idSerie, int idDisciplina, int diaSemana) throws BDException {
+	public Horario consulta(int idTurma, int idDisciplina,int idSerie, int diaSemana) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		Horario horario = new Horario();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM horario where TurmaId = ? and DisciplinaId = ? and SerieId = ? and diaSemana = ?;");
+			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM horario where TurmaId = ? and DisciplinaId = ? and diaSemana = ?;");
 			pst.setInt(1, idTurma);
-			pst.setInt(1, idSerie);
-			pst.setInt(1, idDisciplina);
-			pst.setInt(1, diaSemana);
+//			pst.setInt(2, idSerie);
+			pst.setInt(2, idDisciplina);
+			pst.setInt(3, diaSemana);
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {

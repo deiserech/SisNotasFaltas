@@ -22,14 +22,14 @@ public class FuncoesGenericas {
 	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 	
-	public static int buscaBimestre() throws BDException {
+	public static int buscaBimestre() throws BDException, ParseException {
 		BimestreDAO bimestre = new BimestreDAO();
 		List<Bimestre> bimestres = new ArrayList<Bimestre>();
 		Date data = calendar.getTime();
 		bimestres = bimestre.consulta();
 		for (Bimestre bim : bimestres) {
-			if ((data.compareTo(bim.getDataInicio()) == 1) 
-				&& (bim.getDataFim().compareTo(data) == 1)) {
+			if ((data.compareTo(bim.getDataInicio()) >= 0 ) 
+				&& (bim.getDataFim().compareTo(data) >= 0)) {
 				return bim.getBimestreId();
 			}
 		}
@@ -43,6 +43,15 @@ public class FuncoesGenericas {
 	public static int lerCampoInt() {
 		try {
 			return Integer.parseInt(teclado.readLine());
+		} catch (NumberFormatException | IOException e) {
+			System.out.println(EErrosIO.INSERE_NUMERO.getMensagem());
+			return 0;
+		}
+	}
+
+	public static float lerCampoFloat() {
+		try {
+			return Float.parseFloat(teclado.readLine());
 		} catch (NumberFormatException | IOException e) {
 			System.out.println(EErrosIO.INSERE_NUMERO.getMensagem());
 			return 0;

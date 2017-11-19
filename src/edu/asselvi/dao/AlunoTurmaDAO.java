@@ -5,26 +5,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
+import edu.asselvi.enumerador.ESexo;
+import edu.asselvi.model.Aluno;
 import edu.asselvi.model.AlunoTurma;
 
-
-public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
+public class AlunoTurmaDAO implements GenericDAO<AlunoTurma> {
 
 	@Override
 	public boolean criaTabela() throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
 			Statement st = conexao.createStatement();
-			st.execute("CREATE TABLE alunoTurma (" + "	"
-					+ " AlunoId		 		INTEGER NOT NULL,"
-					+ " TurmaId				INTEGER NOT NULL,"
-					+ " PRIMARY KEY 		(AlunoId, TurmaId)"
-					+ " );");
+			st.execute("CREATE TABLE alunoTurma (" + "	" + " AlunoId		 		INTEGER NOT NULL,"
+					+ " TurmaId				INTEGER NOT NULL," + " PRIMARY KEY 		(AlunoId, TurmaId)" + " );");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_TABELA, e.getMessage(), this.getClass().getSimpleName());
@@ -32,7 +32,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 			Conexao.closeConexao();
 		}
 	}
-	
+
 	@Override
 	public boolean destroiTabela() throws BDException {
 		Connection conexao = Conexao.getConexao();
@@ -53,13 +53,13 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 		try {
 
 			conexao.setAutoCommit(false);
-				PreparedStatement pst = conexao.prepareStatement(
-						"INSERT INTO alunoTurma (AlunoId, TurmaId ) VALUES (?, ?);");
-				for (AlunoTurma alunoTurma : alunoTurmas) {
-					pst.setInt(1, alunoTurma.getAlunoId());
-					pst.setInt(2, alunoTurma.getTurmaId());
-					pst.executeUpdate();
-				}
+			PreparedStatement pst = conexao
+					.prepareStatement("INSERT INTO alunoTurma (AlunoId, TurmaId ) VALUES (?, ?);");
+			for (AlunoTurma alunoTurma : alunoTurmas) {
+				pst.setInt(1, alunoTurma.getAlunoId());
+				pst.setInt(2, alunoTurma.getTurmaId());
+				pst.executeUpdate();
+			}
 			conexao.commit();
 			return true;
 		} catch (Exception e) {
@@ -73,7 +73,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 			Conexao.closeConexao();
 		}
 	}
-	
+
 	@Override
 	public AlunoTurma consulta(int id) throws BDException {
 		return null;
@@ -132,7 +132,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 	public boolean exclui(int id) throws BDException {
 		return false;
 	}
-	
+
 	public boolean exclui(int AlunoId, int TurmaId) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
@@ -147,9 +147,28 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma>{
 			Conexao.closeConexao();
 		}
 	}
-	
+
 	@Override
 	public int retornaProximoId() throws BDException {
 		return 0;
 	}
+
+	public List<Integer> consultaAlunosTurma(int idTurma) throws BDException {
+		Connection conexao = Conexao.getConexao();
+		List<Integer> alunoTurmas = new ArrayList<Integer>();
+		try {
+			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM alunoTurma where turmaId = ?;");
+			pst.setInt(1, idTurma);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				alunoTurmas.add(rs.getInt("AlunoId"));
+			}
+			return alunoTurmas;
+		} catch (Exception e) {
+			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
+		} finally {
+			Conexao.closeConexao();
+		}
+	}
+
 }

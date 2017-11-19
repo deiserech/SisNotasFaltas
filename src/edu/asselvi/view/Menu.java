@@ -1,8 +1,9 @@
 package edu.asselvi.view;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+
+import edu.asselvi.controller.FuncoesGenericas;
 
 public class Menu {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
@@ -21,11 +22,7 @@ public class Menu {
 		System.out.println("\t5 - Relatórios............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
-		try {
-			return Integer.parseInt(teclado.readLine());
-		} catch (NumberFormatException | IOException e) {
-			return 0;
-		}
+		return FuncoesGenericas.lerCampoInt();
 	}
 
 	public static int menuSecretaria() {
@@ -41,11 +38,7 @@ public class Menu {
 		System.out.println("\t4 - Relatórios............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
-		try {
-			return Integer.parseInt(teclado.readLine());
-		} catch (NumberFormatException | IOException e) {
-			return 0;
-		}
+		return FuncoesGenericas.lerCampoInt();
 	}
 
 	public static int menuProfessor() {
@@ -59,11 +52,7 @@ public class Menu {
 		System.out.println("\t2 - Relatórios............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
-		try {
-			return Integer.parseInt(teclado.readLine());
-		} catch (NumberFormatException | IOException e) {
-			return 0;
-		}
+		return FuncoesGenericas.lerCampoInt();
 	}
 
 	public static int menuAluno() {
@@ -76,11 +65,7 @@ public class Menu {
 		System.out.println("\t1 - Consultas.............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
-		try {
-			return Integer.parseInt(teclado.readLine());
-		} catch (NumberFormatException | IOException e) {
-			return 0;
-		}
+		return FuncoesGenericas.lerCampoInt();
 	}
 
 	public static int menuCadastros() {
@@ -98,12 +83,7 @@ public class Menu {
 		System.out.println("\t8 - Funcionários..........");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................: ");
-
-		try {
-			return Integer.parseInt(teclado.readLine());
-		} catch (NumberFormatException | IOException e) {
-			return 0;
-		}
+		return FuncoesGenericas.lerCampoInt();
 	}
 
 	public static int menuMatriculas() {
@@ -114,12 +94,7 @@ public class Menu {
 		System.out.println("\t1 - Matricular Aluno......");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................: ");
-
-		try {
-			return Integer.parseInt(teclado.readLine());
-		} catch (NumberFormatException | IOException e) {
-			return 0;
-		}
+		return FuncoesGenericas.lerCampoInt();
 	}
 
 	public static int menuLancamentos() {
@@ -131,12 +106,7 @@ public class Menu {
 		System.out.println("\t2 - Frequência............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
-
-		try {
-			return Integer.parseInt(teclado.readLine());
-		} catch (NumberFormatException | IOException e) {
-			return 0;
-		}
+		return FuncoesGenericas.lerCampoInt();
 	}
 
 	public static int menuConsultas() {
@@ -149,12 +119,7 @@ public class Menu {
 		System.out.println("\t3 - Situação..............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
-
-		try {
-			return Integer.parseInt(teclado.readLine());
-		} catch (NumberFormatException | IOException e) {
-			return 0;
-		}
+		return FuncoesGenericas.lerCampoInt();
 	}
 
 	public static int menuRelatorios() {
@@ -167,12 +132,7 @@ public class Menu {
 		System.out.println("\t3 - Situação da Turma.....");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
-
-		try {
-			return Integer.parseInt(teclado.readLine());
-		} catch (NumberFormatException | IOException e) {
-			return 0;
-		}
+		return FuncoesGenericas.lerCampoInt();
 	}
 
 }

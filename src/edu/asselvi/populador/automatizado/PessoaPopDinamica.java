@@ -103,6 +103,7 @@ public class PessoaPopDinamica {
 		for (int i = codIni; i < codFim; i++) {
 			Pessoa pessoa = new Pessoa();
 			pessoa.setId(i);
+			pessoa.setCdUsuario(i);
 			
 			Usuario usuario = new Usuario();
 			usuario.setUsuarioId(i);
@@ -142,25 +143,30 @@ public class PessoaPopDinamica {
 			pessoas.add(pessoa);
 			usuarios.add(usuario); 
 		}
-		PessoaDAO pessoaDAO = new PessoaDAO();
-		try {
-			pessoaDAO.criaTabela();
-		} catch (BDException e) {
-			System.out.println(e.getMessage());
-		}
-		try {
-			pessoaDAO.insereTrn(pessoas);
-		} catch (BDException e) {
-			System.out.println(e.getMessage());
-		}
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		try {
+	//		usuarioDAO.destroiTabela();
+			
 			usuarioDAO.criaTabela();
 		} catch (BDException e) {
 			System.out.println(e.getMessage());
 		}
 		try {
 			usuarioDAO.insereTrn(usuarios);
+		} catch (BDException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		try {
+	//		pessoaDAO.destroiTabela();
+			
+			pessoaDAO.criaTabela();
+		} catch (BDException e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			pessoaDAO.insereTrn(pessoas);
 		} catch (BDException e) {
 			System.out.println(e.getMessage());
 		}

@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +16,7 @@ import java.util.Random;
 import edu.asselvi.arquivo.Arquivo;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.PessoaDAO;
+import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Usuario;
@@ -68,7 +68,7 @@ public class PessoaPopDinamica {
 			}
 	        return null;
     }
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ParseException {
 		BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 		// Criar apontador para arquivo de propriedades
 		String caminho = System.getProperty("user.dir") + "/config/populador.properties";
@@ -99,6 +99,7 @@ public class PessoaPopDinamica {
 		System.out.print("Informe código final...........: ");
 		int codFim = Integer.parseInt(teclado.readLine());
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		List<Usuario> usuarios = new ArrayList<Usuario>();
 		for (int i = codIni; i < codFim; i++) {
 			Pessoa pessoa = new Pessoa();
 			pessoa.setId(i);
@@ -119,10 +120,10 @@ public class PessoaPopDinamica {
 			String sobrenome = " " + sobrenomes[(int) (Math.random() * sobrenomes.length)] + segundoNome;
 			
 			if((int) (Math.random() * 2) == 0) {
-				pessoa.setSexo(ESexo.MASCULINO);;
+				pessoa.setSexo(ESexo.M);;
 				pessoa.setNome(nomesMas[(int) (Math.random() * nomesMas.length)] + sobrenome);
 			} else {
-				pessoa.setSexo(ESexo.FEMININO);
+				pessoa.setSexo(ESexo.F);
 				pessoa.setNome(nomesFem[(int) (Math.random() * nomesFem.length)] + sobrenome);
 			}
 			
@@ -136,11 +137,10 @@ public class PessoaPopDinamica {
 				pessoa.setDataNascimento(getRandomDateAluno()); 
 			} else {
 				pessoa.setDataNascimento(getRandomDateFuncionario());
-			}		
-			
+			}			
 			
 			pessoas.add(pessoa);
-			usuario.add(usuario); //não entendi pq não dar pra add usuario
+			usuarios.add(usuario); 
 		}
 		PessoaDAO pessoaDAO = new PessoaDAO();
 		try {
@@ -150,6 +150,17 @@ public class PessoaPopDinamica {
 		}
 		try {
 			pessoaDAO.insereTrn(pessoas);
+		} catch (BDException e) {
+			System.out.println(e.getMessage());
+		}
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		try {
+			usuarioDAO.criaTabela();
+		} catch (BDException e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			usuarioDAO.insereTrn(usuarios);
 		} catch (BDException e) {
 			System.out.println(e.getMessage());
 		}

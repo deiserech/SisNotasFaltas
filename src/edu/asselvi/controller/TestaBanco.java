@@ -99,6 +99,7 @@ public class TestaBanco {
 			disciplinaProfessorDAO.criaTabela();
 			alunoTurmaDAO.criaTabela();			
 			notaDAO.criaTabela();
+			frequenciaDAO.criaTabela();
 			serieDAO.criaTabela();
 			turmaDAO.criaTabela();
 		} catch (BDException e) {

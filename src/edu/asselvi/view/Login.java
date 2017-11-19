@@ -24,7 +24,7 @@ public class Login {
 		String login = (teclado.readLine());
 		System.out.println("Informe a senha..................: ");
 		String senha = (teclado.readLine());
-		return new Usuario(0, login, senha, 0);
+		return new Usuario(0, login, senha);
 
 	}
 

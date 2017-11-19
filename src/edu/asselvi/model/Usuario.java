@@ -4,17 +4,15 @@ public class Usuario {
 	private int usuarioId;
 	private String login;
 	private String senha;
-	private int tipoUsuario; 
 	
 	public Usuario() {
-		this(0,"admin", "989796", 1);
+		this(0,"admin", "989796");
 	}
 
-	public Usuario(int usuarioId, String login, String senha, int tipoUsuario) {
+	public Usuario(int usuarioId, String login, String senha) {
 		setUsuarioId(usuarioId);
 		setLogin(login);
 		setSenha(senha);
-		setTipoUsuario(tipoUsuario);
 	}
 	
 	public int getUsuarioId() {
@@ -35,19 +33,12 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public int getTipoUsuario() {
-		return tipoUsuario;
-	}
-	public void setTipoUsuario(int tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
-	
+		
     @Override
     public String toString() {
 		return "\n\tCód Usuário.............: " + getUsuarioId()
 		+ "\n\tLogin...................: " + getLogin()
-		+ "\n\tSenha...................: " + getSenha()
-		+ "\n\tTipo Usuario............: " + getTipoUsuario();
+		+ "\n\tSenha...................: " + getSenha();
     }
 	
 }

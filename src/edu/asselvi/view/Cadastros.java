@@ -239,7 +239,7 @@ public class Cadastros {
 		System.out.println("Informe a senha..................: ");
 		String senha = FuncoesGenericas.lerCampoString();
 
-		retorno.add(new Usuario(usuarioId, login, senha, tipoUsuario));
+		retorno.add(new Usuario(usuarioId, login, senha));
 		retorno.add(new Funcionario(funcionarioId, usuarioId, tipoUsuario, nome, cpf, dataNascimento, sexo));
 
 		if (tipoUsuario == 3) {
@@ -344,8 +344,7 @@ public class Cadastros {
 		String login = FuncoesGenericas.lerCampoString();
 		System.out.println("Informe a senha..................: ");
 		String senha = FuncoesGenericas.lerCampoString();
-		retorno.add(new Usuario(usuarioId, login, senha, tipoUsuario));
-
+		retorno.add(new Usuario(usuarioId, login, senha));
 		System.out.println("Informe o código da turma........: ");
 		System.out.println("Digite '0' para SAIR.............: ");
 		List<Integer> turmas = new ArrayList<Integer>();

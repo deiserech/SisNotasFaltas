@@ -10,8 +10,6 @@ import java.util.List;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
-import edu.asselvi.enumerador.ESexo;
-import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Usuario;
 
 public class UsuarioDAO implements GenericDAO<Usuario>{
@@ -25,8 +23,8 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			st.execute("CREATE TABLE usuario (" + "	"
 					+ " usuarioId		 		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
 					+ " login    		VARCHAR(10) NOT NULL ," 
-					+ " senha 		    VARCHAR(14) NOT NULL ," 
-					+ "	tipoUsuario		INTEGER NOT NULL" + ");");
+					+ " senha 		    VARCHAR(14) NOT NULL " 
+					+ ");");
 			criaAdmin();
 			return true;
 		} catch (Exception e) {
@@ -38,7 +36,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 
 	public void criaAdmin() throws BDException {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
-		usuarios.add(new Usuario(1,"admin","admin",1));		
+		usuarios.add(new Usuario(1,"admin","admin"));		
 		insereTrn(usuarios);
 	}
 
@@ -63,11 +61,10 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 
 			conexao.setAutoCommit(false);
 				PreparedStatement pst = conexao.prepareStatement(
-						"INSERT INTO usuario ( login, senha, tipoUsuario) VALUES (?, ?, ?);");
+						"INSERT INTO usuario ( login, senha) VALUES (?, ?);");
 				for (Usuario usuario : usuarios) {
 					pst.setString(1, usuario.getLogin());
 					pst.setString(2, usuario.getSenha());
-					pst.setInt(3, usuario.getTipoUsuario());
 					pst.executeUpdate();
 				}
 			conexao.commit();
@@ -94,8 +91,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			return rs.first() ?
 								new Usuario(rs.getInt("usuarioId"),
 										   rs.getString("login"),
-										   rs.getString("senha"),
-										   rs.getInt("tipoUsuario"))										   
+										   rs.getString("senha"))										   
 							  : null;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
@@ -114,8 +110,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			return rs.first() ?
 					new Usuario(rs.getInt("usuarioId"),
 							   rs.getString("login"),
-							   rs.getString("senha"),
-							   rs.getInt("tipoUsuario"))
+							   rs.getString("senha"))
 				  : null;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
@@ -134,8 +129,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			while(rs.next()) {
 				usuarios.add(new Usuario(rs.getInt("usuarioId"),
 						   rs.getString("login"),
-						   rs.getString("senha"),
-						   rs.getInt("tipoUsuario")));
+						   rs.getString("senha")));
 			}
 			return usuarios;
 		} catch (Exception e) {
@@ -149,10 +143,9 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 	public boolean altera(Usuario usuario) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		try {
-			PreparedStatement pst = conexao.prepareStatement("UPDATE usuario SET login = ?, senha = ?, tipoUsuario = ? WHERE usuarioId = ?;");
+			PreparedStatement pst = conexao.prepareStatement("UPDATE usuario SET login = ?, senha = ? WHERE usuarioId = ?;");
 			pst.setString(1, usuario.getLogin());
 			pst.setString(2, usuario.getSenha());
-			pst.setInt(3, usuario.getTipoUsuario());
 			return pst.executeUpdate() > 0;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.ALTERA_DADO, e.getMessage(), this.getClass().getSimpleName());

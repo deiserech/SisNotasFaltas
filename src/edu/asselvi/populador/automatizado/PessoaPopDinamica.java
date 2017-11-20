@@ -94,8 +94,6 @@ public class PessoaPopDinamica {
 		for (int i = 1; i < quantidade; i++) {
 			Escola escola = new Escola();
 			
-			escola.setDescricao("Escola Asselvi");
-			
 			Pessoa pessoa = new Pessoa();
 			Usuario usuario = new Usuario();
 

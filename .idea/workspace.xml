@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbba08ef-9cab-435f-b49a-540917cee2dd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/conexao/Conexao.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/conexao/Conexao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/controller/Sistema.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/controller/Sistema.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/dao/FrequenciaDAO.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/dao/FrequenciaDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/dao/NotaDAO.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/dao/NotaDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/view/Lancamentos.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/view/Lancamentos.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/view/Relatorios.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/view/Relatorios.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/conexao/Conexao.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/conexao/Conexao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/controller/Sistema.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/controller/Sistema.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/FrequenciaDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/FrequenciaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/NotaDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/NotaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/PessoaDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/PessoaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Cadastros.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Cadastros.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Lancamentos.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Lancamentos.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Relatorios.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Relatorios.java" />
-    </list>
+    <list default="true" id="cbba08ef-9cab-435f-b49a-540917cee2dd" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -177,12 +162,12 @@
       <option name="presentableId" value="Default" />
       <updated>1511135925338</updated>
       <workItem from="1511135928409" duration="580000" />
-      <workItem from="1511144509957" duration="125000" />
+      <workItem from="1511144509957" duration="158000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="705000" />
+    <option name="totallyTimeSpent" value="738000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-1088" width="1936" height="1056" extended-state="6" />

@@ -25,8 +25,8 @@ public class ImportaNota {
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\nota.txt");
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
-        List<Nota> notas = new ArrayList();
-        Iterator var6 = dados.iterator();
+        List<Nota> notas = new ArrayList<Nota>();
+        Iterator<String> var6 = dados.iterator();
 
         while(var6.hasNext()) {
             String linha = (String)var6.next();

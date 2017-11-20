@@ -15,9 +15,7 @@ import edu.asselvi.arquivo.Arquivo;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
-import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Serie;
-import edu.asselvi.model.Usuario;
 
 public class SerieDAO implements GenericDAO<Serie>{
 
@@ -203,8 +201,8 @@ public class SerieDAO implements GenericDAO<Serie>{
 	}
 	
 	public void exportaDados(String nomeArq, String separador) throws BDException {
-        List<String> exporta = new ArrayList();
-        Iterator var5 = this.consulta().iterator();
+        List<String> exporta = new ArrayList<String>();
+        Iterator<Serie> var5 = this.consulta().iterator();
 
         while(var5.hasNext()) {
             Serie serie = (Serie)var5.next();
@@ -220,7 +218,7 @@ public class SerieDAO implements GenericDAO<Serie>{
         try {
             conexao.setAutoCommit(false);
             PreparedStatement pst = conexao.prepareStatement("INSERT INTO serie ( SerieId, CursoId, descricao, idadeMinima, duracao) VALUES (?, ?, ?, ?,?);");
-            Iterator var5 = series.iterator();
+            Iterator<Serie> var5 = series.iterator();
 
             while(var5.hasNext()) {
                 Serie serie = (Serie)var5.next();
@@ -238,10 +236,10 @@ public class SerieDAO implements GenericDAO<Serie>{
             try {
                 conexao.rollback();
             } catch (SQLException var10) {
-                throw new BDException(EErosBanco.ROLLBACK, var10.getMessage());
+                throw new BDException(EErrosBD.ROLLBACK, var10.getMessage(), this.getClass().getSimpleName());
             }
 
-            throw new BDException(EErosBanco.INSERE_DADO, var11.getMessage());
+            throw new BDException(EErrosBD.INSERE_DADO, var11.getMessage(), this.getClass().getSimpleName());
         } finally {
             Conexao.closeConexao();
         }

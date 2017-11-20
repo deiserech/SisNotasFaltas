@@ -6,20 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import edu.asselvi.arquivo.Arquivo;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
-import edu.asselvi.enumerador.ESexo;
-import edu.asselvi.model.Aluno;
 import edu.asselvi.model.AlunoTurma;
-import edu.asselvi.model.Pessoa;
-import edu.asselvi.model.Usuario;
+
 
 public class AlunoTurmaDAO implements GenericDAO<AlunoTurma> {
 
@@ -177,8 +172,8 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma> {
 	}
 	
 	public void exportaDados(String nomeArq, String separador) throws BDException {
-        List<String> exporta = new ArrayList();
-        Iterator var5 = this.consulta().iterator();
+        List<String> exporta = new ArrayList<String>();
+        Iterator<AlunoTurma> var5 = this.consulta().iterator();
 
         while(var5.hasNext()) {
             AlunoTurma alunoTurma = (AlunoTurma)var5.next();
@@ -194,7 +189,7 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma> {
         try {
             conexao.setAutoCommit(false);
             PreparedStatement pst = conexao.prepareStatement("INSERT INTO alunoTurma (AlunoId, TurmaId ) VALUES (?, ?);");
-            Iterator var5 = alunoTurmas.iterator();
+            Iterator<AlunoTurma> var5 = alunoTurmas.iterator();
 
             while(var5.hasNext()) {
             	AlunoTurma alunoTurma = (AlunoTurma)var5.next();
@@ -209,10 +204,10 @@ public class AlunoTurmaDAO implements GenericDAO<AlunoTurma> {
             try {
                 conexao.rollback();
             } catch (SQLException var10) {
-                throw new BDException(EErosBanco.ROLLBACK, var10.getMessage());
+                throw new BDException(EErrosBD.ROLLBACK, var10.getMessage(), this.getClass().getSimpleName());
             }
 
-            throw new BDException(EErosBanco.INSERE_DADO, var11.getMessage());
+            throw new BDException(EErrosBD.INSERE_DADO, var11.getMessage(), this.getClass().getSimpleName());
         } finally {
             Conexao.closeConexao();
         }

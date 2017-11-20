@@ -26,8 +26,8 @@ public class ImportaBimestre {
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\bimestre.txt");
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
-        List<Bimestre> bimestres = new ArrayList();
-        Iterator var6 = dados.iterator();
+        List<Bimestre> bimestres = new ArrayList<Bimestre>();
+        Iterator<String> var6 = dados.iterator();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 

@@ -23,8 +23,8 @@ public class ExportaHorario {
         String separador = teclado.readLine();
         HorarioDAO horarioDAO = new HorarioDAO();
         List<Horario> horarios = horarioDAO.consulta();
-        List<String> horariosExp = new ArrayList();
-        Iterator var7 = horarios.iterator();
+        List<String> horariosExp = new ArrayList<String>();
+        Iterator<Horario> var7 = horarios.iterator();
 
         while(var7.hasNext()) {
         	Horario horario = (Horario)var7.next();

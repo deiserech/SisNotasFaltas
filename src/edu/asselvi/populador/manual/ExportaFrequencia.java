@@ -22,8 +22,8 @@ public class ExportaFrequencia {
         String separador = teclado.readLine();
         FrequenciaDAO frequenciaDAO = new FrequenciaDAO();
         List<Frequencia> frequencias = frequenciaDAO.consulta();
-        List<String> frequenciasExp = new ArrayList();
-        Iterator var7 = frequencias.iterator();
+        List<String> frequenciasExp = new ArrayList<String>();
+        Iterator<Frequencia> var7 = frequencias.iterator();
 
         while(var7.hasNext()) {
         	Frequencia frequencia = (Frequencia)var7.next();

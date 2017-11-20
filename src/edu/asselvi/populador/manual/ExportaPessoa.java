@@ -22,8 +22,8 @@ public class ExportaPessoa {
         String separador = teclado.readLine();
         PessoaDAO pessoaDAO = new PessoaDAO();
         List<Pessoa> pessoas = pessoaDAO.consulta();
-        List<String> pessoasExp = new ArrayList();
-        Iterator var7 = pessoas.iterator();
+        List<String> pessoasExp = new ArrayList<String>();
+        Iterator<Pessoa> var7 = pessoas.iterator();
 
         while(var7.hasNext()) {
         	Pessoa pessoa = (Pessoa)var7.next();

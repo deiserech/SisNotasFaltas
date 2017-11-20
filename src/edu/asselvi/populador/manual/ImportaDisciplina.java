@@ -25,8 +25,8 @@ public class ImportaDisciplina {
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\disciplina.txt");
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
-        List<Disciplina> disciplinas = new ArrayList();
-        Iterator var6 = dados.iterator();
+        List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+        Iterator<String> var6 = dados.iterator();
 
         while(var6.hasNext()) {
             String linha = (String)var6.next();

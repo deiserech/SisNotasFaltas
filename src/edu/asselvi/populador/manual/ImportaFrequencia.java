@@ -26,8 +26,8 @@ public class ImportaFrequencia {
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\nota.txt");
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
-        List<Frequencia> frequencias = new ArrayList();
-        Iterator var6 = dados.iterator();
+        List<Frequencia> frequencias = new ArrayList<Frequencia>();
+        Iterator<String> var6 = dados.iterator();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         while(var6.hasNext()) {

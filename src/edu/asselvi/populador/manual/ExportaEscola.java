@@ -22,8 +22,8 @@ public class ExportaEscola {
         String separador = teclado.readLine();
         EscolaDAO escolaDAO = new EscolaDAO();
         List<Escola> escolas = escolaDAO.consulta();
-        List<String> escolasExp = new ArrayList();
-        Iterator var7 = escolas.iterator();
+        List<String> escolasExp = new ArrayList<String>();
+        Iterator<Escola> var7 = escolas.iterator();
 
         while(var7.hasNext()) {
         	Escola escola = (Escola)var7.next();

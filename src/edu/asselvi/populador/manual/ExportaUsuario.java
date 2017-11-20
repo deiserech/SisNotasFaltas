@@ -22,8 +22,8 @@ public class ExportaUsuario {
         String separador = teclado.readLine();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         List<Usuario> usuarios = usuarioDAO.consulta();
-        List<String> usuariosExp = new ArrayList();
-        Iterator var7 = usuarios.iterator();
+        List<String> usuariosExp = new ArrayList<String>();
+        Iterator<Usuario> var7 = usuarios.iterator();
 
         while(var7.hasNext()) {
         	Usuario usuario = (Usuario)var7.next();

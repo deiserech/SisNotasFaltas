@@ -22,8 +22,8 @@ public class ExportaBimestre {
         String separador = teclado.readLine();
         BimestreDAO bimestreDAO = new BimestreDAO();
         List<Bimestre> bimestres = bimestreDAO.consulta();
-        List<String> bimestresExp = new ArrayList();
-        Iterator var7 = bimestres.iterator();
+        List<String> bimestresExp = new ArrayList<String>();
+        Iterator<Bimestre> var7 = bimestres.iterator();
 
         while(var7.hasNext()) {
         	Bimestre bimestre = (Bimestre)var7.next();

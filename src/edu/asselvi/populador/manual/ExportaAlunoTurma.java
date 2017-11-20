@@ -22,8 +22,8 @@ public class ExportaAlunoTurma {
         String separador = teclado.readLine();
         AlunoTurmaDAO alunoTurmaDAO = new AlunoTurmaDAO();
         List<AlunoTurma> alunoTurmas = alunoTurmaDAO.consulta();
-        List<String> alunoTurmasExp = new ArrayList();
-        Iterator var7 = alunoTurmas.iterator();
+        List<String> alunoTurmasExp = new ArrayList<String>();
+        Iterator<AlunoTurma> var7 = alunoTurmas.iterator();
 
         while(var7.hasNext()) {
         	AlunoTurma alunoTurma = (AlunoTurma)var7.next();

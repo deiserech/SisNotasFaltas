@@ -3,16 +3,21 @@ package edu.asselvi.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import edu.asselvi.arquivo.Arquivo;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
+import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Turma;
+import edu.asselvi.model.Usuario;
 
 public class TurmaDAO implements GenericDAO<Turma>{
 
@@ -212,6 +217,49 @@ public class TurmaDAO implements GenericDAO<Turma>{
 		}
 	}
 
+	public void exportaDados(String nomeArq, String separador) throws BDException {
+        List<String> exporta = new ArrayList();
+        Iterator var5 = this.consulta().iterator();
+
+        while(var5.hasNext()) {
+            Turma turma = (Turma)var5.next();
+            exporta.add(turma.toStringBD(separador));
+        }
+
+        Arquivo.gravaArquivo(nomeArq, exporta, false);
+    }
+
+	public boolean insereVariosTrn(List<Turma> turmas) throws BDException {
+        Connection conexao = Conexao.getConexao();
+
+        try {
+            conexao.setAutoCommit(false);
+            PreparedStatement pst = conexao.prepareStatement("INSERT INTO turma ( SerieId, descricao, vagas, ano) VALUES (?, ?, ?, ?);");
+            Iterator var5 = turmas.iterator();
+
+            while(var5.hasNext()) {
+            	Turma turma = (Turma)var5.next();
+            	pst.setInt(1, turma.getSerieId());
+				pst.setString(2, turma.getDescricao());
+				pst.setInt(3, turma.getVagas());
+				pst.setInt(4, turma.getAno());
+				pst.executeUpdate();
+            }
+
+            conexao.commit();
+            return true;
+        } catch (Exception var11) {
+            try {
+                conexao.rollback();
+            } catch (SQLException var10) {
+                throw new BDException(EErosBanco.ROLLBACK, var10.getMessage());
+            }
+
+            throw new BDException(EErosBanco.INSERE_DADO, var11.getMessage());
+        } finally {
+            Conexao.closeConexao();
+        }
+    }
 	
 }
 

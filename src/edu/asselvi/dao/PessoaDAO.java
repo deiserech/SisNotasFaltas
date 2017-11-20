@@ -3,12 +3,15 @@ package edu.asselvi.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import edu.asselvi.arquivo.Arquivo;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
@@ -267,6 +270,51 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 			Conexao.closeConexao();
 		}
 	}	
+	
+	 public boolean insereVariosTrn(List<Pessoa> pessoas) throws BDException {
+	        Connection conexao = Conexao.getConexao();
 
+	        try {
+	            conexao.setAutoCommit(false);
+	            PreparedStatement pst = conexao.prepareStatement("INSERT INTO pessoa ( usuarioId, perfil, nome, cpf, dataNascimento, sexo) VALUES (?, ?, ?, ?, ?, ?);");
+	            Iterator<Pessoa> var5 = pessoas.iterator();
+
+	            while(var5.hasNext()) {
+	                Pessoa pessoa = (Pessoa)var5.next();
+	                pst.setInt(1, pessoa.getCdUsuario());
+					pst.setInt(2, pessoa.getPerfil());
+					pst.setString(3, pessoa.getNome());
+					pst.setString(4, pessoa.getCpf());
+					pst.setDate(5, new java.sql.Date(pessoa.getDataNascimento().getTime()));
+					pst.setString(6, String.valueOf(pessoa.getSexo().getSigla()));
+					pst.executeUpdate();
+	            }
+
+	            conexao.commit();
+	            return true;
+	        } catch (Exception var11) {
+	            try {
+	                conexao.rollback();
+	            } catch (SQLException var10) {
+	                throw new BDException(EErrosBD.ROLLBACK, var10.getMessage(), this.getClass().getSimpleName());
+	            }
+
+	            throw new BDException(EErrosBD.INSERE_DADO, var11.getMessage(), this.getClass().getSimpleName());
+	        } finally {
+	            Conexao.closeConexao();
+	        }
+	    }
+
+	public void exportaDados(String nomeArq, String separador) throws BDException {
+        List<String> exporta = new ArrayList<String>();
+        Iterator<Pessoa> var5 = this.consulta().iterator();
+
+        while(var5.hasNext()) {
+            Pessoa pessoa = (Pessoa)var5.next();
+            exporta.add(pessoa.toStringBD(separador));
+        }
+
+        Arquivo.gravaArquivo(nomeArq, exporta, false);
+    }
 
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.asselvi.bancodados.BDException;
+import edu.asselvi.dao.AlunoDAO;
 import edu.asselvi.dao.AlunoTurmaDAO;
 import edu.asselvi.dao.BimestreDAO;
 import edu.asselvi.dao.CursoDAO;
@@ -17,6 +18,7 @@ import edu.asselvi.dao.DisciplinaProfessorDAO;
 import edu.asselvi.dao.DisciplinaSerieDAO;
 import edu.asselvi.dao.EscolaDAO;
 import edu.asselvi.dao.FrequenciaDAO;
+import edu.asselvi.dao.FuncionarioDAO;
 import edu.asselvi.dao.HorarioDAO;
 import edu.asselvi.dao.NotaDAO;
 import edu.asselvi.dao.PessoaDAO;
@@ -52,7 +54,6 @@ public class Sistema {
 		while (user == 0) {
 			user = usuario.verificaLogin(Login.telaLogin(true));
 		}
-
 		return pessoaDao.consultaUsuario(user);
 	}
 
@@ -71,7 +72,8 @@ public class Sistema {
 	}
 
 	private static void insereBanco(List<Object> lista) throws BDException {
-		PessoaDAO pessoaDao = new PessoaDAO();
+		AlunoDAO alunoDao = new AlunoDAO();
+		FuncionarioDAO funcionarioDao = new FuncionarioDAO();
 		UsuarioDAO usuarioDao = new UsuarioDAO();
 		SerieDAO serieDao = new SerieDAO();
 		TurmaDAO turmaDao = new TurmaDAO();
@@ -79,8 +81,8 @@ public class Sistema {
 		DisciplinaSerieDAO discSerieDao = new DisciplinaSerieDAO();
 		AlunoTurmaDAO AlunoturmaDao = new AlunoTurmaDAO();
 
-		List<Pessoa> alunos = new ArrayList<Pessoa>();
-		List<Pessoa> funcionarios = new ArrayList<Pessoa>();
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		List<Serie> series = new ArrayList<Serie>();
 		List<Turma> turmas = new ArrayList<Turma>();
@@ -127,10 +129,10 @@ public class Sistema {
 			usuarioDao.insereTrn(usuarios);
 		}
 		if (alunos != null) {
-			pessoaDao.insereTrn(alunos);
+			alunoDao.insereTrn(alunos);
 		}
 		if (funcionarios != null) {
-			pessoaDao.insereTrn(funcionarios);
+			funcionarioDao.insereTrn(funcionarios);
 		}
 		if (series != null) {
 			serieDao.insereTrn(series);
@@ -151,7 +153,7 @@ public class Sistema {
 
 	public static void acessoCoordenador() throws BDException, IOException, ParseException {
 		EscolaDAO escola = new EscolaDAO();
-		PessoaDAO pessoa = new PessoaDAO();
+		FuncionarioDAO funcionario = new FuncionarioDAO();
 		UsuarioDAO usuario = new UsuarioDAO();
 		CursoDAO curso = new CursoDAO();
 		SerieDAO serie = new SerieDAO();
@@ -191,7 +193,7 @@ public class Sistema {
 								disciplina.consultaIds(), turmaDao.consultaIds()));
 						break;
 					case 8:
-						insereBanco(Cadastros.cadastraFuncionario(pessoa.retornaProximoId(), usuario.retornaProximoId(),
+						insereBanco(Cadastros.cadastraFuncionario(funcionario.retornaProximoId(), usuario.retornaProximoId(),
 								disciplina.consultaIds()));
 						break;
 					}
@@ -206,7 +208,7 @@ public class Sistema {
 	};
 
 	public static void acessoSecretaria() throws BDException, IOException, ParseException {
-		PessoaDAO pessoa = new PessoaDAO();
+		AlunoDAO aluno = new AlunoDAO();
 		UsuarioDAO usuario = new UsuarioDAO();
 		TurmaDAO turmaDao = new TurmaDAO();
 
@@ -219,10 +221,11 @@ public class Sistema {
 				while (opcaoMat != 0) {
 					switch (opcaoMat) {
 					case 1:
-						insereBanco(Cadastros.cadastraAluno(pessoa.retornaProximoId(), usuario.retornaProximoId(),
+						insereBanco(Cadastros.cadastraAluno(aluno.retornaProximoId(), usuario.retornaProximoId(),
 								turmaDao.consultaIds()));
 						break;
 					}
+					opcaoMat = Menu.menuMatriculas();
 				}
 				opcao = verificaMenu();
 				break;
@@ -233,15 +236,15 @@ public class Sistema {
 	};
 
 	public static void acessoProfessor() throws BDException, IOException, ParseException {
-		PessoaDAO pessoa = new PessoaDAO();
-		AlunoTurmaDAO alunoTurma = new AlunoTurmaDAO();
-		TurmaDAO turma = new TurmaDAO();
-		HorarioDAO horario = new HorarioDAO();
-		NotaDAO nota = new NotaDAO();
-		FrequenciaDAO frequencia = new FrequenciaDAO();
-		DisciplinaProfessorDAO discProf = new DisciplinaProfessorDAO();
+//		FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+		AlunoDAO alunoDao = new AlunoDAO();
+		AlunoTurmaDAO alunoTurmaDao = new AlunoTurmaDAO();
 		TurmaDAO turmaDao = new TurmaDAO();
-		DisciplinaSerieDAO discSerie = new DisciplinaSerieDAO();
+		HorarioDAO horarioDao = new HorarioDAO();
+		NotaDAO notaDao = new NotaDAO();
+		FrequenciaDAO frequenciaDao = new FrequenciaDAO();
+		DisciplinaProfessorDAO discProfDao = new DisciplinaProfessorDAO();
+		DisciplinaSerieDAO discSerieDao = new DisciplinaSerieDAO();
 		DisciplinaDAO disciplinaDao = new DisciplinaDAO();
 
 		int opcao = verificaMenu();
@@ -253,26 +256,26 @@ public class Sistema {
 				int idTurma = 0;
 				int idDisciplina = 0;
 				while (opcaoLan != 0) {
-					idTurma = Lancamentos.BuscaTurma(turma.consultaIds());
+					idTurma = Lancamentos.BuscaTurma(turmaDao.consultaIds());
 					Turma turmaObj = turmaDao.consulta(idTurma);
-					List<Integer> discProfessor = discProf.consultaDisciplinas(idPessoaLogada);
-					List<Integer> disciplinas = discSerie.consultaDisciProf(turmaObj.getSerieId(), discProfessor);
+					List<Integer> discProfessor = discProfDao.consultaDisciplinas(idPessoaLogada);
+					List<Integer> disciplinas = discSerieDao.consultaDisciProf(turmaObj.getSerieId(), discProfessor);
 					Map<Integer, Disciplina> disciplinaObj = disciplinaDao.consultaDescricao(disciplinas);   
 					idDisciplina = Lancamentos.BuscaDisciplina(disciplinaObj);
-					List<Integer> alunos = alunoTurma.consultaAlunosTurma(idTurma);
+					List<Integer> alunos = alunoTurmaDao.consultaAlunosTurma(idTurma);
 
 					switch (opcaoLan) {
 					case 1:
-						nota.insereTrn(Lancamentos.lancaNotasTurma(idTurma, FuncoesGenericas.buscaBimestre(),
+						notaDao.insereTrn(Lancamentos.lancaNotasTurma(idTurma, FuncoesGenericas.buscaBimestre(),
 								idDisciplina,
-								pessoa.consultaAlunosTurma(alunos)
+								alunoDao.consultaAlunosTurma(alunos)
 								));
 						break;
 					case 2:
-						frequencia.insereTrn(Lancamentos.lancaFrequenciaTurma(
-								horario.consulta(idTurma, idDisciplina, turma.consulta(idTurma).getSerieId(),
+						frequenciaDao.insereTrn(Lancamentos.lancaFrequenciaTurma(
+								horarioDao.consulta(idTurma, idDisciplina, turmaDao.consulta(idTurma).getSerieId(),
 								calendar.get(Calendar.DAY_OF_WEEK)),
-								pessoa.consultaAlunosTurma(alunos), 
+								alunoDao.consultaAlunosTurma(alunos), 
 								FuncoesGenericas.buscaBimestre()
 								));
 
@@ -285,24 +288,24 @@ public class Sistema {
 			case 2:
 				int opcaoRel = Menu.menuRelatorios();
 				while (opcaoRel != 0) {
-					idTurma = Lancamentos.BuscaTurma(turma.consultaIds());
+					idTurma = Lancamentos.BuscaTurma(turmaDao.consultaIds());
 					Turma turmaObj = turmaDao.consulta(idTurma);
-					List<Integer> alunosCod = alunoTurma.consultaAlunosTurma(idTurma);
-					Map<Integer, Pessoa> alunos = pessoa.consultaAlunosTurma(alunosCod);
+					List<Integer> alunosCod = alunoTurmaDao.consultaAlunosTurma(idTurma);
+					Map<Integer, Aluno> alunos = alunoDao.consultaAlunosTurma(alunosCod);
 					
 					switch (opcaoRel) {
 					case 1:
 						Relatorios.relatorioNotas(turmaObj,
 									alunos,
 									disciplinaDao.consultaIds(),
-									nota.consultaNotasTurma(alunos)
+									notaDao.consultaNotasTurma(alunos)
 								);
 						break;
 					case 2:
 						Relatorios.relatorioFrequencia(turmaObj,
 								alunos,
 								disciplinaDao.consultaIds(),
-								frequencia.consultaFreqTurma(alunos)
+								frequenciaDao.consultaFreqTurma(alunos)
 								);
 						break;
 					}

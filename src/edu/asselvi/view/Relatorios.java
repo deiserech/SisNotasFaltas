@@ -5,17 +5,17 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
+import edu.asselvi.model.Aluno;
 import edu.asselvi.model.Disciplina;
 import edu.asselvi.model.Frequencia;
 import edu.asselvi.model.Nota;
-import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Turma;
 
 public class Relatorios {
 	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	static DecimalFormat df = new DecimalFormat("#0.00"); 
 
-	public static void relatorioNotas(Turma turma,Map<Integer, Pessoa> alunos, Map<Integer, Disciplina> disciplinas, List<Nota> notas ) {
+	public static void relatorioNotas(Turma turma,Map<Integer, Aluno> alunos, Map<Integer, Disciplina> disciplinas, List<Nota> notas ) {
 
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -39,7 +39,7 @@ public class Relatorios {
 
 	}
 
-	public static void relatorioFrequencia(Turma turma,Map<Integer, Pessoa> alunos, Map<Integer, Disciplina> disciplinas, List<Frequencia> frequencias ) {
+	public static void relatorioFrequencia(Turma turma,Map<Integer, Aluno> alunos, Map<Integer, Disciplina> disciplinas, List<Frequencia> frequencias ) {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»  Relatório de Frequência   ««|");

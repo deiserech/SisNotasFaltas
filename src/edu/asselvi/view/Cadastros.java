@@ -41,6 +41,7 @@ public class Cadastros {
 		System.out.println("Informe o nome da escola.........: ");
 		String descricao = FuncoesGenericas.lerCampoString();
 		escolas.add(new Escola(escolaId, descricao));
+		System.out.println("Escola cadstrada com sucesso!"); 
 		return escolas;
 	}
 
@@ -85,6 +86,7 @@ public class Cadastros {
 			System.out.println("Deseja cadastrar novo curso?(S/N).: ");
 			novo = Character.toUpperCase((FuncoesGenericas.lerCampoString().charAt(0)));
 		}
+		System.out.println("Curso cadstrado com sucesso!"); 
 		return cursos;
 	}
 
@@ -159,6 +161,7 @@ public class Cadastros {
 			System.out.println("Informe o código das disciplinas.: ");
 			disciplina = FuncoesGenericas.lerCampoInt();
 		}
+		System.out.println("Série cadastrada com sucesso!"); 
 		return retorno;
 	};
 
@@ -205,6 +208,7 @@ public class Cadastros {
 			novo = FuncoesGenericas.lerCampoChar();
 			;
 		}
+		System.out.println("Turma cadastrada com sucesso!"); 
 		return turmas;
 	};
 
@@ -292,6 +296,7 @@ public class Cadastros {
 				disciplina = FuncoesGenericas.lerCampoInt();
 			}
 		}
+		System.out.println("Funcionário cadastrado com sucesso!"); 
 		return retorno;
 	};
 
@@ -359,6 +364,7 @@ public class Cadastros {
 			novo = FuncoesGenericas.lerCampoChar();
 			;
 		}
+		System.out.println("Horário cadastrado com sucesso!"); 
 		return horarios;
 	};
 
@@ -415,68 +421,10 @@ public class Cadastros {
 			System.out.println("Informe o código da turma........: ");
 			turmaId = FuncoesGenericas.lerCampoInt();
 		}
-
+		System.out.println("Aluno cadastrado com sucesso!"); 
 		return retorno;
 	};
 
-	public static List<Object> cadastraAluno2(int alunoId, int usuarioId, Map<Integer, Turma> turmasCad) {
-		List<Object> retorno = new ArrayList<Object>();
-		System.out.println("");
-		System.out.println("----------------------------------");
-		System.out.println("|»»    Cadastro de Alunos      ««|");
-		System.out.println("----------------------------------");
-		
-		if(turmasCad.size() == 0) {
-			System.out.println("Realize o cadastro de turmas!");
-			return retorno;
-		}
-		
-		int tipoUsuario = 4;
-		System.out.println("Informe o nome...................: ");
-		String nome = FuncoesGenericas.lerCampoString();
-		System.out.println("Informe o cpf....................: ");
-		String cpf = FuncoesGenericas.lerCampoString();
-
-		Date dataNascimento = null;
-		do {
-			System.out.println("Informe a data de nascimento.....: ");
-			dataNascimento = FuncoesGenericas.lerData();
-		} while (dataNascimento == null);
-
-		ESexo sexo = null;
-		do {
-			System.out.println("Informe o sexo(M/F)..............: ");
-			sexo = FuncoesGenericas.lerSexo();
-		} while (sexo == null);
-		retorno.add(new Aluno(alunoId, usuarioId, tipoUsuario, nome, cpf, dataNascimento, sexo));
-
-		System.out.println("Informe o login..................: ");
-		String login = FuncoesGenericas.lerCampoString();
-		System.out.println("Informe a senha..................: ");
-		String senha = FuncoesGenericas.lerCampoString();
-		retorno.add(new Usuario(usuarioId, login, senha));
-		System.out.println("Informe o código da turma........: ");
-		for(Turma tm : turmasCad.values()) {
-			System.out.println(tm.getTurmaId() + " - " + tm.getDescricao());
-		}
-		System.out.println("Digite '0' para SAIR.............: ");
-		List<Integer> turmas = new ArrayList<Integer>();
-		int turmaId = FuncoesGenericas.lerCampoInt();
-		while (turmaId != 0) {
-			if (turmasCad.get(turmaId) instanceof Turma)  {
-				retorno.add(new AlunoTurma(alunoId, turmaId));
-				turmas.add(turmaId);
-			} else {
-				System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
-			}
-			System.out.println("Informe o código da turma........: ");
-			turmaId = FuncoesGenericas.lerCampoInt();
-		}
-
-		return retorno;
-	};
-
-	
 	public static List<Bimestre> cadastraBimestre() {
 		char novo = 'S';
 		int cont = 0;
@@ -506,12 +454,13 @@ public class Cadastros {
 			System.out.println("Informe o número de dias letivos.: ");
 			int diasLetivos = FuncoesGenericas.lerCampoInt();
 			bimestres.add(new Bimestre(bimestreId, descricao, dataInicio, dataFim, diasLetivos));
-			if (cont < 4) { // 4 bimestres
+			if (cont < 4) { 
 				System.out.println("Deseja cadastrar novo bimestre?(S/N).: ");
 				novo = FuncoesGenericas.lerCampoChar();
 				;
 			}
 		}
+		System.out.println("Bimestre cadastrado com sucesso!"); 
 		return bimestres;
 	}
 

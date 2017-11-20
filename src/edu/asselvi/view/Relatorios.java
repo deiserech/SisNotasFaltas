@@ -39,7 +39,7 @@ public class Relatorios {
 
 	}
 
-	public static void relatorioFrequencia(Turma turma,Map<Integer, Aluno> alunos, Map<Integer, Disciplina> disciplinas, List<Frequencia> frequencias ) {
+	public static void relatorioFrequencia(Turma turma, Map<Integer, Aluno> alunos, Map<Integer, Disciplina> disciplinas, List<Frequencia> frequencias ) {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»  Relatório de Frequência   ««|");

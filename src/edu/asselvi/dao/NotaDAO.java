@@ -13,6 +13,7 @@ import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.model.Aluno;
 import edu.asselvi.model.Nota;
+import edu.asselvi.model.Pessoa;
 
 public class NotaDAO implements GenericDAO<Nota> {
 

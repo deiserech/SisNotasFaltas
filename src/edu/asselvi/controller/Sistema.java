@@ -61,7 +61,7 @@ public class Sistema {
 		switch (tpPessoaLogada) {
 		case 1:
 			return Menu.menuCoordenador();
-		case 2:
+		case 2: 
 			return Menu.menuSecretaria();
 		case 3:
 			return Menu.menuProfessor();
@@ -298,7 +298,7 @@ public class Sistema {
 						Relatorios.relatorioNotas(turmaObj,
 									alunos,
 									disciplinaDao.consultaIds(),
-									notaDao.consultaNotasTurma(alunos)
+									notaDao.consultaNotasTurma(alunos) 
 								);
 						break;
 					case 2:

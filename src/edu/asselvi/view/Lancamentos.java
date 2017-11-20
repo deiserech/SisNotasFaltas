@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 import edu.asselvi.controller.FuncoesGenericas;
+import edu.asselvi.model.Aluno;
 import edu.asselvi.model.Disciplina;
 import edu.asselvi.model.Frequencia;
 import edu.asselvi.model.Horario;
 import edu.asselvi.model.Nota;
-import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Turma;
 
 public class Lancamentos {
@@ -58,7 +58,7 @@ public class Lancamentos {
 	}
 
 	public static List<Nota> lancaNotasTurma(int turmaId, int bimestreId, int disciplinaId,
-			Map<Integer, Pessoa> alunosTurma) {
+			Map<Integer, Aluno> alunosTurma) {
 		List<Nota> notas = new ArrayList<Nota>();
 
 		System.out.println("");
@@ -68,7 +68,7 @@ public class Lancamentos {
 		System.out.println("");
 
 		if (bimestreId > 0) {
-			for (Pessoa al : alunosTurma.values()) {
+			for (Aluno al : alunosTurma.values()) {
 				int nrNota = 0;
 				while (nrNota < 2) {
 					nrNota++;
@@ -90,7 +90,7 @@ public class Lancamentos {
 		return notas;
 	}
 
-	public static List<Frequencia> lancaFrequenciaTurma(Horario horario, Map<Integer, Pessoa> alunosTurma,int bimestreId) {
+	public static List<Frequencia> lancaFrequenciaTurma(Horario horario, Map<Integer, Aluno> alunosTurma,int bimestreId) {
 		List<Frequencia> frequencias = new ArrayList<Frequencia>();
 
 		System.out.println("");
@@ -100,7 +100,7 @@ public class Lancamentos {
 		System.out.println("");
 		if (horario.getHorarioId() > 0) {
 			if (bimestreId > 0) {
-				for (Pessoa al : alunosTurma.values()) {
+				for (Aluno al : alunosTurma.values()) {
 					System.out.println("Aluno " + al.getNome() + ":");
 					System.out.println("Informe a frequência(S/N).......:");
 					boolean presente = FuncoesGenericas.lerCampoChar() == 'S';

@@ -14,6 +14,7 @@ import edu.asselvi.arquivo.Arquivo;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
+import edu.asselvi.model.Aluno;
 import edu.asselvi.model.Nota;
 import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Usuario;
@@ -68,7 +69,6 @@ public class NotaDAO implements GenericDAO<Nota> {
 			for (Nota nota : notas) {
 				Nota notaBanco = consulta(nota.getAlunoId(),nota.getDisciplinaId(),nota.getBimestreId(), nota.getNrNota() );
 				if (notaBanco == null) {
-					System.out.println("insere");
 					pst.setInt(1, nota.getAlunoId());
 					pst.setInt(2, nota.getDisciplinaId());
 					pst.setInt(3, nota.getBimestreId());
@@ -76,7 +76,6 @@ public class NotaDAO implements GenericDAO<Nota> {
 					pst.setInt(5, nota.getNrNota());
 					pst.executeUpdate();
 				}else {
-					System.out.println("altera");
 					nota.setNotaId(notaBanco.getNotaId());
 					altera(nota);
 				}
@@ -217,11 +216,11 @@ public class NotaDAO implements GenericDAO<Nota> {
 		}
 	}
 
-	public List<Nota> consultaNotasTurma(Map<Integer, Pessoa> alunos) throws BDException {
+	public List<Nota> consultaNotasTurma(Map<Integer, Aluno> alunos) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		List<Nota> notas = new ArrayList<Nota>();
 		try {
-			for (Pessoa aluno : alunos.values()) {
+			for (Aluno aluno : alunos.values()) {
 				PreparedStatement pst = conexao.prepareStatement("SELECT * FROM nota WHERE AlunoId = ? ;");
 				pst.setInt(1, aluno.getId());
 				ResultSet rs = pst.executeQuery();

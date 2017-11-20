@@ -14,6 +14,7 @@ import edu.asselvi.arquivo.Arquivo;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
 import edu.asselvi.enumerador.EErrosBD;
+import edu.asselvi.model.Aluno;
 import edu.asselvi.model.Frequencia;
 import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Usuario;
@@ -207,11 +208,11 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 		}
 	}
 
-	public List<Frequencia> consultaFreqTurma(Map<Integer, Pessoa> alunos) throws BDException {
+	public List<Frequencia> consultaFreqTurma(Map<Integer, Aluno> alunos) throws BDException {
 		Connection conexao = Conexao.getConexao();
 		List<Frequencia> frequencias = new ArrayList<Frequencia>();
 		try {
-			for(Pessoa aluno: alunos.values()) {
+			for(Aluno aluno: alunos.values()) {
 				PreparedStatement pst = conexao.prepareStatement("SELECT * FROM frequencia WHERE AlunoId = ? ;");
 				pst.setInt(1, aluno.getId());
 				ResultSet rs = pst.executeQuery();

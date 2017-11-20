@@ -74,7 +74,6 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 				PreparedStatement pst = conexao.prepareStatement(
 						"INSERT INTO pessoa ( usuarioId, perfil, nome, cpf, dataNascimento, sexo) VALUES (?, ?, ?, ?, ?, ?);");
 				for (Pessoa pessoa : pessoas) {
-				//	System.out.println(pessoa.toString());
 					pst.setInt(1, pessoa.getCdUsuario());
 					pst.setInt(2, pessoa.getPerfil());
 					pst.setString(3, pessoa.getNome());

@@ -27,8 +27,8 @@ public class ImportaPessoa {
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\pessoa.txt");
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
-        List<Pessoa> pessoas = new ArrayList();
-        Iterator var6 = dados.iterator();
+        List<Pessoa> pessoas = new ArrayList<Pessoa>();
+        Iterator<String> var6 = dados.iterator();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         while(var6.hasNext()) {

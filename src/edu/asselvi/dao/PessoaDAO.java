@@ -277,7 +277,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	        try {
 	            conexao.setAutoCommit(false);
 	            PreparedStatement pst = conexao.prepareStatement("INSERT INTO pessoa ( usuarioId, perfil, nome, cpf, dataNascimento, sexo) VALUES (?, ?, ?, ?, ?, ?);");
-	            Iterator var5 = pessoas.iterator();
+	            Iterator<Pessoa> var5 = pessoas.iterator();
 
 	            while(var5.hasNext()) {
 	                Pessoa pessoa = (Pessoa)var5.next();
@@ -296,18 +296,18 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	            try {
 	                conexao.rollback();
 	            } catch (SQLException var10) {
-	                throw new BDException(EErosBanco.ROLLBACK, var10.getMessage());
+	                throw new BDException(EErrosBD.ROLLBACK, var10.getMessage(), this.getClass().getSimpleName());
 	            }
 
-	            throw new BDException(EErosBanco.INSERE_DADO, var11.getMessage());
+	            throw new BDException(EErrosBD.INSERE_DADO, var11.getMessage(), this.getClass().getSimpleName());
 	        } finally {
 	            Conexao.closeConexao();
 	        }
 	    }
 
 	public void exportaDados(String nomeArq, String separador) throws BDException {
-        List<String> exporta = new ArrayList();
-        Iterator var5 = this.consulta().iterator();
+        List<String> exporta = new ArrayList<String>();
+        Iterator<Pessoa> var5 = this.consulta().iterator();
 
         while(var5.hasNext()) {
             Pessoa pessoa = (Pessoa)var5.next();

@@ -23,8 +23,8 @@ public class ExportaTurma {
         String separador = teclado.readLine();
         TurmaDAO turmaDAO = new TurmaDAO();
         List<Turma> turmas = turmaDAO.consulta();
-        List<String> turmasExp = new ArrayList();
-        Iterator var7 = turmas.iterator();
+        List<String> turmasExp = new ArrayList<String>();
+        Iterator<Turma> var7 = turmas.iterator();
 
         while(var7.hasNext()) {
         	Turma turma = (Turma)var7.next();

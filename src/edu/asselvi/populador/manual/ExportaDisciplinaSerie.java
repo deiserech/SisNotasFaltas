@@ -22,8 +22,8 @@ public class ExportaDisciplinaSerie {
         String separador = teclado.readLine();
         DisciplinaSerieDAO disciplinaSerieDAO = new DisciplinaSerieDAO();
         List<DisciplinaSerie> disciplinaSeries = disciplinaSerieDAO.consulta();
-        List<String> disciplinaSeriesExp = new ArrayList();
-        Iterator var7 = disciplinaSeries.iterator();
+        List<String> disciplinaSeriesExp = new ArrayList<String>();
+        Iterator<DisciplinaSerie> var7 = disciplinaSeries.iterator();
 
         while(var7.hasNext()) {
         	DisciplinaSerie disciplinaSerie = (DisciplinaSerie)var7.next();

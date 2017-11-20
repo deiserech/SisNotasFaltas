@@ -154,8 +154,9 @@ public class Cadastros {
 		while (disciplina != 0) {
 			if ((discCad.get(disciplina) instanceof Disciplina)) {
 				retorno.add(new DisciplinaSerie(disciplina, serieId));
+				discCad.remove(disciplina);
 			} else {
-				System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
+				System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 			}
 
 			System.out.println("Informe o código das disciplinas.: ");
@@ -289,6 +290,7 @@ public class Cadastros {
 			while (disciplina != 0) {
 				if ((discCad.get(disciplina) instanceof Disciplina)) {
 					retorno.add(new DisciplinaProfessor(disciplina, funcionarioId));
+					discCad.remove(disciplina);
 				} else {
 					System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
 				}
@@ -415,6 +417,7 @@ public class Cadastros {
 			if (turmasCad.get(turmaId) instanceof Turma)  {
 				retorno.add(new AlunoTurma(alunoId, turmaId));
 				turmas.add(turmaId);
+				turmasCad.remove(turmaId);
 			} else {
 				System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
 			}

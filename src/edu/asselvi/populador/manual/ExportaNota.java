@@ -22,8 +22,8 @@ public class ExportaNota {
         String separador = teclado.readLine();
         NotaDAO notaDAO = new NotaDAO();
         List<Nota> notas = notaDAO.consulta();
-        List<String> notasExp = new ArrayList();
-        Iterator var7 = notas.iterator();
+        List<String> notasExp = new ArrayList<String>();
+        Iterator<Nota> var7 = notas.iterator();
 
         while(var7.hasNext()) {
         	Nota nota = (Nota)var7.next();

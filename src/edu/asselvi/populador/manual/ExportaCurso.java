@@ -22,8 +22,8 @@ public class ExportaCurso {
         String separador = teclado.readLine();
         CursoDAO cursoDAO = new CursoDAO();
         List<Curso> cursos = cursoDAO.consulta();
-        List<String> cursosExp = new ArrayList();
-        Iterator var7 = cursos.iterator();
+        List<String> cursosExp = new ArrayList<String>();
+        Iterator<Curso> var7 = cursos.iterator();
 
         while(var7.hasNext()) {
         	Curso curso = (Curso)var7.next();

@@ -22,8 +22,8 @@ public class ExportaSerie {
         String separador = teclado.readLine();
         SerieDAO serieDAO = new SerieDAO();
         List<Serie> series = serieDAO.consulta();
-        List<String> seriesExp = new ArrayList();
-        Iterator var7 = series.iterator();
+        List<String> seriesExp = new ArrayList<String>();
+        Iterator<Serie> var7 = series.iterator();
 
         while(var7.hasNext()) {
         	Serie serie = (Serie)var7.next();

@@ -24,10 +24,10 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 			st.execute("CREATE TABLE frequencia (" + "	"
 					+ " HorarioId		 	INTEGER NOT NULL ,"
 					+ " AlunoId				INTEGER NOT NULL ," 
-					+ " BimestreId 		    INTEGER NOT NULL ," 
+					+ " BimestreId 		    INTEGER NOT NULL ,"
 					+ "	dataAula			DATE  NOT NULL,"  
 					+ " PRIMARY KEY (HorarioId, AlunoId,BimestreId, dataAula),"
-					+ "	presente	     	CHAR(01)  NOT NULL" 
+					+ "	presente	     	CHAR(01)  NOT NULL"
 					+ ");");
 			return true;
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 				for (Frequencia frequencia : frequencias) {
 					Frequencia freqBanco = consulta(frequencia);
 					if(freqBanco == null) {
-						System.out.println("inclui"); 
+						System.out.println("inclui");
 						pst.setInt(1, frequencia.getHorarioId());
 						pst.setInt(2, frequencia.getAlunoId());
 						pst.setInt(3, frequencia.getBimestreId());

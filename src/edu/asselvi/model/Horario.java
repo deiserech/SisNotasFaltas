@@ -61,4 +61,8 @@ public class Horario {
 				+ "\n\tDia da Semana...........: " + getDiaSemana()
 				+ "\n\tHorário Início..........: " + getHoraInicio();
 	}
+	
+	 public String toStringBD(String separador) {
+	        return this.getHorarioId() + separador + getTurmaId() + separador + getDisciplinaId() + separador + getDiaSemana() + separador + getHoraInicio();
+	    }
 }

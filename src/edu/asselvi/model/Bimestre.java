@@ -69,4 +69,8 @@ public class Bimestre {
 					+ "\n\tData Fim................: " + getDataFim()
 					+ "\n\tDias Letivos............: " + getDiasLetivos();
 	}
+	
+	 public String toStringBD(String separador) {
+	        return this.getBimestreId() + separador + getDataInicio() + separador + getDataFim() + separador + getDiasLetivos();
+	    }
 }

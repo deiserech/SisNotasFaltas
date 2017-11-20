@@ -22,7 +22,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE bimestre (" + "	"
 					+ " BimestreId		INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-					+ " descricao		VARCHAR(10) NOT NULL," 
+					+ " descricao		VARCHAR(50) NOT NULL," 
 					+ " dataInicio 		DATE NOT NULL," 
 					+ "	dataFim			DATE  NOT NULL,"  
 					+ "	diasLetivos	    INTEGER  NOT NULL" 

@@ -34,4 +34,8 @@ public class DisciplinaSerie {
 		return  	"\n\tCód. Série..............: " + getSerieId()
 				+ 	"\n\tCód. Disciplina.........: " + getDisciplinaId();
 	}
+	
+	 public String toStringBD(String separador) {
+	        return this.getSerieId() + separador + getDisciplinaId();
+	    }
 }

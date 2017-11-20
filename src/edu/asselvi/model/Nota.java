@@ -62,11 +62,11 @@ public class Nota {
 	public int getNrNota() {
 		return nrNota;
 	}
-	
+
 	public void setNrNota(int nrNota) {
 		this.nrNota = nrNota;
-	}	
-	
+	}
+
 	public String toString() {
 		return  	"\n\tNúmero da nota..........: " + getNotaId()
 		        + 	"\n\tCód. Aluno..............: " + getAlunoId()
@@ -75,4 +75,9 @@ public class Nota {
 				+ 	"\n\tNum nota,,,.............: " + getNota()
 				+ 	"\n\tNota..,,,,,.............: " + getNota();
 	}
+	}
+
+	 public String toStringBD(String separador) {
+	        return this.getNotaId() + separador + getAlunoId() + separador + getDisciplinaId() + separador + getBimestreId() + separador + getNota();
+	    }
 }

@@ -31,4 +31,7 @@ public class Disciplina {
 				+ "\n\tDescrição...............: " + getDescricao();
 	}
 
+	 public String toStringBD(String separador) {
+	        return this.getDisciplinaId() + separador + getDescricao();
+	    }
 }

@@ -29,5 +29,8 @@ public class AlunoTurma {
 		return    "\n\tCod. Turma..............: " + getTurmaId()
 				+ "\n\tCod. Aluno..............: " + getAlunoId();
 	}
-
+	
+	 public String toStringBD(String separador) {
+	        return this.getTurmaId() + separador + getAlunoId();
+	    }
 }

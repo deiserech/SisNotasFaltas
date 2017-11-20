@@ -50,4 +50,7 @@ public class Curso {
 				+ "\n\tDescriçao...............: " + getDescricao();
 	}
 	
+	 public String toStringBD(String separador) {
+	        return this.getCursoId() + separador + getEscolaId() + separador + getNumSeries() + separador + getDescricao();
+	    }
 }

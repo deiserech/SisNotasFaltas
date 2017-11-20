@@ -2,32 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbba08ef-9cab-435f-b49a-540917cee2dd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/AlunoDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/FuncionarioDAO.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/asselvi/bancodados/TestaBanco.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/asselvi/controller/AlunoController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/asselvi/controller/InputException.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/conexao/Conexao.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/conexao/Conexao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/controller/Sistema.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/controller/Sistema.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/controller/TestaBanco.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/controller/TestaBanco.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/CursoDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/CursoDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/DisciplinaDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/DisciplinaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/DisciplinaProfessorDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/DisciplinaProfessorDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/EscolaDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/EscolaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/FrequenciaDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/FrequenciaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/NotaDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/NotaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/SerieDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/SerieDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/TurmaDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/TurmaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Aluno.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Aluno.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Frequencia.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Frequencia.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Funcionario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Funcionario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/conexao/Conexao.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/conexao/Conexao.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/controller/TestaBanco.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/controller/TestaBanco.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/dao/FrequenciaDAO.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/dao/FrequenciaDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/model/Nota.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/model/Nota.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Nota.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Nota.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Cadastros.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Cadastros.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Consulta.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Consulta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Lancamentos.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Lancamentos.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Menu.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Relatorios.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Relatorios.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -182,12 +161,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1511135925338</updated>
-      <workItem from="1511135928409" duration="329000" />
+      <workItem from="1511135928409" duration="580000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329000" />
+    <option name="totallyTimeSpent" value="580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />

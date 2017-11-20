@@ -26,7 +26,7 @@ public class TestaBanco {
 //		}
 //		PessoaDAO pessoaDAO = new PessoaDAO();
 //		try {
-//			System.out.println(pessoaDAO.exclui(5) ? "Sucesso" : "Não existe");
+//			System.out.println(pessoaDAO.exclui(5) ? "Sucesso" : "Nï¿½o existe");
 //		} catch (BDException e) {
 //			System.out.println(e.getMessage());
 //		}
@@ -72,7 +72,7 @@ public class TestaBanco {
 //		} catch (BDException e) {
 //			System.out.println(e.getMessage());
 //		}
-		System.out.println("Início...");
+		System.out.println("Inï¿½cio...");
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		PessoaDAO pessoaDAO = new PessoaDAO();
 		EscolaDAO escolaDAO = new EscolaDAO();
@@ -82,9 +82,9 @@ public class TestaBanco {
 		DisciplinaSerieDAO disciplinaSerieDAO = new DisciplinaSerieDAO();
 		DisciplinaProfessorDAO disciplinaProfessorDAO = new DisciplinaProfessorDAO();
 		TurmaDAO turmaDAO = new TurmaDAO();
-		HorarioDAO horarioDAO = new HorarioDAO();
 		BimestreDAO bimestreDAO = new BimestreDAO();
 		AlunoTurmaDAO alunoTurmaDAO = new AlunoTurmaDAO();
+		HorarioDAO horarioDAO = new HorarioDAO();
 		NotaDAO notaDAO = new NotaDAO();
 		FrequenciaDAO frequenciaDAO = new FrequenciaDAO();
 		try {
@@ -113,14 +113,14 @@ public class TestaBanco {
 //			System.out.println(e.getMessage());
 //		}
 
-//		System.out.println("Abrir conexão");
+//		System.out.println("Abrir conexï¿½o");
 //		try {
 //			Connection conexao = Conexao.getConexao();
 //			System.out.println("Abri sucesso!!");
 //		} catch (BDException e) {
 //			System.out.println(e.getMessage());
 //		}
-//		System.out.println("Fechar a conexão");
+//		System.out.println("Fechar a conexï¿½o");
 //		try {
 //			Conexao.closeConexao();
 //			System.out.println("Fechei sucesso!!");

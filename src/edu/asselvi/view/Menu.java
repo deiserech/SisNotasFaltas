@@ -16,10 +16,6 @@ public class Menu {
 		System.out.println("|»»    Frequência de Alunos    ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Cadastros.............");
-		System.out.println("\t2 - Matrículas............");
-		System.out.println("\t3 - Lançamentos...........");
-		System.out.println("\t4 - Consultas.............");
-		System.out.println("\t5 - Relatórios............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
 		return FuncoesGenericas.lerCampoInt();
@@ -113,7 +109,6 @@ public class Menu {
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Notas.................");
 		System.out.println("\t2 - Frequência............");
-		System.out.println("\t3 - Situação..............");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
 		return FuncoesGenericas.lerCampoInt();
@@ -126,7 +121,6 @@ public class Menu {
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Notas da Turma........");
 		System.out.println("\t2 - Frequência da Turma...");
-		System.out.println("\t3 - Situação da Turma.....");
 		System.out.println("\t0 - Sair..................");
 		System.out.print("Escolha..........................:");
 		return FuncoesGenericas.lerCampoInt();

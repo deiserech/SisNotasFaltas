@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
+import edu.asselvi.model.Disciplina;
 import edu.asselvi.model.Frequencia;
 import edu.asselvi.model.Nota;
 
@@ -13,7 +14,7 @@ public class Consulta {
 	static DecimalFormat df = new DecimalFormat("#0.00"); 
 
 	
-	public static void consultaNota(List<Nota> notas, Map<Integer, String> disciplinas) {
+	public static void consultaNota(List<Nota> notas, Map<Integer, Disciplina> disciplinas) {
 		
 		System.out.println("");
 		System.out.println("----------------------------------");
@@ -24,7 +25,7 @@ public class Consulta {
 		for(Nota nota : notas){
 			System.out.println(
 					"Bimestre: " + nota.getBimestreId() 
-					+ "\tDisciplina: " + disciplinas.get(nota.getDisciplinaId())
+					+ "\tDisciplina: " + disciplinas.get(nota.getDisciplinaId()).getDescricao()
 					+ "\tNota: " + (df.format(nota.getNota())));
 		}
 	}
@@ -45,8 +46,4 @@ public class Consulta {
 		
 	}
 
-	public static void consultaSituacao(int alunoId) {
-		
-	}
-	
 }

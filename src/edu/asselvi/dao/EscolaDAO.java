@@ -156,14 +156,16 @@ public class EscolaDAO implements GenericDAO<Escola>{
 		}
 	}
 
-	public Map<Integer, Integer> consultaIds() throws BDException {
+	public Map<Integer, Escola> consultaIds() throws BDException {
 		Connection conexao = Conexao.getConexao();
-		Map<Integer, Integer> series = new HashMap<Integer, Integer>();
+		Map<Integer, Escola> series = new HashMap<Integer, Escola>();
 		try {
 			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT escolaId FROM escola;");
+			ResultSet rs = st.executeQuery("SELECT * FROM escola;");
 			while(rs.next()) {
-				series.put(rs.getInt("escolaId"), rs.getInt("escolaId"));
+				series.put(rs.getInt("escolaId"), 
+						new Escola(	rs.getInt("escolaId"),
+						 			rs.getString("descricao")));
 			}
 			return series;
 		} catch (Exception e) {

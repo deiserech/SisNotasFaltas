@@ -5,9 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.conexao.Conexao;
@@ -57,8 +55,8 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 			PreparedStatement pst = conexao
 					.prepareStatement("INSERT INTO disciplinaProfessor (ProfessorId, DisciplinaId ) VALUES (?,?);");
 			for (DisciplinaProfessor disciplinaProfessor : disciplinaProfessores) {
-				pst.setInt(1, disciplinaProfessor.getDisciplinaId());
-				pst.setInt(2, disciplinaProfessor.getProfessorId());
+				pst.setInt(1, disciplinaProfessor.getProfessorId());
+				pst.setInt(2, disciplinaProfessor.getDisciplinaId());
 				pst.executeUpdate();
 			}
 			conexao.commit();

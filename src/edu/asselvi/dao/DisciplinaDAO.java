@@ -159,16 +159,19 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 		}
 	}
 	
-	public Map<Integer, Integer> consultaIds() throws BDException {
+
+	public Map<Integer, Disciplina> consultaIds() throws BDException {
 		Connection conexao = Conexao.getConexao();
-		Map<Integer, Integer> series = new HashMap<Integer, Integer>();
+		Map<Integer, Disciplina> disciplinas = new HashMap<Integer, Disciplina>();
 		try {
 			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT disciplinaId FROM disciplina;");
+			ResultSet rs = st.executeQuery("SELECT * FROM disciplina;");
 			while(rs.next()) {
-				series.put(rs.getInt("disciplinaId"), rs.getInt("disciplinaId"));
+				disciplinas.put(rs.getInt("disciplinaId"),
+						new Disciplina(rs.getInt("disciplinaId"),
+										rs.getString("descricao")));
 			}
-			return series;
+			return disciplinas;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {
@@ -176,16 +179,21 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 		}
 	}
 	
-	public Map<Integer, String> consultaDescricao() throws BDException {
+	public Map<Integer, Disciplina> consultaDescricao(List<Integer> disc) throws BDException {
+		Map<Integer, Disciplina> disciplinas = new HashMap<Integer, Disciplina>();
 		Connection conexao = Conexao.getConexao();
-		Map<Integer, String> series = new HashMap<Integer, String>();
 		try {
-			Statement st = conexao.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM disciplina;");
-			while(rs.next()) {
-				series.put(rs.getInt("disciplinaId"), rs.getString("descricao"));
+			for(Integer dc : disc) {
+				PreparedStatement pst = conexao.prepareStatement("SELECT * FROM disciplina WHERE DisciplinaId = ?;");
+				pst.setInt(1, dc);
+				ResultSet rs = pst.executeQuery();
+				if(rs.first()) {
+								disciplinas.put(rs.getInt("DisciplinaId"),
+											new Disciplina(	rs.getInt("DisciplinaId"),
+															rs.getString("descricao")));
+				};
 			}
-			return series;
+			return disciplinas;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CONSULTA_DADO, e.getMessage(), this.getClass().getSimpleName());
 		} finally {

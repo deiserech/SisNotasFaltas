@@ -3,9 +3,9 @@ package edu.asselvi.model;
 import java.util.Date;
 
 public class Frequencia {
-	private  int HorarioId;
-	private  int AlunoId;
-	private  int BimestreId;
+	private  int horarioId;
+	private  int alunoId;
+	private  int bimestreId;
 	private  Date dataAula;
 	private  boolean presente;
 
@@ -13,20 +13,20 @@ public class Frequencia {
 		this(0,0,0,new Date(),false);
 	}
 	
-	public Frequencia(int horaroiId, int AlunoId, int BimestreId, Date dataAula, boolean presente) {
-		setHorarioId(HorarioId);
-		setAlunoId(AlunoId);
-		setBimestreId(BimestreId);
+	public Frequencia(int horarioId, int alunoId, int bimestreId, Date dataAula, boolean presente) {
+		setHorarioId(horarioId);
+		setAlunoId(alunoId);
+		setBimestreId(bimestreId);
 		setDataAula(dataAula);
 		setPresente(presente);
 	}
 	
 	public int getAlunoId() {
-		return AlunoId;
+		return alunoId;
 	}
 
-	public void setAlunoId(int AlunoId) {
-		this.AlunoId = AlunoId;
+	public void setAlunoId(int alunoId) {
+		this.alunoId = alunoId;
 	}
 	public Date getDataAula() {
 		return dataAula;
@@ -45,19 +45,19 @@ public class Frequencia {
 	}
 	
 	public int getBimestreId() {
-		return BimestreId;
+		return bimestreId;
 	}
 	
-	public void setBimestreId(int BimestreId) {
-		this.BimestreId = BimestreId;
+	public void setBimestreId(int bimestreId) {
+		this.bimestreId = bimestreId;
 	}
 	
 	public int getHorarioId() {
-		return HorarioId;
+		return horarioId;
 	}
 	
-	public void setHorarioId(int HorarioId) {
-		this.HorarioId = HorarioId;
+	public void setHorarioId(int horarioId) {
+		this.horarioId = horarioId;
 	}
 
 	public String toString() {

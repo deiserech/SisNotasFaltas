@@ -15,13 +15,8 @@ import edu.asselvi.dao.SerieDAO;
 import edu.asselvi.model.Serie;
 
 public class ImportaSerie {
-    public ImportaSerie() {
-    }
-    
-    
-  
-    public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    public static void ImportacaoSerie() throws IOException, NumberFormatException {        
+    	BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\serie.txt");
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();

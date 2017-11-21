@@ -15,12 +15,8 @@ import edu.asselvi.dao.DisciplinaDAO;
 import edu.asselvi.model.Disciplina;
 
 public class ImportaDisciplina {
-    public ImportaDisciplina() {
-    }
-    
-    
   
-    public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
+    public static void ImportacaoDisciplina() throws IOException, NumberFormatException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\disciplina.txt");
         System.out.print("Entre com o separador...: ");

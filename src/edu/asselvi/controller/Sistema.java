@@ -1,5 +1,7 @@
 package edu.asselvi.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -7,10 +9,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.AlunoDAO;
 import edu.asselvi.dao.AlunoTurmaDAO;
+import edu.asselvi.dao.BaseDAO;
 import edu.asselvi.dao.BimestreDAO;
 import edu.asselvi.dao.CursoDAO;
 import edu.asselvi.dao.DisciplinaDAO;
@@ -27,6 +31,7 @@ import edu.asselvi.dao.TurmaDAO;
 import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.model.Aluno;
 import edu.asselvi.model.AlunoTurma;
+import edu.asselvi.model.Base;
 import edu.asselvi.model.Disciplina;
 import edu.asselvi.model.DisciplinaProfessor;
 import edu.asselvi.model.DisciplinaSerie;
@@ -46,7 +51,24 @@ public class Sistema {
 	static Calendar calendar = new GregorianCalendar();
 	private static int idPessoaLogada = 0;
 	private static int tpPessoaLogada = 0;
+	public static Base base = new Base();
 
+	public static boolean buscaParametros() throws IOException, BDException {
+		BaseDAO baseDao = new BaseDAO();
+		String caminho = System.getProperty("user.dir") + "/config/bancodados.properties";
+		FileInputStream arquivo = new FileInputStream(new File(caminho));
+		Properties propriedades = new Properties();
+		propriedades.load(arquivo);
+		arquivo.close();
+		base.setIp(propriedades.getProperty("ip"));
+		base.setBase(propriedades.getProperty("base"));
+		base.setUseSSL(propriedades.getProperty("useSSL"));
+		base.setLogin(propriedades.getProperty("login"));
+		base.setSenha(propriedades.getProperty("senha"));
+		return true;
+				//baseDao.criaBase();
+	}
+	
 	private static Pessoa login() throws BDException, IOException {
 		UsuarioDAO usuario = new UsuarioDAO();
 		PessoaDAO pessoaDao = new PessoaDAO();
@@ -61,7 +83,7 @@ public class Sistema {
 		switch (tpPessoaLogada) {
 		case 1:
 			return Menu.menuCoordenador();
-		case 2: 
+		case 2:
 			return Menu.menuSecretaria();
 		case 3:
 			return Menu.menuProfessor();
@@ -193,12 +215,20 @@ public class Sistema {
 								disciplina.consultaIds(), turmaDao.consultaIds()));
 						break;
 					case 8:
-						insereBanco(Cadastros.cadastraFuncionario(funcionario.retornaProximoId(), usuario.retornaProximoId(),
-								disciplina.consultaIds()));
+						insereBanco(Cadastros.cadastraFuncionario(funcionario.retornaProximoId(),
+								usuario.retornaProximoId(), disciplina.consultaIds()));
+						break;
+					default:
+						System.out.println("Opção Inválida!!!");
+						opcaoCad = Menu.menuCadastros();
 						break;
 					}
 					opcaoCad = Menu.menuCadastros();
 				}
+				opcao = verificaMenu();
+				break;
+			default:
+				System.out.println("Opção Inválida!!!");
 				opcao = verificaMenu();
 				break;
 			}
@@ -217,16 +247,23 @@ public class Sistema {
 			switch (opcao) {
 			case 1:
 				int opcaoMat = Menu.menuMatriculas();
-				;
 				while (opcaoMat != 0) {
 					switch (opcaoMat) {
 					case 1:
 						insereBanco(Cadastros.cadastraAluno(aluno.retornaProximoId(), usuario.retornaProximoId(),
 								turmaDao.consultaIds()));
 						break;
+					default:
+						System.out.println("Opção Inválida!!!");
+						opcaoMat = Menu.menuMatriculas();
+						break;
 					}
 					opcaoMat = Menu.menuMatriculas();
 				}
+				opcao = verificaMenu();
+				break;
+			default:
+				System.out.println("Opção Inválida!!!");
 				opcao = verificaMenu();
 				break;
 			}
@@ -236,7 +273,6 @@ public class Sistema {
 	};
 
 	public static void acessoProfessor() throws BDException, IOException, ParseException {
-//		FuncionarioDAO funcionarioDao = new FuncionarioDAO();
 		AlunoDAO alunoDao = new AlunoDAO();
 		AlunoTurmaDAO alunoTurmaDao = new AlunoTurmaDAO();
 		TurmaDAO turmaDao = new TurmaDAO();
@@ -260,26 +296,26 @@ public class Sistema {
 					Turma turmaObj = turmaDao.consulta(idTurma);
 					List<Integer> discProfessor = discProfDao.consultaDisciplinas(idPessoaLogada);
 					List<Integer> disciplinas = discSerieDao.consultaDisciProf(turmaObj.getSerieId(), discProfessor);
-					Map<Integer, Disciplina> disciplinaObj = disciplinaDao.consultaDescricao(disciplinas);   
+					Map<Integer, Disciplina> disciplinaObj = disciplinaDao.consultaDescricao(disciplinas);
 					idDisciplina = Lancamentos.BuscaDisciplina(disciplinaObj);
 					List<Integer> alunos = alunoTurmaDao.consultaAlunosTurma(idTurma);
 
 					switch (opcaoLan) {
 					case 1:
 						notaDao.insereTrn(Lancamentos.lancaNotasTurma(idTurma, FuncoesGenericas.buscaBimestre(),
-								idDisciplina,
-								alunoDao.consultaAlunosTurma(alunos)
-								));
+								idDisciplina, alunoDao.consultaAlunosTurma(alunos)));
 						break;
 					case 2:
 						frequenciaDao.insereTrn(Lancamentos.lancaFrequenciaTurma(
 								horarioDao.consulta(idTurma, idDisciplina, turmaDao.consulta(idTurma).getSerieId(),
-								calendar.get(Calendar.DAY_OF_WEEK)),
-								alunoDao.consultaAlunosTurma(alunos), 
-								FuncoesGenericas.buscaBimestre()
-								));
+										calendar.get(Calendar.DAY_OF_WEEK)),
+								alunoDao.consultaAlunosTurma(alunos), FuncoesGenericas.buscaBimestre()));
 
 						break;
+					default:
+						System.out.println("Opção Inválida");
+						opcaoLan = Menu.menuLancamentos();
+						break; 
 					}
 					opcaoLan = Menu.menuLancamentos();
 				}
@@ -292,27 +328,32 @@ public class Sistema {
 					Turma turmaObj = turmaDao.consulta(idTurma);
 					List<Integer> alunosCod = alunoTurmaDao.consultaAlunosTurma(idTurma);
 					Map<Integer, Aluno> alunos = alunoDao.consultaAlunosTurma(alunosCod);
-					
+					List<Integer> discProfessor = discProfDao.consultaDisciplinas(idPessoaLogada);
+					List<Integer> disciplinas = discSerieDao.consultaDisciProf(turmaObj.getSerieId(), discProfessor);
+
 					switch (opcaoRel) {
 					case 1:
-						Relatorios.relatorioNotas(turmaObj,
-									alunos,
-									disciplinaDao.consultaIds(),
-									notaDao.consultaNotasTurma(alunos) 
-								);
+						Relatorios.relatorioNotas(turmaObj, alunos, disciplinaDao.consultaIds(),
+								notaDao.consultaNotasTurma(alunos), disciplinas);
 						break;
 					case 2:
-						Relatorios.relatorioFrequencia(turmaObj,
-								alunos,
-								disciplinaDao.consultaIds(),
-								frequenciaDao.consultaFreqTurma(alunos)
-								);
+						Relatorios.relatorioFrequencia(turmaObj, alunos, disciplinaDao.consultaIds(),
+								frequenciaDao.consultaFreqTurma(alunos));
 						break;
+					default:
+						System.out.println("Opção Inválida");
+						opcaoLan = Menu.menuRelatorios();
+						break; 
 					}
 					opcaoRel = Menu.menuRelatorios();
 				}
 				opcao = verificaMenu();
 				break;
+			default:
+				System.out.println("Opção Inválida!!!");
+				opcao = verificaMenu();
+				break;
+
 			}
 		}
 		System.out.println("Sistema encerrado!");
@@ -333,17 +374,25 @@ public class Sistema {
 				while (opcaoCon != 0) {
 					switch (opcaoCon) {
 					case 1:
-						Consulta.consultaNota(notaDao.consultaNotasAluno(idPessoaLogada),
-								disciplinaDao.consultaIds());
+						Consulta.consultaNota(notaDao.consultaNotasAluno(idPessoaLogada), disciplinaDao.consultaIds());
 						break;
 					case 2:
 						Consulta.consultaFrequencia(frequenciaDao.consultaFreqAluno(idPessoaLogada));
+						break;
+					default:
+						opcaoCon = Menu.menuConsultas();
+						System.out.println("Opção Inválida!!!");
 						break;
 					}
 					opcaoCon = Menu.menuConsultas();
 				}
 				opcao = verificaMenu();
 				break;
+			default:
+				opcao = verificaMenu();
+				System.out.println("Opção Inválida!!!");
+				break;
+
 			}
 		}
 		System.out.println("Sistema encerrado!");
@@ -351,6 +400,8 @@ public class Sistema {
 	};
 
 	public static void main(String[] args) throws IOException, BDException, ParseException {
+		buscaParametros();
+		
 		Pessoa pessoaLogada = login(); // ver trows
 		idPessoaLogada = pessoaLogada.getId();
 		tpPessoaLogada = pessoaLogada.getPerfil();

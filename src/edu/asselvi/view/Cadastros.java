@@ -292,7 +292,7 @@ public class Cadastros {
 					retorno.add(new DisciplinaProfessor(disciplina, funcionarioId));
 					discCad.remove(disciplina);
 				} else {
-					System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
+					System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 				}
 				System.out.println("Informe o código das disciplinas.: ");
 				disciplina = FuncoesGenericas.lerCampoInt();
@@ -419,7 +419,7 @@ public class Cadastros {
 				turmas.add(turmaId);
 				turmasCad.remove(turmaId);
 			} else {
-				System.out.println(EErrosIO.INSERE_INVALIDO.getMensagem());
+				System.out.println(EErrosIO.INSERE_CODIGO.getMensagem());
 			}
 			System.out.println("Informe o código da turma........: ");
 			turmaId = FuncoesGenericas.lerCampoInt();

@@ -1,3 +1,4 @@
+package edu.asselvi.controller;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,8 +18,6 @@ public class Instalador {
 		propriedades.load(arquivo);
 		arquivo.close();
 		BaseDAO baseDao = new BaseDAO();
-		baseDao.criaBase(propriedades.getProperty("ip"), propriedades.getProperty("base"),
-				propriedades.getProperty("useSSL"), propriedades.getProperty("login"),
-				propriedades.getProperty("senha"));
+		baseDao.criaBase();
 	}
 }

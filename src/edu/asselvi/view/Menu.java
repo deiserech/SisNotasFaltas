@@ -8,6 +8,21 @@ import edu.asselvi.controller.FuncoesGenericas;
 public class Menu {
 	static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 
+	public static int menuInicial() {
+
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»    Controle de Notas e     ««|");
+		System.out.println("|»»    Frequência de Alunos    ««|");
+		System.out.println("----------------------------------");
+		System.out.println("\t1 - Instalador............");
+		System.out.println("\t2 - Diário de classe......");
+		System.out.println("\t0 - Sair..................");
+		System.out.print("Escolha..........................:");
+		return FuncoesGenericas.lerCampoInt();
+	}
+
+	
 	public static int menuCoordenador() {
 
 		System.out.println("");
@@ -125,5 +140,31 @@ public class Menu {
 		System.out.print("Escolha..........................:");
 		return FuncoesGenericas.lerCampoInt();
 	}
+	
+	public static void mensagens(int msg) {
+		switch (msg) {
+		case 1:
+			System.out.println();
+			System.out.println("Para acesso ao banco de dados é necessário configurar o arquivo de parâmetros em:");
+			System.out.println();
+			System.out.println(System.getProperty("user.dir") + "/config/populador.properties");
+			System.out.println();
+			System.out.println("Certifique-se que as configuções estejam corretas....");
+			System.out.println();
+			break;
+		case 2:
+			System.out.println("Opção Inválida!!!");
+			break;
+		case 3:
+			System.out.println("Sistema encerrado!");
+			break;
+		}
+		
+	}
+	
+	public static void mensagem(String msg) {
+			System.out.println(msg);		
+	}
+	
 
 }

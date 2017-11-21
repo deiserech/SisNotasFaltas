@@ -16,6 +16,7 @@ import edu.asselvi.dao.BimestreDAO;
 import edu.asselvi.enumerador.EErrosIO;
 import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Bimestre;
+import edu.asselvi.view.Menu;
 
 public class FuncoesGenericas {
 	static Calendar calendar = new GregorianCalendar();
@@ -53,7 +54,7 @@ public class FuncoesGenericas {
 		try {
 			return Float.parseFloat(teclado.readLine());
 		} catch (NumberFormatException | IOException e) {
-			System.out.println(EErrosIO.INSERE_NUMERO.getMensagem());
+			Menu.mensagem(EErrosIO.INSERE_NUMERO.getMensagem());
 			return 0;
 		}
 	}
@@ -62,7 +63,7 @@ public class FuncoesGenericas {
 		try {
 			return teclado.readLine();
 		} catch (IOException e) {
-			System.out.println(EErrosIO.INFORMACAO_INVALIDA.getMensagem());
+			Menu.mensagem(EErrosIO.INFORMACAO_INVALIDA.getMensagem());
 			return "";
 		}
 	}
@@ -71,7 +72,7 @@ public class FuncoesGenericas {
 		try {
 			return Character.toUpperCase((teclado.readLine().charAt(0)));
 		} catch (IOException e) {
-			System.out.println(EErrosIO.INFORMACAO_INVALIDA.getMensagem());
+			Menu.mensagem(EErrosIO.INFORMACAO_INVALIDA.getMensagem());
 			return ' ';
 		}
 	}
@@ -82,7 +83,7 @@ public class FuncoesGenericas {
 			String data = teclado.readLine();
 			return sdf.parse(data);
 		} catch (ParseException | IOException e) {
-			System.out.println(EErrosIO.DATA_INVALIDO.getMensagem());
+			Menu.mensagem(EErrosIO.DATA_INVALIDO.getMensagem());
 		}
 		return null;
 	}
@@ -91,7 +92,7 @@ public class FuncoesGenericas {
 		try {
 			return ESexo.valueOf(teclado.readLine());
 		} catch (IllegalArgumentException | IOException e) {
-			System.out.println(EErrosIO.SEXO_INVALIDO.getMensagem());
+			Menu.mensagem(EErrosIO.SEXO_INVALIDO.getMensagem());
 		}
 		return null;		
 	}

@@ -40,6 +40,20 @@ import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Serie;
 import edu.asselvi.model.Turma;
 import edu.asselvi.model.Usuario;
+import edu.asselvi.populador.manual.ImportaAlunoTurma;
+import edu.asselvi.populador.manual.ImportaBimestre;
+import edu.asselvi.populador.manual.ImportaCurso;
+import edu.asselvi.populador.manual.ImportaDisciplina;
+import edu.asselvi.populador.manual.ImportaDisciplinaProfessor;
+import edu.asselvi.populador.manual.ImportaDisciplinaSerie;
+import edu.asselvi.populador.manual.ImportaEscola;
+import edu.asselvi.populador.manual.ImportaFrequencia;
+import edu.asselvi.populador.manual.ImportaHorario;
+import edu.asselvi.populador.manual.ImportaNota;
+import edu.asselvi.populador.manual.ImportaPessoa;
+import edu.asselvi.populador.manual.ImportaSerie;
+import edu.asselvi.populador.manual.ImportaTurma;
+import edu.asselvi.populador.manual.ImportaUsuario;
 import edu.asselvi.view.Cadastros;
 import edu.asselvi.view.Consulta;
 import edu.asselvi.view.Lancamentos;
@@ -54,21 +68,45 @@ public class Sistema {
 	public static Base base = new Base();
 
 	public static boolean buscaParametros() throws IOException, BDException {
-		BaseDAO baseDao = new BaseDAO();
 		String caminho = System.getProperty("user.dir") + "/config/bancodados.properties";
 		FileInputStream arquivo = new FileInputStream(new File(caminho));
 		Properties propriedades = new Properties();
 		propriedades.load(arquivo);
 		arquivo.close();
-		base.setIp(propriedades.getProperty("ip"));
-		base.setBase(propriedades.getProperty("base"));
-		base.setUseSSL(propriedades.getProperty("useSSL"));
-		base.setLogin(propriedades.getProperty("login"));
-		base.setSenha(propriedades.getProperty("senha"));
+		Sistema.base.setIp(propriedades.getProperty("ip"));
+		Sistema.base.setBase(propriedades.getProperty("base"));
+		Sistema.base.setUseSSL(propriedades.getProperty("useSSL"));
+		Sistema.base.setLogin(propriedades.getProperty("login"));
+		Sistema.base.setSenha(propriedades.getProperty("senha"));
 		return true;
-				//baseDao.criaBase();
 	}
-	
+
+	public static boolean instalarSistema() throws BDException, IOException, NumberFormatException, ParseException {
+		Menu.mensagens(1);
+
+		buscaParametros();
+		BaseDAO baseDao = new BaseDAO();
+		if (baseDao.criaBase()) {
+			ImportaEscola.ImportacaoEscola();
+			ImportaAlunoTurma.ImportacaoAlunoTurma();
+			ImportaBimestre.ImportacaoBimestre();
+			ImportaCurso.ImportacaoCurso();
+			ImportaDisciplina.ImportacaoDisciplina();
+			ImportaDisciplinaProfessor.ImportacaoDisciplinaProfessor();
+			ImportaDisciplinaSerie.ImportacaoDisciplinaSerie();
+			ImportaEscola.ImportacaoEscola();
+			ImportaFrequencia.ImportacaoFrequencia();
+			ImportaHorario.ImportacaoHorario();
+			ImportaNota.ImportacaoNota();
+			ImportaPessoa.ImportacaoPessoa();
+			ImportaSerie.ImportacaoSerie();
+			ImportaTurma.ImportacaoTurma();
+			ImportaUsuario.ImportacaoUsuario();
+		}
+		;
+		return true;
+	}
+
 	private static Pessoa login() throws BDException, IOException {
 		UsuarioDAO usuario = new UsuarioDAO();
 		PessoaDAO pessoaDao = new PessoaDAO();
@@ -219,7 +257,7 @@ public class Sistema {
 								usuario.retornaProximoId(), disciplina.consultaIds()));
 						break;
 					default:
-						System.out.println("Opção Inválida!!!");
+						Menu.mensagens(2);
 						opcaoCad = Menu.menuCadastros();
 						break;
 					}
@@ -228,13 +266,12 @@ public class Sistema {
 				opcao = verificaMenu();
 				break;
 			default:
-				System.out.println("Opção Inválida!!!");
+				Menu.mensagens(2);
 				opcao = verificaMenu();
 				break;
 			}
 		}
-		System.out.println("Sistema encerrado!");
-
+		Menu.mensagens(3);
 	};
 
 	public static void acessoSecretaria() throws BDException, IOException, ParseException {
@@ -254,7 +291,7 @@ public class Sistema {
 								turmaDao.consultaIds()));
 						break;
 					default:
-						System.out.println("Opção Inválida!!!");
+						Menu.mensagens(2);
 						opcaoMat = Menu.menuMatriculas();
 						break;
 					}
@@ -263,12 +300,12 @@ public class Sistema {
 				opcao = verificaMenu();
 				break;
 			default:
-				System.out.println("Opção Inválida!!!");
+				Menu.mensagens(2);
 				opcao = verificaMenu();
 				break;
 			}
 		}
-		System.out.println("Sistema encerrado!");
+		Menu.mensagens(3);
 
 	};
 
@@ -313,9 +350,9 @@ public class Sistema {
 
 						break;
 					default:
-						System.out.println("Opção Inválida");
+						Menu.mensagens(2);
 						opcaoLan = Menu.menuLancamentos();
-						break; 
+						break;
 					}
 					opcaoLan = Menu.menuLancamentos();
 				}
@@ -341,22 +378,22 @@ public class Sistema {
 								frequenciaDao.consultaFreqTurma(alunos));
 						break;
 					default:
-						System.out.println("Opção Inválida");
+						Menu.mensagens(2);
 						opcaoLan = Menu.menuRelatorios();
-						break; 
+						break;
 					}
 					opcaoRel = Menu.menuRelatorios();
 				}
 				opcao = verificaMenu();
 				break;
 			default:
-				System.out.println("Opção Inválida!!!");
+				Menu.mensagens(2);
 				opcao = verificaMenu();
 				break;
 
 			}
 		}
-		System.out.println("Sistema encerrado!");
+		Menu.mensagens(3);
 
 	};
 
@@ -381,7 +418,7 @@ public class Sistema {
 						break;
 					default:
 						opcaoCon = Menu.menuConsultas();
-						System.out.println("Opção Inválida!!!");
+						Menu.mensagens(2);
 						break;
 					}
 					opcaoCon = Menu.menuConsultas();
@@ -390,18 +427,16 @@ public class Sistema {
 				break;
 			default:
 				opcao = verificaMenu();
-				System.out.println("Opção Inválida!!!");
+				Menu.mensagens(2);
 				break;
 
 			}
 		}
-		System.out.println("Sistema encerrado!");
+		Menu.mensagens(3);
 
 	};
 
-	public static void main(String[] args) throws IOException, BDException, ParseException {
-		buscaParametros();
-		
+	public static void controlaAcesso() throws BDException, IOException, ParseException {
 		Pessoa pessoaLogada = login(); // ver trows
 		idPessoaLogada = pessoaLogada.getId();
 		tpPessoaLogada = pessoaLogada.getPerfil();
@@ -420,6 +455,26 @@ public class Sistema {
 			acessoAluno();
 			break;
 		}
+	}
+
+	public static void main(String[] args) throws IOException, BDException, ParseException {
+		int opcao = Menu.menuInicial();
+		while (opcao != 0) {
+			switch (opcao) {
+			case 1:
+				instalarSistema();
+				break;
+			case 2:
+				controlaAcesso();
+				break;
+			default:
+				Menu.mensagens(2);
+				Menu.menuInicial();
+				break;
+			}
+			opcao = Menu.menuInicial();
+		}
+		Menu.mensagens(3);
 	}
 
 }

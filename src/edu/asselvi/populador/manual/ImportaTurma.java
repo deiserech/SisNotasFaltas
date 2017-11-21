@@ -15,13 +15,8 @@ import edu.asselvi.dao.TurmaDAO;
 import edu.asselvi.model.Turma;
 
 public class ImportaTurma {
-    public ImportaTurma() {
-    }
-    
-    
-  
-    public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    public static void ImportacaoTurma() throws IOException, NumberFormatException {        
+    	BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\turma.txt");
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();

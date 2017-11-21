@@ -17,13 +17,9 @@ import edu.asselvi.enumerador.ESexo;
 import edu.asselvi.model.Pessoa;
 
 public class ImportaPessoa {
-    public ImportaPessoa() {
-    }
-    
-    
   
-    public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    public static void ImportacaoPessoa() throws IOException, NumberFormatException, ParseException { 
+    	BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\pessoa.txt");
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();

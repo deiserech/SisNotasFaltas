@@ -16,12 +16,8 @@ import edu.asselvi.dao.BimestreDAO;
 import edu.asselvi.model.Bimestre;
 
 public class ImportaBimestre {
-    public ImportaBimestre() {
-    }
-    
-    
-  
-    public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
+
+    public static void ImportacaoBimestre() throws IOException, NumberFormatException, ParseException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\bimestre.txt");
         System.out.print("Entre com o separador...: ");

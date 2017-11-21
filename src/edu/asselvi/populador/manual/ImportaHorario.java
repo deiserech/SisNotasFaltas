@@ -15,12 +15,8 @@ import edu.asselvi.dao.HorarioDAO;
 import edu.asselvi.model.Horario;
 
 public class ImportaHorario {
-    public ImportaHorario() {
-    }
-    
-    
   
-    public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
+    public static void ImportacaoHorario() throws IOException, NumberFormatException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\horario.txt");
         System.out.print("Entre com o separador...: ");

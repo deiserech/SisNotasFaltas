@@ -14,11 +14,8 @@ import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.model.Usuario;
 
 public class ImportaUsuario {
-    public ImportaUsuario() {
-    }
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    public static void ImportacaoUsuario() throws IOException, NumberFormatException {
+    	BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\usuario.txt");
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();

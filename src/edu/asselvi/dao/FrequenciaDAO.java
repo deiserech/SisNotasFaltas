@@ -66,7 +66,6 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 				for (Frequencia frequencia : frequencias) {
 					Frequencia freqBanco = consulta(frequencia);
 					if(freqBanco == null) {
-						System.out.println("inclui");
 						pst.setInt(1, frequencia.getHorarioId());
 						pst.setInt(2, frequencia.getAlunoId());
 						pst.setInt(3, frequencia.getBimestreId());

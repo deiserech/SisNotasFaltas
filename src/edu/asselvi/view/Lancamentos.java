@@ -117,7 +117,7 @@ public class Lancamentos {
 				System.out.println("Não há bimestre vigente!");
 			}
 		} else {
-			System.out.println("Não há há horário cadastrado para esta turma/disciplia/dia!");
+			System.out.println("Não há horário cadastrado para esta turma/disciplia/dia!");
 		}
 		return frequencias;
 	}

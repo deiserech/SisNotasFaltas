@@ -6,13 +6,15 @@ import java.sql.Statement;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.enumerador.EErrosBD;
 import edu.asselvi.conexao.Conexao;
+import edu.asselvi.controller.Sistema;
 
 public class BaseDAO {
-	public boolean criaBase(String ip, String base, String useSSL, String login, String senha ) throws BDException {
+	public boolean criaBase() throws BDException {
+//		Connection conexao = Conexao.getConexao(true);
 		Connection conexao = Conexao.getConexao();
 		try {
 			Statement st = conexao.createStatement();
-			st.execute("CREATE DATABASE " + base + ";");
+			st.execute("CREATE DATABASE " + Sistema.base.getBase() + ";");
 			return true;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.CRIA_BASE, e.getMessage(), this.getClass().getSimpleName());

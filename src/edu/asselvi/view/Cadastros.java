@@ -41,7 +41,7 @@ public class Cadastros {
 		System.out.println("Informe o nome da escola.........: ");
 		String descricao = FuncoesGenericas.lerCampoString();
 		escolas.add(new Escola(escolaId, descricao));
-		System.out.println("Escola cadstrada com sucesso!"); 
+		System.out.println("Escola cadastrada com sucesso!"); 
 		return escolas;
 	}
 
@@ -86,7 +86,7 @@ public class Cadastros {
 			System.out.println("Deseja cadastrar novo curso?(S/N).: ");
 			novo = Character.toUpperCase((FuncoesGenericas.lerCampoString().charAt(0)));
 		}
-		System.out.println("Curso cadstrado com sucesso!"); 
+		System.out.println("Curso cadastrado com sucesso!"); 
 		return cursos;
 	}
 
@@ -439,7 +439,7 @@ public class Cadastros {
 		while (novo == 'S') {
 			cont++;
 			int bimestreId = 0;
-			System.out.println("Informe a descição do bimestre...: ");
+			System.out.println("Informe a descrição do bimestre...: ");
 			String descricao = FuncoesGenericas.lerCampoString();
 
 			Date dataInicio = null;

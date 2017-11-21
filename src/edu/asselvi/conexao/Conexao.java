@@ -22,8 +22,10 @@ public class Conexao {
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/deise?useSSL=true", "root", "Deise123");
+	//		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/deise?useSSL=true", "root", "Deise123");
 //			conn = DriverManager.getConnection(dadosConexao);
+	//		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/deise?useSSL=true", "root", "Deise123");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lorena?useSSL=true", "lorena", "lorena1509");
 			return conn;
 		} catch (Exception e) {
 			throw new BDException(EErrosBD.ABRE_CONEXAO, e.getMessage(), "Conexao");

@@ -1,6 +1,5 @@
 package edu.asselvi.model;
 
-import java.util.Date;
 
 public class Horario {
 	private int HorarioId;

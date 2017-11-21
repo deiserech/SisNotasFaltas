@@ -13,10 +13,9 @@ import edu.asselvi.dao.NotaDAO;
 import edu.asselvi.model.Nota;
 
 public class ExportaNota {
-    public ExportaNota() {
-    }
+   
 
-    public static void main(String[] args) throws IOException, BDException {
+    public static void ExportacaoNota() throws IOException, BDException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
@@ -30,6 +29,6 @@ public class ExportaNota {
         	notasExp.add(nota.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\nota.txt", notasExp, false);
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "\\dados\\nota.txt", notasExp, false);
     }
 }

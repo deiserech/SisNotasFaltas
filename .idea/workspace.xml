@@ -2,26 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbba08ef-9cab-435f-b49a-540917cee2dd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Base.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Instalador.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Instalador.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Instalador.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/controller/Instalador.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/conexao/Conexao.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/conexao/Conexao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/controller/Sistema.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/controller/Sistema.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/dao/FrequenciaDAO.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/dao/FrequenciaDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/model/Horario.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/model/Horario.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/view/Cadastros.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/view/Cadastros.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/view/Lancamentos.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/view/Lancamentos.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/view/Relatorios.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/view/Relatorios.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/bancodados.properties" afterPath="$PROJECT_DIR$/config/bancodados.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/conexao/Conexao.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/conexao/Conexao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/controller/Sistema.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/controller/Sistema.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/BaseDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/BaseDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/dao/FrequenciaDAO.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/dao/FrequenciaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Horario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Horario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Cadastros.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Cadastros.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Lancamentos.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Lancamentos.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Relatorios.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Relatorios.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaAlunoTurma.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaAlunoTurma.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaBimestre.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaBimestre.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaCurso.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaCurso.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplina.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplina.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplinaProfessor.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplinaProfessor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplinaSerie.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplinaSerie.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaEscola.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaEscola.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaFrequencia.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaFrequencia.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaHorario.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaHorario.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaNota.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaNota.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaPessoa.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaPessoa.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaSerie.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaSerie.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaTurma.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaTurma.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaUsuario.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaUsuario.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaAlunoTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaAlunoTurma.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaBimestre.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaBimestre.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaCurso.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaCurso.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplina.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplina.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplinaProfessor.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplinaProfessor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplinaSerie.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplinaSerie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaEscola.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaEscola.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaFrequencia.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaFrequencia.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaHorario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaHorario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaNota.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaNota.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaPessoa.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaPessoa.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaSerie.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaSerie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaTurma.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaUsuario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaUsuario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaHorario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaHorario.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,8 +76,8 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -186,11 +195,12 @@
       <workItem from="1511144509957" duration="158000" />
       <workItem from="1511220778680" duration="68000" />
       <workItem from="1511227439373" duration="261000" />
+      <workItem from="1511302479504" duration="127000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1067000" />
+    <option name="totallyTimeSpent" value="1194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -202,8 +212,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -213,8 +223,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />

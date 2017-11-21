@@ -14,10 +14,9 @@ import edu.asselvi.model.Turma;
 
 
 public class ExportaTurma {
-    public ExportaTurma() {
-    }
+   
 
-    public static void main(String[] args) throws IOException, BDException {
+    public static void ExportacaoTurma() throws IOException, BDException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
@@ -31,7 +30,6 @@ public class ExportaTurma {
         	turmasExp.add(turma.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\turma.txt", turmasExp, false); // tem que ver como por na pasta do prof - 
-        //ja salvar numa pasta do projeto, pra qdo instalar ele ja ter na pasta e achar o arquivo ja com dados exportados do nosso teste
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "\\dados\\turma.txt", turmasExp, false);
     }
 }

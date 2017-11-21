@@ -1,7 +1,5 @@
 package edu.asselvi.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -9,12 +7,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.AlunoDAO;
 import edu.asselvi.dao.AlunoTurmaDAO;
-import edu.asselvi.dao.BaseDAO;
 import edu.asselvi.dao.BimestreDAO;
 import edu.asselvi.dao.CursoDAO;
 import edu.asselvi.dao.DisciplinaDAO;
@@ -40,34 +36,6 @@ import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Serie;
 import edu.asselvi.model.Turma;
 import edu.asselvi.model.Usuario;
-import edu.asselvi.populador.manual.ExportaAlunoTurma;
-import edu.asselvi.populador.manual.ExportaBimestre;
-import edu.asselvi.populador.manual.ExportaCurso;
-import edu.asselvi.populador.manual.ExportaDisciplina;
-import edu.asselvi.populador.manual.ExportaDisciplinaProfessor;
-import edu.asselvi.populador.manual.ExportaDisciplinaSerie;
-import edu.asselvi.populador.manual.ExportaEscola;
-import edu.asselvi.populador.manual.ExportaFrequencia;
-import edu.asselvi.populador.manual.ExportaHorario;
-import edu.asselvi.populador.manual.ExportaNota;
-import edu.asselvi.populador.manual.ExportaPessoa;
-import edu.asselvi.populador.manual.ExportaSerie;
-import edu.asselvi.populador.manual.ExportaTurma;
-import edu.asselvi.populador.manual.ExportaUsuario;
-import edu.asselvi.populador.manual.ImportaAlunoTurma;
-import edu.asselvi.populador.manual.ImportaBimestre;
-import edu.asselvi.populador.manual.ImportaCurso;
-import edu.asselvi.populador.manual.ImportaDisciplina;
-import edu.asselvi.populador.manual.ImportaDisciplinaProfessor;
-import edu.asselvi.populador.manual.ImportaDisciplinaSerie;
-import edu.asselvi.populador.manual.ImportaEscola;
-import edu.asselvi.populador.manual.ImportaFrequencia;
-import edu.asselvi.populador.manual.ImportaHorario;
-import edu.asselvi.populador.manual.ImportaNota;
-import edu.asselvi.populador.manual.ImportaPessoa;
-import edu.asselvi.populador.manual.ImportaSerie;
-import edu.asselvi.populador.manual.ImportaTurma;
-import edu.asselvi.populador.manual.ImportaUsuario;
 import edu.asselvi.view.Cadastros;
 import edu.asselvi.view.Consulta;
 import edu.asselvi.view.Lancamentos;
@@ -449,6 +417,10 @@ public class Sistema {
 						Instalador.importarDados();
 						opcInstal = Menu.menuInstalacao();
 						break;
+					case 3:
+						Instalador.exportarDados();
+						opcInstal = Menu.menuInstalacao();
+						break;
 					default:
 						opcInstal = Menu.menuInstalacao();
 						Menu.mensagens(2);
@@ -458,9 +430,6 @@ public class Sistema {
 				}
 				break;
 			case 2:
-				Instalador.exportarDados();
-				break;
-			case 3:
 				controlaAcesso();
 				break;
 			default:

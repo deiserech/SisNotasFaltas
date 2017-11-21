@@ -55,9 +55,11 @@ public class Instalador {
 
 	public static boolean criarDatabase() throws BDException, IOException, NumberFormatException, ParseException {
 		BaseDAO baseDao = new BaseDAO();
-
-		Menu.mensagens(1);
-		return baseDao.criaBase();
+		if (baseDao.criaBase()) {
+			Menu.mensagens(5);
+			return true;
+		}
+		return false;
 	}
 
 	public static void importarDados() throws IOException, NumberFormatException, ParseException {
@@ -76,28 +78,27 @@ public class Instalador {
 		ImportaPessoa.ImportacaoPessoa();
 		ImportaSerie.ImportacaoSerie();
 		ImportaTurma.ImportacaoTurma();
-		ImportaUsuario.ImportacaoUsuario(); 
-		Menu.mensagens(1);		
+		ImportaUsuario.ImportacaoUsuario();
+		Menu.mensagens(1);
 	}
 
-	public static void exportarDados() {
+	public static void exportarDados() throws IOException, BDException {
 		Menu.menuExportacao();
-		// ExportaEscola.ExportacaoEscola();
-		// ExportaAlunoTurma.ExportacaoAlunoTurma();
-		// ExportaBimestre.ExportacaoBimestre();
-		// ExportaCurso.ExportacaoCurso();
-		// ExportaDisciplina.ExportacaoDisciplina();
-		// ExportaDisciplinaProfessor.ExportacaoDisciplinaProfessor();
-		// ExportaDisciplinaSerie.ExportacaoDisciplinaSerie();
-		// ExportaEscola.ExportacaoEscola();
-		// ExportaFrequencia.ExportacaoFrequencia();
-		// ExportaHorario.ExportacaoHorario();
-		// ExportaNota.ExportacaoNota();
-		// ExportaPessoa.ExportacaoPessoa();
-		// ExportaSerie.ExportacaoSerie();
-		// ExportaTurma.ExportacaoTurma();
-		// ExportaUsuario.ExportacaoUsuario();
-		//
+		ExportaEscola.ExportacaoEscola();
+		ExportaAlunoTurma.ExportacaoAlunoTurma();
+		ExportaBimestre.ExportacaoBimestre();
+		ExportaCurso.ExportacaoCurso();
+		ExportaDisciplina.ExportacaoDisciplina();
+		ExportaDisciplinaProfessor.ExportacaoDisciplinaProfessor();
+		ExportaDisciplinaSerie.ExportacaoDisciplinaSerie();
+		ExportaEscola.ExportacaoEscola();
+		ExportaFrequencia.ExportacaoFrequencia();
+		ExportaHorario.ExportacaoHorario();
+		ExportaNota.ExportacaoNota();
+		ExportaPessoa.ExportacaoPessoa();
+		ExportaSerie.ExportacaoSerie();
+		ExportaTurma.ExportacaoTurma();
+		ExportaUsuario.ExportacaoUsuario();
 		Menu.mensagens(2);
 	}
 

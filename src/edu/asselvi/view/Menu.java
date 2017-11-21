@@ -146,14 +146,21 @@ public class Menu {
 		System.out.println("----------------------------------");
 		System.out.println("|»»         Instalação         ««|");
 		System.out.println("----------------------------------");
+		System.out.println();
+		System.out.println("*************************************************************");
+		System.out.println();
 		System.out.println("Para acesso ao banco de dados é necessário ");
 		System.out.println("configurar o arquivo de parâmetros em:");
 		System.out.println();
-		System.out.println(System.getProperty("user.dir") + "/config/populador.properties");
+		System.out.println(System.getProperty("user.dir") + "\\config\\populador.properties");
 		System.out.println();
 		System.out.println("Certifique-se que as configuções estão corretas....");
+		System.out.println();
+		System.out.println("*************************************************************");
+		System.out.println();
 		System.out.println("\t1 - Criar database..........");
 		System.out.println("\t2 - Importar base de dados..");
+		System.out.println("\t3 - Emportar base de dados..");
 		System.out.println("\t0 - Sair....................");
 		System.out.print("Escolha..........................:");
 		return FuncoesGenericas.lerCampoInt();
@@ -191,6 +198,9 @@ public class Menu {
 			System.out.println("Exportação de dados finalizada!!!");
 			System.out.println("Verifique no diretório:");
 			System.out.println(System.getProperty("user.dir") + "/dados/");
+			break;
+		case 5:
+			System.out.println("Database criado com sucesso!");
 			break;
 		}
 		

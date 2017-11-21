@@ -140,23 +140,57 @@ public class Menu {
 		System.out.print("Escolha..........................:");
 		return FuncoesGenericas.lerCampoInt();
 	}
+
+	public static int menuInstalacao() {
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»         Instalação         ««|");
+		System.out.println("----------------------------------");
+		System.out.println("Para acesso ao banco de dados é necessário ");
+		System.out.println("configurar o arquivo de parâmetros em:");
+		System.out.println();
+		System.out.println(System.getProperty("user.dir") + "/config/populador.properties");
+		System.out.println();
+		System.out.println("Certifique-se que as configuções estão corretas....");
+		System.out.println("\t1 - Criar database..........");
+		System.out.println("\t2 - Importar base de dados..");
+		System.out.println("\t0 - Sair....................");
+		System.out.print("Escolha..........................:");
+		return FuncoesGenericas.lerCampoInt();
+	}
+
+	public static void menuImportacao() {
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»         Importação         ««|");
+		System.out.println("----------------------------------");
+		System.out.println("Importando informações do diretório:");
+		System.out.println(System.getProperty("user.dir") + "/dados/");
+	}
+	
+	public static void menuExportacao() {
+		System.out.println("");
+		System.out.println("----------------------------------");
+		System.out.println("|»»         Exportação         ««|");
+		System.out.println("----------------------------------");
+		System.out.println("Exportando informações......");
+	}
 	
 	public static void mensagens(int msg) {
 		switch (msg) {
 		case 1:
-			System.out.println();
-			System.out.println("Para acesso ao banco de dados é necessário configurar o arquivo de parâmetros em:");
-			System.out.println();
-			System.out.println(System.getProperty("user.dir") + "/config/populador.properties");
-			System.out.println();
-			System.out.println("Certifique-se que as configuções estejam corretas....");
-			System.out.println();
+			System.out.println("Importação de dados finalizada!!!");
 			break;
 		case 2:
 			System.out.println("Opção Inválida!!!");
 			break;
 		case 3:
 			System.out.println("Sistema encerrado!");
+			break;
+		case 4:
+			System.out.println("Exportação de dados finalizada!!!");
+			System.out.println("Verifique no diretório:");
+			System.out.println(System.getProperty("user.dir") + "/dados/");
 			break;
 		}
 		

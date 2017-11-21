@@ -40,6 +40,20 @@ import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Serie;
 import edu.asselvi.model.Turma;
 import edu.asselvi.model.Usuario;
+import edu.asselvi.populador.manual.ExportaAlunoTurma;
+import edu.asselvi.populador.manual.ExportaBimestre;
+import edu.asselvi.populador.manual.ExportaCurso;
+import edu.asselvi.populador.manual.ExportaDisciplina;
+import edu.asselvi.populador.manual.ExportaDisciplinaProfessor;
+import edu.asselvi.populador.manual.ExportaDisciplinaSerie;
+import edu.asselvi.populador.manual.ExportaEscola;
+import edu.asselvi.populador.manual.ExportaFrequencia;
+import edu.asselvi.populador.manual.ExportaHorario;
+import edu.asselvi.populador.manual.ExportaNota;
+import edu.asselvi.populador.manual.ExportaPessoa;
+import edu.asselvi.populador.manual.ExportaSerie;
+import edu.asselvi.populador.manual.ExportaTurma;
+import edu.asselvi.populador.manual.ExportaUsuario;
 import edu.asselvi.populador.manual.ImportaAlunoTurma;
 import edu.asselvi.populador.manual.ImportaBimestre;
 import edu.asselvi.populador.manual.ImportaCurso;
@@ -66,46 +80,6 @@ public class Sistema {
 	private static int idPessoaLogada = 0;
 	private static int tpPessoaLogada = 0;
 	public static Base base = new Base();
-
-	public static boolean buscaParametros() throws IOException, BDException {
-		String caminho = System.getProperty("user.dir") + "/config/bancodados.properties";
-		FileInputStream arquivo = new FileInputStream(new File(caminho));
-		Properties propriedades = new Properties();
-		propriedades.load(arquivo);
-		arquivo.close();
-		Sistema.base.setUrl(propriedades.getProperty("url"));
-		Sistema.base.setBase(propriedades.getProperty("base"));
-		Sistema.base.setUseSSL(propriedades.getProperty("useSSL"));
-		Sistema.base.setLogin(propriedades.getProperty("login"));
-		Sistema.base.setSenha(propriedades.getProperty("senha"));
-		return true;
-	}
-
-	public static boolean instalarSistema() throws BDException, IOException, NumberFormatException, ParseException {
-		Menu.mensagens(1);
-
-		buscaParametros();
-		BaseDAO baseDao = new BaseDAO();
-		if (baseDao.criaBase()) {
-			ImportaEscola.ImportacaoEscola();
-			ImportaAlunoTurma.ImportacaoAlunoTurma();
-			ImportaBimestre.ImportacaoBimestre();
-			ImportaCurso.ImportacaoCurso();
-			ImportaDisciplina.ImportacaoDisciplina();
-			ImportaDisciplinaProfessor.ImportacaoDisciplinaProfessor();
-			ImportaDisciplinaSerie.ImportacaoDisciplinaSerie();
-			ImportaEscola.ImportacaoEscola();
-			ImportaFrequencia.ImportacaoFrequencia();
-			ImportaHorario.ImportacaoHorario();
-			ImportaNota.ImportacaoNota();
-			ImportaPessoa.ImportacaoPessoa();
-			ImportaSerie.ImportacaoSerie();
-			ImportaTurma.ImportacaoTurma();
-			ImportaUsuario.ImportacaoUsuario();
-		}
-		;
-		return true;
-	}
 
 	private static Pessoa login() throws BDException, IOException {
 		UsuarioDAO usuario = new UsuarioDAO();
@@ -458,13 +432,35 @@ public class Sistema {
 	}
 
 	public static void main(String[] args) throws IOException, BDException, ParseException {
+		Instalador.buscaParametros();
+
 		int opcao = Menu.menuInicial();
 		while (opcao != 0) {
 			switch (opcao) {
 			case 1:
-				instalarSistema();
+				int opcInstal = Menu.menuInstalacao();
+				while (opcInstal != 0) {
+					switch (opcInstal) {
+					case 1:
+						Instalador.criarDatabase();
+						opcInstal = Menu.menuInstalacao();
+						break;
+					case 2:
+						Instalador.importarDados();
+						opcInstal = Menu.menuInstalacao();
+						break;
+					default:
+						opcInstal = Menu.menuInstalacao();
+						Menu.mensagens(2);
+						break;
+					}
+					opcao = Menu.menuInicial();
+				}
 				break;
 			case 2:
+				Instalador.exportarDados();
+				break;
+			case 3:
 				controlaAcesso();
 				break;
 			default:

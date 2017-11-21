@@ -30,6 +30,7 @@ public class ExportaAlunoTurma {
         	alunoTurmasExp.add(alunoTurma.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\alunoTurma.txt", alunoTurmasExp, false);
+   //     Arquivo.gravaArquivo(System.getProperty("user.dir") + "/alunoTurma.txt", alunoTurmasExp, false);
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "/dados/alunoTurma.txt", alunoTurmasExp, false);
     }
 }

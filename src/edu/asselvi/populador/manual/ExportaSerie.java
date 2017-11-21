@@ -13,10 +13,9 @@ import edu.asselvi.dao.SerieDAO;
 import edu.asselvi.model.Serie;
 
 public class ExportaSerie {
-    public ExportaSerie() {
-    }
+   
 
-    public static void main(String[] args) throws IOException, BDException {
+    public static void ExportacaoSerie() throws IOException, BDException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
@@ -30,6 +29,6 @@ public class ExportaSerie {
         	seriesExp.add(serie.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\serie.txt", seriesExp, false);
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "\\dados\\serie.txt", seriesExp, false);
     }
 }

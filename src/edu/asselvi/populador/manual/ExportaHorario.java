@@ -10,14 +10,12 @@ import java.util.List;
 import edu.asselvi.arquivo.Arquivo;
 import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.HorarioDAO;
-import edu.asselvi.model.Escola;
 import edu.asselvi.model.Horario;
 
 public class ExportaHorario {
-    public ExportaHorario() {
-    }
+   
 
-    public static void main(String[] args) throws IOException, BDException {
+    public static void ExportacaoHorario() throws IOException, BDException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
@@ -31,6 +29,6 @@ public class ExportaHorario {
         	horariosExp.add(horario.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\horario.txt", horariosExp, false);
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "\\dados\\horario.txt", horariosExp, false);
     }
 }

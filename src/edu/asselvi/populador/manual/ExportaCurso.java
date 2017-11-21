@@ -13,10 +13,8 @@ import edu.asselvi.dao.CursoDAO;
 import edu.asselvi.model.Curso;
 
 public class ExportaCurso {
-    public ExportaCurso() {
-    }
-
-    public static void main(String[] args) throws IOException, BDException {
+  
+    public static void ExportacaoCurso() throws IOException, BDException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
@@ -30,6 +28,6 @@ public class ExportaCurso {
         	cursosExp.add(curso.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\curso.txt", cursosExp, false);
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "\\dados\\curso.txt", cursosExp, false);
     }
 }

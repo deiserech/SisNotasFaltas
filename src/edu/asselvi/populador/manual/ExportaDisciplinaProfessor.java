@@ -13,10 +13,9 @@ import edu.asselvi.dao.DisciplinaProfessorDAO;
 import edu.asselvi.model.DisciplinaProfessor;
 
 public class ExportaDisciplinaProfessor {
-    public ExportaDisciplinaProfessor() {
-    }
+ 
 
-    public static void main(String[] args) throws IOException, BDException {
+    public static void ExportacaoDisciplinaProfessor() throws IOException, BDException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
@@ -30,6 +29,6 @@ public class ExportaDisciplinaProfessor {
         	disciplinaProfessoresExp.add(disciplinaProfessor.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\disciplinaProfessor.txt", disciplinaProfessoresExp, false);
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "\\dados\\disciplinaProfessor.txt", disciplinaProfessoresExp, false);
     }
 }

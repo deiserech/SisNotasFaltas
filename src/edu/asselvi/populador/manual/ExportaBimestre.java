@@ -13,10 +13,9 @@ import edu.asselvi.dao.BimestreDAO;
 import edu.asselvi.model.Bimestre;
 
 public class ExportaBimestre {
-    public ExportaBimestre() {
-    }
+   
 
-    public static void main(String[] args) throws IOException, BDException {
+    public static void ExportacaoBimestre() throws IOException, BDException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
@@ -30,6 +29,6 @@ public class ExportaBimestre {
         	bimestresExp.add(bimestre.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\bimestre.txt", bimestresExp, false);
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "\\dados\\bimestre.txt", bimestresExp, false);
     }
 }

@@ -13,10 +13,9 @@ import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.model.Usuario;
 
 public class ExportaUsuario {
-    public ExportaUsuario() {
-    }
+   
 
-    public static void main(String[] args) throws IOException, BDException {
+    public static void ExportacaoUsuario() throws IOException, BDException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
@@ -30,6 +29,6 @@ public class ExportaUsuario {
         	usuariosExp.add(usuario.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\usuario.txt", usuariosExp, false);
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "\\dados\\usuario.txt", usuariosExp, false);
     }
 }

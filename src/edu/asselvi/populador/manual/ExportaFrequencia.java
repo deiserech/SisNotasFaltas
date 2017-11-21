@@ -13,10 +13,9 @@ import edu.asselvi.dao.FrequenciaDAO;
 import edu.asselvi.model.Frequencia;
 
 public class ExportaFrequencia {
-    public ExportaFrequencia() {
-    }
+    
 
-    public static void main(String[] args) throws IOException, BDException {
+    public static void ExportacaoFrequencia() throws IOException, BDException {
         BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Entre com o separador...: ");
         String separador = teclado.readLine();
@@ -30,6 +29,6 @@ public class ExportaFrequencia {
         	frequenciasExp.add(frequencia.toStringBD(separador));
         }
 
-        Arquivo.gravaArquivo("C:\\Users\\Lorena\\Workspace\\frequencia.txt", frequenciasExp, false);
+        Arquivo.gravaArquivo(System.getProperty("user.dir") + "\\dados\\frequencia.txt", frequenciasExp, false);
     }
 }

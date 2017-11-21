@@ -19,7 +19,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE disciplinaProfessor (" + "	"
@@ -37,7 +37,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE disciplinaProfessor;");
@@ -51,7 +51,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 
 	@Override
 	public boolean insereTrn(List<DisciplinaProfessor> disciplinaProfessores) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -82,7 +82,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 	}
 
 	public DisciplinaProfessor consulta(int disciplinaId, int professorId) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao
 					.prepareStatement("SELECT * FROM disciplinaProfessor WHERE DisciplinaId = ? AND ProfessorId = ?;");
@@ -99,7 +99,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 
 	@Override
 	public List<DisciplinaProfessor> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<DisciplinaProfessor> disciplinaProfessores = new ArrayList<DisciplinaProfessor>();
 		try {
 			Statement st = conexao.createStatement();
@@ -117,7 +117,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 
 	@Override
 	public boolean altera(DisciplinaProfessor disciplinaProfessor) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao
 					.prepareStatement("UPDATE disciplinaProfessor SET ProfessorId = ? WHERE DisciplinaId = ?;");
@@ -137,7 +137,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 	}
 
 	public boolean exclui(int disciplinaId, int professorId) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao
 					.prepareStatement("DELETE FROM disciplinaProfessor WHERE DisciplinaId = ? and ProfessorId = ? ;");
@@ -159,7 +159,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
 	
 	public List<Integer> consultaDisciplinas(int professorId) throws BDException {
 		List<Integer> disciplinas = new ArrayList<Integer>();
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao
 					.prepareStatement("SELECT * FROM disciplinaProfessor WHERE ProfessorId = ?;");
@@ -189,7 +189,7 @@ public class DisciplinaProfessorDAO implements GenericDAO<DisciplinaProfessor> {
     }
 
 	public boolean insereVariosTrn(List<DisciplinaProfessor> disciplinaProfessores) throws BDException {
-        Connection conexao = Conexao.getConexao();
+        Connection conexao = Conexao.getConexao(true);
 
         try {
             conexao.setAutoCommit(false);

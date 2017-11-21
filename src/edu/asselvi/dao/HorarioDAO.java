@@ -20,7 +20,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE horario (" + "	"
@@ -42,7 +42,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE horario;");
@@ -57,7 +57,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 
 	@Override
 	public boolean insereTrn(List<Horario> horarios) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -86,7 +86,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 
 	@Override
 	public Horario consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM horario WHERE HorarioId = ?;");
 			pst.setInt(1, id);
@@ -107,7 +107,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 
 	@Override
 	public List<Horario> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Horario> horarios = new ArrayList<Horario>();
 		try {
 			Statement st = conexao.createStatement();
@@ -128,7 +128,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 	}
 
 	public Horario consulta(int idTurma, int idDisciplina,int idSerie, int diaSemana) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Horario horario = new Horario();
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM horario where TurmaId = ? and DisciplinaId = ? and diaSemana = ?;");
@@ -156,7 +156,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 	
 	@Override
 	public boolean altera(Horario horario) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("UPDATE horario SET TurmaId = ?, DisciplinaId = ?, SerieId = ?, diaSemana = ?, horaInicio = ? WHERE HorarioId = ?;");
 			pst.setInt(1, horario.getTurmaId());
@@ -174,7 +174,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM horario WHERE HorarioId = ?;");
 			pst.setInt(1, id);
@@ -188,7 +188,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -217,7 +217,7 @@ public class HorarioDAO implements GenericDAO<Horario>{
     }
 
 	public boolean insereVariosTrn(List<Horario> horarios) throws BDException {
-        Connection conexao = Conexao.getConexao();
+        Connection conexao = Conexao.getConexao(true);
 
         try {
             conexao.setAutoCommit(false);

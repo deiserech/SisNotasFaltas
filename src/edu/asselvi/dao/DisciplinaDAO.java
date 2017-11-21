@@ -21,7 +21,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE disciplina (" + "	"
@@ -38,7 +38,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE disciplina;");
@@ -52,7 +52,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 	
 	@Override
 	public boolean insereTrn(List<Disciplina> disciplinas) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -78,7 +78,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 
 	@Override
 	public Disciplina consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM disciplina WHERE DisciplinaId = ?;");
 			pst.setInt(1, id);
@@ -97,7 +97,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 
 	@Override
 	public List<Disciplina> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 		try {
 			Statement st = conexao.createStatement();
@@ -117,7 +117,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 
 	@Override
 	public boolean altera(Disciplina disciplina) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("UPDATE disciplina SET descricao = ? WHERE DisciplinaId = ?;");
 			pst.setString(1, disciplina.getDescricao());
@@ -131,7 +131,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM disciplina WHERE DisciplinaId = ?;");
 			pst.setInt(1, id);
@@ -145,7 +145,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -163,7 +163,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 	
 
 	public Map<Integer, Disciplina> consultaIds() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Disciplina> disciplinas = new HashMap<Integer, Disciplina>();
 		try {
 			Statement st = conexao.createStatement();
@@ -183,7 +183,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
 	
 	public Map<Integer, Disciplina> consultaDescricao(List<Integer> disc) throws BDException {
 		Map<Integer, Disciplina> disciplinas = new HashMap<Integer, Disciplina>();
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			for(Integer dc : disc) {
 				PreparedStatement pst = conexao.prepareStatement("SELECT * FROM disciplina WHERE DisciplinaId = ?;");
@@ -216,7 +216,7 @@ public class DisciplinaDAO implements GenericDAO<Disciplina>{
     }
 
 	public boolean insereVariosTrn(List<Disciplina> disciplinas) throws BDException {
-        Connection conexao = Conexao.getConexao();
+        Connection conexao = Conexao.getConexao(true);
 
         try {
             conexao.setAutoCommit(false);

@@ -23,7 +23,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE pessoa (" + "	"
@@ -53,7 +53,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE pessoa;");
@@ -67,7 +67,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	
 	@Override
 	public boolean insereTrn(List<Pessoa> pessoas) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -98,7 +98,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 
 	@Override
 	public Pessoa consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa WHERE pessoaId = ?;");
 			pst.setInt(1, id);
@@ -120,7 +120,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	}
 
 	public Pessoa consultaUsuario(int usuarioId) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa WHERE usuarioId = ?;");
 			pst.setInt(1, usuarioId);
@@ -144,7 +144,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	
 	@Override
 	public List<Pessoa> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		try {
 			Statement st = conexao.createStatement();
@@ -168,7 +168,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 
 	@Override
 	public boolean altera(Pessoa pessoa) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("UPDATE pessoa SET usuarioId = ?, perfil, nome = ?, cpf = ?, dataNascimento = ?, sexo = ? WHERE pessoaId = ?;");
 			pst.setInt(1, pessoa.getCdUsuario());
@@ -188,7 +188,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM pessoa WHERE pessoaId = ?;");
 			pst.setInt(1, id);
@@ -202,7 +202,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -219,7 +219,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	}
 	
 	public Map<Integer, Aluno> consultaAlunosTurma(int idTurma) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Aluno> alunos = new HashMap<Integer, Aluno>();
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa where IdTurma = ?;");
@@ -245,7 +245,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	}
 	
 	public Map<Integer, Pessoa> consultaAlunosTurma(List<Integer> alunos) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Pessoa> pessoas = new HashMap<Integer, Pessoa>();
 		try {
 			for(Integer aluno : alunos) {
@@ -272,7 +272,7 @@ public class PessoaDAO implements GenericDAO<Pessoa> {
 	}	
 	
 	 public boolean insereVariosTrn(List<Pessoa> pessoas) throws BDException {
-	        Connection conexao = Conexao.getConexao();
+	        Connection conexao = Conexao.getConexao(true);
 
 	        try {
 	            conexao.setAutoCommit(false);

@@ -73,7 +73,7 @@ public class Sistema {
 		Properties propriedades = new Properties();
 		propriedades.load(arquivo);
 		arquivo.close();
-		Sistema.base.setIp(propriedades.getProperty("ip"));
+		Sistema.base.setUrl(propriedades.getProperty("url"));
 		Sistema.base.setBase(propriedades.getProperty("base"));
 		Sistema.base.setUseSSL(propriedades.getProperty("useSSL"));
 		Sistema.base.setLogin(propriedades.getProperty("login"));

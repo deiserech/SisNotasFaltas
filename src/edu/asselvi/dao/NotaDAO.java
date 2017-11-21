@@ -21,7 +21,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE nota (" + "	"
@@ -44,7 +44,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE nota;");
@@ -58,7 +58,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 
 	@Override
 	public boolean insereTrn(List<Nota> notas) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -94,7 +94,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 
 	@Override
 	public Nota consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM nota WHERE NotaId = ?;");
 			pst.setInt(1, id);
@@ -115,7 +115,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 	}
 
 	public List<Nota> consultaNotasAluno(int alunoId) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Nota> notas = new ArrayList<Nota>();
 		try {
 			PreparedStatement pst = conexao
@@ -141,7 +141,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 
 	@Override
 	public boolean altera(Nota nota) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement(
 					"UPDATE nota SET AlunoId = ?, DisciplinaId = ?, BimestreId = ?, nota = ? WHERE NotaId = ? and nrNota = ?;");
@@ -161,7 +161,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM nota WHERE NotaId = ?;");
 			pst.setInt(1, id);
@@ -175,7 +175,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -193,7 +193,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 
 	@Override
 	public List<Nota> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Nota> notas = new ArrayList<Nota>();
 		try {
 			Statement st = conexao.createStatement();
@@ -215,7 +215,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 	}
 
 	public List<Nota> consultaNotasTurma(Map<Integer, Aluno> alunos) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Nota> notas = new ArrayList<Nota>();
 		try {
 			for (Aluno aluno : alunos.values()) {
@@ -240,7 +240,7 @@ public class NotaDAO implements GenericDAO<Nota> {
 	}
 
 	public Nota consulta(int alunoId, int disciplinaId, int bimestreId, int nrNota) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao
 					.prepareStatement("SELECT * FROM nota WHERE alunoId = ? AND disciplinaId = ? AND bimestreId = ? and nrNota = ? ;");
@@ -277,7 +277,7 @@ public class NotaDAO implements GenericDAO<Nota> {
     }
 
 	public boolean insereVariosTrn(List<Nota> notas) throws BDException {
-        Connection conexao = Conexao.getConexao();
+        Connection conexao = Conexao.getConexao(true);
 
         try {
             conexao.setAutoCommit(false);

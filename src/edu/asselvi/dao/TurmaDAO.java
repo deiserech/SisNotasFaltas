@@ -21,7 +21,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE turma (" + "	"
@@ -42,7 +42,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE turma;");
@@ -56,7 +56,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 
 	@Override
 	public boolean insereTrn(List<Turma> turmas) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -85,7 +85,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 
 	@Override
 	public Turma consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM turma WHERE TurmaId = ?;");
 			pst.setInt(1, id);
@@ -106,7 +106,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 	
 	@Override
 	public List<Turma> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Turma> turmas = new ArrayList<Turma>();
 		try {
 			Statement st = conexao.createStatement();
@@ -128,7 +128,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 
 	@Override
 	public boolean altera(Turma turma) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("UPDATE turma SET SerieId = ?, descricao = ?, vagas = ?, ano = ? WHERE TurmaId = ?;");
 			pst.setInt(1, turma.getSerieId());
@@ -146,7 +146,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM turma WHERE TurmaId = ?;");
 			pst.setInt(1, id);
@@ -161,7 +161,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 	
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -178,7 +178,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 	}
 	
 	public Map<Integer, Integer> consultaSerieTurmas() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Integer> serieTurma = new HashMap<Integer, Integer>();
 		try {
 			Statement st = conexao.createStatement();
@@ -194,7 +194,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
 	}
 	
 	public Map<Integer, Turma> consultaIds() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Turma> series = new HashMap<Integer, Turma>();
 		try {
 			Statement st = conexao.createStatement();
@@ -228,7 +228,7 @@ public class TurmaDAO implements GenericDAO<Turma>{
     }
 
 	public boolean insereVariosTrn(List<Turma> turmas) throws BDException {
-        Connection conexao = Conexao.getConexao();
+        Connection conexao = Conexao.getConexao(true);
 
         try {
             conexao.setAutoCommit(false);

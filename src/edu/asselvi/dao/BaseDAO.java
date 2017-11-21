@@ -10,7 +10,7 @@ import edu.asselvi.controller.Sistema;
 
 public class BaseDAO {
 	public boolean criaBase() throws BDException {
-		Connection conexao = Conexao.getFirstConexao();
+		Connection conexao = Conexao.getConexao(false);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE DATABASE " + Sistema.base.getBase() + ";");

@@ -22,7 +22,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE frequencia (" + "	"
@@ -43,7 +43,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE frequencia;");
@@ -57,7 +57,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 	
 	@Override
 	public boolean insereTrn(List<Frequencia> frequencias) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -92,7 +92,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 
 	@Override
 	public Frequencia consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM frequencia WHERE HorarioId = ?");
 			pst.setInt(1, id);
@@ -113,7 +113,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 
 	@Override
 	public List<Frequencia> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Frequencia> frequencias = new ArrayList<Frequencia>();
 		try {
 			Statement st = conexao.createStatement();
@@ -135,7 +135,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 
 	@Override
 	public boolean altera(Frequencia frequencia) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("UPDATE frequencia SET presente = ? WHERE HorarioId = ? AND AlunoId  = ? AND BimestreId = ? and dataAula = ?;");
 			pst.setString(1, frequencia.isPresente()? "S": "N");
@@ -153,7 +153,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM frequencia WHERE HorarioId = ? AND AlunoId  = ? AND BimestreId = ?;");
 			pst.setInt(1, id);
@@ -167,7 +167,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -184,7 +184,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 	}
 
 	public List<Frequencia> consultaFreqAluno(int alunoId) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Frequencia> frequencias = new ArrayList<Frequencia>();
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM frequencia WHERE AlunoId = ? order by BimestreId, DataAula ");
@@ -206,7 +206,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 	}
 
 	public List<Frequencia> consultaFreqTurma(Map<Integer, Aluno> alunos) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Frequencia> frequencias = new ArrayList<Frequencia>();
 		try {
 			for(Aluno aluno: alunos.values()) {
@@ -230,7 +230,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
 	}
 
 	public Frequencia consulta(Frequencia frequencia) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM frequencia WHERE HorarioId = ? AND AlunoId = ? AND BimestreId = ? and dataAula = ?");
 			pst.setInt(1, frequencia.getHorarioId());
@@ -265,7 +265,7 @@ public class FrequenciaDAO implements GenericDAO<Frequencia>{
     }
 
 	public boolean insereVariosTrn(List<Frequencia> frequencias) throws BDException {
-        Connection conexao = Conexao.getConexao();
+        Connection conexao = Conexao.getConexao(true);
 
         try {
             conexao.setAutoCommit(false);

@@ -19,7 +19,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE pessoa (" + "	"
@@ -49,7 +49,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 	
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE pessoa;");
@@ -63,7 +63,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 	
 	@Override
 	public boolean insereTrn(List<Aluno> alunos) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -95,7 +95,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 
 	@Override
 	public Aluno consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa WHERE pessoaId = ?;");
 			pst.setInt(1, id);
@@ -117,7 +117,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 	}
 
 	public Aluno consultaUsuario(int usuarioId) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa WHERE usuarioId = ?;");
 			pst.setInt(1, usuarioId);
@@ -141,7 +141,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 	
 	@Override
 	public List<Aluno> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		try {
 			Statement st = conexao.createStatement();
@@ -165,7 +165,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 
 	@Override
 	public boolean altera(Aluno aluno) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("UPDATE pessoa SET usuarioId = ?, perfil, nome = ?, cpf = ?, dataNascimento = ?, sexo = ? WHERE pessoaId = ?;");
 			pst.setInt(1, aluno.getCdUsuario());
@@ -185,7 +185,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM pessoa WHERE pessoaId = ?;");
 			pst.setInt(1, id);
@@ -199,7 +199,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -216,7 +216,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 	}
 	
 	public Map<Integer, Aluno> consultaAlunosTurma(int idTurma) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Aluno> alunos = new HashMap<Integer, Aluno>();
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa where IdTurma = ?;");
@@ -242,7 +242,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
 	}
 	
 	public Map<Integer, Aluno> consultaAlunosTurma(List<Integer> alunosL) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Aluno> alunos = new HashMap<Integer, Aluno>();
 		try {
 			for(Integer aluno : alunosL) {

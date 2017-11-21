@@ -22,7 +22,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE curso (" + "	"
@@ -43,7 +43,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 	@Override
 	
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE curso;");
@@ -57,7 +57,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 	
 	@Override
 	public boolean insereTrn(List<Curso> cursos) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -85,7 +85,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 
 	@Override
 	public Curso consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM curso WHERE CursoId = ?;");
 			pst.setInt(1, id);
@@ -106,7 +106,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 
 	@Override
 	public List<Curso> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Curso> cursos = new ArrayList<Curso>();
 		try {
 			Statement st = conexao.createStatement();
@@ -127,7 +127,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 
 	@Override
 	public boolean altera(Curso curso) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("UPDATE curso SET EscolaId = ?, numSeries = ?, descricao = ? WHERE CursoId = ?;");
 			pst.setInt(1, curso.getEscolaId());
@@ -143,7 +143,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 	
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM curso WHERE CursoId = ?;");
 			pst.setInt(1, id);
@@ -157,7 +157,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -174,7 +174,7 @@ public class CursoDAO implements GenericDAO<Curso>{
 	}
 	
 	public Map<Integer, Curso> consultaIds() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Curso> series = new HashMap<Integer, Curso>();
 		try {
 			Statement st = conexao.createStatement();
@@ -207,7 +207,7 @@ public class CursoDAO implements GenericDAO<Curso>{
     }
 
 	public boolean insereVariosTrn(List<Curso> cursos) throws BDException {
-        Connection conexao = Conexao.getConexao();
+        Connection conexao = Conexao.getConexao(true);
 
         try {
             conexao.setAutoCommit(false);

@@ -1,7 +1,7 @@
 package edu.asselvi.model;
 
 public class Base {
-	private String ip;
+	private String url;
 	private String base;
 	private String useSSL;
 	private String login;
@@ -10,8 +10,8 @@ public class Base {
 	public Base() {
 		this("//localhost:3306","deise","true","root", "Deise123");
 	}
-	public Base(String ip, String base, String useSSL, String login, String senha) {
-		setIp(ip);
+	public Base(String url, String base, String useSSL, String login, String senha) {
+		setUrl(url);
 		setBase(base);
 		setUseSSL(useSSL);
 		setLogin(login);
@@ -19,11 +19,11 @@ public class Base {
 	}
 	
 	
-	public String getIp() {
-		return ip;
+	public String getUrl() {
+		return url;
 	}
-	public void setIp(String ip) {
-		this.ip = ip;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public String getBase() {
 		return base;
@@ -52,7 +52,7 @@ public class Base {
 	
 	@Override
 	public String toString() {
-		return    "\n\tIP......................: " + getIp()
+		return    "\n\tUrl.....................: " + getUrl()
 				+ "\n\tBase....................: " + getBase()
 				+ "\n\tuseSSL..................: " + getUseSSL()
 				+ "\n\tLogin...................: " + getLogin()

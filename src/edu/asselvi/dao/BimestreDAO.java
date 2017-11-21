@@ -20,7 +20,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE bimestre (" + "	"
@@ -40,7 +40,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 	
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE bimestre;");
@@ -54,7 +54,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 	
 	@Override
 	public boolean insereTrn(List<Bimestre> bimestres) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -83,7 +83,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 
 	@Override
 	public Bimestre consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM bimestre WHERE BimestreId = ?;");
 			pst.setInt(1, id);
@@ -104,7 +104,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 
 	@Override
 	public List<Bimestre> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Bimestre> bimestres = new ArrayList<Bimestre>();
 		try {
 			Statement st = conexao.createStatement();
@@ -126,7 +126,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 
 	@Override
 	public boolean altera(Bimestre bimestre) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("UPDATE bimestre SET descricao = ?, dataInicio = ?, dataFim = ?, diasLetivos = ? WHERE BimestreId = ?;");
 			pst.setString(1, bimestre.getDescricao());
@@ -143,7 +143,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM bimestre WHERE BimestreId = ?;");
 			pst.setInt(1, id);
@@ -157,7 +157,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -186,7 +186,7 @@ public class BimestreDAO implements GenericDAO<Bimestre>{
     }
 	
 	public boolean insereVariosTrn(List<Bimestre> bimestres) throws BDException {
-        Connection conexao = Conexao.getConexao();
+        Connection conexao = Conexao.getConexao(true);
 
         try {
             conexao.setAutoCommit(false);

@@ -21,7 +21,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 
 	@Override
 	public boolean criaTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("CREATE TABLE pessoa (" + "	"
@@ -51,7 +51,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 	
 	@Override
 	public boolean destroiTabela() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			Statement st = conexao.createStatement();
 			st.execute("DROP TABLE pessoa;");
@@ -65,7 +65,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 	
 	@Override
 	public boolean insereTrn(List<Funcionario> funcionarios) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 
 			conexao.setAutoCommit(false);
@@ -97,7 +97,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 
 	@Override
 	public Funcionario consulta(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa WHERE pessoaId = ?;");
 			pst.setInt(1, id);
@@ -119,7 +119,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 	}
 
 	public Funcionario consultaUsuario(int usuarioId) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa WHERE usuarioId = ?;");
 			pst.setInt(1, usuarioId);
@@ -143,7 +143,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 	
 	@Override
 	public List<Funcionario> consulta() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 		try {
 			Statement st = conexao.createStatement();
@@ -167,7 +167,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 
 	@Override
 	public boolean altera(Funcionario funcionario) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("UPDATE pessoa SET usuarioId = ?, perfil, nome = ?, cpf = ?, dataNascimento = ?, sexo = ? WHERE pessoaId = ?;");
 			pst.setInt(1, funcionario.getCdUsuario());
@@ -187,7 +187,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 
 	@Override
 	public boolean exclui(int id) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		try {
 			PreparedStatement pst = conexao.prepareStatement("DELETE FROM pessoa WHERE pessoaId = ?;");
 			pst.setInt(1, id);
@@ -201,7 +201,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 
 	@Override
 	public int retornaProximoId() throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		int proximoId = 0;
 		try {
 			Statement st = conexao.createStatement();
@@ -218,7 +218,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 	}
 	
 	public Map<Integer, Aluno> consultaAlunosTurma(int idTurma) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Aluno> alunos = new HashMap<Integer, Aluno>();
 		try {
 			PreparedStatement pst = conexao.prepareStatement("SELECT * FROM pessoa where IdTurma = ?;");
@@ -244,7 +244,7 @@ public class FuncionarioDAO implements GenericDAO<Funcionario> {
 	}
 	
 	public Map<Integer, Funcionario> consultaAlunosTurma(List<Integer> alunos) throws BDException {
-		Connection conexao = Conexao.getConexao();
+		Connection conexao = Conexao.getConexao(true);
 		Map<Integer, Funcionario> funcionarios = new HashMap<Integer, Funcionario>();
 		try {
 			for(Integer aluno : alunos) {

@@ -55,51 +55,47 @@ public class Instalador {
 
 	public static boolean criarDatabase() throws BDException, IOException, NumberFormatException, ParseException {
 		BaseDAO baseDao = new BaseDAO();
-		if (baseDao.criaBase()) {
-			Menu.mensagens(5);
-			return true;
-		}
-		return false;
+		
+		return baseDao.criaBase();
 	}
 
 	public static void importarDados() throws IOException, NumberFormatException, ParseException {
-		Menu.menuImportacao();
-		ImportaEscola.ImportacaoEscola();
-		ImportaAlunoTurma.ImportacaoAlunoTurma();
-		ImportaBimestre.ImportacaoBimestre();
-		ImportaCurso.ImportacaoCurso();
-		ImportaDisciplina.ImportacaoDisciplina();
-		ImportaDisciplinaProfessor.ImportacaoDisciplinaProfessor();
-		ImportaDisciplinaSerie.ImportacaoDisciplinaSerie();
-		ImportaEscola.ImportacaoEscola();
-		ImportaFrequencia.ImportacaoFrequencia();
-		ImportaHorario.ImportacaoHorario();
-		ImportaNota.ImportacaoNota();
-		ImportaPessoa.ImportacaoPessoa();
-		ImportaSerie.ImportacaoSerie();
-		ImportaTurma.ImportacaoTurma();
-		ImportaUsuario.ImportacaoUsuario();
+		String separador = Menu.menuImportacao();
+		ImportaEscola.ImportacaoEscola(separador);
+		ImportaAlunoTurma.ImportacaoAlunoTurma(separador);
+		ImportaBimestre.ImportacaoBimestre(separador);
+		ImportaCurso.ImportacaoCurso(separador);
+		ImportaDisciplina.ImportacaoDisciplina(separador);
+		ImportaDisciplinaProfessor.ImportacaoDisciplinaProfessor(separador);
+		ImportaDisciplinaSerie.ImportacaoDisciplinaSerie(separador);
+		ImportaFrequencia.ImportacaoFrequencia(separador);
+		ImportaUsuario.ImportacaoUsuario(separador);
+		ImportaPessoa.ImportacaoPessoa(separador);
+		ImportaSerie.ImportacaoSerie(separador);
+		ImportaTurma.ImportacaoTurma(separador);
+		ImportaHorario.ImportacaoHorario(separador);
+		ImportaNota.ImportacaoNota(separador);
 		Menu.mensagens(1);
 	}
 
 	public static void exportarDados() throws IOException, BDException {
-		Menu.menuExportacao();
-		ExportaEscola.ExportacaoEscola();
-		ExportaAlunoTurma.ExportacaoAlunoTurma();
-		ExportaBimestre.ExportacaoBimestre();
-		ExportaCurso.ExportacaoCurso();
-		ExportaDisciplina.ExportacaoDisciplina();
-		ExportaDisciplinaProfessor.ExportacaoDisciplinaProfessor();
-		ExportaDisciplinaSerie.ExportacaoDisciplinaSerie();
-		ExportaEscola.ExportacaoEscola();
-		ExportaFrequencia.ExportacaoFrequencia();
-		ExportaHorario.ExportacaoHorario();
-		ExportaNota.ExportacaoNota();
-		ExportaPessoa.ExportacaoPessoa();
-		ExportaSerie.ExportacaoSerie();
-		ExportaTurma.ExportacaoTurma();
-		ExportaUsuario.ExportacaoUsuario();
-		Menu.mensagens(2);
+		String separador = Menu.menuExportacao();
+		ExportaEscola.ExportacaoEscola(separador);
+		ExportaAlunoTurma.ExportacaoAlunoTurma(separador);
+		ExportaBimestre.ExportacaoBimestre(separador);
+		ExportaCurso.ExportacaoCurso(separador);
+		ExportaDisciplina.ExportacaoDisciplina(separador);
+		ExportaDisciplinaProfessor.ExportacaoDisciplinaProfessor(separador);
+		ExportaDisciplinaSerie.ExportacaoDisciplinaSerie(separador);
+		ExportaEscola.ExportacaoEscola(separador);
+		ExportaFrequencia.ExportacaoFrequencia(separador);
+		ExportaHorario.ExportacaoHorario(separador);
+		ExportaNota.ExportacaoNota(separador);
+		ExportaPessoa.ExportacaoPessoa(separador);
+		ExportaSerie.ExportacaoSerie(separador);
+		ExportaTurma.ExportacaoTurma(separador);
+		ExportaUsuario.ExportacaoUsuario(separador);
+		Menu.mensagens(4);
 	}
 
 }

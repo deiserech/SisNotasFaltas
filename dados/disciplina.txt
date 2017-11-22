@@ -1,6 +1,10 @@
-1#Matemática
-2#Inglês
-3#Alemão
-4#Geografia
-5#0
-6#história
+1#Lingua Portuguesa
+2#Matemática
+3#Biologia
+4#Química
+5#Desenvolvimento da Linguagem
+6#Desenvolvimento Motor
+7#Artes
+8#História
+9#Geografia
+10#Ensino Religioso

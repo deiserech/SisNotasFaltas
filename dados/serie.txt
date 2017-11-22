@@ -1,8 +1,5 @@
-1#1#primeiro#10#10
-2#2#segunda serie#12#0
-3#1#terceira serie#9#10
-4#2#quarta série#5#10
-5#5#quinta seris#5#10
-6#1#sexto ano#6#2
-7#1#sétima série#10#5
-9#2#nono ano#20#20
+1#1#Jardim I#4#12
+2#1#Jardim II#5#12
+3#1#Jardim III#6#12
+4#2#1º Ano#7#12
+5#3#2º Ano#16#12

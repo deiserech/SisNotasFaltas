@@ -1,33 +1,17 @@
-1#1#1#Administrador#999-999-999-99#2017-11-22#M
-2#1#1#Administrador#999-999-999-99#2017-01-22#M
-3#1#1#Administrador#999-999-999-99#2017-01-21#M
-4#1#1#Administrador#999-999-999-99#2017-01-21#M
-5#1#1#Administrador#999-999-999-99#2017-01-19#M
-6#3#2#Vanessa Vieira Alves#74864575#2006-01-19#F
-7#1#3#Sueli Soares#44632520#2007-01-21#F
-8#4#4#Sheyla Fontes#39840930#1975-01-20#F
-9#1#5#Sueli Franco#99140419#2015-01-01#F
-10#1#6#Suellen Fontes#94201494#2004-01-12#F
-11#4#7#Carla Fontes#74608670#1974-01-01#F
-12#1#8#Enzo Paiva#85812438#2016-01-01#M
-13#3#9#Marcelo Gomes Carvalho#1936620#2010-01-23#M
-14#2#10#Thiago Paiva Rech#14221925#2007-01-19#M
-15#4#11#Antônio Soares de Paula#85904591#1996-01-17#M
-16#3#12#Antônio Franco#44582980#2003-01-09#M
-17#4#13#José Soares#9731613#1977-01-13#M
-18#2#14#Nayane Vieira#65709613#2001-01-06#F
-19#1#15#Natalia Paiva#36414498#2016-01-20#F
-20#4#16#Vanessa Antunes#72481700#1971-01-29#F
-21#3#17#Suellen Vieira#2506210#2004-01-13#F
-22#4#18#Daniela Vieira#23222951#1996-01-11#F
-23#1#19#Joseane Gomes Rech#23635393#2001-01-20#F
-24#4#20#Jéssica Pereira Rech#57168609#1979-01-14#F
-25#4#21#yytyt#yuyuy#2014-01-01#M
-26#3#22#deise Rech#063-730-090-06#1988-01-07#F
-27#3#24#ademir#54654654#1985-01-28#M
-28#1#25#carlos eduardo#546465465465#2005-01-11#M
-29#4#26#carlos eduardo vieira#1654654646#2005-01-11#M
-30#4#27#deise#545454#2000-01-01#F
-31#4#28#lorena#644654564#1990-01-15#F
-32#4#29#carlos#5464654#2000-01-01#M
-33#1#30#hkg#jkhbi#0201-01-01#M
+1#1#1#Administrador#999-999-999-99#2017-11-21#M
+2#3#2#professorMatemï¿½tica#123.456.789-12#1989-02-14#M
+3#3#3#professorDesenLinguagem#333.111.222-44#1994-04-02#F
+4#2#4#secretariaAcademica#660.558.775-55#0184-12-22#F
+5#3#5#professorLinguaPort#888.888.888-87#1979-04-11#M
+6#1#6#coordenadoraPedagogica#555.555.444-33#1983-08-05#F
+7#4#7#aluno1##2005-09-15#F
+8#4#8#aluno2##2013-06-02#M
+9#4#9#aluno3##2013-10-26#F
+10#4#10#aluno4##2011-07-30#M
+11#4#11#aluno5##2009-04-13#F
+12#4#12#aluno6##2009-07-07#M
+13#4#13#aluno7##2007-05-16#M
+14#4#14#aluno8##2007-03-17#F
+15#4#15#aluno9##2007-09-04#F
+16#4#16#aluno10##2009-06-18#F
+17#3#17#professorHistGeo##1980-04-22#F

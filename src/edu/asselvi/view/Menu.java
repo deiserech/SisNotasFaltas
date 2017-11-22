@@ -154,7 +154,7 @@ public class Menu {
 		System.out.println();
 		System.out.println(System.getProperty("user.dir") + "\\config\\populador.properties");
 		System.out.println();
-		System.out.println("Certifique-se que as configuções estão corretas....");
+		System.out.println("Certifique-se que as configurações estão corretas....");
 		System.out.println();
 		System.out.println("*************************************************************");
 		System.out.println();

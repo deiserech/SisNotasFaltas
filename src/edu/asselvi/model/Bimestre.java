@@ -2,7 +2,6 @@ package edu.asselvi.model;
 
 import java.util.Date;
 
-import edu.asselvi.controller.FuncoesGenericas;
 
 public class Bimestre {
 	private int BimestreId;

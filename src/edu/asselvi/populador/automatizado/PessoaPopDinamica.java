@@ -75,23 +75,23 @@ public class PessoaPopDinamica {
 		String arqSobrenome = propriedades.getProperty("sobrenome");
 		String arqSobrenome2 = propriedades.getProperty("sobrenome2");
 		// Mostrar propriedades lidas
-		System.out.println("Populando com as seguintes configurações:");
+		System.out.println("Populando com as seguintes configuraï¿½ï¿½es:");
 		System.out.println("\tCaminho dos populadores......: " + caminho);
 		System.out.println("\tArquivo de nomes masculinos..: " + arqMas);
 		System.out.println("\tArquivo de nomes femininos...: " + arqFem);
 		System.out.println("\tArquivo de sobrenomes........: " + arqSobrenome);
 		System.out.println("\tArquivo de 2o sobrenome......: " + arqSobrenome2);
-		// Leitura dos arquivos e criação dos vetores
+		// Leitura dos arquivos e criaï¿½ï¿½o dos vetores
 		String [] nomesMas = Arquivo.leArquivo(caminho + "/" + arqMas, true, "#").split("#");
 		String [] nomesFem = Arquivo.leArquivo(caminho + "/" + arqFem, true, "#").split("#");
 		String [] sobrenomes = Arquivo.leArquivo(caminho + "/" + arqSobrenome, true, "#").split("#");
 		String [] sobrenomes2 = Arquivo.leArquivo(caminho + "/" + arqSobrenome2, true, "#").split("#");
-		System.out.print("Informe quantas pessoas você quer adicionar.........: ");
+		System.out.print("Informe quantas pessoas vocï¿½ quer adicionar.........: ");
 		int quantidade = Integer.parseInt(teclado.readLine());
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		for (int i = 1; i < quantidade; i++) {
-			
+
 			
 			Pessoa pessoa = new Pessoa();
 			Usuario usuario = new Usuario();

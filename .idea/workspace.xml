@@ -2,75 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f444f3a-8d64-4512-a5b2-981c36eedea3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/alunoTurma.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/bimestre.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/curso.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/disciplina.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/disciplinaProfessor.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/disciplinaSerie.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/escola.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/frequencia.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/horario.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/nota.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/pessoa.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/serie.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/turma.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/usuario.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/config/BDarq.properties" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/controller/FuncoesGenericas.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/controller/FuncoesGenericas.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/model/Bimestre.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/model/Bimestre.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/model/Nota.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/model/Nota.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/model/Pessoa.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/model/Pessoa.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaAlunoTurma.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaAlunoTurma.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaBimestre.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaBimestre.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaCurso.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaCurso.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplina.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplina.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplinaProfessor.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplinaProfessor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplinaSerie.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaDisciplinaSerie.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaEscola.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaEscola.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaFrequencia.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaFrequencia.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaHorario.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaHorario.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaNota.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaNota.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaPessoa.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaPessoa.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaSerie.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaSerie.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaTurma.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaTurma.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaUsuario.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaUsuario.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/view/Menu.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/view/Menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/bancodados.properties" afterPath="$PROJECT_DIR$/config/bancodados.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/controller/FuncoesGenericas.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/controller/FuncoesGenericas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Bimestre.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Bimestre.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Nota.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Nota.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Pessoa.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Pessoa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaAlunoTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaAlunoTurma.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaBimestre.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaBimestre.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaCurso.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaCurso.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplina.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplina.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplinaProfessor.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplinaProfessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplinaSerie.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaDisciplinaSerie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaEscola.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaEscola.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaFrequencia.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaFrequencia.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaHorario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaHorario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaNota.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaNota.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaPessoa.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaPessoa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaSerie.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaSerie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaTurma.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaUsuario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaUsuario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaAlunoTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaAlunoTurma.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaBimestre.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaBimestre.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaCurso.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaCurso.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplina.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplina.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplinaProfessor.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplinaProfessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplinaSerie.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplinaSerie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaEscola.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaEscola.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaFrequencia.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaFrequencia.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaHorario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaHorario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaNota.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaNota.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaPessoa.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaPessoa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaSerie.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaSerie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaTurma.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaUsuario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaUsuario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Menu.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Menu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/controller/Sistema.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/controller/Sistema.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dados/frequencia.txt" afterPath="$PROJECT_DIR$/dados/frequencia.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dados/pessoa.txt" afterPath="$PROJECT_DIR$/dados/pessoa.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/controller/Sistema.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/controller/Sistema.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/automatizado/PessoaPopDinamica.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/automatizado/PessoaPopDinamica.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -102,6 +38,13 @@
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/bin/edu/asselvi/controller/Instalador.class" />
+      </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -277,12 +220,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1511314721683</updated>
-      <workItem from="1511314724508" duration="446000" />
+      <workItem from="1511314724508" duration="1233000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="446000" />
+    <option name="totallyTimeSpent" value="1233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-1088" width="1936" height="1056" extended-state="6" />

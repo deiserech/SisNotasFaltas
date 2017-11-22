@@ -1,5 +1,5 @@
 1#1#1#Administrador#999-999-999-99#2017-11-21#M
-2#3#2#professorMatemática#123.456.789-12#1989-02-14#M
+2#3#2#professorMatemï¿½tica#123.456.789-12#1989-02-14#M
 3#3#3#professorDesenLinguagem#333.111.222-44#1994-04-02#F
 4#2#4#secretariaAcademica#660.558.775-55#0184-12-22#F
 5#3#5#professorLinguaPort#888.888.888-87#1979-04-11#M

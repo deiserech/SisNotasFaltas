@@ -379,7 +379,7 @@ public class Sistema {
 	};
 
 	public static void controlaAcesso() throws BDException, IOException, ParseException {
-		Pessoa pessoaLogada = login(); // ver trows
+		Pessoa pessoaLogada = login();
 		idPessoaLogada = pessoaLogada.getId();
 		tpPessoaLogada = pessoaLogada.getPerfil();
 
@@ -426,7 +426,7 @@ public class Sistema {
 						Menu.mensagens(2);
 						break;
 					}
-					opcao = Menu.menuInicial();
+				//	opcao = Menu.menuInicial();
 				}
 				break;
 			case 2:
@@ -434,7 +434,7 @@ public class Sistema {
 				break;
 			default:
 				Menu.mensagens(2);
-				Menu.menuInicial();
+				opcao = Menu.menuInicial();
 				break;
 			}
 			opcao = Menu.menuInicial();

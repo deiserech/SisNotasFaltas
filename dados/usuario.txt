@@ -1,0 +1,17 @@
+1#admin#admin
+2#profmat#profmat
+3#profdeling#profdeling
+4#secretaria#secretaria
+5#profport#profport
+6#coordenadora#coordenadora
+7#aluno1#aluno1
+8#aluno2#aluno2
+9#aluno3#aluno3
+10#aluno4#aluno4
+11#aluno5#aluno5
+12#aluno6#aluno6
+13#aluno7#aluno7
+14#aluno8#aluno8
+15#aluno9#aluno9
+16#aluno10#aluno10
+17#profhisgeo#profhisgeo

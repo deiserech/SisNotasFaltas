@@ -68,15 +68,15 @@ public class Nota {
 	}
 
 	public String toString() {
-		return  	"\n\tNúmero da nota..........: " + getNotaId()
-		        + 	"\n\tCód. Aluno..............: " + getAlunoId()
-				+ 	"\n\tCód. Disciplina.........: " + getDisciplinaId()
+		return  	"\n\tNúmero da nota.........: " + getNotaId()
+		        + 	"\n\tC�d. Aluno..............: " + getAlunoId()
+				+ 	"\n\tC�d. Disciplina.........: " + getDisciplinaId()
 				+ 	"\n\tNum. Bimestre...........: " + getBimestreId()
-				+ 	"\n\tNum nota,,,.............: " + getNota()
-				+ 	"\n\tNota..,,,,,.............: " + getNota();
+				+ 	"\n\tNum nota................: " + getNota()
+				+ 	"\n\tNota....................: " + getNota();
 	}
 
 	 public String toStringBD(String separador) {
-	        return this.getNotaId() + separador + getAlunoId() + separador + getDisciplinaId() + separador + getBimestreId() + separador + getNota();
+	        return this.getNotaId() + separador + getAlunoId() + separador + getDisciplinaId() + separador + getBimestreId() + separador + getNota()+ separador + getNrNota();
 	    }
 }

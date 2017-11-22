@@ -78,7 +78,6 @@ public class FuncoesGenericas {
 	}
 	
 	public static Date lerData() {
-		sdf.setLenient(false); 
 		try {
 			String data = teclado.readLine();
 			return sdf.parse(data);
@@ -87,7 +86,7 @@ public class FuncoesGenericas {
 		}
 		return null;
 	}
-	
+
 	public static ESexo lerSexo() {
 		try {
 			return ESexo.valueOf(teclado.readLine());

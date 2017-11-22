@@ -2,6 +2,7 @@ package edu.asselvi.model;
 
 import java.util.Date;
 
+
 public class Bimestre {
 	private int BimestreId;
 	private String descricao;
@@ -71,6 +72,6 @@ public class Bimestre {
 	}
 	
 	 public String toStringBD(String separador) {
-	        return this.getBimestreId() + separador + getDataInicio() + separador + getDataFim() + separador + getDiasLetivos();
+	        return this.getBimestreId() + separador + this.getDescricao() + separador + getDataInicio() +  separador + getDataFim() + separador + getDiasLetivos();
 	    }
 }

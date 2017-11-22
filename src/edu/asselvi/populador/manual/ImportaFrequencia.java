@@ -1,9 +1,6 @@
 
 package edu.asselvi.populador.manual;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,18 +14,16 @@ import edu.asselvi.model.Frequencia;
 
 public class ImportaFrequencia {
 	
-    public static void ImportacaoFrequencia() throws IOException, NumberFormatException, ParseException {
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-        List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\nota.txt");
-        System.out.print("Entre com o separador...: ");
-        String separador = teclado.readLine();
+    public static void ImportacaoFrequencia(String separador) throws NumberFormatException, ParseException{
+    	List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\frequencia.txt");
         List<Frequencia> frequencias = new ArrayList<Frequencia>();
         Iterator<String> var6 = dados.iterator();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 
         while(var6.hasNext()) {
             String linha = (String)var6.next();
             String[] valores = linha.split(separador);
+            
             Frequencia frequencia = new Frequencia(Integer.parseInt(valores[0]), 
             					 				   Integer.parseInt(valores[1]), 
             					 				   Integer.parseInt(valores[2]),
@@ -51,6 +46,5 @@ public class ImportaFrequencia {
             System.out.println(var9.getMessage());
         }
 
-        System.out.println("Encerrado");
     }
 }

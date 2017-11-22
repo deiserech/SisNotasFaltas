@@ -96,7 +96,7 @@ public class Pessoa {
 	}
 	
 	 public String toStringBD(String separador) {
-	        return this.getId() + separador + getPerfil() + separador + getCdUsuario() + separador + getCpf() + separador + getNome() + separador + getDataNascimento() + separador + getSexo();
+	        return this.getId() + separador + getPerfil() + separador + getCdUsuario() + separador + getNome() + separador + getCpf() + separador + getDataNascimento() + separador + getSexo();
 	    }
 	 
 	 

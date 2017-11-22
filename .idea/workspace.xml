@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbba08ef-9cab-435f-b49a-540917cee2dd" name="Default" comment="">
+    <list default="true" id="8f444f3a-8d64-4512-a5b2-981c36eedea3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/alunoTurma.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/bimestre.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/curso.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/disciplina.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/disciplinaProfessor.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/disciplinaSerie.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/escola.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/frequencia.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/horario.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/nota.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/pessoa.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/serie.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/turma.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dados/usuario.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/config/BDarq.properties" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/controller/FuncoesGenericas.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/controller/FuncoesGenericas.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/model/Bimestre.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/model/Bimestre.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/model/Nota.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/model/Nota.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/model/Pessoa.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/model/Pessoa.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaAlunoTurma.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaAlunoTurma.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaBimestre.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaBimestre.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaCurso.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaCurso.class" />
@@ -16,6 +35,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaSerie.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaSerie.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaTurma.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaTurma.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaUsuario.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/populador/manual/ExportaUsuario.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/edu/asselvi/view/Menu.class" afterPath="$PROJECT_DIR$/bin/edu/asselvi/view/Menu.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/bancodados.properties" afterPath="$PROJECT_DIR$/config/bancodados.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/controller/FuncoesGenericas.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/controller/FuncoesGenericas.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Bimestre.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Bimestre.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Nota.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Nota.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/model/Pessoa.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/model/Pessoa.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaAlunoTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaAlunoTurma.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaBimestre.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaBimestre.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaCurso.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaCurso.java" />
@@ -30,7 +56,21 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaSerie.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaSerie.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaTurma.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaUsuario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ExportaUsuario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaAlunoTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaAlunoTurma.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaBimestre.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaBimestre.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaCurso.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaCurso.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplina.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplina.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplinaProfessor.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplinaProfessor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplinaSerie.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaDisciplinaSerie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaEscola.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaEscola.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaFrequencia.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaFrequencia.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaHorario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaHorario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaNota.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaNota.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaPessoa.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaPessoa.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaSerie.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaSerie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaTurma.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaTurma.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaUsuario.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/populador/manual/ImportaUsuario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/asselvi/view/Menu.java" afterPath="$PROJECT_DIR$/src/edu/asselvi/view/Menu.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,6 +79,22 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="Instalador.class" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bin/edu/asselvi/controller/Instalador.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-65">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#4894#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,12 +109,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -75,11 +125,47 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SisNotasFaltas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SisNotasFaltas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SisNotasFaltas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SisNotasFaltas" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SisNotasFaltas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SisNotasFaltas" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="edu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SisNotasFaltas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SisNotasFaltas" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="edu" type="462c0819:PsiDirectoryNode" />
+              <item name="asselvi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SisNotasFaltas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SisNotasFaltas" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="edu" type="462c0819:PsiDirectoryNode" />
+              <item name="asselvi" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -186,51 +272,48 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cbba08ef-9cab-435f-b49a-540917cee2dd" name="Default" comment="" />
-      <created>1511135925338</created>
+      <changelist id="8f444f3a-8d64-4512-a5b2-981c36eedea3" name="Default" comment="" />
+      <created>1511314721683</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1511135925338</updated>
-      <workItem from="1511135928409" duration="580000" />
-      <workItem from="1511144509957" duration="158000" />
-      <workItem from="1511220778680" duration="68000" />
-      <workItem from="1511227439373" duration="261000" />
-      <workItem from="1511302479504" duration="127000" />
+      <updated>1511314721683</updated>
+      <workItem from="1511314724508" duration="446000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1194000" />
+    <option name="totallyTimeSpent" value="446000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-8" y="-1088" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +325,18 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bin/edu/asselvi/controller/Instalador.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-65">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#4894#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>

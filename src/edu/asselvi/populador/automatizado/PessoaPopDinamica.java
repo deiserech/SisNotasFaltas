@@ -18,7 +18,6 @@ import edu.asselvi.bancodados.BDException;
 import edu.asselvi.dao.PessoaDAO;
 import edu.asselvi.dao.UsuarioDAO;
 import edu.asselvi.enumerador.ESexo;
-import edu.asselvi.model.Escola;
 import edu.asselvi.model.Pessoa;
 import edu.asselvi.model.Usuario;
 
@@ -92,7 +91,7 @@ public class PessoaPopDinamica {
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		for (int i = 1; i < quantidade; i++) {
-			Escola escola = new Escola();
+			
 			
 			Pessoa pessoa = new Pessoa();
 			Usuario usuario = new Usuario();

@@ -1,9 +1,6 @@
 
 package edu.asselvi.populador.manual;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,11 +11,8 @@ import edu.asselvi.dao.TurmaDAO;
 import edu.asselvi.model.Turma;
 
 public class ImportaTurma {
-    public static void ImportacaoTurma() throws IOException, NumberFormatException {        
-    	BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    public static void ImportacaoTurma(String separador){        
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\turma.txt");
-        System.out.print("Entre com o separador...: ");
-        String separador = teclado.readLine();
         List<Turma> turmas = new ArrayList<Turma>();
         Iterator<String> var6 = dados.iterator();
       
@@ -48,6 +42,5 @@ public class ImportaTurma {
             System.out.println(var9.getMessage());
         }
 
-        System.out.println("Encerrado");
     }
 }

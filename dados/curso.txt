@@ -1,0 +1,6 @@
+1#2#5#fundamental
+2#2#2#medio
+3#2#6#tecnico
+4#2#5#0
+5#2#5#teste
+6#5#5#teste curso

@@ -1,9 +1,6 @@
 
 package edu.asselvi.populador.manual;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,11 +12,8 @@ import edu.asselvi.model.Horario;
 
 public class ImportaHorario {
   
-    public static void ImportacaoHorario() throws IOException, NumberFormatException {
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-        List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\horario.txt");
-        System.out.print("Entre com o separador...: ");
-        String separador = teclado.readLine();
+    public static void ImportacaoHorario(String separador){
+    	List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\horario.txt");
         List<Horario> horarios = new ArrayList<Horario>();
         Iterator<String> var6 = dados.iterator();
 
@@ -48,6 +42,5 @@ public class ImportaHorario {
             System.out.println(var9.getMessage());
         }
 
-        System.out.println("Encerrado");
     }
 }

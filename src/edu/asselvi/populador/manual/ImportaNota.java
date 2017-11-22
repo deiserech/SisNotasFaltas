@@ -1,9 +1,6 @@
 
 package edu.asselvi.populador.manual;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,11 +12,8 @@ import edu.asselvi.model.Nota;
 
 public class ImportaNota {
   
-    public static void ImportacaoNota() throws IOException, NumberFormatException {
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    public static void ImportacaoNota(String separador){
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\nota.txt");
-        System.out.print("Entre com o separador...: ");
-        String separador = teclado.readLine();
         List<Nota> notas = new ArrayList<Nota>();
         Iterator<String> var6 = dados.iterator();
 
@@ -49,6 +43,5 @@ public class ImportaNota {
             System.out.println(var9.getMessage());
         }
 
-        System.out.println("Encerrado");
     }
 }

@@ -15,7 +15,7 @@ public class Conexao {
 		try {
 			String url = "jdbc:mysql:"
 							+ Sistema.base.getUrl() + "/"
-							+ Sistema.base.getBase() 
+							+ (naBase? Sistema.base.getBase(): "") 
 							+ "?useSSL="	+ Sistema.base.getUseSSL() ;
 			
 			Class.forName("com.mysql.jdbc.Driver");

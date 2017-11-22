@@ -166,21 +166,25 @@ public class Menu {
 		return FuncoesGenericas.lerCampoInt();
 	}
 
-	public static void menuImportacao() {
+	public static String menuImportacao() {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»         Importação         ««|");
 		System.out.println("----------------------------------");
 		System.out.println("Importando informações do diretório:");
 		System.out.println(System.getProperty("user.dir") + "/dados/");
+		System.out.println("Informe o separador.........");
+		return FuncoesGenericas.lerCampoString();
 	}
 	
-	public static void menuExportacao() {
+	public static String menuExportacao() {
 		System.out.println("");
 		System.out.println("----------------------------------");
 		System.out.println("|»»         Exportação         ««|");
 		System.out.println("----------------------------------");
 		System.out.println("Exportando informações......");
+		System.out.println("Informe o separador.........");
+		return FuncoesGenericas.lerCampoString();
 	}
 	
 	public static void mensagens(int msg) {

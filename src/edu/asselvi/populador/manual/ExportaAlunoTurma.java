@@ -1,8 +1,5 @@
 package edu.asselvi.populador.manual;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,10 +12,7 @@ import edu.asselvi.model.AlunoTurma;
 public class ExportaAlunoTurma {
    
 
-    public static void ExportacaoAlunoTurma() throws IOException, BDException {
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Entre com o separador...: ");
-        String separador = teclado.readLine();
+    public static void ExportacaoAlunoTurma(String separador) throws BDException {
         AlunoTurmaDAO alunoTurmaDAO = new AlunoTurmaDAO();
         List<AlunoTurma> alunoTurmas = alunoTurmaDAO.consulta();
         List<String> alunoTurmasExp = new ArrayList<String>();

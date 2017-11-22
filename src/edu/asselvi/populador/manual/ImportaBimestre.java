@@ -1,9 +1,6 @@
 
 package edu.asselvi.populador.manual;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,15 +14,12 @@ import edu.asselvi.model.Bimestre;
 
 public class ImportaBimestre {
 
-    public static void ImportacaoBimestre() throws IOException, NumberFormatException, ParseException {
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+    public static void ImportacaoBimestre(String separador) throws NumberFormatException, ParseException{
         List<String> dados = Arquivo.leArquivo(System.getProperty("user.dir") + "\\dados\\bimestre.txt");
-        System.out.print("Entre com o separador...: ");
-        String separador = teclado.readLine();
         List<Bimestre> bimestres = new ArrayList<Bimestre>();
         Iterator<String> var6 = dados.iterator();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 
         while(var6.hasNext()) {
             String linha = (String)var6.next();
@@ -52,6 +46,5 @@ public class ImportaBimestre {
             System.out.println(var9.getMessage());
         }
 
-        System.out.println("Encerrado");
     }
 }

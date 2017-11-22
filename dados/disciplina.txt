@@ -1,2 +1,6 @@
-1#Lingua Portuguesa
-2#Matemática
+1#Matemática
+2#Inglês
+3#Alemão
+4#Geografia
+5#0
+6#história

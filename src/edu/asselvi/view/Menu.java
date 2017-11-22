@@ -12,8 +12,8 @@ public class Menu {
 
 		System.out.println("");
 		System.out.println("----------------------------------");
-		System.out.println("|»»    Controle de Notas e     ««|");
-		System.out.println("|»»    Frequência de Alunos    ««|");
+		System.out.println("|»»    	       Diário          ««|");
+		System.out.println("|»»    	     de Classe         ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Instalador............");
 		System.out.println("\t2 - Diário de classe......");
@@ -27,8 +27,8 @@ public class Menu {
 
 		System.out.println("");
 		System.out.println("----------------------------------");
-		System.out.println("|»»    Controle de Notas e     ««|");
-		System.out.println("|»»    Frequência de Alunos    ««|");
+		System.out.println("|»»    	       Diário          ««|");
+		System.out.println("|»»    	     de Classe         ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Cadastros.............");
 		System.out.println("\t0 - Sair..................");
@@ -40,8 +40,8 @@ public class Menu {
 
 		System.out.println("");
 		System.out.println("----------------------------------");
-		System.out.println("|»»    Controle de Notas e     ««|");
-		System.out.println("|»»    Frequência de Alunos    ««|");
+		System.out.println("|»»    	       Diário          ««|");
+		System.out.println("|»»    	     de Classe         ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Matrículas............");
 		System.out.println("\t0 - Sair..................");
@@ -53,8 +53,8 @@ public class Menu {
 
 		System.out.println("");
 		System.out.println("----------------------------------");
-		System.out.println("|»»    Controle de Notas e     ««|");
-		System.out.println("|»»    Frequência de Alunos    ««|");
+		System.out.println("|»»    	       Diário          ««|");
+		System.out.println("|»»    		 de Classe         ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Lançamentos...........");
 		System.out.println("\t2 - Relatórios............");
@@ -67,8 +67,8 @@ public class Menu {
 
 		System.out.println("");
 		System.out.println("----------------------------------");
-		System.out.println("|»»    Controle de Notas e     ««|");
-		System.out.println("|»»    Frequência de Alunos    ««|");
+		System.out.println("|»»    	       Diário          ««|");
+		System.out.println("|»»    		 de Classe         ««|");
 		System.out.println("----------------------------------");
 		System.out.println("\t1 - Consultas.............");
 		System.out.println("\t0 - Sair..................");
@@ -171,8 +171,6 @@ public class Menu {
 		System.out.println("----------------------------------");
 		System.out.println("|»»         Importação         ««|");
 		System.out.println("----------------------------------");
-		System.out.println("Importando informações do diretório:");
-		System.out.println(System.getProperty("user.dir") + "/dados/");
 		System.out.println("Informe o separador.........");
 		return FuncoesGenericas.lerCampoString();
 	}
@@ -182,7 +180,6 @@ public class Menu {
 		System.out.println("----------------------------------");
 		System.out.println("|»»         Exportação         ««|");
 		System.out.println("----------------------------------");
-		System.out.println("Exportando informações......");
 		System.out.println("Informe o separador.........");
 		return FuncoesGenericas.lerCampoString();
 	}
@@ -205,6 +202,13 @@ public class Menu {
 			break;
 		case 5:
 			System.out.println("Database criado com sucesso!");
+			break;
+		case 6:
+			System.out.println("Importando informações do diretório:");
+			System.out.println(System.getProperty("user.dir") + "/dados/");
+			break;
+		case 7:
+			System.out.println("Exportando informações......");
 			break;
 		}
 		

@@ -55,12 +55,16 @@ public class Instalador {
 
 	public static boolean criarDatabase() throws BDException, IOException, NumberFormatException, ParseException {
 		BaseDAO baseDao = new BaseDAO();
-		
-		return baseDao.criaBase();
+		if (baseDao.criaBase()) {
+			Menu.mensagens(5);
+			return true;
+		}
+		return false;
 	}
 
 	public static void importarDados() throws IOException, NumberFormatException, ParseException {
 		String separador = Menu.menuImportacao();
+		Menu.mensagens(6);
 		ImportaEscola.ImportacaoEscola(separador);
 		ImportaAlunoTurma.ImportacaoAlunoTurma(separador);
 		ImportaBimestre.ImportacaoBimestre(separador);
@@ -80,6 +84,7 @@ public class Instalador {
 
 	public static void exportarDados() throws IOException, BDException {
 		String separador = Menu.menuExportacao();
+		Menu.mensagens(7);
 		ExportaEscola.ExportacaoEscola(separador);
 		ExportaAlunoTurma.ExportacaoAlunoTurma(separador);
 		ExportaBimestre.ExportacaoBimestre(separador);

@@ -426,7 +426,6 @@ public class Sistema {
 						Menu.mensagens(2);
 						break;
 					}
-				//	opcao = Menu.menuInicial();
 				}
 				break;
 			case 2:
